@@ -68,30 +68,43 @@ export class MetaScene extends THREE.Scene {
   }
 
   setupObjects() {
-    const geometry = new THREE.BoxGeometry(2, 2, 0.1)
-    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 })
+    const createArea = (color: number, position: THREE.Vector3) => {
+      const geometry = new THREE.BoxGeometry(2, 2, 0.1)
+      const material = new THREE.MeshStandardMaterial({ color })
 
-    const area = new THREE.Group()
+      const area = new THREE.Group()
 
-    const wall1 = new THREE.Mesh(geometry, material)
-    const wall2 = new THREE.Mesh(geometry, material)
-    const wall3 = new THREE.Mesh(geometry, material)
+      const wall1 = new THREE.Mesh(geometry, material)
+      const wall2 = new THREE.Mesh(geometry, material)
+      const wall3 = new THREE.Mesh(geometry, material)
 
-    wall1.position.set(0, -1, 0)
-    wall2.position.set(1, 0, 0)
-    wall3.position.set(0, 0, -1)
+      wall1.position.set(0, -1, 0)
+      wall2.position.set(1, 0, 0)
+      wall3.position.set(0, 0, -1)
 
-    wall1.rotateX(Math.PI / 2)
-    wall2.rotateY(Math.PI / 2)
-    wall3.rotateZ(Math.PI / 2)
+      wall1.rotateX(Math.PI / 2)
+      wall2.rotateY(Math.PI / 2)
+      wall3.rotateZ(Math.PI / 2)
 
-    area.add(wall1)
-    area.add(wall2)
-    area.add(wall3)
+      area.add(wall1)
+      area.add(wall2)
+      area.add(wall3)
 
-    this.add(area)
+      area.position.copy(position)
 
-    area.rotateY(Math.PI / 4)
+      return area
+    }
+
+    const areas = new THREE.Group()
+    areas.add(createArea(0x00ff00, new THREE.Vector3(0, 0, 0)))
+    areas.add(createArea(0xff00ff, new THREE.Vector3(2, 2, 0)))
+    areas.add(createArea(0x00ffff, new THREE.Vector3(0, 2, -2)))
+
+    areas.rotateY(Math.PI / 4)
+
+    this.add(areas)
+
+    this.add(new THREE.AxesHelper(5))
   }
 
   setupLights() {
