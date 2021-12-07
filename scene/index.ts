@@ -103,8 +103,6 @@ export class MetaScene extends THREE.Scene {
     areas.rotateY(Math.PI / 4)
 
     this.add(areas)
-
-    this.add(new THREE.AxesHelper(5))
   }
 
   setupLights() {
