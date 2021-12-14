@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { Container, Canvas, Content } from '../styles'
+
 import Head from 'next/head'
 
 import ThreeExperience from '../three/experience'
@@ -20,15 +22,14 @@ const Three: React.FC = ({}) => {
   // }, [threeExperience])
 
   return (
-    <div>
+    <Container>
       <Head>
         <title>ThreeJS</title>
       </Head>
-
-      <canvas ref={canvasRef}>
+      <Canvas ref={canvasRef}>
         <div style={{ color: 'white' }}>Test</div>
-      </canvas>
-    </div>
+      </Canvas>
+    </Container>
   )
 }
 

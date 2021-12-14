@@ -28,9 +28,9 @@ const Sources = [
     path: '/textures/dirt/normal.jpg'
   },
   {
-    name: 'foxModel',
+    name: 'houseModel',
     type: 'gltf',
-    path: '/models/Fox/Fox.gltf'
+    path: '/models/House/House.gltf'
   }
 ]
 

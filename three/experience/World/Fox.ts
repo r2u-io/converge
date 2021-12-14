@@ -37,7 +37,7 @@ export default class Fox {
     }
 
     // Setup
-    this.resource = this.resources.items.foxModel as GLTF
+    this.resource = this.resources.items.houseModel as GLTF
 
     this.setModel()
     this.setAnimation()
