@@ -1,26 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 
-import * as THREE from 'three'
-import { MetaScene } from '../scene'
+import ThreeExperience from '../three/experience'
 
 const Three: React.FC = ({}) => {
   const canvasRef = useRef(null)
 
-  const [metaScene, setMetaScene] = useState<MetaScene>()
+  const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
 
   useEffect(() => {
     if (!canvasRef.current) return
-    setMetaScene(new MetaScene(canvasRef.current))
+    setThreeExperience(new ThreeExperience(canvasRef.current))
   }, [canvasRef])
 
-  useEffect(() => {
-    if (!metaScene) return
-    metaScene.render()
-  }, [metaScene])
+  // useEffect(() => {
+  //   if (!threeExperience) return
+  //   threeExperience.render()
+  // }, [threeExperience])
 
   return (
     <div>

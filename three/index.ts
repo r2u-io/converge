@@ -6,7 +6,7 @@ interface Sizes {
   height: number
 }
 
-export class MetaScene extends THREE.Scene {
+export default class ThreeApplication extends THREE.Scene {
   canvas: HTMLCanvasElement
   renderer: THREE.WebGLRenderer
   sizes: Sizes
