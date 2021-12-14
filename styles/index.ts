@@ -19,9 +19,16 @@ export const Container = styled.div`
     padding-left: unset;
     padding-right: unset;
   }
+
+  height: 100vh;
+  background-image: url(../images/background.svg);
+  background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: cover;
 `;
 
-export const Content = styled.section`
+export const Content = styled.div`
   width: 1200px;
   margin: auto;
   @media only screen and (max-width: 600px) {
