@@ -1,8 +1,7 @@
+import EventEmitter from 'events'
 import * as THREE from 'three'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Source } from '../experience/sources'
-
-import EventEmitter from './EventEmitter'
 
 interface Loaders {
   gltf: GLTFLoader
@@ -63,7 +62,7 @@ export default class Resources extends EventEmitter {
     this.loaded++
 
     if (this.loaded === this.toLoad) {
-      this.trigger('ready')
+      this.emit('ready')
     }
   }
 }

@@ -57,8 +57,8 @@ export default class Experience {
   }
 
   destroy() {
-    this.sizes.off('resize')
-    this.time.off('tick')
+    this.sizes.off('resize', () => this.resize())
+    this.time.off('tick', () => this.update())
 
     this.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
