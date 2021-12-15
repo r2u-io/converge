@@ -44,11 +44,11 @@ export default class House {
     this.model = this.resource.scene
     this.scene.add(this.model)
 
-    this.model.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.castShadow = true
-        child.receiveShadow = true
-      }
-    })
+    // this.model.traverse((child) => {
+    //   if (child instanceof THREE.Mesh) {
+    //     child.castShadow = true
+    //     child.receiveShadow = true
+    //   }
+    // })
   }
 }

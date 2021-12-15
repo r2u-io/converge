@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Container, Canvas, Content } from '../styles'
+import { Container, Canvas, Button } from '../styles'
 
 import Head from 'next/head'
 
@@ -16,19 +16,13 @@ const Three: React.FC = ({}) => {
     setThreeExperience(new ThreeExperience(canvasRef.current))
   }, [canvasRef])
 
-  // useEffect(() => {
-  //   if (!threeExperience) return
-  //   threeExperience.render()
-  // }, [threeExperience])
-
   return (
     <Container>
       <Head>
         <title>ThreeJS</title>
       </Head>
-      <Canvas ref={canvasRef}>
-        <div style={{ color: 'white' }}>Test</div>
-      </Canvas>
+      <Canvas ref={canvasRef}></Canvas>
+      <Button onClick={() => threeExperience?.camera.move()}>Move</Button>
     </Container>
   )
 }

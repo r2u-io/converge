@@ -5,6 +5,7 @@ import Resources from '../../utils/Resources'
 import Environment from './Environment'
 import Floor from './Floor'
 import House from './House'
+import Point from './Point'
 
 interface Props {
   scene: THREE.Scene
@@ -19,6 +20,8 @@ export default class World {
   house: House | null = null
   environment: Environment | null = null
 
+  point: Point | null = null
+
   constructor(experience: Experience) {
     this.scene = experience.scene
     this.resources = experience.resources
@@ -28,6 +31,8 @@ export default class World {
       // this.floor = new Floor(experience)
       this.house = new House(experience)
       this.environment = new Environment(experience)
+
+      if (experience.debug.active) this.point = new Point(experience)
     })
   }
 }

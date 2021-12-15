@@ -30,7 +30,7 @@ export default class Environment {
       this.debugFolder = this.debug.ui!.addFolder('Environment')
     }
 
-    this.setSunLight()
+    // this.setSunLight()
     this.setEnvironmentMap()
   }
 

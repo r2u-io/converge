@@ -44,3 +44,9 @@ export const Canvas = styled.canvas`
   width: 100%;
   height: 100%;
 `
+
+export const Button = styled.button`
+  position: absolute;
+  top: 90%;
+  left: 50%;
+`
