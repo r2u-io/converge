@@ -7,16 +7,9 @@ import type Time from '../../utils/Time'
 import Experience from '..'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
-interface Animation {
-  mixer: THREE.AnimationMixer
-  actions: { [name: string]: THREE.AnimationAction }
-  play: (name: string) => void
-}
-
 export default class House {
   scene: THREE.Scene
   resources: Resources
-  time: Time
   debug: Debug
 
   resource: GLTF
@@ -27,7 +20,6 @@ export default class House {
   constructor(experience: Experience) {
     this.scene = experience.scene
     this.resources = experience.resources
-    this.time = experience.time
     this.debug = experience.debug
 
     if (this.debug.active) {

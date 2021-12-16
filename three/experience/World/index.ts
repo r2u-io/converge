@@ -2,6 +2,7 @@ import type Experience from '..'
 
 import Resources from '../../utils/Resources'
 
+import Box from './Box'
 import Environment from './Environment'
 import Floor from './Floor'
 import House from './House'
@@ -19,6 +20,7 @@ export default class World {
   floor: Floor | null = null
   house: House | null = null
   environment: Environment | null = null
+  box: Box | null = null
 
   point: Point | null = null
 
@@ -32,7 +34,13 @@ export default class World {
       this.house = new House(experience)
       this.environment = new Environment(experience)
 
+      this.box = new Box(experience)
+
       if (experience.debug.active) this.point = new Point(experience)
     })
+  }
+
+  update() {
+    if (this.box) this.box.update()
   }
 }

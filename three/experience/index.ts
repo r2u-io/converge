@@ -10,6 +10,7 @@ import World from './World'
 import Resources from '../utils/Resources'
 
 import sources from './sources'
+import Raycaster from './Raycaster'
 
 export default class Experience {
   canvas: HTMLCanvasElement
@@ -22,6 +23,7 @@ export default class Experience {
   camera: Camera
   renderer: Renderer
   world: World
+  raycaster: Raycaster
 
   constructor(canvas: HTMLCanvasElement) {
     // Options
@@ -39,6 +41,7 @@ export default class Experience {
     this.camera = new Camera(this)
     this.renderer = new Renderer(this)
     this.world = new World(this)
+    this.raycaster = new Raycaster(this)
 
     // Event bindings
     this.sizes.on('resize', () => this.resize())
@@ -52,6 +55,7 @@ export default class Experience {
 
   update() {
     this.camera.update()
+    this.world.update()
     this.renderer.update()
   }
 
