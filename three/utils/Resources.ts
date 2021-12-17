@@ -4,6 +4,8 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Source } from '../experience/sources'
 
+const DEFAULT_DRACO_DECODER_LOCATION = 'https://www.gstatic.com/draco/versioned/decoders/1.5.0/'
+
 interface Loaders {
   gltf: GLTFLoader
   texture: THREE.TextureLoader
@@ -41,7 +43,7 @@ export default class Resources extends EventEmitter {
     }
 
     const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath('/draco/')
+    dracoLoader.setDecoderPath(DEFAULT_DRACO_DECODER_LOCATION)
     this.loaders.gltf.setDRACOLoader(dracoLoader)
   }
 

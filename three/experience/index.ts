@@ -11,6 +11,7 @@ import Resources from '../utils/Resources'
 
 import sources from './sources'
 import Raycaster from './Raycaster'
+import PostProcessing from './PostProcessing'
 
 export default class Experience {
   canvas: HTMLCanvasElement
@@ -22,6 +23,7 @@ export default class Experience {
   resources: Resources
   camera: Camera
   renderer: Renderer
+  postProcessing: PostProcessing
   world: World
   raycaster: Raycaster
 
@@ -42,6 +44,7 @@ export default class Experience {
     this.renderer = new Renderer(this)
     this.world = new World(this)
     this.raycaster = new Raycaster(this)
+    this.postProcessing = new PostProcessing(this)
 
     // Event bindings
     this.sizes.on('resize', () => this.resize())
@@ -51,12 +54,13 @@ export default class Experience {
   resize() {
     this.camera.resize()
     this.renderer.resize()
+    this.postProcessing.resize()
   }
 
   update() {
     this.camera.update()
     this.world.update()
-    this.renderer.update()
+    this.postProcessing.update()
   }
 
   destroy() {
@@ -74,8 +78,8 @@ export default class Experience {
       }
     })
 
-    this.camera.controls?.dispose()
-    this.renderer.instance?.dispose()
+    this.camera.controls!.dispose()
+    this.renderer.instance!.dispose()
 
     if (this.debug.active) {
       this.debug.ui!.destroy()

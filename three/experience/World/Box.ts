@@ -35,12 +35,6 @@ export default class Box {
     this.raycaster = experience.raycaster
     this.debug = experience.debug
 
-    if (this.debug.active) {
-      this.debug.ui!.add(this.point, 'x').min(-5).max(5).step(0.1)
-      this.debug.ui!.add(this.point, 'y').min(-5).max(5).step(0.1)
-      this.debug.ui!.add(this.point, 'z').min(-5).max(5).step(0.1)
-    }
-
     this.card = document.querySelector('.product-card')
     this.cardWrapper = document.querySelector('.product-card-wrapper')
 
