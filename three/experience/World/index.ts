@@ -37,6 +37,8 @@ export default class World {
       this.box = new Box(experience)
 
       if (experience.debug.active) this.point = new Point(experience)
+
+      this.environment.updateMaterials()
     })
   }
 

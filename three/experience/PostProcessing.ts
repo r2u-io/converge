@@ -79,6 +79,8 @@ export default class PostProcessing {
       0.6
     )
 
+    unrealBloomPass.enabled = false
+
     if (this.debug.active) {
       this.debugFolder!.add(unrealBloomPass, 'enabled')
       this.debugFolder!.add(unrealBloomPass, 'strength').min(0).max(2).step(0.001)
