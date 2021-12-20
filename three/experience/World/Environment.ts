@@ -34,7 +34,7 @@ export default class Environment {
 
   setEnvironmentMap() {
     this.environmentMap = {
-      intensity: 1.5,
+      intensity: 3.5,
       texture: this.resources.items.environmentMapTexture as THREE.CubeTexture
     }
 

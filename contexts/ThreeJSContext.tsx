@@ -1,29 +1,48 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+
+import ThreeExperience from '../three/experience'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 interface Meta {
-  website: string;
+  website: string
 }
 
-interface ThreeJSContextData {
-  meta?: Meta;
+interface ThreeContextData {
+  meta: Meta
+  loaded: boolean
+  threeExperience?: ThreeExperience
+  setThreeExperience: (threeExperience: ThreeExperience) => void
+  setSceneLoaded: () => void
 }
 
-export const ThreeJSContext = createContext<ThreeJSContextData>({});
+export const ThreeContext = createContext<ThreeContextData>({} as ThreeContextData)
 
-export const ThreeJSProvider: React.FC<Props> = ({ children }: Props) => {
-  const [meta] = useState({ website: "https://meta.r2u.io" });
+export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
+  const [meta] = useState({ website: 'https://meta.r2u.io' })
+
+  const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
+  const [loaded, setLoaded] = useState(false)
+
+  const setSceneLoaded = () => setLoaded(true)
 
   return (
-    <ThreeJSContext.Provider
+    <ThreeContext.Provider
       value={{
         meta,
+        loaded,
+        threeExperience,
+        setThreeExperience,
+        setSceneLoaded
       }}
     >
       {children}
-    </ThreeJSContext.Provider>
-  );
-};
+    </ThreeContext.Provider>
+  )
+}
+
+export const useThreeContext = (): ThreeContextData => {
+  return useContext(ThreeContext)
+}

@@ -27,7 +27,7 @@ export default class Experience {
   world: World
   raycaster: Raycaster
 
-  constructor(canvas: HTMLCanvasElement) {
+  constructor(canvas: HTMLCanvasElement, onLoad: () => void) {
     // Options
     this.canvas = canvas
 
@@ -49,6 +49,7 @@ export default class Experience {
     // Event bindings
     this.sizes.on('resize', () => this.resize())
     this.time.on('tick', () => this.update())
+    this.resources.on('ready', () => onLoad())
   }
 
   resize() {

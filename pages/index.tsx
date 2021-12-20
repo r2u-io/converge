@@ -1,11 +1,11 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { useContext } from "react";
-import { ThreeJSContext } from "../contexts/ThreeJSContext";
-import { Container, Content } from "../styles";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { useContext } from 'react'
+import { useThreeContext } from '../contexts/ThreeJSContext'
+import { Container, Content } from '../styles'
 
 const Home: NextPage = () => {
-  const { meta } = useContext(ThreeJSContext);
+  const { meta } = useThreeContext()
 
   return (
     <Container>
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         </div>
       </Content>
     </Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

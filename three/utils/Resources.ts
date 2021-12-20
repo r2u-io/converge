@@ -49,7 +49,6 @@ export default class Resources extends EventEmitter {
 
   startLoading() {
     this.sources.forEach((source) => {
-      console.log(source)
       switch (source.type) {
         case 'gltf':
           this.loaders!.gltf.load(source.path as string, (file) => this.sourceLoaded(source, file))

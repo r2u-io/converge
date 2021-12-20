@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import type GUI from 'lil-gui'
 import type Debug from '../../utils/Debug'
 import type Resources from '../../utils/Resources'
-import type Time from '../../utils/Time'
+
 import Experience from '..'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
@@ -26,7 +26,6 @@ export default class House {
       this.debugFolder = this.debug.ui!.addFolder('House')
     }
 
-    // Setup
     this.resource = this.resources.items.houseModel as GLTF
 
     this.setModel()
@@ -35,12 +34,5 @@ export default class House {
   setModel() {
     this.model = this.resource.scene
     this.scene.add(this.model)
-
-    // this.model.traverse((child) => {
-    //   if (child instanceof THREE.Mesh) {
-    //     child.castShadow = true
-    //     child.receiveShadow = true
-    //   }
-    // })
   }
 }
