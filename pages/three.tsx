@@ -1,37 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { Container } from '../styles'
+
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 
-import * as THREE from 'three'
-import { MetaScene } from '../scene'
+import ThreeExperience from '../three/experience'
 
 const Three: React.FC = ({}) => {
   const canvasRef = useRef(null)
 
-  const [metaScene, setMetaScene] = useState<MetaScene>()
+  const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
 
   useEffect(() => {
     if (!canvasRef.current) return
-    setMetaScene(new MetaScene(canvasRef.current))
+    setThreeExperience(new ThreeExperience(canvasRef.current))
   }, [canvasRef])
 
-  useEffect(() => {
-    if (!metaScene) return
-    metaScene.render()
-  }, [metaScene])
-
   return (
-    <div>
+    <Container>
       <Head>
         <title>ThreeJS</title>
       </Head>
-
-      <canvas ref={canvasRef}>
-        <div style={{ color: 'white' }}>Test</div>
-      </canvas>
-    </div>
+      <canvas ref={canvasRef}></canvas>
+      <button onClick={() => threeExperience?.camera.move()}>Move</button>
+      <div className='product-card-wrapper'>
+        <div className='product-card'>
+          <h2>Yellow Cube</h2>
+          <Image src='/images/qrcode-placeholder.png' alt='' width={100} height={100} />
+          <span>See in your space</span>
+          <span className='price'>$0.00</span>
+        </div>
+      </div>
+    </Container>
   )
 }
 
