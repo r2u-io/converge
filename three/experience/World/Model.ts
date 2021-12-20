@@ -6,12 +6,6 @@ import type Sizes from '../../utils/Sizes'
 import type Camera from '../Camera'
 import type PostProcessing from '../PostProcessing'
 
-interface Point {
-  x: number
-  y: number
-  z: number
-}
-
 export default class Model {
   canvas: HTMLCanvasElement
   sizes: Sizes
@@ -36,7 +30,7 @@ export default class Model {
     name: string,
     card: HTMLDivElement,
     cardWrapper: HTMLDivElement,
-    point: Point
+    point: THREE.Vector3
   ) {
     this.canvas = experience.canvas
     this.sizes = experience.sizes

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import QRCode from 'qrcode.react'
+import * as THREE from 'three'
 
 import { Container } from './styles'
 import Model from '../../three/experience/World/Model'
@@ -27,8 +28,19 @@ const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
 
   useEffect(() => {
     if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current || model) return
-    setModel(new Model(threeExperience, name, cardRef.current, cardWrapperRef.current, point))
-  }, [loaded, name, point, threeExperience, cardRef, cardWrapperRef, model])
+
+    const vectorPoint = new THREE.Vector3(point.x, point.y, point.z)
+
+    const modelInstance = new Model(
+      threeExperience,
+      name,
+      cardRef.current,
+      cardWrapperRef.current,
+      vectorPoint
+    )
+
+    setModel(modelInstance)
+  }, [loaded, threeExperience, cardRef, cardWrapperRef, model, name, point])
 
   useEffect(() => {
     if (!model || !threeExperience) return
