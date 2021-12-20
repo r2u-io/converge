@@ -26,11 +26,8 @@ const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current) return
-    if (!model) {
-      console.log(name)
-      setModel(new Model(threeExperience, name, cardRef.current, cardWrapperRef.current, point))
-    }
+    if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current || model) return
+    setModel(new Model(threeExperience, name, cardRef.current, cardWrapperRef.current, point))
   }, [loaded, name, point, threeExperience, cardRef, cardWrapperRef, model])
 
   useEffect(() => {

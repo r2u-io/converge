@@ -14,11 +14,8 @@ const Canvas: React.FC = ({}) => {
   const { threeExperience, setSceneLoaded, setThreeExperience } = useThreeContext()
 
   useEffect(() => {
-    if (!ref.current) return
-    if (!threeExperience) {
-      console.log('Create THREE Experience')
-      setThreeExperience(new ThreeExperience(ref.current, setSceneLoaded))
-    }
+    if (!ref.current || threeExperience) return
+    setThreeExperience(new ThreeExperience(ref.current, setSceneLoaded))
   }, [ref, threeExperience, setSceneLoaded, setThreeExperience])
 
   return (

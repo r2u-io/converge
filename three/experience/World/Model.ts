@@ -57,8 +57,6 @@ export default class Model {
   setModel() {
     const model = this.scene.getObjectByName(this.name)
     this.model = model
-
-    console.log(this.model?.position)
   }
 
   setListener() {
