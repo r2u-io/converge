@@ -1,7 +1,7 @@
-import type { AppProps } from "next/app";
-import React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { ThreeJSProvider } from "../contexts/ThreeJSContext";
+import type { AppProps } from 'next/app'
+import React from 'react'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { ThreeProvider } from '../contexts/ThreeJSContext'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,16 +14,16 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     background-color: #131524;
   }
-`;
+`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={{}}>
       <GlobalStyle />
-      <ThreeJSProvider>
+      <ThreeProvider>
         <Component {...pageProps} />
-      </ThreeJSProvider>
+      </ThreeProvider>
     </ThemeProvider>
-  );
+  )
 }
-export default MyApp;
+export default MyApp

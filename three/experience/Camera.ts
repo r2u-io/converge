@@ -60,9 +60,19 @@ export default class Camera {
   }
 
   setInstance() {
-    this.instance = new THREE.PerspectiveCamera(90, this.sizes.width / this.sizes.height, 0.1, 100)
-    this.instance.position.set(2.5, 1.5, 6)
+    this.instance = new THREE.PerspectiveCamera(45, this.sizes.width / this.sizes.height, 0.1, 100)
+    this.instance.position.set(2.5, 1.5, 8)
     this.scene.add(this.instance)
+
+    if (this.debug.active) {
+      this.debugFolder!.add(this.instance, 'fov')
+        .min(0.1)
+        .max(100)
+        .step(0.1)
+        .onChange(() => {
+          this.instance!.updateProjectionMatrix()
+        })
+    }
   }
 
   setOrbitControls() {
@@ -113,7 +123,7 @@ export default class Camera {
       .to(this.controls!.target, {
         duration: 2,
         x: -3.5,
-        y: 1.5,
+        y: 1,
         z: -1,
         ease: 'power4.easeInOut'
       })

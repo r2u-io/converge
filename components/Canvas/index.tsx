@@ -1,0 +1,37 @@
+import React, { useEffect, useRef, useState } from 'react'
+
+import { Container, CardsContainer } from './styles'
+
+import Card from '../Card'
+
+import ThreeExperience from '../../three/experience'
+import ModelsData from '../../config/models.json'
+import { useThreeContext } from '../../contexts/ThreeJSContext'
+
+const Canvas: React.FC = ({}) => {
+  const ref = useRef(null)
+
+  const { threeExperience, setSceneLoaded, setThreeExperience } = useThreeContext()
+
+  useEffect(() => {
+    if (!ref.current) return
+    if (!threeExperience) {
+      console.log('Create THREE Experience')
+      setThreeExperience(new ThreeExperience(ref.current, setSceneLoaded))
+    }
+  }, [ref, threeExperience, setSceneLoaded, setThreeExperience])
+
+  return (
+    <Container>
+      <canvas ref={ref}></canvas>
+      <button onClick={() => threeExperience?.camera.move()}>Move</button>
+      <CardsContainer>
+        {ModelsData.map((model) => (
+          <Card key={model.name} {...model} />
+        ))}
+      </CardsContainer>
+    </Container>
+  )
+}
+
+export default Canvas

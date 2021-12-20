@@ -1,39 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
-
-import { Container } from '../styles'
+import React from 'react'
 
 import Head from 'next/head'
-import Image from 'next/image'
 
-import ThreeExperience from '../three/experience'
+import Canvas from '../components/Canvas'
+import Overlay from '../components/Overlay'
 
-const Three: React.FC = ({}) => {
-  const canvasRef = useRef(null)
-
-  const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
-
-  useEffect(() => {
-    if (!canvasRef.current) return
-    setThreeExperience(new ThreeExperience(canvasRef.current))
-  }, [canvasRef])
-
-  return (
-    <Container>
-      <Head>
-        <title>ThreeJS</title>
-      </Head>
-      <canvas ref={canvasRef}></canvas>
-      <button onClick={() => threeExperience?.camera.move()}>Move</button>
-      <div className='product-card-wrapper'>
-        <div className='product-card'>
-          <h2>Yellow Cube</h2>
-          <Image src='/images/qrcode-placeholder.png' alt='' width={100} height={100} />
-          <span>See in your space</span>
-          <span className='price'>$0.00</span>
-        </div>
-      </div>
-    </Container>
-  )
-}
+const Three: React.FC = () => (
+  <>
+    <Head>
+      <title>ThreeJS</title>
+    </Head>
+    <Canvas></Canvas>
+    <Overlay></Overlay>
+  </>
+)
 
 export default Three

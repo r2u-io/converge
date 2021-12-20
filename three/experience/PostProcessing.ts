@@ -2,6 +2,10 @@ import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
+import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
+
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
 
 import type GUI from 'lil-gui'
 import type Experience from '.'
@@ -22,6 +26,9 @@ export default class PostProcessing {
 
   instance: EffectComposer | null = null
 
+  selectedObjects: Array<THREE.Object3D> = []
+  outlinePass: OutlinePass | null = null
+
   renderTarget: THREE.WebGLMultisampleRenderTarget | THREE.WebGLRenderTarget | null = null
 
   constructor(experience: Experience) {
@@ -39,6 +46,8 @@ export default class PostProcessing {
     this.setInstance()
     this.addRenderPass()
     this.addBloomPass()
+    this.addOutlinePass()
+    this.addShaderPass()
   }
 
   setRenderTarget() {
@@ -91,12 +100,28 @@ export default class PostProcessing {
     this.instance!.addPass(unrealBloomPass)
   }
 
+  addOutlinePass() {
+    this.outlinePass = new OutlinePass(
+      new THREE.Vector2(this.sizes.width, this.sizes.height),
+      this.scene,
+      this.camera.instance!
+    )
+    this.outlinePass.visibleEdgeColor.set('#d98911')
+    this.instance!.addPass(this.outlinePass)
+  }
+
+  addShaderPass() {
+    const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
+    this.instance!.addPass(gammaCorrectionPass)
+  }
+
   resize() {
     this.instance!.setSize(this.sizes.width, this.sizes.height)
     this.instance!.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   }
 
   update() {
+    if (this.outlinePass) this.outlinePass.selectedObjects = this.selectedObjects
     this.instance!.render()
   }
 }
