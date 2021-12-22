@@ -26,7 +26,7 @@ export default class PostProcessing {
 
   instance: EffectComposer | null = null
 
-  selectedObjects: Array<THREE.Object3D> = []
+  selectedObjects: THREE.Object3D[] = []
   outlinePass: OutlinePass | null = null
 
   renderTarget: THREE.WebGLMultisampleRenderTarget | THREE.WebGLRenderTarget | null = null

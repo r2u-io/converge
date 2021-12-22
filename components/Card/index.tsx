@@ -11,11 +11,7 @@ interface Props {
   price: string
   url: string
   name: string
-  point: {
-    x: number
-    y: number
-    z: number
-  }
+  point: number[]
 }
 
 const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
@@ -29,7 +25,7 @@ const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
   useEffect(() => {
     if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current || model) return
 
-    const vectorPoint = new THREE.Vector3(point.x, point.y, point.z)
+    const vectorPoint = new THREE.Vector3().fromArray(point)
 
     const modelInstance = new Model(
       threeExperience,

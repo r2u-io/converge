@@ -4,40 +4,73 @@ import { useThreeContext } from '../../contexts/ThreeJSContext'
 
 import { Container } from './styles'
 
-import PathsData from '../../config/paths.json'
 import Curve from '../../three/experience/Curve'
+
+import CurvesData from '../../config/curves.json'
+import PointsData from '../../config/points.json'
+
+interface CurveParams {
+  curve: Curve
+  duration: number
+}
 
 const Canvas: React.FC = ({}) => {
   const { threeExperience, loaded } = useThreeContext()
 
-  const [curve, setCurve] = useState<Curve>()
+  const [curves, setCurves] = useState<CurveParams[]>()
 
-  const disabled = !threeExperience || !loaded || !curve
+  const [moving, setMoving] = useState(false)
+  const [lastPoint, setLastPoint] = useState(0)
+  const [activePoint, setActivePoint] = useState(0)
+
+  const disabled = !threeExperience || !loaded || !curves
+
+  const start = activePoint === 0
+  const finish = activePoint === PointsData.length - 1
 
   useEffect(() => {
-    if (!threeExperience || !loaded || curve) return
-    const scale = 4
-    const points = PathsData[0].points.map(
-      (point) => new THREE.Vector3(point[0] * scale, point[2] * scale + 1, -point[1] * scale)
-    )
-    setCurve(new Curve(threeExperience, points))
-  }, [threeExperience, loaded, curve])
+    if (!threeExperience || !loaded || curves) return
+
+    const curvesInstances = CurvesData.map(({ points, duration }) => {
+      const vectorPoints = points.map((point) => new THREE.Vector3().fromArray(point))
+      const curve = new Curve(vectorPoints)
+      return { curve, duration }
+    })
+
+    setCurves(curvesInstances)
+  }, [threeExperience, loaded, curves])
+
+  useEffect(() => {
+    if (!threeExperience || !curves || activePoint === lastPoint) return
+    setMoving(true)
+
+    const forward = activePoint > lastPoint
+    const { curve, duration } = curves[activePoint - 1 * Number(forward)]
+
+    threeExperience.camera
+      .toCurve(curve, forward)
+      .then(() =>
+        threeExperience.camera.followCurve(curve, forward, duration).then(() => setMoving(false))
+      )
+
+    setLastPoint(activePoint)
+  }, [threeExperience, curves, activePoint, lastPoint])
 
   return (
     <Container>
       <button
         className='back'
-        disabled={disabled}
-        onClick={() => threeExperience!.camera.followCurve(curve!, false)}
+        disabled={disabled || start || moving}
+        onClick={() => setActivePoint(activePoint - 1)}
       >
         Back
       </button>
       <button
         className='go'
-        disabled={disabled}
-        onClick={() => threeExperience!.camera.followCurve(curve!, true)}
+        disabled={disabled || finish || moving}
+        onClick={() => setActivePoint(activePoint + 1)}
       >
-        Go
+        Next
       </button>
     </Container>
   )

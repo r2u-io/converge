@@ -1,0 +1,20 @@
+[
+  {
+    "cameraPosition": [2.5, 1.5, 8],
+    "targetPosition": [2.5, 1, 4],
+    "maxAzimuthAngle": 90,
+    "minAzimuthAngle": 0
+  },
+  {
+    "cameraPosition": [-3.5, 1.5, 0],
+    "targetPosition": [-3.5, 1, -1],
+    "maxAzimuthAngle": -180,
+    "minAzimuthAngle": 0
+  },
+  {
+    "cameraPosition": [-3.5, 1.5, 0],
+    "targetPosition": [-3.5, 1, -1],
+    "maxAzimuthAngle": -180,
+    "minAzimuthAngle": 0
+  }
+]
