@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { Container, CardsContainer } from './styles'
 
@@ -24,7 +24,6 @@ const Canvas: React.FC = ({}) => {
   return (
     <Container>
       <canvas ref={ref}></canvas>
-      <button onClick={() => threeExperience?.camera.move()}>Move</button>
       <CardsContainer>
         {ModelsData.map((model) => (
           <Card key={model.name} {...model} />

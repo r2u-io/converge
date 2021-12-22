@@ -1,4 +1,5 @@
 import EventEmitter from 'events'
+import Stats from 'stats.js'
 
 export default class Time extends EventEmitter {
   start: number
@@ -6,8 +7,14 @@ export default class Time extends EventEmitter {
   elapsed: number
   delta: number
 
+  stats: Stats
+
   constructor() {
     super()
+
+    this.stats = new Stats()
+    this.stats.showPanel(0)
+    // document.body.appendChild(this.stats.dom)
 
     // Setup
     this.start = Date.now()
@@ -21,6 +28,7 @@ export default class Time extends EventEmitter {
   }
 
   tick() {
+    this.stats.begin()
     const currentTime = Date.now()
     this.delta = currentTime - this.current
     this.current = currentTime
@@ -29,5 +37,7 @@ export default class Time extends EventEmitter {
     this.emit('tick')
 
     window.requestAnimationFrame(() => this.tick())
+
+    this.stats.end()
   }
 }
