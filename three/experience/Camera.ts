@@ -33,6 +33,10 @@ export default class Camera {
   maxPolarAngle: number = Math.PI / 2
   minPolarAngle: number = -Math.PI / 2
 
+  vertical = false
+  verticalX = 0.0
+  verticalZ = 0.0
+
   constructor(experience: Experience) {
     this.canvas = experience.canvas
     this.sizes = experience.sizes
@@ -65,25 +69,28 @@ export default class Camera {
   }
 
   setInstance() {
-    this.instance = new THREE.PerspectiveCamera(45, this.sizes.width / this.sizes.height, 0.1, 100)
+    const fov = 15
+
+    this.instance = new THREE.PerspectiveCamera(fov, this.sizes.width / this.sizes.height, 0.1, 100)
     this.instance.position.set(2.5, 1.5, 8)
     this.scene.add(this.instance)
 
-    if (this.debug.active) {
-      this.debugFolder!.add(this.instance, 'fov')
-        .min(0.1)
-        .max(100)
-        .step(0.1)
-        .onChange(() => {
-          this.instance!.updateProjectionMatrix()
-        })
-    }
+    // if (this.debug.active) {
+    //   this.debugFolder!.add(this.instance, 'fov')
+    //     .min(0.1)
+    //     .max(100)
+    //     .step(0.1)
+    //     .onChange(() => {
+    //       this.instance!.updateProjectionMatrix()
+    //     })
+    // }
   }
 
   setOrbitControls() {
     this.controls = new OrbitControls(this.instance!, this.canvas)
 
     this.controls.enableDamping = true
+    this.controls.dampingFactor = 0.025
     // this.controls.enablePan = false
     // this.controls.enableZoom = false
 
@@ -93,12 +100,18 @@ export default class Camera {
     // this.minAzimuthAngle = 0
 
     // if (this.limitControls) {
-    this.controls.maxPolarAngle = this.maxPolarAngle
-    this.controls.minPolarAngle = this.minPolarAngle
+    // this.controls.maxPolarAngle = this.maxPolarAngle
+    // this.controls.minPolarAngle = this.minPolarAngle
 
     //   this.controls.maxAzimuthAngle = this.maxAzimuthAngle
     //   this.controls.minAzimuthAngle = this.minAzimuthAngle
     // }
+
+    if (this.debug.active) {
+      this.debugFolder!.add(this.controls.target, 'x').min(-10).max(10).step(0.01).name('Target X')
+      this.debugFolder!.add(this.controls.target, 'y').min(-10).max(10).step(0.01).name('Target Y')
+      this.debugFolder!.add(this.controls.target, 'z').min(-10).max(10).step(0.01).name('Target Z')
+    }
 
     this.controls.target.set(2.5, 1, 4)
   }
@@ -109,6 +122,11 @@ export default class Camera {
   }
 
   update() {
+    if (this.vertical) {
+      this.instance!.position.x = this.verticalX
+      this.instance!.position.z = this.verticalZ
+    }
+
     this.controls!.update()
   }
 

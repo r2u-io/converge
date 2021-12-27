@@ -14,7 +14,7 @@ export default class Time extends EventEmitter {
 
     this.stats = new Stats()
     this.stats.showPanel(0)
-    // document.body.appendChild(this.stats.dom)
+    document.body.appendChild(this.stats.dom)
 
     // Setup
     this.start = Date.now()

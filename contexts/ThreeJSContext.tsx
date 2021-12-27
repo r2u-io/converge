@@ -1,5 +1,7 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
+import PointsData from '../config/points.json'
+
 import ThreeExperience from '../three/experience'
 
 interface Props {
@@ -26,7 +28,13 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
   const [loaded, setLoaded] = useState(false)
 
+  const [activePoint, setActivePoint] = useState(0)
+  // const start = activePoint === 0
+  // const finish = activePoint === PointsData.length - 1
+
   const setSceneLoaded = () => setLoaded(true)
+
+  // const nextPoint = () => setActivePoint(activePoint + 1)
 
   return (
     <ThreeContext.Provider
