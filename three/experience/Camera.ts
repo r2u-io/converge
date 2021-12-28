@@ -84,15 +84,14 @@ export default class Camera {
   setOrbitControls() {
     this.controls = new OrbitControls(this.instance!, this.canvas)
 
-    // this.controls.enablePan = false
-    // this.controls.enableZoom = false
+    this.controls.enablePan = false
+    this.controls.enableZoom = false
     this.controls.enableDamping = true
     this.controls.dampingFactor = 0.025
 
     if (this.debug.active) {
-      this.debugFolder!.add(this.controls.target, 'x').min(-10).max(10).step(0.01).name('Target X')
-      this.debugFolder!.add(this.controls.target, 'y').min(-10).max(10).step(0.01).name('Target Y')
-      this.debugFolder!.add(this.controls.target, 'z').min(-10).max(10).step(0.01).name('Target Z')
+      this.debugFolder!.add(this.controls.target, 'enablePan')
+      this.debugFolder!.add(this.controls.target, 'enableZoom')
     }
 
     this.controls.target.set(2.5, 1, 4)
