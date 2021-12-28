@@ -5,7 +5,8 @@
     "minAzimuthAngle": -160,
     "maxAzimuthAngle": -15,
     "minPolarAngle": 60,
-    "maxPolarAngle": 75
+    "maxPolarAngle": 75,
+    "vertical": false
   },
   {
     "cameraPosition": [19.12, 4.16, 3.59],
@@ -13,7 +14,8 @@
     "minAzimuthAngle": 60,
     "maxAzimuthAngle": 105,
     "minPolarAngle": 85,
-    "maxPolarAngle": 95
+    "maxPolarAngle": 95,
+    "vertical": false
   },
   {
     "cameraPosition": [11.74, 1.29, 30.77],
@@ -21,7 +23,8 @@
     "minAzimuthAngle": 0,
     "maxAzimuthAngle": 90,
     "minPolarAngle": 45,
-    "maxPolarAngle": 90
+    "maxPolarAngle": 90,
+    "vertical": false
   },
   {
     "cameraPosition": [21.36, 11.03, -1.43],
@@ -29,7 +32,8 @@
     "minAzimuthAngle": -180,
     "maxAzimuthAngle": 180,
     "minPolarAngle": 45,
-    "maxPolarAngle": 135
+    "maxPolarAngle": 135,
+    "vertical": true
   },
   {
     "cameraPosition": [-15.94, 5.4, -20.99],
@@ -37,7 +41,8 @@
     "minAzimuthAngle": 200,
     "maxAzimuthAngle": 240,
     "minPolarAngle": 60,
-    "maxPolarAngle": 100
+    "maxPolarAngle": 100,
+    "vertical": false
   },
   {
     "cameraPosition": [-22.19, 4.61, -2.48],
@@ -45,6 +50,7 @@
     "minAzimuthAngle": 220,
     "maxAzimuthAngle": 330,
     "minPolarAngle": 60,
-    "maxPolarAngle": 100
+    "maxPolarAngle": 100,
+    "vertical": false
   }
 ]

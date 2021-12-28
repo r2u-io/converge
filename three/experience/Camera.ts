@@ -43,6 +43,8 @@ export default class Camera {
   maxPolarAngle: number = Math.PI / 2
   minPolarAngle: number = -Math.PI / 2
 
+  moving = false
+
   vertical = false
   verticalX = 0.0
   verticalZ = 0.0
@@ -69,7 +71,12 @@ export default class Camera {
   setInstance() {
     const fov = 15
 
-    this.instance = new THREE.PerspectiveCamera(fov, this.sizes.width / this.sizes.height, 0.1, 100)
+    this.instance = new THREE.PerspectiveCamera(
+      fov,
+      this.sizes.width / this.sizes.height,
+      0.1,
+      1000
+    )
     this.instance.position.set(2.5, 1.5, 8)
     this.scene.add(this.instance)
   }
@@ -77,8 +84,8 @@ export default class Camera {
   setOrbitControls() {
     this.controls = new OrbitControls(this.instance!, this.canvas)
 
-    this.controls.enablePan = false
-    this.controls.enableZoom = false
+    // this.controls.enablePan = false
+    // this.controls.enableZoom = false
     this.controls.enableDamping = true
     this.controls.dampingFactor = 0.025
 
@@ -97,7 +104,7 @@ export default class Camera {
   }
 
   update() {
-    if (this.vertical) {
+    if (this.vertical && !this.moving) {
       this.instance!.position.x = this.verticalX
       this.instance!.position.z = this.verticalZ
     }
@@ -105,7 +112,73 @@ export default class Camera {
     this.controls!.update()
   }
 
-  setPoint({
+  async toCurve(curve: Curve) {
+    this.moving = true
+    this.angle = 0
+
+    const start = this.instance!.position.clone()
+    const target = curve.instance!.getPointAt(0)
+
+    const angleEnd = start.angleTo(target)
+    const normal = start.clone().cross(target).normalize()
+
+    this.controls!.enabled = false
+    this.controls!.maxAzimuthAngle = this.defaultMaxAzimuthAngle
+    this.controls!.minAzimuthAngle = this.defaultMinAzimuthAngle
+    this.controls!.maxPolarAngle = this.defaultMaxPolarAngle
+    this.controls!.minPolarAngle = this.defaultMinPolarAngle
+
+    return new Promise<void>((resolve) =>
+      gsap.to(this, {
+        angle: angleEnd,
+        duration: 0.5,
+        onUpdate: () => {
+          this.instance!.position.copy(start).applyAxisAngle(normal, this.angle)
+        },
+        onComplete: () => {
+          this.moving = false
+          resolve()
+        }
+      })
+    )
+  }
+
+  async followCurve(
+    curve: Curve,
+    forward: boolean,
+    duration: number,
+    targetPosition: THREE.Vector3
+  ) {
+    this.moving = true
+    this.controls!.enabled = false
+
+    curve.progress = forward ? 0 : 1
+
+    gsap.to(this.controls!.target, {
+      x: targetPosition.x,
+      y: targetPosition.y,
+      z: targetPosition.z,
+      duration
+    })
+
+    return new Promise<void>((resolve) =>
+      gsap.to(curve, {
+        duration,
+        progress: forward ? 1 : 0,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          curve.instance!.getPointAt(curve.progress, this.instance!.position)
+        },
+        onComplete: () => {
+          this.moving = false
+          this.controls!.enabled = true
+          resolve()
+        }
+      })
+    )
+  }
+
+  toPoint({
     vertical,
     targetPosition,
     cameraPosition,
@@ -121,6 +194,8 @@ export default class Camera {
     this.verticalX = camera.x
     this.verticalZ = camera.z
 
+    console.log(this.instance!.position.toArray(), camera.toArray())
+    console.log(this.controls!.target.toArray(), target.toArray())
     this.instance!.position.copy(camera)
     this.controls!.target.copy(target)
 
@@ -128,123 +203,5 @@ export default class Camera {
     this.controls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
     this.controls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
     this.controls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
-  }
-
-  sphericalToCartesian(radius: number, phi: number, theta: number, center: THREE.Vector3) {
-    const coords = new THREE.Vector3()
-    coords.setFromSphericalCoords(radius, phi, theta).sub(center)
-    return coords
-  }
-
-  async toCurve(curve: Curve) {
-    this.angle = 0
-
-    const start = this.instance!.position.clone()
-    const target = curve.instance!.getPointAt(0)
-
-    const angleEnd = start.angleTo(target)
-    const normal = start.clone().cross(target).normalize()
-
-    this.controls!.enabled = false
-    this.controls!.maxAzimuthAngle = this.defaultMaxAzimuthAngle
-    this.controls!.minAzimuthAngle = this.defaultMinAzimuthAngle
-    this.controls!.maxPolarAngle = this.defaultMaxPolarAngle
-    this.controls!.minPolarAngle = this.defaultMinPolarAngle
-
-    return new Promise((resolve) =>
-      gsap.to(this, {
-        angle: angleEnd,
-        duration: 2,
-        onUpdate: () => {
-          this.instance!.position.copy(start).applyAxisAngle(normal, this.angle)
-          this.controls!.enabled = true
-        },
-        onComplete: resolve
-      })
-    )
-  }
-
-  // async toCurve(curve: Curve, forward: boolean) {
-  //   curve.progress = forward ? 0 : 1
-
-  //   const cameraPosition = curve.instance!.getPointAt(curve.progress)
-  //   const targetDirection = curve.instance!.getTangentAt(curve.progress).normalize()
-  //   const targetDistance = forward ? TARGET_DISTANCE : -TARGET_DISTANCE
-  //   const targetPosition = cameraPosition.clone().addScaledVector(targetDirection, targetDistance)
-
-  //   this.controls!.enabled = false
-  //   this.controls!.maxPolarAngle = this.defaultMaxPolarAngle
-  //   this.controls!.minPolarAngle = this.defaultMinPolarAngle
-
-  //   return new Promise((resolve) => {
-  //     gsap.to(this.controls!.target, {
-  //       duration: 1,
-  //       x: targetPosition.x,
-  //       y: targetPosition.y,
-  //       z: targetPosition.z,
-  //       ease: 'none',
-  //       onComplete: () => {
-  //         gsap.to(this.instance!.position, {
-  //           duration: 1,
-  //           x: cameraPosition.x,
-  //           y: cameraPosition.y,
-  //           z: cameraPosition.z,
-  //           ease: 'none',
-  //           onComplete: resolve
-  //         })
-  //       }
-  //     })
-  //   })
-
-  //   // return new Promise((resolve) => {
-  //   //   gsap.to(this.instance!.position, {
-  //   //     duration: 0.25,
-  //   //     x: cameraPosition.x,
-  //   //     y: cameraPosition.y,
-  //   //     z: cameraPosition.z,
-  //   //     ease: 'none',
-  //   //     onComplete: () => {
-  //   //       gsap.to(this.controls!.target, {
-  //   //         duration: 0.25,
-  //   //         x: targetPosition.x,
-  //   //         y: targetPosition.y,
-  //   //         z: targetPosition.z,
-  //   //         ease: 'none',
-  //   //         onComplete: resolve
-  //   //       })
-  //   //     }
-  //   //   })
-  //   // })
-  // }
-
-  async followCurve(curve: Curve, forward: boolean, duration: number) {
-    curve.progress = forward ? 0 : 1
-
-    const targetDirection = new THREE.Vector3()
-
-    return new Promise<void>((resolve) =>
-      gsap.to(curve, {
-        duration,
-        progress: forward ? 1 : 0,
-        ease: 'power2.inOut',
-        onUpdate: () => {
-          curve.instance!.getPointAt(curve.progress, this.instance!.position)
-          curve.instance!.getTangentAt(curve.progress, targetDirection)
-          targetDirection.normalize()
-          this.controls!.target.copy(this.instance!.position).addScaledVector(
-            targetDirection,
-            TARGET_DISTANCE
-          )
-        },
-        onComplete: () => {
-          this.controls!.enabled = true
-          resolve()
-        }
-      })
-    )
-  }
-
-  async toPoint() {
-    return new Promise((resolve) => setTimeout(resolve, 1000))
   }
 }
