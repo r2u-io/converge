@@ -132,6 +132,7 @@ export default class Camera {
       gsap.to(this, {
         angle: angleEnd,
         duration: 0.5,
+        ease: 'none',
         onUpdate: () => {
           this.instance!.position.copy(start).applyAxisAngle(normal, this.angle)
         },
@@ -165,7 +166,7 @@ export default class Camera {
       gsap.to(curve, {
         duration,
         progress: forward ? 1 : 0,
-        ease: 'power2.inOut',
+        ease: 'power4.out',
         onUpdate: () => {
           curve.instance!.getPointAt(curve.progress, this.instance!.position)
         },
@@ -194,8 +195,6 @@ export default class Camera {
     this.verticalX = camera.x
     this.verticalZ = camera.z
 
-    console.log(this.instance!.position.toArray(), camera.toArray())
-    console.log(this.controls!.target.toArray(), target.toArray())
     this.instance!.position.copy(camera)
     this.controls!.target.copy(target)
 

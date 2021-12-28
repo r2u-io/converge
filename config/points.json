@@ -23,7 +23,7 @@
     "minAzimuthAngle": 0,
     "maxAzimuthAngle": 90,
     "minPolarAngle": 45,
-    "maxPolarAngle": 90,
+    "maxPolarAngle": 95,
     "vertical": false
   },
   {
