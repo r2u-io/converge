@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 
+import Image from 'next/image'
+
 import { Container } from './styles'
+import OverlayModel from '../../three/experience/World/OverlayModel'
 
 const Canvas: React.FC = () => {
   const { threeExperience, loaded, nextPoint, prevPoint, firstPoint, lastPoint } = useThreeContext()
 
   const disabled = !threeExperience || !loaded
+
+  const [openMap, setOpenMap] = useState(false)
+  const [model, setModel] = useState<OverlayModel>()
+
+  useEffect(() => {
+    if (!loaded || !threeExperience || model) return
+
+    const modelInstance = new OverlayModel(threeExperience, 'map', () => setOpenMap(true))
+
+    setModel(modelInstance)
+  }, [loaded, threeExperience, model])
 
   return (
     <Container>
@@ -16,25 +30,12 @@ const Canvas: React.FC = () => {
       <button className='go' disabled={disabled || lastPoint} onClick={nextPoint}>
         Next
       </button>
-      {/* <button
-        className='back'
-        onClick={() => {
-          const azimuth =
-            (180 * (threeExperience?.camera.controls?.getAzimuthalAngle() || 0)) / Math.PI
-          const polar = ((threeExperience?.camera.controls?.getPolarAngle() || 0) * 180) / Math.PI
-          const distance = threeExperience?.camera.controls?.getDistance() || 0
-          const position = threeExperience?.camera.instance?.position
-
-          console.log(`
-          Distance: ${distance}
-          Azimuth: ${azimuth}
-          Polar: ${polar}
-          Position: ${position?.x} ${position?.y} ${position?.z}
-          `)
-        }}
-      >
-        Print
-      </button> */}
+      {openMap && (
+        <div className='map'>
+          <button onClick={() => setOpenMap(false)}>X</button>
+          <Image src='/images/map.svg' alt='map' height={300} width={500} />
+        </div>
+      )}
     </Container>
   )
 }
