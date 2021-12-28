@@ -9,12 +9,12 @@ export default class Time extends EventEmitter {
 
   stats: Stats
 
-  constructor() {
+  constructor(stats: boolean) {
     super()
 
     this.stats = new Stats()
     this.stats.showPanel(0)
-    document.body.appendChild(this.stats.dom)
+    if (stats) document.body.appendChild(this.stats.dom)
 
     // Setup
     this.start = Date.now()
