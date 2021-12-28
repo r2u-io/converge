@@ -18,6 +18,10 @@ interface ThreeContextData {
   threeExperience?: ThreeExperience
   setThreeExperience: (threeExperience: ThreeExperience) => void
   setSceneLoaded: () => void
+  nextPoint: () => void
+  prevPoint: () => void
+  firstPoint: boolean
+  lastPoint: boolean
 }
 
 export const ThreeContext = createContext<ThreeContextData>({} as ThreeContextData)
@@ -29,12 +33,22 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [loaded, setLoaded] = useState(false)
 
   const [activePoint, setActivePoint] = useState(0)
-  // const start = activePoint === 0
-  // const finish = activePoint === PointsData.length - 1
 
   const setSceneLoaded = () => setLoaded(true)
 
-  // const nextPoint = () => setActivePoint(activePoint + 1)
+  const firstPoint = activePoint === 0
+  const lastPoint = activePoint === PointsData.length - 1
+  const prevPoint = () => !firstPoint && setActivePoint(activePoint - 1)
+  const nextPoint = () => !lastPoint && setActivePoint(activePoint + 1)
+
+  useEffect(() => {
+    if (!threeExperience || !loaded) return
+
+    threeExperience.camera.setPoint({
+      vertical: activePoint === 3,
+      ...PointsData[activePoint]
+    })
+  }, [threeExperience, loaded, activePoint])
 
   return (
     <ThreeContext.Provider
@@ -43,7 +57,11 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
         loaded,
         threeExperience,
         setThreeExperience,
-        setSceneLoaded
+        setSceneLoaded,
+        nextPoint,
+        prevPoint,
+        firstPoint,
+        lastPoint
       }}
     >
       {children}

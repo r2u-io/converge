@@ -9,6 +9,16 @@ import type Debug from '../utils/Debug'
 import type GUI from 'lil-gui'
 import Curve from './Curve'
 
+interface PointData {
+  vertical: boolean
+  targetPosition: number[]
+  cameraPosition: number[]
+  maxPolarAngle: number
+  minPolarAngle: number
+  maxAzimuthAngle: number
+  minAzimuthAngle: number
+}
+
 const TARGET_DISTANCE = 4
 
 export default class Camera {
@@ -24,8 +34,8 @@ export default class Camera {
 
   limitControls: boolean = true
 
-  // maxAzimuthAngle: number = Infinity
-  // minAzimuthAngle: number = Infinity
+  defaultMaxAzimuthAngle: number = Infinity
+  defaultMinAzimuthAngle: number = Infinity
 
   defaultMaxPolarAngle: number = Math.PI
   defaultMinPolarAngle: number = 0
@@ -45,23 +55,6 @@ export default class Camera {
 
     if (this.debug.active) {
       this.debugFolder = this.debug.ui!.addFolder('Camera')
-      // this.debugFolder
-      //   .add(this, 'limitControls')
-      //   .name('Limit controls')
-      //   .onChange((value: boolean) => {
-      //     this.controls!.enableZoom = !value
-      //     if (value) {
-      //       this.controls!.maxPolarAngle = this.maxPolarAngle
-      //       this.controls!.minPolarAngle = this.minPolarAngle
-      //       this.controls!.maxAzimuthAngle = this.maxAzimuthAngle
-      //       this.controls!.minAzimuthAngle = this.minAzimuthAngle
-      //     } else {
-      //       this.controls!.maxPolarAngle = Math.PI
-      //       this.controls!.minPolarAngle = 0
-      //       this.controls!.maxAzimuthAngle = Infinity
-      //       this.controls!.minAzimuthAngle = Infinity
-      //     }
-      //   })
     }
 
     this.setInstance()
@@ -74,38 +67,15 @@ export default class Camera {
     this.instance = new THREE.PerspectiveCamera(fov, this.sizes.width / this.sizes.height, 0.1, 100)
     this.instance.position.set(2.5, 1.5, 8)
     this.scene.add(this.instance)
-
-    // if (this.debug.active) {
-    //   this.debugFolder!.add(this.instance, 'fov')
-    //     .min(0.1)
-    //     .max(100)
-    //     .step(0.1)
-    //     .onChange(() => {
-    //       this.instance!.updateProjectionMatrix()
-    //     })
-    // }
   }
 
   setOrbitControls() {
     this.controls = new OrbitControls(this.instance!, this.canvas)
 
+    this.controls.enablePan = false
+    this.controls.enableZoom = false
     this.controls.enableDamping = true
     this.controls.dampingFactor = 0.025
-    // this.controls.enablePan = false
-    // this.controls.enableZoom = false
-
-    // this.maxPolarAngle = Math.PI / 2
-    // this.minPolarAngle = -Math.PI / 2
-    // this.maxAzimuthAngle = Math.PI / 2
-    // this.minAzimuthAngle = 0
-
-    // if (this.limitControls) {
-    // this.controls.maxPolarAngle = this.maxPolarAngle
-    // this.controls.minPolarAngle = this.minPolarAngle
-
-    //   this.controls.maxAzimuthAngle = this.maxAzimuthAngle
-    //   this.controls.minAzimuthAngle = this.minAzimuthAngle
-    // }
 
     if (this.debug.active) {
       this.debugFolder!.add(this.controls.target, 'x').min(-10).max(10).step(0.01).name('Target X')
@@ -128,6 +98,31 @@ export default class Camera {
     }
 
     this.controls!.update()
+  }
+
+  setPoint({
+    vertical,
+    targetPosition,
+    cameraPosition,
+    maxPolarAngle,
+    minPolarAngle,
+    maxAzimuthAngle,
+    minAzimuthAngle
+  }: PointData) {
+    const camera = new THREE.Vector3().fromArray(cameraPosition)
+    const target = new THREE.Vector3().fromArray(targetPosition)
+
+    this.vertical = vertical
+    this.verticalX = camera.x
+    this.verticalZ = camera.z
+
+    this.instance!.position.copy(camera)
+    this.controls!.target.copy(target)
+
+    this.controls!.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
+    this.controls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
+    this.controls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
+    this.controls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
   }
 
   async toCurve(curve: Curve, forward: boolean) {
@@ -204,8 +199,6 @@ export default class Camera {
         },
         onComplete: () => {
           this.controls!.enabled = true
-          this.controls!.maxPolarAngle = this.maxPolarAngle
-          this.controls!.minPolarAngle = this.minPolarAngle
           resolve()
         }
       })

@@ -2,8 +2,8 @@
   {
     "cameraPosition": [-18.37363624572754, 15.5, 16.456398010253906],
     "targetPosition": [0, 7.6, 0],
-    "minAzimuthAngle": -210,
-    "maxAzimuthAngle": 25,
+    "minAzimuthAngle": -160,
+    "maxAzimuthAngle": -15,
     "minPolarAngle": 60,
     "maxPolarAngle": 75
   },
