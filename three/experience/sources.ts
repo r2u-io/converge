@@ -18,16 +18,6 @@ const Sources = [
     ]
   },
   {
-    name: 'grassColorTexture',
-    type: 'texture',
-    path: '/textures/dirt/color.jpg'
-  },
-  {
-    name: 'grassNormalTexture',
-    type: 'texture',
-    path: '/textures/dirt/normal.jpg'
-  },
-  {
     name: 'houseModel',
     type: 'gltf',
     path: '/models/House/House.gltf'

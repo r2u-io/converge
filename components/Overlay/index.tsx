@@ -1,6 +1,8 @@
 import React from 'react'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 
+import * as THREE from 'three'
+
 import { Container } from './styles'
 
 import Curve from '../../three/experience/Curve'
@@ -57,7 +59,6 @@ const Canvas: React.FC = () => {
       <button className='go' disabled={disabled || lastPoint} onClick={nextPoint}>
         Next
       </button>
-
       {/* <button
         className='back'
         onClick={() => {
@@ -65,11 +66,13 @@ const Canvas: React.FC = () => {
             (180 * (threeExperience?.camera.controls?.getAzimuthalAngle() || 0)) / Math.PI
           const polar = ((threeExperience?.camera.controls?.getPolarAngle() || 0) * 180) / Math.PI
           const distance = threeExperience?.camera.controls?.getDistance() || 0
+          const position = threeExperience?.camera.instance?.position
 
           console.log(`
           Distance: ${distance}
           Azimuth: ${azimuth}
           Polar: ${polar}
+          Position: ${position?.x} ${position?.y} ${position?.z}
           `)
         }}
       >
