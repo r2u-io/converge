@@ -43,7 +43,9 @@ export default class Resources extends EventEmitter {
     }
 
     const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath(DEFAULT_DRACO_DECODER_LOCATION)
+    dracoLoader.setDecoderPath(
+      process.env.NODE_ENV === 'production' ? DEFAULT_DRACO_DECODER_LOCATION : '/draco/'
+    )
     this.loaders.gltf.setDRACOLoader(dracoLoader)
   }
 

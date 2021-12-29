@@ -10,12 +10,6 @@ export const Container = styled.div`
   -webkit-background-size: 100% 100%;
   background-size: cover;
 
-  button {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-  }
-
   canvas {
     position: absolute;
     top: 0;

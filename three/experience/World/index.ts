@@ -16,7 +16,7 @@ export default class World {
 
   point: Point | null = null
 
-  models: Array<Model> = []
+  models: Model[] = []
 
   constructor(experience: Experience) {
     this.scene = experience.scene
