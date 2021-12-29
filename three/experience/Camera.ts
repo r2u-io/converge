@@ -19,7 +19,14 @@ interface PointData {
   minAzimuthAngle: number
 }
 
-const TARGET_DISTANCE = 4
+const MAX_DISTANCE = Infinity
+const MIN_DISTANCE = 0
+
+const MAX_AZIMUTH_ANGLE = Infinity
+const MIN_AZIMUTH_ANGLE = Infinity
+
+const MAX_POLAR_ANGLE = Math.PI
+const MIN_POLAR_ANGLE = 0
 
 export default class Camera {
   canvas: HTMLCanvasElement
@@ -34,25 +41,13 @@ export default class Camera {
 
   limitControls: boolean = true
 
-  defaultMaxAzimuthAngle: number = Infinity
-  defaultMinAzimuthAngle: number = Infinity
-
-  defaultMaxPolarAngle: number = Math.PI
-  defaultMinPolarAngle: number = 0
-
-  maxPolarAngle: number = Math.PI / 2
-  minPolarAngle: number = -Math.PI / 2
-
   moving = false
 
   vertical = false
-  verticalX = 0.0
-  verticalZ = 0.0
+  maxVertical = 0.0
+  verticalAngle = 0.0
 
-  phi = 0.0
-  theta = 0.0
-  radius = 0.0
-  angle = 0.0
+  distanceAngle = 0.0
 
   constructor(experience: Experience) {
     this.canvas = experience.canvas
@@ -104,8 +99,15 @@ export default class Camera {
 
   update() {
     if (this.vertical && !this.moving) {
-      this.instance!.position.x = this.verticalX
-      this.instance!.position.z = this.verticalZ
+      const verticalDistance = this.controls!.getDistance() * Math.cos(this.verticalAngle)
+
+      const y = this.instance!.position.y - verticalDistance
+
+      if (y > 0 && y <= this.maxVertical) {
+        this.controls!.target.y = y
+      }
+
+      this.instance!.position.y = this.controls!.target.y + verticalDistance
     }
 
     this.controls!.update()
@@ -113,7 +115,7 @@ export default class Camera {
 
   async toCurve(curve: Curve, forward: boolean) {
     this.moving = true
-    this.angle = 0
+    this.distanceAngle = 0
 
     const start = this.instance!.position.clone()
     const target = curve.instance!.getPointAt(forward ? 0 : 1)
@@ -122,18 +124,24 @@ export default class Camera {
     const normal = start.clone().cross(target).normalize()
 
     this.controls!.enabled = false
-    this.controls!.maxAzimuthAngle = this.defaultMaxAzimuthAngle
-    this.controls!.minAzimuthAngle = this.defaultMinAzimuthAngle
-    this.controls!.maxPolarAngle = this.defaultMaxPolarAngle
-    this.controls!.minPolarAngle = this.defaultMinPolarAngle
+    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
+    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
+    this.controls!.maxDistance = MAX_DISTANCE
+    this.controls!.minDistance = MIN_DISTANCE
+
+    const diameter = 2 * this.controls!.getDistance()
+    const distance = start.distanceTo(target)
+    const duration = (0.5 * distance) / diameter
 
     return new Promise<void>((resolve) =>
       gsap.to(this, {
-        angle: angleEnd,
-        duration: 0.5,
+        distanceAngle: angleEnd,
+        duration,
         ease: 'none',
         onUpdate: () => {
-          this.instance!.position.copy(start).applyAxisAngle(normal, this.angle)
+          this.instance!.position.copy(start).applyAxisAngle(normal, this.distanceAngle)
         },
         onComplete: () => {
           this.moving = false
@@ -165,7 +173,7 @@ export default class Camera {
       gsap.to(curve, {
         duration,
         progress: forward ? 1 : 0,
-        ease: 'power4.out',
+        ease: 'none',
         onUpdate: () => {
           curve.instance!.getPointAt(curve.progress, this.instance!.position)
         },
@@ -190,16 +198,22 @@ export default class Camera {
     const camera = new THREE.Vector3().fromArray(cameraPosition)
     const target = new THREE.Vector3().fromArray(targetPosition)
 
-    this.vertical = vertical
-    this.verticalX = camera.x
-    this.verticalZ = camera.z
-
     this.instance!.position.copy(camera)
     this.controls!.target.copy(target)
+    this.controls!.update()
+
+    this.vertical = vertical
+    this.maxVertical = target.y
+    this.verticalAngle = this.controls!.getPolarAngle()
+    this.controls!.rotateSpeed = this.vertical ? 0.1 : 1.0
+    this.controls!.minDistance = this.vertical ? this.controls!.getDistance() : MIN_DISTANCE
+    this.controls!.maxDistance = this.vertical ? this.controls!.getDistance() : MAX_DISTANCE
 
     this.controls!.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
     this.controls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
     this.controls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
     this.controls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
+
+    this.controls!.update()
   }
 }
