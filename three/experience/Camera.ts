@@ -90,8 +90,8 @@ export default class Camera {
     this.controls.dampingFactor = 0.025
 
     if (this.debug.active) {
-      this.debugFolder!.add(this.controls.target, 'enablePan')
-      this.debugFolder!.add(this.controls.target, 'enableZoom')
+      this.debugFolder!.add(this.controls, 'enablePan')
+      this.debugFolder!.add(this.controls, 'enableZoom')
     }
 
     this.controls.target.set(2.5, 1, 4)
@@ -111,12 +111,12 @@ export default class Camera {
     this.controls!.update()
   }
 
-  async toCurve(curve: Curve) {
+  async toCurve(curve: Curve, forward: boolean) {
     this.moving = true
     this.angle = 0
 
     const start = this.instance!.position.clone()
-    const target = curve.instance!.getPointAt(0)
+    const target = curve.instance!.getPointAt(forward ? 0 : 1)
 
     const angleEnd = start.angleTo(target)
     const normal = start.clone().cross(target).normalize()

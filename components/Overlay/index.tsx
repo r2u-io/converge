@@ -7,7 +7,8 @@ import { Container } from './styles'
 import OverlayModel from '../../three/experience/World/OverlayModel'
 
 const Canvas: React.FC = () => {
-  const { threeExperience, loaded, nextPoint, prevPoint, firstPoint, lastPoint } = useThreeContext()
+  const { threeExperience, loaded, nextPoint, prevPoint, isFirstPoint, isLastPoint, moving } =
+    useThreeContext()
 
   const disabled = !threeExperience || !loaded
 
@@ -24,10 +25,10 @@ const Canvas: React.FC = () => {
 
   return (
     <Container>
-      <button className='back' disabled={disabled || firstPoint} onClick={prevPoint}>
+      <button className='back' disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
         Back
       </button>
-      <button className='go' disabled={disabled || lastPoint} onClick={nextPoint}>
+      <button className='go' disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
         Next
       </button>
       {openMap && (
