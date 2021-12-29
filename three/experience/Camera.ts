@@ -82,11 +82,13 @@ export default class Camera {
     this.controls.enablePan = false
     this.controls.enableZoom = false
     this.controls.enableDamping = true
-    this.controls.dampingFactor = 0.025
+    this.controls.dampingFactor = 0.1
 
     if (this.debug.active) {
       this.debugFolder!.add(this.controls, 'enablePan')
       this.debugFolder!.add(this.controls, 'enableZoom')
+      this.debugFolder!.add(this.controls, 'enableDamping')
+      this.debugFolder!.add(this.controls, 'dampingFactor').min(0).max(1).step(0.005)
     }
 
     this.controls.target.set(2.5, 1, 4)
