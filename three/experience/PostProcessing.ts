@@ -105,23 +105,25 @@ export default class PostProcessing {
 
   addAntiAliasPass() {
     const fxaaPass = new ShaderPass(FXAAShader)
-
     this.passUniforms = fxaaPass.material.uniforms
-    this.passUniforms.resolution.value.x =
-      1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
-    this.passUniforms.resolution.value.y =
-      1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
     this.instance!.addPass(fxaaPass)
+
+    const x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
+    const y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
+
+    this.passUniforms.resolution.value.x = x
+    this.passUniforms.resolution.value.y = y
   }
 
   resize() {
     this.instance!.setSize(this.sizes.width, this.sizes.height)
     this.instance!.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    this.passUniforms.resolution.value.x =
-      1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
-    this.passUniforms.resolution.value.y =
-      1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
+    const x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
+    const y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
+
+    this.passUniforms.resolution.value.x = x
+    this.passUniforms.resolution.value.y = y
   }
 
   update() {
