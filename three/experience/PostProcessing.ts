@@ -6,6 +6,7 @@ import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
 
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
+import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
 
 import type GUI from 'lil-gui'
 import type Experience from '.'
@@ -29,8 +30,6 @@ export default class PostProcessing {
   selectedObjects: THREE.Object3D[] = []
   outlinePass: OutlinePass | null = null
 
-  renderTarget: THREE.WebGLMultisampleRenderTarget | THREE.WebGLRenderTarget | null = null
-
   constructor(experience: Experience) {
     this.scene = experience.scene
     this.camera = experience.camera
@@ -48,32 +47,16 @@ export default class PostProcessing {
     this.addBloomPass()
     this.addOutlinePass()
     this.addShaderPass()
+    this.addAntiAliasPass()
   }
 
   setRenderTarget() {
     console.log('Pixel Ratio: ', this.renderer.instance!.getPixelRatio())
     console.log('WebGL2: ', this.renderer.instance!.capabilities.isWebGL2)
-
-    if (
-      this.renderer.instance!.getPixelRatio() < 2 &&
-      this.renderer.instance!.capabilities.isWebGL2
-    ) {
-      this.renderTarget = new THREE.WebGLMultisampleRenderTarget(800, 600, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      })
-    } else {
-      this.renderTarget = new THREE.WebGLRenderTarget(800, 600, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      })
-    }
   }
 
   setInstance() {
-    this.instance = new EffectComposer(this.renderer.instance!, this.renderTarget!)
+    this.instance = new EffectComposer(this.renderer.instance!)
     this.instance.setSize(this.sizes.width, this.sizes.height)
     this.instance.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   }
@@ -116,6 +99,14 @@ export default class PostProcessing {
   addShaderPass() {
     const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
     this.instance!.addPass(gammaCorrectionPass)
+  }
+
+  addAntiAliasPass() {
+    const fxaaPass = new ShaderPass(FXAAShader)
+    const uniforms = fxaaPass.material.uniforms
+    uniforms.resolution.value.x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
+    uniforms.resolution.value.y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
+    this.instance!.addPass(fxaaPass)
   }
 
   resize() {
