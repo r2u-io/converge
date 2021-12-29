@@ -51,6 +51,9 @@ export default class PostProcessing {
   }
 
   setRenderTarget() {
+    console.log('Pixel Ratio: ', this.renderer.instance!.getPixelRatio())
+    console.log('WebGL2: ', this.renderer.instance!.capabilities.isWebGL2)
+
     if (
       this.renderer.instance!.getPixelRatio() < 2 &&
       this.renderer.instance!.capabilities.isWebGL2
