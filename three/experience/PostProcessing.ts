@@ -30,6 +30,8 @@ export default class PostProcessing {
   selectedObjects: THREE.Object3D[] = []
   outlinePass: OutlinePass | null = null
 
+  passUniforms: any | null = null
+
   constructor(experience: Experience) {
     this.scene = experience.scene
     this.camera = experience.camera
@@ -103,15 +105,23 @@ export default class PostProcessing {
 
   addAntiAliasPass() {
     const fxaaPass = new ShaderPass(FXAAShader)
-    const uniforms = fxaaPass.material.uniforms
-    uniforms.resolution.value.x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
-    uniforms.resolution.value.y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
+
+    this.passUniforms = fxaaPass.material.uniforms
+    this.passUniforms.resolution.value.x =
+      1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
+    this.passUniforms.resolution.value.y =
+      1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
     this.instance!.addPass(fxaaPass)
   }
 
   resize() {
     this.instance!.setSize(this.sizes.width, this.sizes.height)
     this.instance!.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    this.passUniforms.resolution.value.x =
+      1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
+    this.passUniforms.resolution.value.y =
+      1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
   }
 
   update() {
