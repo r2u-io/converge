@@ -1,5 +1,5 @@
 {
-  "name": "meta",
+  "name": "converge",
   "private": true,
   "scripts": {
     "dev": "next dev",

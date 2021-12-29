@@ -1,26 +1,18 @@
-import type { NextPage } from 'next'
+import React from 'react'
+
 import Head from 'next/head'
-import { useContext } from 'react'
-import { useThreeContext } from '../contexts/ThreeJSContext'
-import { Container, Content } from '../styles'
 
-const Home: NextPage = () => {
-  const { meta } = useThreeContext()
+import Canvas from '../components/Canvas'
+import Overlay from '../components/Overlay'
 
-  return (
-    <Container>
-      <Head>
-        <title>R2U Meta</title>
-      </Head>
-
-      <Content>
-        <div>
-          <span>Hello world!</span>
-          <span>You are accessing {meta?.website}</span>
-        </div>
-      </Content>
-    </Container>
-  )
-}
+const Home: React.FC = () => (
+  <>
+    <Head>
+      <title>Converge</title>
+    </Head>
+    <Canvas></Canvas>
+    <Overlay></Overlay>
+  </>
+)
 
 export default Home
