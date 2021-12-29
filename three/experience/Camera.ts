@@ -197,6 +197,13 @@ export default class Camera {
     maxAzimuthAngle,
     minAzimuthAngle
   }: PointData) {
+    this.controls!.minDistance = MIN_DISTANCE
+    this.controls!.maxDistance = MAX_DISTANCE
+    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
+    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
+    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+
     const camera = new THREE.Vector3().fromArray(cameraPosition)
     const target = new THREE.Vector3().fromArray(targetPosition)
 
