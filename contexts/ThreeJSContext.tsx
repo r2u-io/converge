@@ -44,9 +44,10 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [forward, setForward] = useState(true)
   const [moving, setMoving] = useState(false)
 
+  const house = threeExperience?.world.house
+
   useEffect(() => {
     if (!threeExperience || !loaded) return
-
     threeExperience.camera.toPoint(PointsData[0])
   }, [threeExperience, loaded])
 
@@ -101,6 +102,31 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setMoving(true)
     setForward(true)
   }
+
+  useEffect(() => {
+    if (!threeExperience || !house || !house.debug.active) return
+
+    const teleportToPoint = (point: number) => {
+      setActivePoint(point)
+      threeExperience.camera.toPoint(PointsData[point])
+    }
+
+    const changeScene = {
+      '0': () => teleportToPoint(0),
+      '1': () => teleportToPoint(1),
+      '2': () => teleportToPoint(2),
+      '3': () => teleportToPoint(3),
+      '4': () => teleportToPoint(4),
+      '5': () => teleportToPoint(5)
+    }
+
+    house.debugFolder!.add(changeScene, '0')
+    house.debugFolder!.add(changeScene, '1')
+    house.debugFolder!.add(changeScene, '2')
+    house.debugFolder!.add(changeScene, '3')
+    house.debugFolder!.add(changeScene, '4')
+    house.debugFolder!.add(changeScene, '5')
+  }, [threeExperience, house])
 
   return (
     <ThreeContext.Provider
