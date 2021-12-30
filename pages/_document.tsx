@@ -75,7 +75,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet='utf-8' />
           <meta name='google' content='notranslate' />
-          <meta name='description' content='R2U Meta' />
+          <meta name='description' content='Converge' />
           <meta name='robots' content='index, follow' />
           <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
           <meta name='language' content='English' />
