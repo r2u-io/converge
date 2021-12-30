@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useThreeContext } from '../../contexts/ThreeJSContext'
+import React, { useEffect, useRef, useState } from "react";
+import { useThreeContext } from "../../contexts/ThreeJSContext";
 
 import Image from "next/image";
 
@@ -16,17 +16,17 @@ const Canvas: React.FC = () => {
     isLastPoint,
     moving,
     onFreeTour,
-    activateFreeTour
-  } = useThreeContext()
+    activateFreeTour,
+  } = useThreeContext();
 
   const disabled = !threeExperience || !loaded;
 
   const [openMap, setOpenMap] = useState(false);
   const [model, setModel] = useState<OverlayModel>();
 
-  const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
+  const [canActivateFreeTour, setCanActivateFreeTour] = useState(false);
 
-  const instructionsRef = useRef(null)
+  const instructionsRef = useRef(null);
 
   useEffect(() => {
     if (!loaded || !threeExperience || model) return;
@@ -39,14 +39,14 @@ const Canvas: React.FC = () => {
   }, [loaded, threeExperience, model]);
 
   useEffect(() => {
-    if (isLastPoint && !canActivateFreeTour) setCanActivateFreeTour(true)
-  }, [isLastPoint, canActivateFreeTour])
+    if (isLastPoint && !canActivateFreeTour) setCanActivateFreeTour(true);
+  }, [isLastPoint, canActivateFreeTour]);
 
   return (
     <Container>
       {onFreeTour && !moving && (
-        <div ref={instructionsRef} className='blocker'>
-          <div className='instructions '>
+        <div ref={instructionsRef} className="blocker">
+          <div className="instructions ">
             <h2>Click to play</h2>
             <p>
               Move: WASD
@@ -59,26 +59,32 @@ const Canvas: React.FC = () => {
         </div>
       )}
       {!onFreeTour && (
-        <>
-          <button disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
+        <ButtonContainer>
+          <button
+            disabled={disabled || isFirstPoint || moving}
+            onClick={prevPoint}
+          >
             Back
           </button>
-          <button disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
+          <button
+            disabled={disabled || isLastPoint || moving}
+            onClick={nextPoint}
+          >
             Next
           </button>
-        </>
+        </ButtonContainer>
       )}
       {openMap && (
-        <div className='map'>
+        <div className="map">
           <button onClick={() => setOpenMap(false)}>X</button>
-          <Image src='/images/map.svg' alt='map' height={300} width={500} />
+          <Image src="/images/map.svg" alt="map" height={300} width={500} />
         </div>
       )}
       {canActivateFreeTour && (
         <button
           onClick={() => {
-            setCanActivateFreeTour(false)
-            activateFreeTour()
+            setCanActivateFreeTour(false);
+            activateFreeTour();
           }}
         >
           Tour

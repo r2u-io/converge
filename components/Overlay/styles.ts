@@ -14,20 +14,6 @@ export const Container = styled.div`
   align-items: flex-end;
   justify-content: space-between;
 
-  padding: 5% 30%;
-
-  .back {
-    position: absolute;
-    top: 90%;
-    left: calc(50% - 50px);
-  }
-
-  .go {
-    position: absolute;
-    top: 90%;
-    left: calc(50% + 50px);
-  }
-
   .map {
     position: absolute;
     width: 100%;
@@ -89,5 +75,28 @@ export const Container = styled.div`
       font-size: 14px;
       cursor: pointer;
     }
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+
+  button {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    margin-right: 12px;
+    pointer-events: all;
+    display: flex;
+    padding: 12px 64px;
+    width: 203px;
+    background: #003e58;
+    border-radius: 8px;
+    color: white;
   }
 `;
