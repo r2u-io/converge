@@ -146,10 +146,30 @@ export default class Camera {
     this.orbitControls?.update()
   }
 
-  async toCurve(curve: Curve, forward: boolean) {
+  resetControls() {
+    if (!this.orbitControls) return
+
+    this.orbitControls.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.orbitControls.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.orbitControls.maxPolarAngle = MAX_POLAR_ANGLE
+    this.orbitControls.minPolarAngle = MIN_POLAR_ANGLE
+    this.orbitControls.maxDistance = MAX_DISTANCE
+    this.orbitControls.minDistance = MIN_DISTANCE
+  }
+
+  setMoving() {
     if (!this.orbitControls) return
 
     this.moving = true
+    this.orbitControls.enabled = false
+    this.resetControls()
+  }
+
+  async toCurve(curve: Curve, forward: boolean) {
+    if (!this.orbitControls) return
+
+    this.setMoving()
+
     this.distanceAngle = 0
 
     const start = this.instance!.position.clone()
@@ -157,14 +177,6 @@ export default class Camera {
 
     const angleEnd = start.angleTo(target)
     const normal = start.clone().cross(target).normalize()
-
-    this.orbitControls.enabled = false
-    this.orbitControls.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
-    this.orbitControls.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.orbitControls.maxPolarAngle = MAX_POLAR_ANGLE
-    this.orbitControls.minPolarAngle = MIN_POLAR_ANGLE
-    this.orbitControls.maxDistance = MAX_DISTANCE
-    this.orbitControls.minDistance = MIN_DISTANCE
 
     const diameter = 2 * this.orbitControls.getDistance()
     const distance = start.distanceTo(target)
@@ -194,16 +206,20 @@ export default class Camera {
   ) {
     if (!this.orbitControls) return
 
-    this.moving = true
-    this.orbitControls.enabled = false
+    this.setMoving()
+
+    const position = this.instance!.position.clone()
 
     curve.progress = forward ? 0 : 1
+
+    forward ? curve.setFirstPoint(position) : curve.setLastPoint(position)
 
     gsap.to(this.orbitControls.target, {
       x: targetPosition.x,
       y: targetPosition.y,
       z: targetPosition.z,
-      duration
+      duration,
+      ease: 'none'
     })
 
     return new Promise<void>((resolve) =>
@@ -234,12 +250,7 @@ export default class Camera {
   }: PointData) {
     if (!this.orbitControls) return
 
-    this.orbitControls.minDistance = MIN_DISTANCE
-    this.orbitControls.maxDistance = MAX_DISTANCE
-    this.orbitControls.minPolarAngle = MIN_POLAR_ANGLE
-    this.orbitControls.maxPolarAngle = MAX_POLAR_ANGLE
-    this.orbitControls.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.orbitControls.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.resetControls()
 
     const camera = new THREE.Vector3().fromArray(cameraPosition)
     const target = new THREE.Vector3().fromArray(targetPosition)

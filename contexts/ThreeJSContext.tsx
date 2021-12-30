@@ -59,10 +59,10 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       const vectorPoints = points.map((point) => new THREE.Vector3().fromArray(point))
       const curve = new Curve(vectorPoints)
 
-      if (threeExperience.debug.active) {
-        curve.addHelper()
-        threeExperience.scene.add(curve.helper)
-      }
+      // if (threeExperience.debug.active) {
+      //   curve.addHelper()
+      //   threeExperience.scene.add(curve.helper)
+      // }
 
       return { curve, duration }
     })
@@ -74,19 +74,19 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     if (!threeExperience || !curves || !moving) return
     const { curve, duration } = curves[activePoint - 1 * Number(forward)]
 
-    threeExperience.camera.toCurve(curve, forward).then(() =>
-      threeExperience.camera
-        .followCurve(
-          curve,
-          forward,
-          duration,
-          new THREE.Vector3().fromArray(PointsData[activePoint].targetPosition)
-        )
-        .then(() => {
-          threeExperience.camera.toPoint(PointsData[activePoint])
-          setMoving(false)
-        })
-    )
+    // threeExperience.camera.toCurve(curve, forward).then(() =>
+    threeExperience.camera
+      .followCurve(
+        curve,
+        forward,
+        duration,
+        new THREE.Vector3().fromArray(PointsData[activePoint].targetPosition)
+      )
+      .then(() => {
+        threeExperience.camera.toPoint(PointsData[activePoint])
+        setMoving(false)
+      })
+    // )
   }, [threeExperience, curves, moving, activePoint, forward])
 
   useEffect(() => {
