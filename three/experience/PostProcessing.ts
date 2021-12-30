@@ -65,12 +65,12 @@ export default class PostProcessing {
   addBloomPass() {
     const unrealBloomPass = new UnrealBloomPass(
       new THREE.Vector2(this.sizes.width, this.sizes.height),
-      0.3,
-      1,
-      0.6
+      0.18,
+      0,
+      0.791
     )
 
-    unrealBloomPass.enabled = false
+    unrealBloomPass.enabled = true
 
     if (this.debug.active) {
       this.debugFolder!.add(unrealBloomPass, 'enabled')
