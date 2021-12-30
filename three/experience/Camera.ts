@@ -113,9 +113,7 @@ export default class Camera {
     window.addEventListener('click', () => this.flyControls!.lock())
 
     window.addEventListener('wheel', (e) => {
-      // console.log(e.deltaY, e.deltaY > 0, Number(e.deltaY > 0), Number(e.deltaY > 0) * 0.05)
       this.flyControls!.sensitivity -= Math.sign(e.deltaY) * 0.05
-      console.log(this.flyControls!.sensitivity)
     })
 
     if (this.debug.active) {
