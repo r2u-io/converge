@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 
 import Image from 'next/image'
@@ -15,6 +15,7 @@ const Canvas: React.FC = () => {
     isFirstPoint,
     isLastPoint,
     moving,
+    onFreeTour,
     activateFreeTour
   } = useThreeContext()
 
@@ -24,6 +25,8 @@ const Canvas: React.FC = () => {
   const [model, setModel] = useState<OverlayModel>()
 
   const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
+
+  const instructionsRef = useRef(null)
 
   useEffect(() => {
     if (!loaded || !threeExperience || model) return
@@ -39,36 +42,30 @@ const Canvas: React.FC = () => {
 
   return (
     <Container>
-      <button className='back' disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
-        Back
-      </button>
-      <button className='go' disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
-        Next
-      </button>
-      <button
-        className='print'
-        onClick={() => {
-          const phi =
-            (180 * (threeExperience?.camera.orbitControls?.getAzimuthalAngle() || 0)) / Math.PI
-          const theta =
-            (180 * (threeExperience?.camera.orbitControls?.getPolarAngle() || 0)) / Math.PI
-          const radius = threeExperience?.camera.orbitControls?.getDistance()
-          const cameraPosition = threeExperience?.camera.instance?.position.toArray()
-          const targetPosition = threeExperience?.camera.orbitControls?.target.toArray()
-
-          console.table({
-            phi,
-            theta,
-            radius
-          })
-          console.table({
-            cameraPosition,
-            targetPosition
-          })
-        }}
-      >
-        Print
-      </button>
+      {onFreeTour && !moving && (
+        <div ref={instructionsRef} className='blocker'>
+          <div className='instructions '>
+            <h2>Click to play</h2>
+            <p>
+              Move: WASD
+              <br />
+              Look: MOUSE
+              <br />
+              Speed: SHIFT (Hold)
+            </p>
+          </div>
+        </div>
+      )}
+      {!onFreeTour && (
+        <>
+          <button disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
+            Back
+          </button>
+          <button disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
+            Next
+          </button>
+        </>
+      )}
       {openMap && (
         <div className='map'>
           <button onClick={() => setOpenMap(false)}>X</button>
@@ -77,13 +74,12 @@ const Canvas: React.FC = () => {
       )}
       {canActivateFreeTour && (
         <button
-          className='print'
           onClick={() => {
             setCanActivateFreeTour(false)
             activateFreeTour()
           }}
         >
-          Free Tour
+          Tour
         </button>
       )}
     </Container>

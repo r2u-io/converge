@@ -27,6 +27,7 @@ interface ThreeContextData {
   isFirstPoint: boolean
   isLastPoint: boolean
   moving: boolean
+  onFreeTour: boolean
   activateFreeTour: () => void
 }
 
@@ -42,8 +43,10 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const isLastPoint = activePoint === PointsData.length - 1
 
   const [curves, setCurves] = useState<CurveParams[]>()
+  const [lastCurve, setLastCurve] = useState<CurveParams>()
   const [forward, setForward] = useState(true)
   const [moving, setMoving] = useState(false)
+  const [onFreeTour, setOnFreeTour] = useState(false)
 
   const house = threeExperience?.world.house
 
@@ -58,23 +61,17 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     const curvesInstances = CurvesData.map(({ points, duration }) => {
       const vectorPoints = points.map((point) => new THREE.Vector3().fromArray(point))
       const curve = new Curve(vectorPoints)
-
-      // if (threeExperience.debug.active) {
-      //   curve.addHelper()
-      //   threeExperience.scene.add(curve.helper)
-      // }
-
       return { curve, duration }
     })
 
+    setLastCurve(curvesInstances.pop())
     setCurves(curvesInstances)
   }, [threeExperience, loaded, curves])
 
   useEffect(() => {
-    if (!threeExperience || !curves || !moving) return
+    if (!threeExperience || !curves || !moving || onFreeTour) return
     const { curve, duration } = curves[activePoint - 1 * Number(forward)]
 
-    // threeExperience.camera.toCurve(curve, forward).then(() =>
     threeExperience.camera
       .followCurve(
         curve,
@@ -86,8 +83,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
         threeExperience.camera.toPoint(PointsData[activePoint])
         setMoving(false)
       })
-    // )
-  }, [threeExperience, curves, moving, activePoint, forward])
+  }, [threeExperience, curves, moving, activePoint, forward, onFreeTour])
 
   useEffect(() => {
     if (!threeExperience || !house || !house.debug.active) return
@@ -131,7 +127,28 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   }
 
   const activateFreeTour = () => {
-    threeExperience!.camera.setFlyControls()
+    if (!lastCurve) return
+    if (!threeExperience) return
+
+    const { curve, duration } = lastCurve
+
+    setActivePoint(0)
+    setMoving(true)
+    setOnFreeTour(true)
+
+    threeExperience.camera.openFOV(duration)
+    threeExperience.camera
+      .followCurve(
+        curve,
+        true,
+        duration,
+        new THREE.Vector3().fromArray(PointsData[0].targetPosition)
+      )
+      .then(() => {
+        threeExperience.camera.toPoint(PointsData[0])
+        setMoving(false)
+        threeExperience!.camera.setFlyControls()
+      })
   }
 
   return (
@@ -146,6 +163,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
         isFirstPoint,
         isLastPoint,
         moving,
+        onFreeTour,
         activateFreeTour
       }}
     >

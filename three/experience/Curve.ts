@@ -21,16 +21,12 @@ export default class Curve {
 
   setFirstPoint(point: THREE.Vector3) {
     this.points = [point, ...this.defaultPoints.slice(1)]
-    console.table(this.points.map((p) => p.toArray()))
-    console.table(this.defaultPoints.map((p) => p.toArray()))
     this.instance = null
     this.setInstance()
   }
 
   setLastPoint(point: THREE.Vector3) {
     this.points = [...this.defaultPoints.slice(0, -1), point]
-    console.table(this.points.map((p) => p.toArray()))
-    console.table(this.defaultPoints.map((p) => p.toArray()))
     this.instance = null
     this.setInstance()
   }

@@ -30,8 +30,6 @@ const MIN_AZIMUTH_ANGLE = Infinity
 const MAX_POLAR_ANGLE = Math.PI
 const MIN_POLAR_ANGLE = 0
 
-const clock = new THREE.Clock()
-
 export default class Camera {
   canvas: HTMLCanvasElement
   sizes: Sizes
@@ -51,6 +49,13 @@ export default class Camera {
   verticalAngle = 0.0
 
   distanceAngle = 0.0
+
+  flyForward = false
+  flyBackward = false
+  flyRight = false
+  flyLeft = false
+
+  speed = 0.2
 
   constructor(experience: Experience) {
     this.canvas = experience.canvas
@@ -75,8 +80,11 @@ export default class Camera {
       0.1,
       1000
     )
-    this.instance.position.set(2.5, 1.5, 8)
+
     this.scene.add(this.instance)
+
+    // TODO: Remove after loading
+    this.instance.position.set(-19.82, 18.23, -12.85)
   }
 
   setOrbitControls() {
@@ -99,7 +107,17 @@ export default class Camera {
       this.debugFolder!.add(this.orbitControls, 'dampingFactor').min(0).max(1).step(0.005)
     }
 
-    this.orbitControls.target.set(2.5, 1, 4)
+    // TODO: Remove after loading
+    this.orbitControls.target.set(0, 7.6, 0)
+  }
+
+  openFOV(duration: number) {
+    gsap.to(this.instance!, {
+      fov: 45,
+      duration,
+      ease: 'none',
+      onUpdate: () => this.instance!.updateProjectionMatrix()
+    })
   }
 
   setFlyControls() {
@@ -109,11 +127,57 @@ export default class Camera {
     }
 
     this.flyControls = new PointerLockControls(this.instance!, this.canvas)
+    this.flyControls.sensitivity = 0.5
 
-    window.addEventListener('click', () => this.flyControls!.lock())
+    this.flyControls.addEventListener('lock', () => {
+      document.querySelector('.blocker')?.classList.add('hidden')
+    })
 
-    window.addEventListener('wheel', (e) => {
-      this.flyControls!.sensitivity -= Math.sign(e.deltaY) * 0.05
+    this.flyControls.addEventListener('unlock', () => {
+      document.querySelector('.blocker')?.classList.remove('hidden')
+    })
+
+    window.addEventListener('click', () => this.flyControls?.lock())
+    // window.addEventListener('wheel', (e) => {
+    //   if (this.flyControls) this.flyControls.sensitivity -= Math.sign(e.deltaY) * 0.05
+    // })
+    window.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'w':
+          this.flyForward = true
+          break
+        case 's':
+          this.flyBackward = true
+          break
+        case 'd':
+          this.flyRight = true
+          break
+        case 'a':
+          this.flyLeft = true
+          break
+        case 'Shift':
+          this.speed = 0.2
+          break
+      }
+    })
+    window.addEventListener('keyup', (e) => {
+      switch (e.key) {
+        case 'w':
+          this.flyForward = false
+          break
+        case 's':
+          this.flyBackward = false
+          break
+        case 'd':
+          this.flyRight = false
+          break
+        case 'a':
+          this.flyLeft = false
+          break
+        case 'Shift':
+          this.speed = 0.05
+          break
+      }
     })
 
     if (this.debug.active) {
@@ -129,8 +193,6 @@ export default class Camera {
   }
 
   update() {
-    const delta = clock.getDelta()
-
     if (this.vertical && !this.moving && this.orbitControls) {
       const verticalDistance = this.orbitControls.getDistance() * Math.cos(this.verticalAngle)
 
@@ -144,6 +206,12 @@ export default class Camera {
     }
 
     this.orbitControls?.update()
+    if (this.flyControls) {
+      if (this.flyForward) this.flyControls.moveForward(this.speed)
+      if (this.flyBackward) this.flyControls.moveForward(-this.speed)
+      if (this.flyRight) this.flyControls.moveRight(this.speed)
+      if (this.flyLeft) this.flyControls.moveRight(-this.speed)
+    }
   }
 
   resetControls() {

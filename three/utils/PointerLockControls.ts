@@ -26,7 +26,7 @@ export class PointerLockControls extends THREE.EventDispatcher {
 
     this.camera = camera
     this.domElement = domElement
-    this._sensitivity = 0.25
+    this._sensitivity = 1.0
 
     this.connect()
   }
@@ -69,8 +69,9 @@ export class PointerLockControls extends THREE.EventDispatcher {
   public moveForward(distance: number): void {
     // move forward parallel to the xz-plane
     // assumes camera.up is y-up
+    const looking = this.camera.up.clone().applyQuaternion(this.camera.quaternion)
     vec.setFromMatrixColumn(this.camera.matrix, 0)
-    vec.crossVectors(this.camera.up, vec)
+    vec.crossVectors(looking, vec)
     this.camera.position.addScaledVector(vec, distance)
   }
 
