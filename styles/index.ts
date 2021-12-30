@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   height: 100%;
@@ -80,7 +80,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
+`
 
 export const Content = styled.div`
   width: 1200px;
@@ -89,4 +89,4 @@ export const Content = styled.div`
     width: unset;
     margin: unset;
   }
-`;
+`

@@ -55,8 +55,6 @@ export default class Camera {
   flyRight = false
   flyLeft = false
 
-  speed = 0.2
-
   constructor(experience: Experience) {
     this.canvas = experience.canvas
     this.sizes = experience.sizes
@@ -96,7 +94,7 @@ export default class Camera {
     this.orbitControls = new OrbitControls(this.instance!, this.canvas)
 
     this.orbitControls.enablePan = false
-    this.orbitControls.enableZoom = false
+    this.orbitControls.enableZoom = true
     this.orbitControls.enableDamping = true
     this.orbitControls.dampingFactor = 0.1
 
@@ -137,11 +135,11 @@ export default class Camera {
       document.querySelector('.blocker')?.classList.remove('hidden')
     })
 
-    window.addEventListener('click', () => this.flyControls?.lock())
-    // window.addEventListener('wheel', (e) => {
+    document.addEventListener('click', () => this.flyControls?.lock())
+    // document.addEventListener('wheel', (e) => {
     //   if (this.flyControls) this.flyControls.sensitivity -= Math.sign(e.deltaY) * 0.05
     // })
-    window.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', (e) => {
       switch (e.key) {
         case 'w':
           this.flyForward = true
@@ -155,12 +153,9 @@ export default class Camera {
         case 'a':
           this.flyLeft = true
           break
-        case 'Shift':
-          this.speed = 0.2
-          break
       }
     })
-    window.addEventListener('keyup', (e) => {
+    document.addEventListener('keyup', (e) => {
       switch (e.key) {
         case 'w':
           this.flyForward = false
@@ -173,9 +168,6 @@ export default class Camera {
           break
         case 'a':
           this.flyLeft = false
-          break
-        case 'Shift':
-          this.speed = 0.05
           break
       }
     })
@@ -207,10 +199,12 @@ export default class Camera {
 
     this.orbitControls?.update()
     if (this.flyControls) {
-      if (this.flyForward) this.flyControls.moveForward(this.speed)
-      if (this.flyBackward) this.flyControls.moveForward(-this.speed)
-      if (this.flyRight) this.flyControls.moveRight(this.speed)
-      if (this.flyLeft) this.flyControls.moveRight(-this.speed)
+      const speed = 0.075
+
+      if (this.flyForward) this.flyControls.moveForward(speed)
+      if (this.flyBackward) this.flyControls.moveForward(-speed)
+      if (this.flyRight) this.flyControls.moveRight(speed)
+      if (this.flyLeft) this.flyControls.moveRight(-speed)
     }
   }
 

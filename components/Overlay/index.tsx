@@ -50,8 +50,6 @@ const Canvas: React.FC = () => {
               Move: WASD
               <br />
               Look: MOUSE
-              <br />
-              Speed: SHIFT (Hold)
             </p>
           </div>
         </div>

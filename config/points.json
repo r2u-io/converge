@@ -11,7 +11,7 @@
   {
     "cameraPosition": [19.12, 4.16, 3.59],
     "targetPosition": [2.16, 4.93, 2.57],
-    "minAzimuthAngle": 80,
+    "minAzimuthAngle": 70,
     "maxAzimuthAngle": 100,
     "minPolarAngle": 85,
     "maxPolarAngle": 95,
@@ -22,7 +22,7 @@
     "targetPosition": [1.48, 3.15, 3.0],
     "minAzimuthAngle": 0,
     "maxAzimuthAngle": 55,
-    "minPolarAngle": 45,
+    "minPolarAngle": 75,
     "maxPolarAngle": 95,
     "vertical": false
   },
