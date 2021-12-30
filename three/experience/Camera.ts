@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { PointerLockControls } from '../utils/PointerLockControls'
+
 import Experience from '.'
 
 import gsap from 'gsap'
@@ -37,9 +39,8 @@ export default class Camera {
   debugFolder: GUI | null = null
 
   instance: THREE.PerspectiveCamera | null = null
-  controls: OrbitControls | null = null
-
-  limitControls: boolean = true
+  orbitControls: OrbitControls | null = null
+  flyControls: PointerLockControls | null = null
 
   moving = false
 
@@ -48,6 +49,13 @@ export default class Camera {
   verticalAngle = 0.0
 
   distanceAngle = 0.0
+
+  flyForward = false
+  flyBackward = false
+  flyRight = false
+  flyLeft = false
+
+  speed = 0.2
 
   constructor(experience: Experience) {
     this.canvas = experience.canvas
@@ -72,26 +80,111 @@ export default class Camera {
       0.1,
       1000
     )
-    this.instance.position.set(2.5, 1.5, 8)
+
     this.scene.add(this.instance)
+
+    // TODO: Remove after loading
+    this.instance.position.set(-19.82, 18.23, -12.85)
   }
 
   setOrbitControls() {
-    this.controls = new OrbitControls(this.instance!, this.canvas)
-
-    this.controls.enablePan = false
-    this.controls.enableZoom = false
-    this.controls.enableDamping = true
-    this.controls.dampingFactor = 0.1
-
-    if (this.debug.active) {
-      this.debugFolder!.add(this.controls, 'enablePan')
-      this.debugFolder!.add(this.controls, 'enableZoom')
-      this.debugFolder!.add(this.controls, 'enableDamping')
-      this.debugFolder!.add(this.controls, 'dampingFactor').min(0).max(1).step(0.005)
+    if (this.flyControls) {
+      this.flyControls.dispose()
+      this.flyControls = null
     }
 
-    this.controls.target.set(2.5, 1, 4)
+    this.orbitControls = new OrbitControls(this.instance!, this.canvas)
+
+    this.orbitControls.enablePan = false
+    this.orbitControls.enableZoom = false
+    this.orbitControls.enableDamping = true
+    this.orbitControls.dampingFactor = 0.1
+
+    if (this.debug.active) {
+      this.debugFolder!.add(this.orbitControls, 'enablePan')
+      this.debugFolder!.add(this.orbitControls, 'enableZoom')
+      this.debugFolder!.add(this.orbitControls, 'enableDamping')
+      this.debugFolder!.add(this.orbitControls, 'dampingFactor').min(0).max(1).step(0.005)
+    }
+
+    // TODO: Remove after loading
+    this.orbitControls.target.set(0, 7.6, 0)
+  }
+
+  openFOV(duration: number) {
+    gsap.to(this.instance!, {
+      fov: 45,
+      duration,
+      ease: 'none',
+      onUpdate: () => this.instance!.updateProjectionMatrix()
+    })
+  }
+
+  setFlyControls() {
+    if (this.orbitControls) {
+      this.orbitControls.dispose()
+      this.orbitControls = null
+    }
+
+    this.flyControls = new PointerLockControls(this.instance!, this.canvas)
+    this.flyControls.sensitivity = 0.5
+
+    this.flyControls.addEventListener('lock', () => {
+      document.querySelector('.blocker')?.classList.add('hidden')
+    })
+
+    this.flyControls.addEventListener('unlock', () => {
+      document.querySelector('.blocker')?.classList.remove('hidden')
+    })
+
+    window.addEventListener('click', () => this.flyControls?.lock())
+    // window.addEventListener('wheel', (e) => {
+    //   if (this.flyControls) this.flyControls.sensitivity -= Math.sign(e.deltaY) * 0.05
+    // })
+    window.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'w':
+          this.flyForward = true
+          break
+        case 's':
+          this.flyBackward = true
+          break
+        case 'd':
+          this.flyRight = true
+          break
+        case 'a':
+          this.flyLeft = true
+          break
+        case 'Shift':
+          this.speed = 0.2
+          break
+      }
+    })
+    window.addEventListener('keyup', (e) => {
+      switch (e.key) {
+        case 'w':
+          this.flyForward = false
+          break
+        case 's':
+          this.flyBackward = false
+          break
+        case 'd':
+          this.flyRight = false
+          break
+        case 'a':
+          this.flyLeft = false
+          break
+        case 'Shift':
+          this.speed = 0.05
+          break
+      }
+    })
+
+    if (this.debug.active) {
+      this.debugFolder!.add(this.flyControls, 'sensitivity').min(0).max(2).step(0.001)
+    }
+
+    this.scene.add(this.flyControls.getObject())
   }
 
   resize() {
@@ -100,23 +193,51 @@ export default class Camera {
   }
 
   update() {
-    if (this.vertical && !this.moving) {
-      const verticalDistance = this.controls!.getDistance() * Math.cos(this.verticalAngle)
+    if (this.vertical && !this.moving && this.orbitControls) {
+      const verticalDistance = this.orbitControls.getDistance() * Math.cos(this.verticalAngle)
 
       const y = this.instance!.position.y - verticalDistance
 
       if (y > 0 && y <= this.maxVertical) {
-        this.controls!.target.y = y
+        this.orbitControls.target.y = y
       }
 
-      this.instance!.position.y = this.controls!.target.y + verticalDistance
+      this.instance!.position.y = this.orbitControls.target.y + verticalDistance
     }
 
-    this.controls!.update()
+    this.orbitControls?.update()
+    if (this.flyControls) {
+      if (this.flyForward) this.flyControls.moveForward(this.speed)
+      if (this.flyBackward) this.flyControls.moveForward(-this.speed)
+      if (this.flyRight) this.flyControls.moveRight(this.speed)
+      if (this.flyLeft) this.flyControls.moveRight(-this.speed)
+    }
+  }
+
+  resetControls() {
+    if (!this.orbitControls) return
+
+    this.orbitControls.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.orbitControls.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.orbitControls.maxPolarAngle = MAX_POLAR_ANGLE
+    this.orbitControls.minPolarAngle = MIN_POLAR_ANGLE
+    this.orbitControls.maxDistance = MAX_DISTANCE
+    this.orbitControls.minDistance = MIN_DISTANCE
+  }
+
+  setMoving() {
+    if (!this.orbitControls) return
+
+    this.moving = true
+    this.orbitControls.enabled = false
+    this.resetControls()
   }
 
   async toCurve(curve: Curve, forward: boolean) {
-    this.moving = true
+    if (!this.orbitControls) return
+
+    this.setMoving()
+
     this.distanceAngle = 0
 
     const start = this.instance!.position.clone()
@@ -125,15 +246,7 @@ export default class Camera {
     const angleEnd = start.angleTo(target)
     const normal = start.clone().cross(target).normalize()
 
-    this.controls!.enabled = false
-    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
-    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
-    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
-    this.controls!.maxDistance = MAX_DISTANCE
-    this.controls!.minDistance = MIN_DISTANCE
-
-    const diameter = 2 * this.controls!.getDistance()
+    const diameter = 2 * this.orbitControls.getDistance()
     const distance = start.distanceTo(target)
     const duration = (0.5 * distance) / diameter
 
@@ -159,16 +272,22 @@ export default class Camera {
     duration: number,
     targetPosition: THREE.Vector3
   ) {
-    this.moving = true
-    this.controls!.enabled = false
+    if (!this.orbitControls) return
+
+    this.setMoving()
+
+    const position = this.instance!.position.clone()
 
     curve.progress = forward ? 0 : 1
 
-    gsap.to(this.controls!.target, {
+    forward ? curve.setFirstPoint(position) : curve.setLastPoint(position)
+
+    gsap.to(this.orbitControls.target, {
       x: targetPosition.x,
       y: targetPosition.y,
       z: targetPosition.z,
-      duration
+      duration,
+      ease: 'none'
     })
 
     return new Promise<void>((resolve) =>
@@ -181,7 +300,7 @@ export default class Camera {
         },
         onComplete: () => {
           this.moving = false
-          this.controls!.enabled = true
+          this.orbitControls!.enabled = true
           resolve()
         }
       })
@@ -197,32 +316,29 @@ export default class Camera {
     maxAzimuthAngle,
     minAzimuthAngle
   }: PointData) {
-    this.controls!.minDistance = MIN_DISTANCE
-    this.controls!.maxDistance = MAX_DISTANCE
-    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
-    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
-    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    if (!this.orbitControls) return
+
+    this.resetControls()
 
     const camera = new THREE.Vector3().fromArray(cameraPosition)
     const target = new THREE.Vector3().fromArray(targetPosition)
 
     this.instance!.position.copy(camera)
-    this.controls!.target.copy(target)
-    this.controls!.update()
+    this.orbitControls.target.copy(target)
+    this.orbitControls.update()
 
     this.vertical = vertical
     this.maxVertical = target.y
-    this.verticalAngle = this.controls!.getPolarAngle()
-    this.controls!.rotateSpeed = this.vertical ? 0.1 : 1.0
-    this.controls!.minDistance = this.vertical ? this.controls!.getDistance() : MIN_DISTANCE
-    this.controls!.maxDistance = this.vertical ? this.controls!.getDistance() : MAX_DISTANCE
+    this.verticalAngle = this.orbitControls.getPolarAngle()
+    this.orbitControls.rotateSpeed = this.vertical ? 0.1 : 1.0
+    this.orbitControls.minDistance = this.vertical ? this.orbitControls.getDistance() : MIN_DISTANCE
+    this.orbitControls.maxDistance = this.vertical ? this.orbitControls.getDistance() : MAX_DISTANCE
 
-    this.controls!.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
-    this.controls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
-    this.controls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
-    this.controls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
+    this.orbitControls.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
+    this.orbitControls.minPolarAngle = (Math.PI * minPolarAngle) / 180
+    this.orbitControls.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
+    this.orbitControls.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
 
-    this.controls!.update()
+    this.orbitControls.update()
   }
 }

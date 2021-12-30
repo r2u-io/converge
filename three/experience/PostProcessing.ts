@@ -43,18 +43,12 @@ export default class PostProcessing {
       this.debugFolder = this.debug.ui!.addFolder('Post Processing')
     }
 
-    this.setRenderTarget()
     this.setInstance()
     this.addRenderPass()
     this.addBloomPass()
     this.addOutlinePass()
     this.addShaderPass()
     this.addAntiAliasPass()
-  }
-
-  setRenderTarget() {
-    console.log('Pixel Ratio: ', this.renderer.instance!.getPixelRatio())
-    console.log('WebGL2: ', this.renderer.instance!.capabilities.isWebGL2)
   }
 
   setInstance() {

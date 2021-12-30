@@ -79,7 +79,7 @@ export default class Experience {
       }
     })
 
-    this.camera.controls!.dispose()
+    this.camera.orbitControls!.dispose()
     this.renderer.instance!.dispose()
 
     if (this.debug.active) {
