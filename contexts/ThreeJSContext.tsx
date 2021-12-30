@@ -27,6 +27,7 @@ interface ThreeContextData {
   isFirstPoint: boolean
   isLastPoint: boolean
   moving: boolean
+  activateFreeTour: () => void
 }
 
 export const ThreeContext = createContext<ThreeContextData>({} as ThreeContextData)
@@ -88,21 +89,6 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     )
   }, [threeExperience, curves, moving, activePoint, forward])
 
-  const setSceneLoaded = () => setLoaded(true)
-
-  const prevPoint = () => {
-    if (isFirstPoint) return
-    setActivePoint(activePoint - 1)
-    setMoving(true)
-    setForward(false)
-  }
-  const nextPoint = () => {
-    if (isLastPoint) return
-    setActivePoint(activePoint + 1)
-    setMoving(true)
-    setForward(true)
-  }
-
   useEffect(() => {
     if (!threeExperience || !house || !house.debug.active) return
 
@@ -128,6 +114,26 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     house.debugFolder!.add(changeScene, '5')
   }, [threeExperience, house])
 
+  const setSceneLoaded = () => setLoaded(true)
+
+  const prevPoint = () => {
+    if (isFirstPoint) return
+    setActivePoint(activePoint - 1)
+    setMoving(true)
+    setForward(false)
+  }
+
+  const nextPoint = () => {
+    if (isLastPoint) return
+    setActivePoint(activePoint + 1)
+    setMoving(true)
+    setForward(true)
+  }
+
+  const activateFreeTour = () => {
+    threeExperience!.camera.activateFreeTour()
+  }
+
   return (
     <ThreeContext.Provider
       value={{
@@ -139,7 +145,8 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
         prevPoint,
         isFirstPoint,
         isLastPoint,
-        moving
+        moving,
+        activateFreeTour
       }}
     >
       {children}

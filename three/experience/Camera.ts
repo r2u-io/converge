@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js'
+
 import Experience from '.'
 
 import gsap from 'gsap'
@@ -37,7 +39,7 @@ export default class Camera {
   debugFolder: GUI | null = null
 
   instance: THREE.PerspectiveCamera | null = null
-  controls: OrbitControls | null = null
+  orbitControls: OrbitControls | null = null
 
   limitControls: boolean = true
 
@@ -77,21 +79,21 @@ export default class Camera {
   }
 
   setOrbitControls() {
-    this.controls = new OrbitControls(this.instance!, this.canvas)
+    this.orbitControls = new OrbitControls(this.instance!, this.canvas)
 
-    this.controls.enablePan = false
-    this.controls.enableZoom = false
-    this.controls.enableDamping = true
-    this.controls.dampingFactor = 0.1
+    this.orbitControls.enablePan = false
+    this.orbitControls.enableZoom = false
+    this.orbitControls.enableDamping = true
+    this.orbitControls.dampingFactor = 0.1
 
     if (this.debug.active) {
-      this.debugFolder!.add(this.controls, 'enablePan')
-      this.debugFolder!.add(this.controls, 'enableZoom')
-      this.debugFolder!.add(this.controls, 'enableDamping')
-      this.debugFolder!.add(this.controls, 'dampingFactor').min(0).max(1).step(0.005)
+      this.debugFolder!.add(this.orbitControls, 'enablePan')
+      this.debugFolder!.add(this.orbitControls, 'enableZoom')
+      this.debugFolder!.add(this.orbitControls, 'enableDamping')
+      this.debugFolder!.add(this.orbitControls, 'dampingFactor').min(0).max(1).step(0.005)
     }
 
-    this.controls.target.set(2.5, 1, 4)
+    this.orbitControls.target.set(2.5, 1, 4)
   }
 
   resize() {
@@ -101,18 +103,18 @@ export default class Camera {
 
   update() {
     if (this.vertical && !this.moving) {
-      const verticalDistance = this.controls!.getDistance() * Math.cos(this.verticalAngle)
+      const verticalDistance = this.orbitControls!.getDistance() * Math.cos(this.verticalAngle)
 
       const y = this.instance!.position.y - verticalDistance
 
       if (y > 0 && y <= this.maxVertical) {
-        this.controls!.target.y = y
+        this.orbitControls!.target.y = y
       }
 
-      this.instance!.position.y = this.controls!.target.y + verticalDistance
+      this.instance!.position.y = this.orbitControls!.target.y + verticalDistance
     }
 
-    this.controls!.update()
+    this.orbitControls!.update()
   }
 
   async toCurve(curve: Curve, forward: boolean) {
@@ -125,15 +127,15 @@ export default class Camera {
     const angleEnd = start.angleTo(target)
     const normal = start.clone().cross(target).normalize()
 
-    this.controls!.enabled = false
-    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
-    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
-    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
-    this.controls!.maxDistance = MAX_DISTANCE
-    this.controls!.minDistance = MIN_DISTANCE
+    this.orbitControls!.enabled = false
+    this.orbitControls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.orbitControls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.orbitControls!.maxPolarAngle = MAX_POLAR_ANGLE
+    this.orbitControls!.minPolarAngle = MIN_POLAR_ANGLE
+    this.orbitControls!.maxDistance = MAX_DISTANCE
+    this.orbitControls!.minDistance = MIN_DISTANCE
 
-    const diameter = 2 * this.controls!.getDistance()
+    const diameter = 2 * this.orbitControls!.getDistance()
     const distance = start.distanceTo(target)
     const duration = (0.5 * distance) / diameter
 
@@ -160,11 +162,11 @@ export default class Camera {
     targetPosition: THREE.Vector3
   ) {
     this.moving = true
-    this.controls!.enabled = false
+    this.orbitControls!.enabled = false
 
     curve.progress = forward ? 0 : 1
 
-    gsap.to(this.controls!.target, {
+    gsap.to(this.orbitControls!.target, {
       x: targetPosition.x,
       y: targetPosition.y,
       z: targetPosition.z,
@@ -181,7 +183,7 @@ export default class Camera {
         },
         onComplete: () => {
           this.moving = false
-          this.controls!.enabled = true
+          this.orbitControls!.enabled = true
           resolve()
         }
       })
@@ -197,32 +199,36 @@ export default class Camera {
     maxAzimuthAngle,
     minAzimuthAngle
   }: PointData) {
-    this.controls!.minDistance = MIN_DISTANCE
-    this.controls!.maxDistance = MAX_DISTANCE
-    this.controls!.minPolarAngle = MIN_POLAR_ANGLE
-    this.controls!.maxPolarAngle = MAX_POLAR_ANGLE
-    this.controls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
-    this.controls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
+    this.orbitControls!.minDistance = MIN_DISTANCE
+    this.orbitControls!.maxDistance = MAX_DISTANCE
+    this.orbitControls!.minPolarAngle = MIN_POLAR_ANGLE
+    this.orbitControls!.maxPolarAngle = MAX_POLAR_ANGLE
+    this.orbitControls!.minAzimuthAngle = MIN_AZIMUTH_ANGLE
+    this.orbitControls!.maxAzimuthAngle = MAX_AZIMUTH_ANGLE
 
     const camera = new THREE.Vector3().fromArray(cameraPosition)
     const target = new THREE.Vector3().fromArray(targetPosition)
 
     this.instance!.position.copy(camera)
-    this.controls!.target.copy(target)
-    this.controls!.update()
+    this.orbitControls!.target.copy(target)
+    this.orbitControls!.update()
 
     this.vertical = vertical
     this.maxVertical = target.y
-    this.verticalAngle = this.controls!.getPolarAngle()
-    this.controls!.rotateSpeed = this.vertical ? 0.1 : 1.0
-    this.controls!.minDistance = this.vertical ? this.controls!.getDistance() : MIN_DISTANCE
-    this.controls!.maxDistance = this.vertical ? this.controls!.getDistance() : MAX_DISTANCE
+    this.verticalAngle = this.orbitControls!.getPolarAngle()
+    this.orbitControls!.rotateSpeed = this.vertical ? 0.1 : 1.0
+    this.orbitControls!.minDistance = this.vertical
+      ? this.orbitControls!.getDistance()
+      : MIN_DISTANCE
+    this.orbitControls!.maxDistance = this.vertical
+      ? this.orbitControls!.getDistance()
+      : MAX_DISTANCE
 
-    this.controls!.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
-    this.controls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
-    this.controls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
-    this.controls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
+    this.orbitControls!.maxPolarAngle = (Math.PI * maxPolarAngle) / 180
+    this.orbitControls!.minPolarAngle = (Math.PI * minPolarAngle) / 180
+    this.orbitControls!.maxAzimuthAngle = (Math.PI * maxAzimuthAngle) / 180
+    this.orbitControls!.minAzimuthAngle = (Math.PI * minAzimuthAngle) / 180
 
-    this.controls!.update()
+    this.orbitControls!.update()
   }
 }

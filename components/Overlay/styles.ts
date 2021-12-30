@@ -11,13 +11,13 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  button.back {
+  .back {
     position: absolute;
     top: 90%;
     left: calc(50% - 50px);
   }
 
-  button.go {
+  .go {
     position: absolute;
     top: 90%;
     left: calc(50% + 50px);
@@ -31,6 +31,12 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .print {
+    position: absolute;
+    top: 90%;
+    left: calc(50% + 100px);
   }
 
   button {
