@@ -33,6 +33,10 @@ const Canvas: React.FC = () => {
     setModel(modelInstance)
   }, [loaded, threeExperience, model])
 
+  useEffect(() => {
+    if (isLastPoint && !canActivateFreeTour) setCanActivateFreeTour(true)
+  }, [isLastPoint, canActivateFreeTour])
+
   return (
     <Container>
       <button className='back' disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
@@ -73,6 +77,7 @@ const Canvas: React.FC = () => {
       )}
       {canActivateFreeTour && (
         <button
+          className='print'
           onClick={() => {
             setCanActivateFreeTour(false)
             activateFreeTour()

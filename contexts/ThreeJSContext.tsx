@@ -131,7 +131,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   }
 
   const activateFreeTour = () => {
-    threeExperience!.camera.activateFreeTour()
+    threeExperience!.camera.setFlyControls()
   }
 
   return (
