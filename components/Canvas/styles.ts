@@ -1,14 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-
-  background-image: url(../images/background.svg);
-  background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  background-size: cover;
 
   canvas {
     position: absolute;
@@ -17,7 +11,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
 export const CardsContainer = styled.div`
   width: 100%;
@@ -27,4 +21,4 @@ export const CardsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;

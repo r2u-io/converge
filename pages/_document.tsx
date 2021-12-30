@@ -1,5 +1,11 @@
-import Document, { Head, Html, Main, NextScript, DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, {
+  Head,
+  Html,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 const TagManagerHead: React.FC = () => (
   <>
@@ -14,7 +20,7 @@ const TagManagerHead: React.FC = () => (
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',${process.env.GTM_ID});`
+        })(window,document,'script','dataLayer',${process.env.GTM_ID});`,
       }}
     />
     <script
@@ -26,35 +32,36 @@ const TagManagerHead: React.FC = () => (
       gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
         page_path: window.location.pathname,
       });
-    `
+    `,
       }}
     />
   </>
-)
+);
 
 const TagManagerBody: React.FC = () => (
   <>
     <noscript
       dangerouslySetInnerHTML={{
         __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
       }}
     />
   </>
-)
+);
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
-        })
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
 
-      const initialProps = await Document.getInitialProps(ctx)
+      const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
         styles: (
@@ -62,33 +69,32 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        )
-      }
+        ),
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
 
   public render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
-          <meta charSet='utf-8' />
-          <meta name='google' content='notranslate' />
-          <meta name='theme-color' content='#131524' />
-          <meta name='description' content='R2U Meta' />
-          <meta name='robots' content='index, follow' />
-          <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
-          <meta name='language' content='English' />
-          <link rel='icon' href='/favicon.ico' />
-          {process.env.NODE_ENV === 'production' && <TagManagerHead />}
+          <meta charSet="utf-8" />
+          <meta name="google" content="notranslate" />
+          <meta name="description" content="R2U Meta" />
+          <meta name="robots" content="index, follow" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="language" content="English" />
+          <link rel="icon" href="/favicon.ico" />
+          {process.env.NODE_ENV === "production" && <TagManagerHead />}
         </Head>
         <body>
-          {process.env.NODE_ENV === 'production' && <TagManagerBody />}
+          {process.env.NODE_ENV === "production" && <TagManagerBody />}
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

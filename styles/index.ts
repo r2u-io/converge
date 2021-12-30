@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100%;
@@ -21,11 +21,6 @@ export const Container = styled.div`
   }
 
   height: 100vh;
-  background-image: url(../images/background.svg);
-  background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  background-size: cover;
 
   .product-card-wrapper {
     position: absolute;
@@ -85,7 +80,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
 export const Content = styled.div`
   width: 1200px;
@@ -94,4 +89,4 @@ export const Content = styled.div`
     width: unset;
     margin: unset;
   }
-`
+`;
