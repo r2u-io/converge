@@ -1,0 +1,4 @@
+/node_modules/*
+/public/basis/*
+/public/draco/*
+/.next/*
