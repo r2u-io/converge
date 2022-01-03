@@ -1,10 +1,9 @@
 import EventEmitter from 'events'
 
 import * as THREE from 'three'
-import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader'
-import { BasisTextureLoader } from 'three/examples/jsm/loaders/BasisTextureLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader'
 
 import { Source } from '../experience/sources'
 
@@ -67,15 +66,10 @@ export default class Resources extends EventEmitter {
       )
       .detectSupport(this.renderer)
 
-    const basisLoader = new BasisTextureLoader()
-    basisLoader
-      .setTranscoderPath(
-        process.env.NODE_ENV === 'production' ? DEFAULT_KTX2_TRANSCODER_LOCATION : '/basis/'
-      )
-      .detectSupport(this.renderer)
-
-    this.loaders.gltf.setDRACOLoader(dracoLoader)
-    this.loaders.gltf.setKTX2Loader(ktx2Loader)
+    this.loaders.gltf
+      .setCrossOrigin('anonymous')
+      .setDRACOLoader(dracoLoader)
+      .setKTX2Loader(ktx2Loader)
   }
 
   startLoading() {
