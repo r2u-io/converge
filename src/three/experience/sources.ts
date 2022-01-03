@@ -20,7 +20,7 @@ const Sources = [
   {
     name: 'houseModel',
     type: 'gltf',
-    path: '/models/House/House.gltf'
+    path: '/models/house/House.gltf'
   }
 ]
 
