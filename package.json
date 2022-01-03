@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --max-warnings=0 -c .eslintrc.js",
+    "lint": "next lint --dir src --max-warnings 0 --config .eslintrc.js",
     "prettier": "prettier --write ./"
   },
   "dependencies": {
