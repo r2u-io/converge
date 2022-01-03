@@ -2,12 +2,14 @@ import * as THREE from 'three'
 
 export default class Curve {
   points: THREE.Vector3[]
+
   defaultPoints: THREE.Vector3[]
+
   instance: THREE.CatmullRomCurve3 | null = null
 
-  progress: number = 0
+  progress = 0
 
-  helper: any
+  helper: THREE.Mesh | null = null
 
   constructor(points: THREE.Vector3[]) {
     this.points = points

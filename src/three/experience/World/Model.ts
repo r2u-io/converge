@@ -1,29 +1,37 @@
 import * as THREE from 'three'
 
 import type Experience from '..'
-import type Raycaster from '../Raycaster'
 import type Sizes from '../../utils/Sizes'
 import type Camera from '../Camera'
 import type PostProcessing from '../PostProcessing'
+import type Raycaster from '../Raycaster'
 
 export default class Model {
   canvas: HTMLCanvasElement
+
   sizes: Sizes
+
   scene: THREE.Scene
+
   raycaster: Raycaster
+
   camera: Camera
+
   postProcessing: PostProcessing
 
   name: string
+
   card: HTMLDivElement
+
   cardWrapper: HTMLDivElement
 
   model: THREE.Object3D | undefined
 
   point: THREE.Vector3
 
-  clicked: boolean = false
-  drag: boolean = false
+  clicked = false
+
+  drag = false
 
   constructor(
     experience: Experience,
@@ -56,7 +64,9 @@ export default class Model {
   setListener() {
     if (!this.model) return
 
-    this.canvas.addEventListener('mousedown', () => (this.drag = false))
+    this.canvas.addEventListener('mousedown', () => {
+      this.drag = false
+    })
 
     this.canvas.addEventListener('mouseup', (event) => {
       if (!this.model) return

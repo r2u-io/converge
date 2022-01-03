@@ -1,30 +1,37 @@
 import * as THREE from 'three'
-import Camera from './Camera'
 
+import Debug from '../utils/Debug'
+import Resources from '../utils/Resources'
 import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
-import Debug from '../utils/Debug'
-
-import Renderer from './Renderer'
-import World from './World'
-import Resources from '../utils/Resources'
-
-import sources from './sources'
-import Raycaster from './Raycaster'
+import Camera from './Camera'
 import PostProcessing from './PostProcessing'
+import Raycaster from './Raycaster'
+import Renderer from './Renderer'
+import sources from './sources'
+import World from './World'
 
 export default class Experience {
   canvas: HTMLCanvasElement
+
   debug: Debug
+
   sizes: Sizes
+
   time: Time
 
   scene: THREE.Scene
+
   resources: Resources
+
   camera: Camera
+
   renderer: Renderer
+
   postProcessing: PostProcessing
+
   world: World
+
   raycaster: Raycaster
 
   constructor(canvas: HTMLCanvasElement, onLoad: () => void) {
@@ -71,10 +78,12 @@ export default class Experience {
     this.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         child.geometry.dispose()
-        for (const key in child.material) {
+
+        Object.keys(child.material).forEach((key) => {
           const value = child.material[key]
           if (value && value.dispose instanceof Function) value.dispose()
-        }
+        })
+
         child.material.dispose()
       }
     })

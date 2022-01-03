@@ -43,23 +43,26 @@ module.exports = {
         format: ['PascalCase']
       }
     ],
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    semi: ['error', 'never'],
     'react/jsx-filename-extension': [
       'error',
       {
         extensions: ['.tsx']
       }
     ],
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-member-accessibility': 'off',
-    semi: ['error', 'never'],
     'react/jsx-props-no-spreading': ['off'],
-    'no-console': ['error', { allow: ['tron'] }],
-    'react/prefer-stateless-function': ['off', { ignorePureComponents: true }],
-    'react-hooks/exhaustive-deps': 'off',
-    'no-nested-ternary': 'off',
     'react/jsx-curly-newline': 'off',
+    'react/prefer-stateless-function': ['off', { ignorePureComponents: true }],
+    'react/require-default-props': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-nested-ternary': 'off',
     'no-use-before-define': 'off',
-    'react/require-default-props': 'off'
+    'no-underscore-dangle': 'off',
+    'no-param-reassign': 'off'
   },
   parserOptions: {
     ecmaFeatures: {

@@ -5,6 +5,7 @@ import type Camera from './Camera'
 
 export default class Raycaster {
   canvas: HTMLCanvasElement
+
   camera: Camera
 
   instance: THREE.Raycaster | null = null

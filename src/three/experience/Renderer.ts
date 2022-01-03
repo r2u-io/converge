@@ -1,16 +1,20 @@
 import GUI from 'lil-gui'
 import * as THREE from 'three'
-import Experience from '.'
-import Debug from '../utils/Debug'
 
+import type Experience from '.'
+import type Debug from '../utils/Debug'
 import type Sizes from '../utils/Sizes'
 import type Camera from './Camera'
 
 export default class Renderer {
   canvas: HTMLCanvasElement
+
   sizes: Sizes
+
   scene: THREE.Scene
+
   camera: Camera
+
   debug: Debug
 
   debugFolder: GUI | null = null

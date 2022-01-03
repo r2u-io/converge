@@ -1,17 +1,17 @@
 import type Experience from '..'
-
+import type Resources from '../../utils/Resources'
 import Environment from './Environment'
 import House from './House'
-import Point from './Point'
-
-import type Resources from '../../utils/Resources'
 import type Model from './Model'
+import Point from './Point'
 
 export default class World {
   scene: THREE.Scene
+
   resources: Resources
 
   house: House | null = null
+
   environment: Environment | null = null
 
   point: Point | null = null

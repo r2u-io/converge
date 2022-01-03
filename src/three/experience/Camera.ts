@@ -1,15 +1,13 @@
+import gsap from 'gsap'
+import type GUI from 'lil-gui'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { PointerLockControls } from '../utils/PointerLockControls'
 
-import Experience from '.'
-
-import gsap from 'gsap'
-
-import type Sizes from '../utils/Sizes'
+import type Experience from '.'
 import type Debug from '../utils/Debug'
-import type GUI from 'lil-gui'
-import Curve from './Curve'
+import { PointerLockControls } from '../utils/PointerLockControls'
+import type Sizes from '../utils/Sizes'
+import type Curve from './Curve'
 
 interface PointData {
   vertical: boolean
@@ -32,27 +30,37 @@ const MIN_POLAR_ANGLE = 0
 
 export default class Camera {
   canvas: HTMLCanvasElement
+
   sizes: Sizes
+
   scene: THREE.Scene
+
   debug: Debug
 
   debugFolder: GUI | null = null
 
   instance: THREE.PerspectiveCamera | null = null
+
   orbitControls: OrbitControls | null = null
+
   flyControls: PointerLockControls | null = null
 
   moving = false
 
   vertical = false
+
   maxVertical = 0.0
+
   verticalAngle = 0.0
 
   distanceAngle = 0.0
 
   flyForward = false
+
   flyBackward = false
+
   flyRight = false
+
   flyLeft = false
 
   constructor(experience: Experience) {
@@ -153,6 +161,8 @@ export default class Camera {
         case 'a':
           this.flyLeft = true
           break
+        default:
+          break
       }
     })
     document.addEventListener('keyup', (e) => {
@@ -168,6 +178,8 @@ export default class Camera {
           break
         case 'a':
           this.flyLeft = false
+          break
+        default:
           break
       }
     })
@@ -227,8 +239,8 @@ export default class Camera {
     this.resetControls()
   }
 
-  async toCurve(curve: Curve, forward: boolean) {
-    if (!this.orbitControls) return
+  async toCurve(curve: Curve, forward: boolean): Promise<void> {
+    if (!this.orbitControls) return new Promise<void>(() => undefined)
 
     this.setMoving()
 
@@ -266,7 +278,7 @@ export default class Camera {
     duration: number,
     targetPosition: THREE.Vector3
   ) {
-    if (!this.orbitControls) return
+    if (!this.orbitControls) return new Promise<void>(() => undefined)
 
     this.setMoving()
 
@@ -274,7 +286,8 @@ export default class Camera {
 
     curve.progress = forward ? 0 : 1
 
-    forward ? curve.setFirstPoint(position) : curve.setLastPoint(position)
+    if (forward) curve.setFirstPoint(position)
+    else curve.setLastPoint(position)
 
     gsap.to(this.orbitControls.target, {
       x: targetPosition.x,

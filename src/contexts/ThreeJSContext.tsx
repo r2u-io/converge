@@ -2,9 +2,8 @@ import React, { createContext, ReactNode, useContext, useEffect, useState } from
 
 import * as THREE from 'three'
 
-import PointsData from '../config/points.json'
 import CurvesData from '../config/curves.json'
-
+import PointsData from '../config/points.json'
 import ThreeExperience from '../three/experience'
 import Curve from '../three/experience/Curve'
 
@@ -172,6 +171,4 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   )
 }
 
-export const useThreeContext = (): ThreeContextData => {
-  return useContext(ThreeContext)
-}
+export const useThreeContext = (): ThreeContextData => useContext(ThreeContext)

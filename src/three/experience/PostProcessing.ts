@@ -1,26 +1,37 @@
+import type GUI from 'lil-gui'
 import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
-
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader'
 
-import type GUI from 'lil-gui'
 import type Experience from '.'
 import type Debug from '../utils/Debug'
-
 import type Sizes from '../utils/Sizes'
 import type Camera from './Camera'
 import type Renderer from './Renderer'
 
+interface PassUniform {
+  [uniform: string]: {
+    value: {
+      x: number
+      y: number
+    }
+  }
+}
+
 export default class PostProcessing {
   scene: THREE.Scene
+
   camera: Camera
+
   renderer: Renderer
+
   sizes: Sizes
+
   debug: Debug
 
   debugFolder: GUI | null = null
@@ -28,9 +39,10 @@ export default class PostProcessing {
   instance: EffectComposer | null = null
 
   selectedObjects: THREE.Object3D[] = []
+
   outlinePass: OutlinePass | null = null
 
-  passUniforms: any | null = null
+  passUniforms: PassUniform | null = null
 
   constructor(experience: Experience) {
     this.scene = experience.scene
@@ -99,14 +111,14 @@ export default class PostProcessing {
 
   addAntiAliasPass() {
     const fxaaPass = new ShaderPass(FXAAShader)
-    this.passUniforms = fxaaPass.material.uniforms
+    this.passUniforms = fxaaPass.material.uniforms as PassUniform
     this.instance!.addPass(fxaaPass)
 
     const x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
     const y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
 
-    this.passUniforms.resolution.value.x = x
-    this.passUniforms.resolution.value.y = y
+    this.passUniforms!.resolution.value.x = x
+    this.passUniforms!.resolution.value.y = y
   }
 
   resize() {
@@ -116,8 +128,8 @@ export default class PostProcessing {
     const x = 1 / (this.sizes.width * this.renderer.instance!.getPixelRatio())
     const y = 1 / (this.sizes.height * this.renderer.instance!.getPixelRatio())
 
-    this.passUniforms.resolution.value.x = x
-    this.passUniforms.resolution.value.y = y
+    this.passUniforms!.resolution.value.x = x
+    this.passUniforms!.resolution.value.y = y
   }
 
   update() {

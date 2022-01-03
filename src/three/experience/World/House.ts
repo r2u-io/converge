@@ -1,20 +1,22 @@
-import * as THREE from 'three'
-
 import type GUI from 'lil-gui'
+import * as THREE from 'three'
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
+
+import type Experience from '..'
 import type Debug from '../../utils/Debug'
 import type Resources from '../../utils/Resources'
 
-import Experience from '..'
-import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
-
 export default class House {
   scene: THREE.Scene
+
   resources: Resources
+
   debug: Debug
 
   resource: GLTF
 
   debugFolder: GUI | null = null
+
   model: THREE.Object3D | null = null
 
   constructor(experience: Experience) {

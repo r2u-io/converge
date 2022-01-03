@@ -1,10 +1,14 @@
 import EventEmitter from 'events'
+
 import Stats from 'stats.js'
 
 export default class Time extends EventEmitter {
   start: number
+
   current: number
+
   elapsed: number
+
   delta: number
 
   stats: Stats

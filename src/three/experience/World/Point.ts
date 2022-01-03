@@ -1,17 +1,21 @@
+import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
-import type GUI from 'lil-gui'
 import type Experience from '..'
 import type Debug from '../../utils/Debug'
 import type Resources from '../../utils/Resources'
 
 export default class Point {
   scene: THREE.Scene
+
   resources: Resources
+
   debug: Debug
 
   geometry: THREE.SphereGeometry | null = null
+
   material: THREE.MeshBasicMaterial | null = null
+
   mesh: THREE.Mesh | null = null
 
   debugFolder: GUI | null = null

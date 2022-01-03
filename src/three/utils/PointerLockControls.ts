@@ -9,20 +9,24 @@ const changeEvent = { type: 'change' }
 const lockEvent = { type: 'lock' }
 const unlockEvent = { type: 'unlock' }
 
+interface FallbackEvent extends MouseEvent {
+  mozMovementX?: number
+  webkitMovementX?: number
+  mozMovementY?: number
+  webkitMovementY?: number
+}
+
 export class PointerLockControls extends THREE.EventDispatcher {
   public camera: THREE.Camera
+
   public domElement: Element
-  public isLocked: boolean = false
+
+  public isLocked = false
 
   private _sensitivity: number
 
   constructor(camera: THREE.Camera, domElement: Element) {
     super()
-
-    if (domElement === undefined) {
-      console.warn('THREE.PointerLockControls: The second parameter "domElement" is now mandatory.')
-      domElement = document.body
-    }
 
     this.camera = camera
     this.domElement = domElement
@@ -44,13 +48,13 @@ export class PointerLockControls extends THREE.EventDispatcher {
   public connect() {
     document.addEventListener('mousemove', this.onMouseMove, false)
     document.addEventListener('pointerlockchange', this.onPointerlockChange, false)
-    document.addEventListener('pointerlockerror', this.onPointerlockError, false)
+    document.addEventListener('pointerlockerror', PointerLockControls.onPointerlockError, false)
   }
 
   public disconnect() {
     document.removeEventListener('mousemove', this.onMouseMove, false)
     document.removeEventListener('pointerlockchange', this.onPointerlockChange, false)
-    document.removeEventListener('pointerlockerror', this.onPointerlockError, false)
+    document.removeEventListener('pointerlockerror', PointerLockControls.onPointerlockError, false)
   }
 
   public dispose() {
@@ -62,9 +66,8 @@ export class PointerLockControls extends THREE.EventDispatcher {
     return this.camera
   }
 
-  public getDirection = (v: THREE.Vector3) => {
-    return v.copy(direction).applyQuaternion(this.camera.quaternion)
-  }
+  public getDirection = (v: THREE.Vector3) =>
+    v.copy(direction).applyQuaternion(this.camera.quaternion)
 
   public moveForward(distance: number): void {
     // move forward parallel to the xz-plane
@@ -84,17 +87,15 @@ export class PointerLockControls extends THREE.EventDispatcher {
     this.domElement.requestPointerLock()
   }
 
-  public unlock(): void {
+  static unlock(): void {
     document.exitPointerLock()
   }
 
-  private onMouseMove = (event: MouseEvent) => {
+  private onMouseMove = (event: FallbackEvent) => {
     if (this.isLocked === false) return
 
-    var movementX =
-      event.movementX || (event as any).mozMovementX || (event as any).webkitMovementX || 0
-    var movementY =
-      event.movementY || (event as any).mozMovementY || (event as any).webkitMovementY || 0
+    const movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0
+    const movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0
 
     euler.setFromQuaternion(this.camera.quaternion)
 
@@ -118,7 +119,7 @@ export class PointerLockControls extends THREE.EventDispatcher {
     }
   }
 
-  private onPointerlockError = () => {
+  static onPointerlockError = () => {
     console.error('THREE.PointerLockControls: Unable to use Pointer Lock API')
   }
 }

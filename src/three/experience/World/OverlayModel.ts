@@ -1,17 +1,22 @@
 import * as THREE from 'three'
 
 import type Experience from '..'
-import type Raycaster from '../Raycaster'
 import type Sizes from '../../utils/Sizes'
 import type Camera from '../Camera'
 import type PostProcessing from '../PostProcessing'
+import type Raycaster from '../Raycaster'
 
 export default class OverlayModel {
   canvas: HTMLCanvasElement
+
   sizes: Sizes
+
   scene: THREE.Scene
+
   raycaster: Raycaster
+
   camera: Camera
+
   postProcessing: PostProcessing
 
   name: string
@@ -20,8 +25,9 @@ export default class OverlayModel {
 
   onOpen: () => void
 
-  clicked: boolean = false
-  drag: boolean = false
+  clicked = false
+
+  drag = false
 
   constructor(experience: Experience, name: string, onOpen: () => void) {
     this.canvas = experience.canvas
@@ -46,7 +52,9 @@ export default class OverlayModel {
   setListener() {
     if (!this.model) return
 
-    this.canvas.addEventListener('mousedown', () => (this.drag = false))
+    this.canvas.addEventListener('mousedown', () => {
+      this.drag = false
+    })
 
     this.canvas.addEventListener('mouseup', (event) => {
       if (!this.model) return

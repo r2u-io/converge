@@ -1,6 +1,6 @@
+import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
-import type GUI from 'lil-gui'
 import type Experience from '..'
 import type Debug from '../../utils/Debug'
 import type Resources from '../../utils/Resources'
@@ -12,12 +12,15 @@ interface EnvironmentMap {
 
 export default class Environment {
   scene: THREE.Scene
+
   resources: Resources
+
   debug: Debug
 
   debugFolder: GUI | null = null
 
   sunLight: THREE.DirectionalLight | null = null
+
   environmentMap: EnvironmentMap | null = null
 
   constructor(experience: Experience) {
