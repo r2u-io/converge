@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+
 import QRCode from 'qrcode.react'
 import * as THREE from 'three'
 
-import { Container } from './styles'
-import Model from '../../three/experience/World/Model'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
+import Model from '../../three/experience/World/Model'
+import { Container } from './styles'
 
 interface Props {
   title: string

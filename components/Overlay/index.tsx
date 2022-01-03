@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useThreeContext } from '../../contexts/ThreeJSContext'
 
 import Image from 'next/image'
 
-import { Container } from './styles'
+import { useThreeContext } from '../../contexts/ThreeJSContext'
 import OverlayModel from '../../three/experience/World/OverlayModel'
+import { Container } from './styles'
 
 const Canvas: React.FC = () => {
   const {
@@ -56,22 +56,25 @@ const Canvas: React.FC = () => {
       )}
       {!onFreeTour && (
         <>
-          <button disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
+          <button type='button' disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
             Back
           </button>
-          <button disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
+          <button type='button' disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
             Next
           </button>
         </>
       )}
       {openMap && (
         <div className='map'>
-          <button onClick={() => setOpenMap(false)}>X</button>
+          <button type='button' onClick={() => setOpenMap(false)}>
+            X
+          </button>
           <Image src='/images/map.svg' alt='map' height={300} width={500} />
         </div>
       )}
       {canActivateFreeTour && (
         <button
+          type='button'
           onClick={() => {
             setCanActivateFreeTour(false)
             activateFreeTour()

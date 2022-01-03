@@ -10,8 +10,8 @@ const Home: React.FC = () => (
     <Head>
       <title>Converge</title>
     </Head>
-    <Canvas></Canvas>
-    <Overlay></Overlay>
+    <Canvas />
+    <Overlay />
   </>
 )
 

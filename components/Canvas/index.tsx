@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 
-import { Container, CardsContainer } from './styles'
-
-import Card from '../Card'
-
-import ThreeExperience from '../../three/experience'
 import ModelsData from '../../config/models.json'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
+import ThreeExperience from '../../three/experience'
+import Card from '../Card'
+import { Container, CardsContainer } from './styles'
 
-const Canvas: React.FC = ({}) => {
+const Canvas: React.FC = () => {
   const ref = useRef(null)
 
   const { threeExperience, setSceneLoaded, setThreeExperience } = useThreeContext()
@@ -23,7 +21,7 @@ const Canvas: React.FC = ({}) => {
 
   return (
     <Container>
-      <canvas ref={ref}></canvas>
+      <canvas ref={ref} />
       <CardsContainer>
         {ModelsData.map((model) => (
           <Card key={model.name} {...model} />

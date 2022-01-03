@@ -1,3 +1,5 @@
+/* eslint-disable react/no-danger */
+
 import Document, { Head, Html, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 

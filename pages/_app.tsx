@@ -1,6 +1,8 @@
-import type { AppProps } from 'next/app'
 import React from 'react'
+
+import type { AppProps } from 'next/app'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+
 import { ThreeProvider } from '../contexts/ThreeJSContext'
 
 const GlobalStyle = createGlobalStyle`
