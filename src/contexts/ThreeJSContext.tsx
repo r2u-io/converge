@@ -3,6 +3,7 @@ import React, { createContext, ReactNode, useContext, useEffect, useState } from
 import * as THREE from 'three'
 
 import CurvesData from '../config/curves.json'
+import ModelsData from '../config/models.json'
 import PointsData from '../config/points.json'
 import ThreeExperience from '../three/experience'
 import Curve from '../three/experience/Curve'
@@ -51,6 +52,9 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
 
   useEffect(() => {
     if (!threeExperience || !loaded) return
+    threeExperience.raycaster.interactions = ModelsData.filter(({ floor }) => floor === 0).map(
+      ({ name }) => name
+    )
     threeExperience.camera.toPoint(PointsData[0])
   }, [threeExperience, loaded])
 
@@ -70,6 +74,10 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   useEffect(() => {
     if (!threeExperience || !curves || !moving || onFreeTour) return
     const { curve, duration } = curves[activePoint - 1 * Number(forward)]
+
+    threeExperience.raycaster.interactions = ModelsData.filter(
+      ({ floor }) => floor === activePoint
+    ).map(({ name }) => name)
 
     threeExperience.camera
       .followCurve(

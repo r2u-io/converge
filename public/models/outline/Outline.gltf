@@ -1,0 +1,87 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v1.7.33",
+    "version": "2.0"
+  },
+  "extensionsUsed": ["KHR_draco_mesh_compression"],
+  "extensionsRequired": ["KHR_draco_mesh_compression"],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [0]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "yacht",
+      "rotation": [0, 0.8600902557373047, 0, 0.510141909122467],
+      "scale": [1.1182035207748413, 1.1182034015655518, 1.1182035207748413],
+      "translation": [-3.030867576599121, 6.150196075439453, 5.421031475067139]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "yacht",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 3,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 2586,
+      "max": [0.30171656608581543, 1.048874855041504, 1.773179531097412],
+      "min": [-0.30171656608581543, 0.043244391679763794, -1.1524308919906616],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2586,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2586,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3198,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12609,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 12612,
+      "uri": "Outline.bin"
+    }
+  ]
+}

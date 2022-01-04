@@ -53,7 +53,7 @@ export default class Model {
     this.point = new THREE.Vector3(point.x, point.y, point.z)
 
     this.setModel()
-    this.setListener()
+    this.setListeners()
   }
 
   setModel() {
@@ -61,51 +61,27 @@ export default class Model {
     this.model = model
   }
 
-  setListener() {
-    if (!this.model) return
-
-    this.canvas.addEventListener('mousedown', () => {
-      this.drag = false
-    })
-
-    this.canvas.addEventListener('mouseup', (event) => {
+  setListeners() {
+    this.raycaster.on('object-hover', (name) => {
       if (!this.model) return
-      if (this.drag) return
-
-      const mouse = new THREE.Vector2()
-      mouse.x = (event.clientX / this.sizes.width) * 2 - 1
-      mouse.y = -(event.clientY / this.sizes.height) * 2 + 1
-      this.raycaster.instance!.setFromCamera(mouse, this.camera.instance!)
-
-      const [intersect] = this.raycaster.instance!.intersectObject(this.model)
-
-      if (intersect) {
-        this.clicked = true
-        this.card!.classList.add('visible')
-      } else if (this.clicked) {
-        this.clicked = false
-        this.card!.classList.remove('visible')
-      }
-    })
-
-    this.canvas.addEventListener('mousemove', (event) => {
-      this.drag = true
-
-      if (!this.model) return
-
-      const mouse = new THREE.Vector2()
-      mouse.x = (event.clientX / this.sizes.width) * 2 - 1
-      mouse.y = -(event.clientY / this.sizes.height) * 2 + 1
-      this.raycaster.instance!.setFromCamera(mouse, this.camera.instance!)
-
-      const [intersect] = this.raycaster.instance!.intersectObject(this.model)
-
-      if (intersect) {
+      if (name === this.name) {
         this.postProcessing.selectedObjects = [this.model]
       } else {
         this.postProcessing.selectedObjects = this.postProcessing.selectedObjects.filter(
           (object) => object !== this.model
         )
+      }
+    })
+
+    this.raycaster.on('object-click', (name) => {
+      if (!this.model) return
+
+      if (name === this.name) {
+        this.clicked = true
+        this.card!.classList.add('visible')
+      } else if (this.clicked) {
+        this.clicked = false
+        this.card!.classList.remove('visible')
       }
     })
   }
