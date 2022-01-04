@@ -468,7 +468,7 @@
     },
     {
       "sampler": 0,
-      "extensions": { "KHR_texture_basisu": { "source": 5 } }
+      "source": 5
     },
     {
       "sampler": 0,
@@ -520,7 +520,7 @@
     {
       "mimeType": "image/png",
       "name": "mapa",
-      "uri": "mapa.ktx2"
+      "uri": "mapa.png"
     },
     {
       "mimeType": "image/jpeg",
