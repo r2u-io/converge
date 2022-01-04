@@ -45,10 +45,12 @@ export default class Experience {
 
     // THREE
     this.scene = new THREE.Scene()
-    this.resources = new Resources(sources)
 
     this.camera = new Camera(this)
     this.renderer = new Renderer(this)
+
+    this.resources = new Resources(sources, this.renderer.instance!)
+
     this.world = new World(this)
     this.raycaster = new Raycaster(this)
     this.postProcessing = new PostProcessing(this)
