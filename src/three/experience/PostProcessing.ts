@@ -26,6 +26,8 @@ interface PassUniform {
 export default class PostProcessing {
   scene: THREE.Scene
 
+  canvas: HTMLCanvasElement
+
   camera: Camera
 
   renderer: Renderer
@@ -46,6 +48,7 @@ export default class PostProcessing {
 
   constructor(experience: Experience) {
     this.scene = experience.scene
+    this.canvas = experience.canvas
     this.camera = experience.camera
     this.renderer = experience.renderer
     this.sizes = experience.sizes
@@ -137,6 +140,8 @@ export default class PostProcessing {
   }
 
   update() {
+    if (this.selectedObjects.length) this.canvas.style.cursor = 'pointer'
+    else this.canvas.style.cursor = 'default'
     if (this.outlinePass) this.outlinePass.selectedObjects = this.selectedObjects
     this.instance!.render()
   }

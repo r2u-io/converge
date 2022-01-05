@@ -3,22 +3,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
+import Buttons from '../Buttons'
 import { Container } from './styles'
 
 const Overlay: React.FC = () => {
-  const {
-    threeExperience,
-    loaded,
-    nextPoint,
-    prevPoint,
-    isFirstPoint,
-    isLastPoint,
-    moving,
-    onFreeTour,
-    activateFreeTour
-  } = useThreeContext()
-
-  const disabled = !threeExperience || !loaded
+  const { isLastPoint, moving, onFreeTour, activateFreeTour } = useThreeContext()
 
   const [openMap, setOpenMap] = useState(false)
 
@@ -44,16 +33,7 @@ const Overlay: React.FC = () => {
           </div>
         </div>
       )}
-      {!onFreeTour && (
-        <>
-          <button type='button' disabled={disabled || isFirstPoint || moving} onClick={prevPoint}>
-            Back
-          </button>
-          <button type='button' disabled={disabled || isLastPoint || moving} onClick={nextPoint}>
-            Next
-          </button>
-        </>
-      )}
+      {!onFreeTour && <Buttons />}
       {openMap && (
         <div className='map'>
           <button type='button' onClick={() => setOpenMap(false)}>
