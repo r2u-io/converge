@@ -21,7 +21,7 @@ export const UIContext = createContext<UIContextData>({} as UIContextData)
 export const UIProvider: React.FC<Props> = ({ children }: Props) => {
   const [menuOpened, setMenuOpened] = useState(false)
   const [mapOpened, setMapOpened] = useState(false)
-  const [teamOpened, setTeamOpened] = useState(true)
+  const [teamOpened, setTeamOpened] = useState(false)
 
   const openMenu = () => setMenuOpened(true)
   const openMap = () => setMapOpened(true)
