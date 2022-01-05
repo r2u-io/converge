@@ -138,6 +138,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(0)
     setMoving(true)
     setOnFreeTour(true)
+    threeExperience!.raycaster.floor = -1
 
     threeExperience.camera.openFOV(duration)
     threeExperience.camera
