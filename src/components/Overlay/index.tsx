@@ -1,26 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import Image from 'next/image'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import Buttons from '../Buttons'
+import Header from '../Header'
 import { Container } from './styles'
 
 const Overlay: React.FC = () => {
-  const { isLastPoint, moving, onFreeTour, activateFreeTour } = useThreeContext()
+  const { moving, onFreeTour } = useThreeContext()
 
   const [openMap, setOpenMap] = useState(false)
 
-  const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
-
   const instructionsRef = useRef(null)
-
-  useEffect(() => {
-    if (isLastPoint && !canActivateFreeTour) setCanActivateFreeTour(true)
-  }, [isLastPoint, canActivateFreeTour])
 
   return (
     <Container>
+      <Header />
       {onFreeTour && !moving && (
         <div ref={instructionsRef} className='blocker'>
           <div className='instructions '>

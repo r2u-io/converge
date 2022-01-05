@@ -20,6 +20,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
+    text-transform: uppercase;
 
     outline: none;
     border: none;
@@ -40,15 +41,10 @@ export const Container = styled.div`
     }
   }
 
-  .back {
-    height: 100%;
-    font-size: 1.5rem;
-    margin: 0 20px;
-  }
-
+  .back,
   .next {
     height: 100%;
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0 20px;
   }
 

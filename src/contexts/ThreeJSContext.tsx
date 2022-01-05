@@ -19,16 +19,16 @@ interface Props {
 interface ThreeContextData {
   loaded: boolean
   threeExperience?: ThreeExperience
-  setThreeExperience: (threeExperience: ThreeExperience) => void
-  setSceneLoaded: () => void
-  nextPoint: () => void
-  prevPoint: () => void
-  toPoint: (point: number) => void
   activePoint: number
   isFirstPoint: boolean
   isLastPoint: boolean
   moving: boolean
   onFreeTour: boolean
+  setThreeExperience: (threeExperience: ThreeExperience) => void
+  setSceneLoaded: () => void
+  nextPoint: () => void
+  prevPoint: () => void
+  toPoint: (point: number) => void
   activateFreeTour: () => void
 }
 
@@ -170,16 +170,16 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       value={{
         loaded,
         threeExperience,
-        setThreeExperience,
-        setSceneLoaded,
-        nextPoint,
-        prevPoint,
-        toPoint,
         activePoint,
         isFirstPoint,
         isLastPoint,
         moving,
         onFreeTour,
+        setThreeExperience,
+        setSceneLoaded,
+        nextPoint,
+        prevPoint,
+        toPoint,
         activateFreeTour
       }}
     >

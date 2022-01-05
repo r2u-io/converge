@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+
   position: absolute;
   top: 0;
   left: 0;
