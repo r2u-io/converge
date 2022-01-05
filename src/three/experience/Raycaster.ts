@@ -27,6 +27,7 @@ export default class Raycaster extends EventEmitter {
 
   constructor(experience: Experience) {
     super()
+    this.setMaxListeners(200)
 
     this.canvas = experience.canvas
     this.scene = experience.scene
