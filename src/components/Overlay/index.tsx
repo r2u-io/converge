@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { Container } from './styles'
 
-const Canvas: React.FC = () => {
+const Overlay: React.FC = () => {
   const {
     threeExperience,
     loaded,
@@ -73,8 +73,11 @@ const Canvas: React.FC = () => {
           Tour
         </button>
       )}
+      <div className='portrait'>
+        <span>For a better experience, please turn your device to landscape mode.</span>
+      </div>
     </Container>
   )
 }
 
-export default Canvas
+export default Overlay

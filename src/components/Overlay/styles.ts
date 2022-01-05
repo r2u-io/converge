@@ -16,18 +16,6 @@ export const Container = styled.div`
 
   padding: 5% 30%;
 
-  .back {
-    position: absolute;
-    top: 90%;
-    left: calc(50% - 50px);
-  }
-
-  .go {
-    position: absolute;
-    top: 90%;
-    left: calc(50% + 50px);
-  }
-
   .map {
     position: absolute;
 
@@ -61,7 +49,8 @@ export const Container = styled.div`
     display: none;
   }
 
-  .blocker {
+  .blocker,
+  .portrait {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -73,7 +62,8 @@ export const Container = styled.div`
     h2 {
       font-size: 2rem;
     }
-    p {
+    p,
+    span {
       font-size: 1.5rem;
     }
 
@@ -89,6 +79,20 @@ export const Container = styled.div`
       text-align: center;
       font-size: 14px;
       cursor: pointer;
+    }
+  }
+
+  .portrait {
+    display: none;
+  }
+
+  @media (orientation: portrait) {
+    .portrait {
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 `

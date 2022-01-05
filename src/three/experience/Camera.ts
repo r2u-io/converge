@@ -144,9 +144,6 @@ export default class Camera {
     })
 
     document.addEventListener('click', () => this.flyControls?.lock())
-    // document.addEventListener('wheel', (e) => {
-    //   if (this.flyControls) this.flyControls.sensitivity -= Math.sign(e.deltaY) * 0.05
-    // })
     document.addEventListener('keydown', (e) => {
       switch (e.key) {
         case 'w':
