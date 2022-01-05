@@ -38,7 +38,7 @@ const Card: React.FC<Props> = ({ title, url, name, floor }: Props) => {
     <Container ref={cardWrapperRef}>
       <div className='product-card' ref={cardRef}>
         <h2>{title}</h2>
-        <QRCode value={url} renderAs='svg' />
+        <QRCode value={url} renderAs='svg' fgColor='#54439B' bgColor='rgba(0,0,0,0)' />
         <span>See in your space</span>
       </div>
     </Container>
