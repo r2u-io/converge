@@ -11,6 +11,9 @@ interface UIContextData {
   openMenu: () => void
   openMap: () => void
   openTeam: () => void
+  closeMenu: () => void
+  closeMap: () => void
+  closeTeam: () => void
 }
 
 export const UIContext = createContext<UIContextData>({} as UIContextData)
@@ -18,11 +21,15 @@ export const UIContext = createContext<UIContextData>({} as UIContextData)
 export const UIProvider: React.FC<Props> = ({ children }: Props) => {
   const [menuOpened, setMenuOpened] = useState(false)
   const [mapOpened, setMapOpened] = useState(false)
-  const [teamOpened, setTeamOpened] = useState(false)
+  const [teamOpened, setTeamOpened] = useState(true)
 
   const openMenu = () => setMenuOpened(true)
   const openMap = () => setMapOpened(true)
   const openTeam = () => setTeamOpened(true)
+
+  const closeMenu = () => setMenuOpened(false)
+  const closeMap = () => setMapOpened(false)
+  const closeTeam = () => setTeamOpened(false)
 
   return (
     <UIContext.Provider
@@ -32,7 +39,10 @@ export const UIProvider: React.FC<Props> = ({ children }: Props) => {
         teamOpened,
         openMenu,
         openMap,
-        openTeam
+        openTeam,
+        closeMenu,
+        closeMap,
+        closeTeam
       }}
     >
       {children}

@@ -62,4 +62,15 @@ export const Container = styled.div`
       cursor: pointer;
     }
   }
+
+  .fullscreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
 `

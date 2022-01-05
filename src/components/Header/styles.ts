@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  position: absolute;
+interface Props {
+  block: boolean
+}
 
-  top: 0;
+export const Container = styled.div<Props>`
   padding: 20px;
   width: 100%;
 
@@ -12,6 +13,8 @@ export const Container = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  background-color: ${({ block }) => (block ? 'white' : 'none')};
 
   button {
     cursor: pointer;
@@ -32,7 +35,7 @@ export const Container = styled.div`
   }
 
   .logo {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 
   .menu {

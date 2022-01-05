@@ -1,22 +1,21 @@
-import React, { useRef, useState } from 'react'
-
-import Image from 'next/image'
+import React, { useRef } from 'react'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
+import { useUIContext } from '../../contexts/UIContext'
 import Buttons from '../Buttons'
 import Header from '../Header'
+import Map from '../Map'
+import Team from '../Team'
 import { Container } from './styles'
 
 const Overlay: React.FC = () => {
   const { moving, onFreeTour } = useThreeContext()
-
-  const [openMap, setOpenMap] = useState(false)
+  const { mapOpened, teamOpened } = useUIContext()
 
   const instructionsRef = useRef(null)
 
   return (
     <Container>
-      <Header />
       {onFreeTour && !moving && (
         <div ref={instructionsRef} className='blocker'>
           <div className='instructions '>
@@ -30,14 +29,11 @@ const Overlay: React.FC = () => {
         </div>
       )}
       {!onFreeTour && <Buttons />}
-      {openMap && (
-        <div className='map'>
-          <button type='button' onClick={() => setOpenMap(false)}>
-            X
-          </button>
-          <Image src='/images/map.svg' alt='map' height={300} width={500} />
-        </div>
-      )}
+      <div className='fullscreen'>
+        <Header />
+        {mapOpened && <Map />}
+        {teamOpened && <Team />}
+      </div>
     </Container>
   )
 }
