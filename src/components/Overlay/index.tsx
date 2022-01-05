@@ -32,7 +32,7 @@ const Overlay: React.FC = () => {
       <div className='fullscreen'>
         <Header />
         <Map />
-        {teamOpened && <Team />}
+        <Team />
       </div>
     </Container>
   )
