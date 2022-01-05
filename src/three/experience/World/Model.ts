@@ -5,6 +5,7 @@ import type Sizes from '../../utils/Sizes'
 import type Camera from '../Camera'
 import type PostProcessing from '../PostProcessing'
 import type Raycaster from '../Raycaster'
+import Outline from './Outline'
 
 export default class Model {
   canvas: HTMLCanvasElement
@@ -19,15 +20,23 @@ export default class Model {
 
   postProcessing: PostProcessing
 
+  outline: Outline
+
   name: string
+
+  floor: number
 
   card: HTMLDivElement
 
   cardWrapper: HTMLDivElement
 
-  model: THREE.Object3D | undefined
+  group: THREE.Group | null = null
 
-  point: THREE.Vector3
+  model: THREE.Object3D | null = null
+
+  box: THREE.Mesh | null = null
+
+  point: THREE.Vector3 = new THREE.Vector3()
 
   clicked = false
 
@@ -36,9 +45,9 @@ export default class Model {
   constructor(
     experience: Experience,
     name: string,
+    floor: number,
     card: HTMLDivElement,
-    cardWrapper: HTMLDivElement,
-    point: THREE.Vector3
+    cardWrapper: HTMLDivElement
   ) {
     this.canvas = experience.canvas
     this.sizes = experience.sizes
@@ -46,66 +55,59 @@ export default class Model {
     this.camera = experience.camera
     this.raycaster = experience.raycaster
     this.postProcessing = experience.postProcessing
+    this.outline = experience.world.outline!
 
     this.name = name
+    this.floor = floor
     this.card = card
     this.cardWrapper = cardWrapper
-    this.point = new THREE.Vector3(point.x, point.y, point.z)
 
     this.setModel()
-    this.setListener()
+    this.setListeners()
+
+    experience.world.models.push(this)
   }
 
   setModel() {
-    const model = this.scene.getObjectByName(this.name)
+    const model = this.scene.getObjectByName(this.name)!
+
+    this.point.copy(model.position)
     this.model = model
+
+    const box = new THREE.Box3()
+    box.setFromObject(this.model)
+    const dimensions = new THREE.Vector3().subVectors(box.max, box.min)
+    const boxGeo = new THREE.BoxBufferGeometry(dimensions.x, dimensions.y, dimensions.z)
+    const matrix = new THREE.Matrix4().setPosition(
+      dimensions.addVectors(box.min, box.max).multiplyScalar(0.5)
+    )
+    boxGeo.applyMatrix4(matrix)
+    this.box = new THREE.Mesh(boxGeo, this.outline.material)
+
+    this.scene.add(this.box)
   }
 
-  setListener() {
-    if (!this.model) return
-
-    this.canvas.addEventListener('mousedown', () => {
-      this.drag = false
-    })
-
-    this.canvas.addEventListener('mouseup', (event) => {
+  setListeners() {
+    this.raycaster.on('object-hover', (box) => {
       if (!this.model) return
-      if (this.drag) return
-
-      const mouse = new THREE.Vector2()
-      mouse.x = (event.clientX / this.sizes.width) * 2 - 1
-      mouse.y = -(event.clientY / this.sizes.height) * 2 + 1
-      this.raycaster.instance!.setFromCamera(mouse, this.camera.instance!)
-
-      const [intersect] = this.raycaster.instance!.intersectObject(this.model)
-
-      if (intersect) {
-        this.clicked = true
-        this.card!.classList.add('visible')
-      } else if (this.clicked) {
-        this.clicked = false
-        this.card!.classList.remove('visible')
-      }
-    })
-
-    this.canvas.addEventListener('mousemove', (event) => {
-      this.drag = true
-
-      if (!this.model) return
-
-      const mouse = new THREE.Vector2()
-      mouse.x = (event.clientX / this.sizes.width) * 2 - 1
-      mouse.y = -(event.clientY / this.sizes.height) * 2 + 1
-      this.raycaster.instance!.setFromCamera(mouse, this.camera.instance!)
-
-      const [intersect] = this.raycaster.instance!.intersectObject(this.model)
-
-      if (intersect) {
+      if (box === this.box) {
         this.postProcessing.selectedObjects = [this.model]
       } else {
         this.postProcessing.selectedObjects = this.postProcessing.selectedObjects.filter(
           (object) => object !== this.model
         )
+      }
+    })
+
+    this.raycaster.on('object-click', (box) => {
+      if (!this.model) return
+
+      if (box === this.box) {
+        this.clicked = true
+        this.card!.classList.add('visible')
+      } else if (this.clicked) {
+        this.clicked = false
+        this.card!.classList.remove('visible')
       }
     })
   }

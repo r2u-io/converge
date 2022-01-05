@@ -52,6 +52,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   useEffect(() => {
     if (!threeExperience || !loaded) return
     threeExperience.camera.toPoint(PointsData[0])
+    threeExperience.raycaster.floor = 0
   }, [threeExperience, loaded])
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       )
       .then(() => {
         threeExperience.camera.toPoint(PointsData[activePoint])
+        threeExperience!.raycaster.floor = activePoint
         setMoving(false)
       })
   }, [threeExperience, curves, moving, activePoint, forward, onFreeTour])
@@ -116,6 +118,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(activePoint - 1)
     setMoving(true)
     setForward(false)
+    threeExperience!.raycaster.floor = -1
   }
 
   const nextPoint = () => {
@@ -123,6 +126,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(activePoint + 1)
     setMoving(true)
     setForward(true)
+    threeExperience!.raycaster.floor = -1
   }
 
   const activateFreeTour = () => {

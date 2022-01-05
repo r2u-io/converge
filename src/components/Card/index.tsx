@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import QRCode from 'qrcode.react'
-import * as THREE from 'three'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import Model from '../../three/experience/World/Model'
@@ -9,13 +8,12 @@ import { Container } from './styles'
 
 interface Props {
   title: string
-  price: string
   url: string
   name: string
-  point: number[]
+  floor: number
 }
 
-const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
+const Card: React.FC<Props> = ({ title, url, name, floor }: Props) => {
   const [model, setModel] = useState<Model>()
 
   const { threeExperience, loaded } = useThreeContext()
@@ -26,31 +24,22 @@ const Card: React.FC<Props> = ({ title, url, price, point, name }: Props) => {
   useEffect(() => {
     if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current || model) return
 
-    const vectorPoint = new THREE.Vector3().fromArray(point)
-
     const modelInstance = new Model(
       threeExperience,
       name,
+      floor,
       cardRef.current,
-      cardWrapperRef.current,
-      vectorPoint
+      cardWrapperRef.current
     )
-
     setModel(modelInstance)
-  }, [loaded, threeExperience, cardRef, cardWrapperRef, model, name, point])
-
-  useEffect(() => {
-    if (!model || !threeExperience) return
-    threeExperience.world.models.push(model)
-  }, [model, threeExperience])
+  }, [loaded, threeExperience, cardRef, cardWrapperRef, model, name, floor])
 
   return (
     <Container ref={cardWrapperRef}>
       <div className='product-card' ref={cardRef}>
         <h2>{title}</h2>
-        <QRCode value={url} renderAs='svg' />
+        <QRCode value={url} renderAs='svg' fgColor='#54439B' bgColor='rgba(0,0,0,0)' />
         <span>See in your space</span>
-        <span className='price'>{price}</span>
       </div>
     </Container>
   )

@@ -16,18 +16,6 @@ export const Container = styled.div`
 
   padding: 5% 30%;
 
-  .back {
-    position: absolute;
-    top: 90%;
-    left: calc(50% - 50px);
-  }
-
-  .go {
-    position: absolute;
-    top: 90%;
-    left: calc(50% + 50px);
-  }
-
   .map {
     position: absolute;
 

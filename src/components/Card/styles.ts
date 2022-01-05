@@ -26,20 +26,16 @@ export const Container = styled.div`
 
     pointer-events: none;
 
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.65);
     border-radius: 10px;
     width: 150px;
 
     transform-origin: center;
 
-    color: black;
+    color: #54439b;
 
     h2 {
       margin-top: 0;
-    }
-
-    .price {
-      color: #58f;
     }
   }
 `

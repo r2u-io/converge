@@ -60,10 +60,6 @@ export const Container = styled.div`
       justify-content: center;
 
       padding: 20px;
-
-      .price {
-        color: #58f;
-      }
     }
   }
 

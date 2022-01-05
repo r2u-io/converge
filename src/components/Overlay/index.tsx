@@ -3,10 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
-import OverlayModel from '../../three/experience/World/OverlayModel'
 import { Container } from './styles'
 
-const Canvas: React.FC = () => {
+const Overlay: React.FC = () => {
   const {
     threeExperience,
     loaded,
@@ -22,19 +21,10 @@ const Canvas: React.FC = () => {
   const disabled = !threeExperience || !loaded
 
   const [openMap, setOpenMap] = useState(false)
-  const [model, setModel] = useState<OverlayModel>()
 
   const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
 
   const instructionsRef = useRef(null)
-
-  useEffect(() => {
-    if (!loaded || !threeExperience || model) return
-
-    const modelInstance = new OverlayModel(threeExperience, 'map', () => setOpenMap(true))
-
-    setModel(modelInstance)
-  }, [loaded, threeExperience, model])
 
   useEffect(() => {
     if (isLastPoint && !canActivateFreeTour) setCanActivateFreeTour(true)
@@ -87,4 +77,4 @@ const Canvas: React.FC = () => {
   )
 }
 
-export default Canvas
+export default Overlay
