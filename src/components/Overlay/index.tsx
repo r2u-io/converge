@@ -42,17 +42,6 @@ const Overlay: React.FC = () => {
           <Image src='/images/map.svg' alt='map' height={300} width={500} />
         </div>
       )}
-      {canActivateFreeTour && (
-        <button
-          type='button'
-          onClick={() => {
-            setCanActivateFreeTour(false)
-            activateFreeTour()
-          }}
-        >
-          Tour
-        </button>
-      )}
     </Container>
   )
 }

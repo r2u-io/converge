@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
   position: absolute;
 
-  bottom: 100px;
+  bottom: 20px;
   width: 100%;
 
   pointer-events: none;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 
   button {
@@ -28,8 +28,6 @@ export const Container = styled.div`
     color: #54439b;
 
     padding: 0;
-    height: 50px;
-    width: 50px;
 
     svg {
       color: currentColor;
@@ -43,28 +41,43 @@ export const Container = styled.div`
   }
 
   .back {
+    height: 100%;
     font-size: 1.5rem;
-    margin: 0 10px;
+    margin: 0 20px;
   }
 
   .next {
-    font-size: 2rem;
-    margin: 0 10px;
+    height: 100%;
+    font-size: 3rem;
+    margin: 0 20px;
   }
 
   .dot {
     width: 20px;
     circle {
-      /* transform-origin: center; */
       stroke-width: 0px;
       transition: stroke-width 1s;
     }
 
     &.active {
       circle {
-        /* transform: scale(2, 2); */
         stroke-width: 10px;
       }
+    }
+  }
+
+  .tour {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+
+    hr {
+      width: 10px;
+      border: none;
     }
   }
 `
