@@ -26,9 +26,11 @@ export default class Model {
 
   floor: number
 
-  card: HTMLDivElement
+  card: HTMLDivElement | null
 
-  cardWrapper: HTMLDivElement
+  cardWrapper: HTMLDivElement | null
+
+  onClick: () => void
 
   group: THREE.Group | null = null
 
@@ -46,8 +48,9 @@ export default class Model {
     experience: Experience,
     name: string,
     floor: number,
-    card: HTMLDivElement,
-    cardWrapper: HTMLDivElement
+    card: HTMLDivElement | null,
+    cardWrapper: HTMLDivElement | null,
+    onClick: () => void = () => undefined
   ) {
     this.canvas = experience.canvas
     this.sizes = experience.sizes
@@ -61,6 +64,7 @@ export default class Model {
     this.floor = floor
     this.card = card
     this.cardWrapper = cardWrapper
+    this.onClick = onClick
 
     this.setModel()
     this.setListeners()
@@ -104,16 +108,17 @@ export default class Model {
 
       if (box === this.box) {
         this.clicked = true
-        this.card!.classList.add('visible')
+        this.card?.classList.add('visible')
+        this.onClick()
       } else if (this.clicked) {
         this.clicked = false
-        this.card!.classList.remove('visible')
+        this.card?.classList.remove('visible')
       }
     })
   }
 
   update() {
-    if (!this.clicked) return
+    if (!this.clicked || !this.cardWrapper) return
 
     const screenPosition = this.point.clone()
     screenPosition.project(this.camera.instance!)
@@ -121,6 +126,6 @@ export default class Model {
     const translateX = screenPosition.x * this.sizes.width * 0.5
     const translateY = -screenPosition.y * this.sizes.height * 0.5
 
-    this.cardWrapper!.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
+    this.cardWrapper.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
   }
 }

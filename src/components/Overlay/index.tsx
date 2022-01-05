@@ -31,7 +31,7 @@ const Overlay: React.FC = () => {
       {!onFreeTour && <Buttons />}
       <div className='fullscreen'>
         <Header />
-        {mapOpened && <Map />}
+        <Map />
         {teamOpened && <Team />}
       </div>
     </Container>
