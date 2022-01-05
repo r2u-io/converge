@@ -3,7 +3,6 @@ import React, { createContext, ReactNode, useContext, useEffect, useState } from
 import * as THREE from 'three'
 
 import CurvesData from '../config/curves.json'
-import ModelsData from '../config/models.json'
 import PointsData from '../config/points.json'
 import ThreeExperience from '../three/experience'
 import Curve from '../three/experience/Curve'
@@ -52,10 +51,8 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
 
   useEffect(() => {
     if (!threeExperience || !loaded) return
-    threeExperience.raycaster.interactions = ModelsData.filter(({ floor }) => floor === 0).map(
-      ({ name }) => name
-    )
     threeExperience.camera.toPoint(PointsData[0])
+    threeExperience.raycaster.floor = 0
   }, [threeExperience, loaded])
 
   useEffect(() => {
@@ -75,10 +72,6 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     if (!threeExperience || !curves || !moving || onFreeTour) return
     const { curve, duration } = curves[activePoint - 1 * Number(forward)]
 
-    threeExperience.raycaster.interactions = ModelsData.filter(
-      ({ floor }) => floor === activePoint
-    ).map(({ name }) => name)
-
     threeExperience.camera
       .followCurve(
         curve,
@@ -88,6 +81,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       )
       .then(() => {
         threeExperience.camera.toPoint(PointsData[activePoint])
+        threeExperience!.raycaster.floor = activePoint
         setMoving(false)
       })
   }, [threeExperience, curves, moving, activePoint, forward, onFreeTour])
@@ -124,6 +118,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(activePoint - 1)
     setMoving(true)
     setForward(false)
+    threeExperience!.raycaster.floor = -1
   }
 
   const nextPoint = () => {
@@ -131,6 +126,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(activePoint + 1)
     setMoving(true)
     setForward(true)
+    threeExperience!.raycaster.floor = -1
   }
 
   const activateFreeTour = () => {

@@ -17,6 +17,8 @@ export default class Outline {
 
   debugFolder: GUI | null = null
 
+  material: THREE.MeshBasicMaterial
+
   model: THREE.Object3D | null = null
 
   constructor(experience: Experience) {
@@ -29,6 +31,11 @@ export default class Outline {
     }
 
     this.resource = this.resources.items.outlineModel as GLTF
+    this.material = new THREE.MeshBasicMaterial({
+      side: THREE.BackSide,
+      transparent: true,
+      opacity: 0
+    })
 
     this.setModel()
   }
@@ -36,7 +43,12 @@ export default class Outline {
   setModel() {
     this.model = this.resource.scene
 
-    this.model.position.setY(0.5)
+    this.model.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        child.material = this.material
+      }
+    })
+
     this.scene.add(this.model)
   }
 }
