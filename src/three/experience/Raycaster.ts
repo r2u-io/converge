@@ -47,6 +47,8 @@ export default class Raycaster extends EventEmitter {
 
   set floor(value: number) {
     this.models = this.world.models.filter((model) => model.floor === value)
+    this.emit('object-click', null)
+    this.emit('object-hover', null)
   }
 
   setDownListener() {
