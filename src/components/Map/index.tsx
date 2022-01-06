@@ -9,15 +9,15 @@ import { Container } from './styles'
 
 const Map: React.FC = () => {
   const { mapOpened, openMap, closeMap } = useUIContext()
-  const { loaded, threeExperience } = useThreeContext()
+  const { sceneReady, threeExperience } = useThreeContext()
 
   const [model, setModel] = useState<Model>()
 
   useEffect(() => {
-    if (!loaded || !threeExperience || model) return
+    if (!sceneReady || !threeExperience || model) return
     const modelInstance = new Model(threeExperience, 'map', 1, null, null, openMap)
     setModel(modelInstance)
-  }, [loaded, threeExperience, model])
+  }, [sceneReady, threeExperience, model])
 
   return mapOpened ? (
     <Container onClick={closeMap}>

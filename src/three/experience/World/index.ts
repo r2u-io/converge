@@ -25,7 +25,7 @@ export default class World {
     this.scene = experience.scene
     this.resources = experience.resources
 
-    this.resources.on('ready', () => {
+    this.resources.on('load', () => {
       this.house = new House(experience)
       this.environment = new Environment(experience)
       this.outline = new Outline(experience)
@@ -33,6 +33,8 @@ export default class World {
       if (experience.debug.active) this.point = new Point(experience)
 
       this.environment.updateMaterials()
+
+      this.resources.emit('ready')
     })
   }
 

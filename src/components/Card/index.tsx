@@ -16,13 +16,14 @@ interface Props {
 const Card: React.FC<Props> = ({ title, url, name, floor }: Props) => {
   const [model, setModel] = useState<Model>()
 
-  const { threeExperience, loaded } = useThreeContext()
+  const { threeExperience, sceneReady } = useThreeContext()
 
   const cardRef = useRef<HTMLDivElement>(null)
   const cardWrapperRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!loaded || !threeExperience || !cardRef.current || !cardWrapperRef.current || model) return
+    if (!sceneReady || !threeExperience || !cardRef.current || !cardWrapperRef.current || model)
+      return
 
     const modelInstance = new Model(
       threeExperience,
@@ -32,7 +33,7 @@ const Card: React.FC<Props> = ({ title, url, name, floor }: Props) => {
       cardWrapperRef.current
     )
     setModel(modelInstance)
-  }, [loaded, threeExperience, cardRef, cardWrapperRef, model, name, floor])
+  }, [sceneReady, threeExperience, cardRef, cardWrapperRef, model, name, floor])
 
   return (
     <Container ref={cardWrapperRef}>

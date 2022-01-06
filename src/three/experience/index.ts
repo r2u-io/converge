@@ -58,7 +58,7 @@ export default class Experience {
     // Event bindings
     this.sizes.on('resize', () => this.resize())
     this.time.on('tick', () => this.update())
-    this.resources.on('ready', () => onLoad())
+    this.resources.on('load', () => onLoad())
   }
 
   resize() {

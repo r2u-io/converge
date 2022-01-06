@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import Buttons from '../Buttons'
 import Header from '../Header'
+import LoadingScreen from '../LoadingScreen'
 import Map from '../Map'
 import Team from '../Team'
 import { Container } from './styles'
@@ -32,6 +33,7 @@ const Overlay: React.FC = () => {
         <Map />
         <Team />
       </div>
+      <LoadingScreen />
     </Container>
   )
 }

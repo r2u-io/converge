@@ -7,7 +7,6 @@ import { Container } from './styles'
 const Buttons: React.FC = () => {
   const {
     threeExperience,
-    loaded,
     activePoint,
     isFirstPoint,
     isLastPoint,
@@ -17,8 +16,6 @@ const Buttons: React.FC = () => {
     toPoint,
     activateFreeTour
   } = useThreeContext()
-
-  const disabled = !threeExperience || !loaded
 
   const [lastSeenPoint, setLastSeenPoint] = useState(0)
   const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
@@ -33,7 +30,7 @@ const Buttons: React.FC = () => {
       <button
         type='button'
         className='back'
-        disabled={disabled || isFirstPoint || moving}
+        disabled={!threeExperience || isFirstPoint || moving}
         onClick={prevPoint}
       >
         Back
@@ -42,7 +39,7 @@ const Buttons: React.FC = () => {
         <button
           type='button'
           className={`dot ${index === activePoint ? 'active' : ''}`}
-          disabled={disabled || moving || index > lastSeenPoint}
+          disabled={!threeExperience || moving || index > lastSeenPoint}
           key={String(index)}
           onClick={() => toPoint(index)}
         >
@@ -54,7 +51,7 @@ const Buttons: React.FC = () => {
       <button
         type='button'
         className='next'
-        disabled={disabled || isLastPoint || moving}
+        disabled={!threeExperience || isLastPoint || moving}
         onClick={nextPoint}
       >
         Next
