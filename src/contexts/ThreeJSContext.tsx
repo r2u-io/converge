@@ -19,14 +19,16 @@ interface Props {
 interface ThreeContextData {
   loaded: boolean
   threeExperience?: ThreeExperience
-  setThreeExperience: (threeExperience: ThreeExperience) => void
-  setSceneLoaded: () => void
-  nextPoint: () => void
-  prevPoint: () => void
+  activePoint: number
   isFirstPoint: boolean
   isLastPoint: boolean
   moving: boolean
   onFreeTour: boolean
+  setThreeExperience: (threeExperience: ThreeExperience) => void
+  setSceneLoaded: () => void
+  nextPoint: () => void
+  prevPoint: () => void
+  toPoint: (point: number) => void
   activateFreeTour: () => void
 }
 
@@ -129,6 +131,14 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     threeExperience!.raycaster.floor = -1
   }
 
+  const toPoint = (point: number) => {
+    if (point < 0 || point > PointsData.length - 1) return
+    setActivePoint(point)
+    setMoving(true)
+    setForward(point > activePoint)
+    threeExperience!.raycaster.floor = -1
+  }
+
   const activateFreeTour = () => {
     if (!lastCurve) return
     if (!threeExperience) return
@@ -138,6 +148,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
     setActivePoint(0)
     setMoving(true)
     setOnFreeTour(true)
+    threeExperience!.raycaster.floor = 6
 
     threeExperience.camera.openFOV(duration)
     threeExperience.camera
@@ -159,14 +170,16 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       value={{
         loaded,
         threeExperience,
-        setThreeExperience,
-        setSceneLoaded,
-        nextPoint,
-        prevPoint,
+        activePoint,
         isFirstPoint,
         isLastPoint,
         moving,
         onFreeTour,
+        setThreeExperience,
+        setSceneLoaded,
+        nextPoint,
+        prevPoint,
+        toPoint,
         activateFreeTour
       }}
     >

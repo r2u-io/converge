@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+
   position: absolute;
   top: 0;
   left: 0;
@@ -14,8 +18,6 @@ export const Container = styled.div`
   align-items: flex-end;
   justify-content: space-between;
 
-  padding: 5% 30%;
-
   .map {
     position: absolute;
 
@@ -24,25 +26,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .print {
-    position: absolute;
-    top: 90%;
-    left: calc(50% + 100px);
-  }
-
-  button {
-    cursor: pointer;
-    &:disabled {
-      cursor: default;
-    }
-    pointer-events: all;
-    width: 100px;
-    height: 70px;
-    text-align: center;
-    font-size: 1.2rem;
-    border-radius: 20px;
   }
 
   .hidden {
@@ -78,5 +61,16 @@ export const Container = styled.div`
       font-size: 14px;
       cursor: pointer;
     }
+  }
+
+  .fullscreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
   }
 `
