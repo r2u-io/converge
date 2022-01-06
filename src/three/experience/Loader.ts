@@ -37,6 +37,7 @@ export default class Loader {
     // }
 
     // this.setScreen()
+
     this.resources.on('progress', (p) => onProgress(p))
     this.resources.on('ready', () => gsap.delayedCall(1.0, () => onShow()))
   }
@@ -70,15 +71,13 @@ export default class Loader {
   //   this.scene.add(this.screen)
   // }
 
-  onLoad() {
-    gsap.delayedCall(2, () => this.onShow())
-
-    // gsap.delayedCall(0.5, () => {
-    //   gsap.to(this.material!.uniforms.uAlpha, {
-    //     duration: 3,
-    //     value: 0,
-    //     onComplete: () => this.onShow()
-    //   })
-    // })
-  }
+  // onLoad() {
+  //   gsap.delayedCall(0.5, () => {
+  //     gsap.to(this.material!.uniforms.uAlpha, {
+  //       duration: 3,
+  //       value: 0,
+  //       onComplete: () => this.onShow()
+  //     })
+  //   })
+  // }
 }
