@@ -83,6 +83,7 @@ export default class Renderer {
   updateAllMaterials() {
     this.scene.traverse((child) => {
       if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+        if (child.name !== 'screen') child.renderOrder = 1000
         child.material.needsUpdate = true
       }
     })

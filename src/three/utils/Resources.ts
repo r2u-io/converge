@@ -48,10 +48,15 @@ export default class Resources extends EventEmitter {
   }
 
   setLoaders() {
+    const loadingManager = new THREE.LoadingManager(
+      () => this.emit('load'),
+      (_, itemsLoaded, itemsTotal) => this.emit('progress', itemsLoaded / itemsTotal)
+    )
+
     this.loaders = {
-      gltf: new GLTFLoader(),
-      texture: new THREE.TextureLoader(),
-      cubeTexture: new THREE.CubeTextureLoader()
+      gltf: new GLTFLoader(loadingManager),
+      texture: new THREE.TextureLoader(loadingManager),
+      cubeTexture: new THREE.CubeTextureLoader(loadingManager)
     }
 
     const dracoLoader = new DRACOLoader()
@@ -96,10 +101,5 @@ export default class Resources extends EventEmitter {
 
   sourceLoaded(source: Source, file: LoadedFile) {
     this.items[source.name] = file
-    this.loaded += 1
-
-    if (this.loaded === this.toLoad) {
-      this.emit('ready')
-    }
   }
 }

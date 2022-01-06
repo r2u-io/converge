@@ -9,15 +9,15 @@ import { Container } from './styles'
 
 const Team: React.FC = () => {
   const { teamOpened, openTeam, closeTeam } = useUIContext()
-  const { loaded, threeExperience } = useThreeContext()
+  const { sceneReady, threeExperience } = useThreeContext()
 
   const [model, setModel] = useState<Model>()
 
   useEffect(() => {
-    if (!loaded || !threeExperience || model) return
+    if (!sceneReady || !threeExperience || model) return
     const modelInstance = new Model(threeExperience, 'meet_team', 5, null, null, openTeam)
     setModel(modelInstance)
-  }, [loaded, threeExperience, model])
+  }, [sceneReady, threeExperience, model])
 
   return teamOpened ? (
     <Container onClick={closeTeam}>
