@@ -60,12 +60,6 @@
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
-    "name": "map",
-    "floor": 1,
-    "title": "Map",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
-  {
     "name": "map_base",
     "floor": 1,
     "title": "Map Base",
@@ -603,12 +597,6 @@
     "name": "wire_chair",
     "floor": 5,
     "title": "Wire Chair",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
-  {
-    "name": "meet_team",
-    "floor": 5,
-    "title": "Meet Team",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
