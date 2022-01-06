@@ -21,16 +21,16 @@ export default class Loader {
   // material: THREE.ShaderMaterial | null = null
   // screen: THREE.Mesh | null = null
 
-  onShow: () => void
+  onReady: () => void
 
-  constructor(experience: Experience, onProgress: (p: number) => void, onShow: () => void) {
+  constructor(experience: Experience, onProgress: (p: number) => void, onReady: () => void) {
     this.canvas = experience.canvas
     this.resources = experience.resources
     // this.debug = experience.debug
     // this.scene = experience.scene
     // this.camera = experience.camera
 
-    this.onShow = onShow
+    this.onReady = onReady
 
     // if (this.debug.active) {
     //   this.debugFolder = this.debug.ui!.addFolder('Loader')
@@ -39,7 +39,7 @@ export default class Loader {
     // this.setScreen()
 
     this.resources.on('progress', (p) => onProgress(p))
-    this.resources.on('ready', () => gsap.delayedCall(1.0, () => onShow()))
+    this.resources.on('ready', () => gsap.delayedCall(1.0, () => onReady()))
   }
 
   //  If we want to use a loading screen on THREE.js with custom shader:
