@@ -6,7 +6,6 @@ import { Container } from './styles'
 
 const Buttons: React.FC = () => {
   const {
-    threeExperience,
     activePoint,
     isFirstPoint,
     isLastPoint,
@@ -27,19 +26,14 @@ const Buttons: React.FC = () => {
 
   return (
     <Container>
-      <button
-        type='button'
-        className='back'
-        disabled={!threeExperience || isFirstPoint || moving}
-        onClick={prevPoint}
-      >
+      <button type='button' className='back' disabled={isFirstPoint || moving} onClick={prevPoint}>
         Back
       </button>
-      {PointsData.map((point, index) => (
+      {PointsData.map((_point, index) => (
         <button
           type='button'
           className={`dot ${index === activePoint ? 'active' : ''}`}
-          disabled={!threeExperience || moving || index > lastSeenPoint}
+          disabled={moving || index > lastSeenPoint}
           key={String(index)}
           onClick={() => toPoint(index)}
         >
@@ -48,12 +42,7 @@ const Buttons: React.FC = () => {
           </svg>
         </button>
       ))}
-      <button
-        type='button'
-        className='next'
-        disabled={!threeExperience || isLastPoint || moving}
-        onClick={nextPoint}
-      >
+      <button type='button' className='next' disabled={isLastPoint || moving} onClick={nextPoint}>
         Next
       </button>
       {canActivateFreeTour && (
