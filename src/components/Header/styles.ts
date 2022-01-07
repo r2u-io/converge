@@ -35,10 +35,10 @@ export const Container = styled.div<Props>`
   }
 
   .logo {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .menu {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `
