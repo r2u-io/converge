@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react'
 
 import * as THREE from 'three'
 
@@ -24,6 +24,7 @@ interface ThreeContextData {
   isLastPoint: boolean
   moving: boolean
   onFreeTour: boolean
+  flyInstructionsRef: React.RefObject<HTMLDivElement>
   setThreeExperience: (threeExperience: ThreeExperience) => void
   setSceneReady: (state: boolean) => void
   nextPoint: () => void
@@ -50,6 +51,8 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [onFreeTour, setOnFreeTour] = useState(false)
 
   const house = threeExperience?.world.house
+
+  const flyInstructionsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!threeExperience || !sceneReady) return
@@ -159,7 +162,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
       .then(() => {
         threeExperience.camera.toPoint(PointsData[0])
         setMoving(false)
-        threeExperience!.camera.setFlyControls()
+        threeExperience!.camera.setFreeTour(flyInstructionsRef.current!)
       })
   }
 
@@ -173,6 +176,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
         isLastPoint,
         moving,
         onFreeTour,
+        flyInstructionsRef,
         setThreeExperience,
         setSceneReady,
         nextPoint,

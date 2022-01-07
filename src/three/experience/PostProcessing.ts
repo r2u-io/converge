@@ -12,6 +12,7 @@ import type Experience from '.'
 import type Debug from '../utils/Debug'
 import type Sizes from '../utils/Sizes'
 import type Camera from './Camera'
+import type Raycaster from './Raycaster'
 import type Renderer from './Renderer'
 
 interface PassUniform {
@@ -34,6 +35,10 @@ export default class PostProcessing {
 
   sizes: Sizes
 
+  raycaster: Raycaster
+
+  isMobile: boolean
+
   debug: Debug
 
   debugFolder: GUI | null = null
@@ -51,6 +56,8 @@ export default class PostProcessing {
     this.canvas = experience.canvas
     this.camera = experience.camera
     this.renderer = experience.renderer
+    this.raycaster = experience.raycaster
+    this.isMobile = experience.isMobile
     this.sizes = experience.sizes
     this.debug = experience.debug
 
@@ -142,6 +149,7 @@ export default class PostProcessing {
   update() {
     if (this.selectedObjects.length) this.canvas.style.cursor = 'pointer'
     else this.canvas.style.cursor = 'default'
+    if (this.isMobile) this.selectedObjects = this.raycaster.models.map((model) => model.model!)
     if (this.outlinePass) this.outlinePass.selectedObjects = this.selectedObjects
     this.instance!.render()
   }

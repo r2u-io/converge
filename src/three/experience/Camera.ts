@@ -45,6 +45,8 @@ export default class Camera {
 
   flyControls: PointerLockControls | null = null
 
+  isMobile: boolean
+
   moving = false
 
   vertical = false
@@ -68,6 +70,7 @@ export default class Camera {
     this.sizes = experience.sizes
     this.scene = experience.scene
     this.debug = experience.debug
+    this.isMobile = experience.isMobile
 
     if (this.debug.active) {
       this.debugFolder = this.debug.ui!.addFolder('Camera')
@@ -126,7 +129,12 @@ export default class Camera {
     })
   }
 
-  setFlyControls() {
+  setFreeTour(instructions: HTMLDivElement) {
+    if (!this.isMobile) this.setFlyControls(instructions)
+    else this.setMobileControls(instructions)
+  }
+
+  setFlyControls(instructions: HTMLDivElement) {
     if (this.orbitControls) {
       this.orbitControls.dispose()
       this.orbitControls = null
@@ -135,15 +143,11 @@ export default class Camera {
     this.flyControls = new PointerLockControls(this.instance!, this.canvas)
     this.flyControls.sensitivity = 0.5
 
-    this.flyControls.addEventListener('lock', () => {
-      document.querySelector('.blocker')?.classList.add('hidden')
-    })
+    instructions.addEventListener('click', () => this.flyControls?.lock())
 
-    this.flyControls.addEventListener('unlock', () => {
-      document.querySelector('.blocker')?.classList.remove('hidden')
-    })
+    this.flyControls.addEventListener('lock', () => instructions.classList.add('hidden'))
+    this.flyControls.addEventListener('unlock', () => instructions.classList.remove('hidden'))
 
-    document.addEventListener('click', () => this.flyControls?.lock())
     document.addEventListener('keydown', (e) => {
       switch (e.key) {
         case 'w':
@@ -186,6 +190,12 @@ export default class Camera {
     }
 
     this.scene.add(this.flyControls.getObject())
+  }
+
+  setMobileControls(instructions: HTMLDivElement) {
+    this.resetControls()
+    this.orbitControls!.enablePan = true
+    instructions.addEventListener('click', () => instructions.classList.add('hidden'))
   }
 
   resize() {

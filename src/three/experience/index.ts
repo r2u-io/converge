@@ -34,9 +34,12 @@ export default class Experience {
 
   raycaster: Raycaster
 
-  constructor(canvas: HTMLCanvasElement, onLoad: () => void) {
+  isMobile: boolean
+
+  constructor(canvas: HTMLCanvasElement, onLoad: () => void, isMobile: boolean) {
     // Options
     this.canvas = canvas
+    this.isMobile = isMobile
 
     // Setup
     this.debug = new Debug()
