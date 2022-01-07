@@ -26,6 +26,8 @@ interface PassUniform {
 export default class PostProcessing {
   scene: THREE.Scene
 
+  canvas: HTMLCanvasElement
+
   camera: Camera
 
   renderer: Renderer
@@ -46,6 +48,7 @@ export default class PostProcessing {
 
   constructor(experience: Experience) {
     this.scene = experience.scene
+    this.canvas = experience.canvas
     this.camera = experience.camera
     this.renderer = experience.renderer
     this.sizes = experience.sizes
@@ -100,8 +103,11 @@ export default class PostProcessing {
       this.scene,
       this.camera.instance!
     )
-    this.outlinePass.visibleEdgeColor.set('#d98911')
-    this.outlinePass.hiddenEdgeColor.set('#d98911')
+    this.outlinePass.visibleEdgeColor.set('#ff9900')
+    this.outlinePass.hiddenEdgeColor.set('#ff9900')
+    this.outlinePass.edgeThickness = 0.1
+    this.outlinePass.edgeStrength = 10
+
     this.instance!.addPass(this.outlinePass)
   }
 
@@ -134,6 +140,8 @@ export default class PostProcessing {
   }
 
   update() {
+    if (this.selectedObjects.length) this.canvas.style.cursor = 'pointer'
+    else this.canvas.style.cursor = 'default'
     if (this.outlinePass) this.outlinePass.selectedObjects = this.selectedObjects
     this.instance!.render()
   }

@@ -9,15 +9,15 @@ import { Container, CardsContainer } from './styles'
 const Canvas: React.FC = () => {
   const ref = useRef(null)
 
-  const { threeExperience, setSceneLoaded, setThreeExperience } = useThreeContext()
+  const { threeExperience, setSceneReady, setThreeExperience } = useThreeContext()
 
   useEffect(() => {
     if (!ref.current || threeExperience) return
 
-    const experienceInstance = new ThreeExperience(ref.current, setSceneLoaded)
+    const experienceInstance = new ThreeExperience(ref.current, () => setSceneReady(true))
 
     setThreeExperience(experienceInstance)
-  }, [ref, threeExperience, setSceneLoaded, setThreeExperience])
+  }, [ref, threeExperience, setSceneReady, setThreeExperience])
 
   return (
     <Container>
