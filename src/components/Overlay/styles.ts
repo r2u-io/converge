@@ -64,6 +64,8 @@ export const Container = styled.div`
 
       text-align: center;
       font-size: 14px;
+
+      pointer-events: all;
       cursor: pointer;
     }
   }

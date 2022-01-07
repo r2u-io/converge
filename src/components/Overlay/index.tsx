@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import Buttons from '../Buttons'
@@ -9,9 +9,7 @@ import Team from '../Team'
 import { Container } from './styles'
 
 const Overlay: React.FC = () => {
-  const { moving, onFreeTour } = useThreeContext()
-
-  const instructionsRef = useRef(null)
+  const { moving, onFreeTour, flyInstructionsRef, threeExperience } = useThreeContext()
 
   const [showPortraitPrompt, setShowPortraitPrompt] = useState(true)
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -29,14 +27,24 @@ const Overlay: React.FC = () => {
   return (
     <Container>
       {onFreeTour && !moving && (
-        <div ref={instructionsRef} className='blocker'>
+        <div ref={flyInstructionsRef} className='blocker'>
           <div className='instructions '>
             <h2>Click to play</h2>
-            <p>
-              Move: WASD
-              <br />
-              Look: MOUSE
-            </p>
+            {threeExperience!.isMobile ? (
+              <p>
+                Rotate: TOUCH/MOVE 1 Finger
+                <br />
+                Zoom: PINCH 2 Fingers
+                <br />
+                Drag: TOUCH/MOVE 2 Fingers
+              </p>
+            ) : (
+              <p>
+                Move: WASD
+                <br />
+                Look: MOUSE
+              </p>
+            )}
           </div>
         </div>
       )}
