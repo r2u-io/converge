@@ -130,7 +130,7 @@ export default class Camera {
   }
 
   setFreeTour(instructions: HTMLDivElement) {
-    if (this.isMobile) this.setFlyControls(instructions)
+    if (!this.isMobile) this.setFlyControls(instructions)
     else this.setMobileControls(instructions)
   }
 
