@@ -36,9 +36,16 @@ export default class Raycaster extends EventEmitter {
     this.world = experience.world
 
     this.setInstance()
-    this.setDownListener()
-    this.setUpListener()
-    this.setMoveListener()
+
+    if (experience.isMobile) {
+      this.setTouchStartListener()
+      this.setTouchMoveListener()
+      this.setTouchEndListener()
+    } else {
+      this.setDownListener()
+      this.setUpListener()
+      this.setMoveListener()
+    }
   }
 
   setInstance() {
@@ -87,6 +94,38 @@ export default class Raycaster extends EventEmitter {
       const [intersect] = this.instance!.intersectObjects(boxes)
 
       this.emit('object-hover', intersect?.object)
+    })
+  }
+
+  setTouchStartListener() {
+    this.canvas.addEventListener('touchstart', () => {
+      this.drag = false
+    })
+  }
+
+  setTouchEndListener() {
+    this.canvas.addEventListener('touchend', (event) => {
+      if (this.drag || event.changedTouches.length !== 1) return
+
+      const mouse = new THREE.Vector2()
+      mouse.x = (event.changedTouches[0].clientX / this.sizes.width) * 2 - 1
+      mouse.y = -(event.changedTouches[0].clientY / this.sizes.height) * 2 + 1
+      this.instance!.setFromCamera(mouse, this.camera.instance!)
+
+      const boxes = this.models.map((model) => model.box!)
+      const [intersect] = this.instance!.intersectObjects(boxes)
+
+      this.emit('object-click', intersect?.object)
+
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+    })
+  }
+
+  setTouchMoveListener() {
+    this.canvas.addEventListener('touchmove', () => {
+      this.drag = true
     })
   }
 }
