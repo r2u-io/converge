@@ -47,12 +47,7 @@
     "title": "Yacht",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
-  {
-    "name": "cta_0",
-    "floor": 0,
-    "title": "Cta 0",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
+
   {
     "name": "cta_r2u",
     "floor": 0,
@@ -89,12 +84,7 @@
     "title": "Player 2",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
-  {
-    "name": "cta_1",
-    "floor": 1,
-    "title": "Cta 1",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
+
   {
     "name": "bar_stool_1",
     "floor": 2,
@@ -269,12 +259,7 @@
     "title": "Washer",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
-  {
-    "name": "cta_2",
-    "floor": 2,
-    "title": "Cta 2",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
+
   {
     "name": "lab_astro",
     "floor": 3,
@@ -293,12 +278,7 @@
     "title": "Ladder",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
-  {
-    "name": "cta_3",
-    "floor": 3,
-    "title": "Cta 3",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
+
   {
     "name": "golden_sculpt",
     "floor": 4,
@@ -473,12 +453,7 @@
     "title": "Nft 24",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
-  {
-    "name": "cta_4",
-    "floor": 4,
-    "title": "Cta 4",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
+
   {
     "name": "bin",
     "floor": 5,
@@ -597,18 +572,6 @@
     "name": "wire_chair",
     "floor": 5,
     "title": "Wire Chair",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
-  {
-    "name": "cta_5",
-    "floor": 5,
-    "title": "Cta 5",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
-  {
-    "name": "cta_6",
-    "floor": 5,
-    "title": "Cta 6",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   }
 ]
