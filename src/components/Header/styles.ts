@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-interface Props {
-  block: boolean
-}
-
-export const Container = styled.div<Props>`
+export const Container = styled.div`
   padding: 20px;
   width: 100%;
 
@@ -14,7 +10,16 @@ export const Container = styled.div<Props>`
   align-items: flex-start;
   justify-content: space-between;
 
-  background-color: ${({ block }) => (block ? 'white' : 'none')};
+  background-color: white;
+
+  position: absolute;
+  height: 100px;
+  top: -100px;
+  transition: top 0.3s;
+
+  &.show {
+    top: 0;
+  }
 
   button {
     cursor: pointer;

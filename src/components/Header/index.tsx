@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useUIContext } from '../../contexts/UIContext'
 import { Container } from './styles'
 
 const Header: React.FC = () => {
-  const { openMenu, mapOpened, teamOpened } = useUIContext()
+  const { openMenu } = useUIContext()
+
+  const [show, setShow] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setShow(false), 3000)
+  }, [])
 
   return (
-    <Container block={mapOpened || teamOpened}>
+    <Container className={show ? 'show' : ''}>
       <button type='button'>
         <span className='logo'>Converge</span>
       </button>
