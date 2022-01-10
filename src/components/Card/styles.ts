@@ -32,7 +32,7 @@ export const Container = styled.div`
 
     transform-origin: center;
 
-    color: #54439b;
+    color: #5d4680;
 
     h2 {
       margin-top: 0;

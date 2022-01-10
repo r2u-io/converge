@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  grid-row: 1 / 2;
+
   padding: 20px;
   width: 100%;
 
-  pointer-events: none;
+  pointer-events: all;
 
   display: flex;
   align-items: flex-start;
@@ -12,13 +14,13 @@ export const Container = styled.div`
 
   background-color: white;
 
-  position: absolute;
-  height: 100px;
-  top: -100px;
-  transition: top 0.3s;
+  transition: opacity 0.3s;
+  transition-delay: 0;
 
-  &.show {
-    top: 0;
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 3s;
   }
 
   button {

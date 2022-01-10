@@ -4,16 +4,18 @@ import { useUIContext } from '../../contexts/UIContext'
 import { Container } from './styles'
 
 const Header: React.FC = () => {
-  const { openMenu } = useUIContext()
+  const { openMenu, loading } = useUIContext()
 
   const [show, setShow] = useState(true)
 
   useEffect(() => {
-    setTimeout(() => setShow(false), 3000)
-  }, [])
+    if (loading) return
+    setShow(false)
+    document.addEventListener('mousemove', (e) => setShow(e.clientY <= 100))
+  }, [loading])
 
   return (
-    <Container className={show ? 'show' : ''}>
+    <Container className={show ? '' : 'hide'}>
       <button type='button'>
         <span className='logo'>Converge</span>
       </button>

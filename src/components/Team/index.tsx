@@ -8,7 +8,7 @@ import Model from '../../three/experience/World/Model'
 import { Container } from './styles'
 
 const Team: React.FC = () => {
-  const { teamOpened, openTeam, closeTeam } = useUIContext()
+  const { openTeam, closeTeam } = useUIContext()
   const { sceneReady, threeExperience } = useThreeContext()
 
   const [model, setModel] = useState<Model>()
@@ -19,12 +19,12 @@ const Team: React.FC = () => {
     setModel(modelInstance)
   }, [sceneReady, threeExperience, model])
 
-  return teamOpened ? (
+  return (
     <Container onClick={closeTeam}>
       <h2>Meet our team</h2>
       <Image src='/images/placeholder_team.png' alt='team' height={706} width={703} />
     </Container>
-  ) : null
+  )
 }
 
 export default Team
