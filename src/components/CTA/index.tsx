@@ -6,13 +6,12 @@ import { Container } from './styles'
 
 interface Props {
   name: string
-  title: string
   text: string
   floor: number
   button?: string
 }
 
-const CTA: React.FC<Props> = ({ name, title, text, floor, button: buttonText }: Props) => {
+const CTA: React.FC<Props> = ({ name, text, floor, button: buttonText }: Props) => {
   const [model, setModel] = useState<Model>()
 
   const { threeExperience, sceneReady } = useThreeContext()
@@ -28,7 +27,9 @@ const CTA: React.FC<Props> = ({ name, title, text, floor, button: buttonText }: 
 
   return (
     <Container ref={cardRef}>
-      <span className='text'>{text}</span>
+      <div className='text'>
+        <span>{text}</span>
+      </div>
       {buttonText && <button type='button'>{buttonText}</button>}
     </Container>
   )

@@ -29,9 +29,16 @@ export const Container = styled.div`
   }
 
   .text {
-    text-align: right;
-    font-size: 1.5rem;
-    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      text-align: right;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
   }
 
   button {

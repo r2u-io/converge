@@ -14,15 +14,15 @@ import { Container } from './styles'
 
 const Overlay: React.FC = () => {
   const { onFreeTour } = useThreeContext()
-  const { loading, mapOpened, teamOpened, showPortraitPrompt } = useUIContext()
+  const { loading, showPortraitPrompt } = useUIContext()
 
   return (
     <Container>
       <Header />
       {onFreeTour ? <Instructions /> : <Buttons />}
       <Fullscreen />
-      {mapOpened && <Map />}
-      {teamOpened && <Team />}
+      <Map />
+      <Team />
       {showPortraitPrompt && <PortraitPrompt />}
       {loading && <LoadingScreen />}
     </Container>

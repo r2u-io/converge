@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  z-index: 0;
+
+  justify-self: end;
+  margin: 10px;
 
   pointer-events: all;
   cursor: pointer;

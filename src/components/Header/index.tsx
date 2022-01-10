@@ -6,7 +6,7 @@ import { useUIContext } from '../../contexts/UIContext'
 import { Container } from './styles'
 
 const Header: React.FC = () => {
-  const { openMenu, loading } = useUIContext()
+  const { openMenu, loading, mapOpened, teamOpened } = useUIContext()
 
   const [show, setShow] = useState(true)
 
@@ -16,8 +16,10 @@ const Header: React.FC = () => {
     document.addEventListener('mousemove', (e) => setShow(e.clientY <= 100))
   }, [loading])
 
+  const className = show || mapOpened || teamOpened ? '' : 'hide'
+
   return (
-    <Container className={show ? '' : 'hide'}>
+    <Container className={className}>
       <button type='button' className='logo'>
         <Image src='/images/converge.svg' alt='logo' width={300} height={45} />
       </button>

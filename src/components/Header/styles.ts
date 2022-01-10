@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  grid-column: 1 / -1;
   grid-row: 1 / 2;
 
   padding: 20px;
