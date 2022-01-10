@@ -4,15 +4,16 @@ export const Container = styled.div`
   grid-row: 1 / 2;
 
   padding: 20px;
+  height: 100px;
   width: 100%;
 
   pointer-events: all;
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
-  background-color: white;
+  background-color: #e5e5e5;
 
   transition: opacity 0.3s;
   transition-delay: 0;
@@ -42,7 +43,7 @@ export const Container = styled.div`
   }
 
   .logo {
-    font-size: 3rem;
+    align-self: end;
   }
 
   .menu {
