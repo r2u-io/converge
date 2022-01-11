@@ -55,12 +55,6 @@
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
-    "name": "map_base",
-    "floor": 1,
-    "title": "Map Base",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
-  },
-  {
     "name": "map_tubes",
     "floor": 1,
     "title": "Map Tubes",
