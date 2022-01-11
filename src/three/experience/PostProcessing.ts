@@ -110,10 +110,11 @@ export default class PostProcessing {
       this.scene,
       this.camera.instance!
     )
-    this.outlinePass.visibleEdgeColor.set('#ff9900')
-    this.outlinePass.hiddenEdgeColor.set('#ff9900')
+    this.outlinePass.visibleEdgeColor.set('#CB1A75')
+    this.outlinePass.hiddenEdgeColor.set('#CB1A75')
     this.outlinePass.edgeThickness = 0.1
-    this.outlinePass.edgeStrength = 10
+    this.outlinePass.pulsePeriod = 5
+    this.outlinePass.overlayMaterial.blending = THREE.CustomBlending
 
     this.instance!.addPass(this.outlinePass)
   }
