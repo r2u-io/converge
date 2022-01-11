@@ -21,7 +21,7 @@ const Map: React.FC = () => {
 
   return mapOpened ? (
     <Container onClick={closeMap}>
-      <h2>Connecting worlds</h2>
+      <span>Connecting worlds</span>
       <Image src='/images/map.png' alt='map' height={630} width={1152} />
     </Container>
   ) : null
