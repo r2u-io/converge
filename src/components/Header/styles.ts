@@ -28,7 +28,6 @@ export const Container = styled.div`
   button {
     cursor: pointer;
     pointer-events: all;
-    text-transform: uppercase;
 
     outline: none;
     border: none;
@@ -37,10 +36,6 @@ export const Container = styled.div`
     color: #54439b;
 
     padding: 0;
-
-    span {
-      padding: 0;
-    }
   }
 
   .logo {
@@ -48,6 +43,78 @@ export const Container = styled.div`
   }
 
   .menu {
-    font-size: 1.5rem;
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    padding: 0 20px;
+
+    background-color: #d71488;
+
+    animation: growDown 400ms ease-in-out forwards;
+    transform-origin: top center;
+
+    display: none;
+
+    &.open {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    hr {
+      width: 100%;
+      border: 1px solid #54439b;
+      height: 0;
+      margin: 0;
+    }
+
+    .item {
+      width: 100%;
+      text-align: left;
+      font-size: 1.2rem;
+      padding: 15px 0;
+      margin: 0 20px;
+      color: white;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    @keyframes growDown {
+      0% {
+        transform: scaleY(0);
+      }
+      80% {
+        transform: scaleY(1.1);
+      }
+      100% {
+        transform: scaleY(1);
+      }
+    }
+  }
+
+  .hamburger {
+    height: 50px;
+    width: 50px;
+
+    line {
+      transition: transform 300ms;
+      transform-origin: center;
+    }
+
+    .line-1.open {
+      transform: rotate(45deg) translate(0, 85px);
+    }
+
+    .line-2.open {
+      transform: rotate(-45deg);
+    }
+
+    .line-3.open {
+      transform: translate(0, 100px);
+    }
   }
 `

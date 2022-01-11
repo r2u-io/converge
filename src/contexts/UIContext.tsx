@@ -11,7 +11,7 @@ interface UIContextData {
   aboutOpened: boolean
   loading: boolean
   showPortraitPrompt: boolean
-  openMenu: () => void
+  toggleMenu: () => void
   openMap: () => void
   openTeam: () => void
   openAbout: () => void
@@ -35,7 +35,7 @@ export const UIProvider: React.FC<Props> = ({ children }: Props) => {
   const [teamOpened, setTeamOpened] = useState(false)
   const [aboutOpened, setAboutOpened] = useState(false)
 
-  const openMenu = () => setMenuOpened(true)
+  const toggleMenu = () => setMenuOpened(!menuOpened)
   const openMap = () => setMapOpened(true)
   const openTeam = () => setTeamOpened(true)
   const openAbout = () => setAboutOpened(true)
@@ -58,7 +58,7 @@ export const UIProvider: React.FC<Props> = ({ children }: Props) => {
         aboutOpened,
         loading,
         showPortraitPrompt,
-        openMenu,
+        toggleMenu,
         openMap,
         openTeam,
         openAbout,

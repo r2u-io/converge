@@ -19,5 +19,5 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
 
-  color: #54439b;
+  color: #d71488;
 `
