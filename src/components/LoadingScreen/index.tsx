@@ -7,18 +7,14 @@ import { Container } from './styles'
 
 const LoadingScreen: React.FC = () => {
   const { threeExperience } = useThreeContext()
-  const { setLoading } = useUIContext()
+  const { finishLoading } = useUIContext()
 
   const [loader, setLoader] = useState<Loader>()
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     if (!threeExperience || loader) return
-    const loaderInstance = new Loader(
-      threeExperience,
-      (p) => setProgress(p),
-      () => setLoading(false)
-    )
+    const loaderInstance = new Loader(threeExperience, setProgress, finishLoading)
     setLoader(loaderInstance)
   }, [threeExperience, loader])
 

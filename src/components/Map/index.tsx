@@ -22,7 +22,7 @@ const Map: React.FC = () => {
   return mapOpened ? (
     <Container onClick={closeMap}>
       <h2>Connecting worlds</h2>
-      <Image src='/images/placeholder_map.png' alt='map' height={520} width={983} />
+      <Image src='/images/map.png' alt='map' height={630} width={1152} />
     </Container>
   ) : null
 }

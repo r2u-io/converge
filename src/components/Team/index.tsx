@@ -21,8 +21,17 @@ const Team: React.FC = () => {
 
   return teamOpened ? (
     <Container onClick={closeTeam}>
-      <h2>Meet our team</h2>
-      <Image src='/images/placeholder_team.png' alt='team' height={706} width={703} />
+      <Image
+        className='background'
+        src='/images/team.png'
+        alt='about'
+        layout='fill'
+        quality={100}
+      />
+      <div className='content'>
+        <h2>Meet our team</h2>
+        <Image src='/images/placeholder_team.png' alt='team' height={706} width={703} />
+      </div>
     </Container>
   ) : null
 }

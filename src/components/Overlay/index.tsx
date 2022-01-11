@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { useUIContext } from '../../contexts/UIContext'
+import About from '../About'
 import Buttons from '../Buttons'
 import Fullscreen from '../Fullscreen'
 import Header from '../Header'
@@ -23,6 +24,7 @@ const Overlay: React.FC = () => {
       <Fullscreen />
       <Map />
       <Team />
+      <About />
       {showPortraitPrompt && <PortraitPrompt />}
       {loading && <LoadingScreen />}
     </Container>

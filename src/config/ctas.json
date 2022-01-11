@@ -1,11 +1,5 @@
 [
   {
-    "name": "cta_0",
-    "floor": 0,
-    "text": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "button": "lorem ipsum"
-  },
-  {
     "name": "cta_1",
     "floor": 1,
     "text": "Use NFTs from all universes on your $LAND. At Converge, you connect with any network you like and import your favorite items with a single click.",
