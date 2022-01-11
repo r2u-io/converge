@@ -27,15 +27,24 @@ export const Container = styled.div`
     pointer-events: none;
 
     background-color: rgba(255, 255, 255, 0.65);
-    border-radius: 10px;
+    border-radius: 30px;
     width: 150px;
 
     transform-origin: center;
 
-    color: #54439b;
+    color: #5d4680;
 
     h2 {
-      margin-top: 0;
+      text-align: center;
+      font-size: 1.6rem;
+      margin: 0;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 500;
     }
   }
 `

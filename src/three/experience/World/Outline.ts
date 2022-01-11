@@ -34,7 +34,8 @@ export default class Outline {
     this.material = new THREE.MeshBasicMaterial({
       side: THREE.BackSide,
       transparent: true,
-      opacity: 0
+      opacity: 0,
+      depthWrite: false
     })
 
     this.setModel()

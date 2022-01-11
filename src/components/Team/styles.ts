@@ -1,21 +1,35 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  z-index: 1;
+
+  position: relative;
 
   pointer-events: all;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  .content {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
 
-  background-color: rgba(50, 38, 80, 0.9);
-  color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-  h2 {
-    width: 300px;
-    font-size: 3rem;
+    color: white;
+
+    h2 {
+      width: 300px;
+      font-size: 3rem;
+    }
+  }
+
+  .background {
+    opacity: 0.8;
+    z-index: 1;
   }
 `

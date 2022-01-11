@@ -1,20 +1,33 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  position: absolute;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  z-index: 0;
 
-  bottom: 20px;
-  width: 100%;
+  justify-self: center;
 
-  pointer-events: none;
+  pointer-events: all;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  background-color: #54439b;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0.4;
+  transition: opacity 0.25s;
+
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
   button {
     cursor: pointer;
-    pointer-events: all;
 
     display: flex;
     align-items: center;
@@ -26,7 +39,7 @@ export const Container = styled.div`
     border: none;
 
     background: none;
-    color: #54439b;
+    color: #d71488;
 
     padding: 0;
 
@@ -37,7 +50,7 @@ export const Container = styled.div`
     &:disabled {
       cursor: default;
       pointer-events: none;
-      color: #545454;
+      color: #999;
     }
   }
 
@@ -45,11 +58,13 @@ export const Container = styled.div`
   .next {
     height: 100%;
     font-size: 2rem;
-    margin: 0 20px;
+    margin: 0 10px;
   }
 
   .dot {
     width: 20px;
+    height: 20px;
+    margin: 5px;
     circle {
       stroke-width: 0px;
       transition: stroke-width 1s;

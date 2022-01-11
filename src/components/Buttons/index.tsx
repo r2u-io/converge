@@ -27,7 +27,9 @@ const Buttons: React.FC = () => {
   return (
     <Container>
       <button type='button' className='back' disabled={isFirstPoint || moving} onClick={prevPoint}>
-        Back
+        <svg width='30' height='30' viewBox='0 0 80 100'>
+          <path fill='none' stroke='currentColor' strokeWidth='15' d='M100 95L-10 50 100 5' />
+        </svg>
       </button>
       {PointsData.map((_point, index) => (
         <button
@@ -37,13 +39,15 @@ const Buttons: React.FC = () => {
           key={String(index)}
           onClick={() => toPoint(index)}
         >
-          <svg width='100' height='100' fill='currentColor' stroke='currentColor'>
+          <svg width='20' height='20' fill='currentColor' stroke='currentColor'>
             <circle r={5} cx='50%' cy='50%' />
           </svg>
         </button>
       ))}
       <button type='button' className='next' disabled={isLastPoint || moving} onClick={nextPoint}>
-        Next
+        <svg width='30' height='30' viewBox='0 0 80 100'>
+          <path fill='none' stroke='currentColor' strokeWidth='15' d='M-15 5l100 45-100 45' />
+        </svg>
       </button>
       {canActivateFreeTour && (
         <button

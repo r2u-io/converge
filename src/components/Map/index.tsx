@@ -8,7 +8,7 @@ import Model from '../../three/experience/World/Model'
 import { Container } from './styles'
 
 const Map: React.FC = () => {
-  const { mapOpened, openMap, closeMap } = useUIContext()
+  const { openMap, closeMap, mapOpened } = useUIContext()
   const { sceneReady, threeExperience } = useThreeContext()
 
   const [model, setModel] = useState<Model>()
@@ -21,8 +21,8 @@ const Map: React.FC = () => {
 
   return mapOpened ? (
     <Container onClick={closeMap}>
-      <h2>Connecting worlds</h2>
-      <Image src='/images/placeholder_map.png' alt='map' height={520} width={983} />
+      <span>Connecting worlds</span>
+      <Image src='/images/map.png' alt='map' height={630} width={1152} />
     </Container>
   ) : null
 }
