@@ -20,4 +20,9 @@ export const Container = styled.div`
     transition: opacity 0.5s ease-in-out;
     transition-delay: 0.5s;
   }
+
+  img {
+    position: fixed;
+    opacity: 0;
+  }
 `
