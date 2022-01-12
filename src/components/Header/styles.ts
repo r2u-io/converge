@@ -1,14 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  show: boolean
+}
+
+export const Container = styled.div<Props>`
   grid-column: 1 / -1;
   grid-row: 1 / 2;
 
   padding: 20px;
   height: 100px;
   width: 100%;
-
-  pointer-events: all;
 
   display: flex;
   align-items: center;
@@ -17,13 +19,19 @@ export const Container = styled.div`
   background-color: #e5e5e5;
 
   transition: opacity 0.3s;
-  transition-delay: 0;
 
-  &.hide {
-    opacity: 0;
-    pointer-events: none;
-    transition-delay: 3s;
-  }
+  ${({ show }) =>
+    show
+      ? css`
+          opacity: 1;
+          pointer-events: all;
+          transition-delay: 0;
+        `
+      : css`
+          opacity: 0;
+          pointer-events: none;
+          transition-delay: 3s;
+        `}
 
   button {
     cursor: pointer;
@@ -40,60 +48,6 @@ export const Container = styled.div`
 
   .logo {
     align-self: end;
-  }
-
-  .menu {
-    position: absolute;
-    right: 10px;
-    top: 100px;
-    padding: 0 20px;
-
-    background-color: #d71488;
-
-    animation: growDown 400ms ease-in-out forwards;
-    transform-origin: top center;
-
-    display: none;
-
-    &.open {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: column;
-    }
-
-    hr {
-      width: 100%;
-      border: 1px solid #54439b;
-      height: 0;
-      margin: 0;
-    }
-
-    .item {
-      width: 100%;
-      text-align: left;
-      font-size: 1.2rem;
-      padding: 15px 0;
-      margin: 0 20px;
-      color: white;
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-    }
-
-    @keyframes growDown {
-      0% {
-        transform: scaleY(0);
-      }
-      80% {
-        transform: scaleY(1.1);
-      }
-      100% {
-        transform: scaleY(1);
-      }
-    }
   }
 
   .hamburger {

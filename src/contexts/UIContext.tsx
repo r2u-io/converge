@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
 interface Props {
   children: ReactNode
@@ -48,6 +48,27 @@ export const UIProvider: React.FC<Props> = ({ children }: Props) => {
   const keepPortrait = () => setShowPortraitPrompt(false)
 
   const finishLoading = () => setLoading(false)
+
+  useEffect(() => {
+    if (!mapOpened) return
+    closeMenu()
+    closeTeam()
+    closeAbout()
+  }, [mapOpened])
+
+  useEffect(() => {
+    if (!teamOpened) return
+    closeMenu()
+    closeMap()
+    closeAbout()
+  }, [teamOpened])
+
+  useEffect(() => {
+    if (!aboutOpened) return
+    closeMenu()
+    closeMap()
+    closeTeam()
+  }, [aboutOpened])
 
   return (
     <UIContext.Provider

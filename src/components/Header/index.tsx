@@ -3,20 +3,12 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import { useUIContext } from '../../contexts/UIContext'
+import Menu from '../Menu'
 import { Container } from './styles'
 
 const Header: React.FC = () => {
-  const {
-    toggleMenu,
-    openAbout,
-    openMap,
-    openTeam,
-    loading,
-    menuOpened,
-    mapOpened,
-    teamOpened,
-    aboutOpened
-  } = useUIContext()
+  const { toggleMenu, openAbout, loading, menuOpened, mapOpened, teamOpened, aboutOpened } =
+    useUIContext()
 
   const [show, setShow] = useState(true)
 
@@ -26,10 +18,10 @@ const Header: React.FC = () => {
     document.addEventListener('mousemove', (e) => setShow(e.clientY <= 100))
   }, [loading])
 
-  const className = show || mapOpened || teamOpened || aboutOpened ? '' : ''
+  const showHeader = show || mapOpened || teamOpened || aboutOpened
 
   return (
-    <Container className={className}>
+    <Container show={showHeader}>
       <button type='button' className='logo' onClick={openAbout}>
         <Image src='/images/converge.svg' alt='logo' width={300} height={45} />
       </button>
@@ -46,40 +38,7 @@ const Header: React.FC = () => {
           <line className={`line-3 ${menuOpened && 'open'}`} x1={20} y1={235} x2={280} y2={235} />
         </svg>
       </button>
-      <div className={`menu ${menuOpened && 'open'}`}>
-        <button className='item' type='button' onClick={openAbout}>
-          About
-        </button>
-        <hr />
-        <button className='item' type='button'>
-          <a
-            href='https://converge-r2u.gitbook.io/converge/'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Whitepaper
-          </a>
-        </button>
-        <hr />
-        <button className='item' type='button' onClick={openMap}>
-          Land Map
-        </button>
-        <hr />
-        <button className='item' type='button' onClick={openTeam}>
-          Meet the Team
-        </button>
-        <hr />
-        {/* TODO: Open Contacts overlay with discord, mail, Calendly, etc */}
-        <button className='item' type='button'>
-          <a
-            href='https://discord.com/channels/930456177568002139'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Contact Us
-          </a>
-        </button>
-      </div>
+      <Menu />
     </Container>
   )
 }

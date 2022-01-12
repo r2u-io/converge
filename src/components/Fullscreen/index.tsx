@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Button } from './styles'
 
@@ -8,12 +8,16 @@ const Fullscreen: React.FC = () => {
   async function toggleFullscreen() {
     if (document.fullscreenElement) {
       document.exitFullscreen()
-      setIsFullScreen(false)
       return
     }
     await document.body.requestFullscreen()
-    setIsFullScreen(true)
   }
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', () => {
+      setIsFullScreen(document.fullscreenElement !== null)
+    })
+  }, [])
 
   return (
     <Button onClick={toggleFullscreen}>

@@ -19,12 +19,12 @@ const Overlay: React.FC = () => {
 
   return (
     <Container>
-      <Header />
       {onFreeTour ? <Instructions /> : <Buttons />}
       <Fullscreen />
       <Map />
       <Team />
       <About />
+      <Header />
       {showPortraitPrompt && <PortraitPrompt />}
       {loading && <LoadingScreen />}
     </Container>
