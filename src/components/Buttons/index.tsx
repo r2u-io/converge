@@ -16,15 +16,18 @@ const Buttons: React.FC = () => {
     activateFreeTour
   } = useThreeContext()
 
+  const [mounted, setMounted] = useState(false)
   const [lastSeenPoint, setLastSeenPoint] = useState(0)
   const [canActivateFreeTour, setCanActivateFreeTour] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     if (activePoint > lastSeenPoint) setLastSeenPoint(activePoint)
     if (isLastPoint) setCanActivateFreeTour(true)
   }, [activePoint, isLastPoint])
 
-  return (
+  return mounted ? (
     <Container>
       <button type='button' className='back' disabled={isFirstPoint || moving} onClick={prevPoint}>
         <svg width='30' height='30' viewBox='0 0 80 100'>
@@ -75,7 +78,7 @@ const Buttons: React.FC = () => {
         </button>
       )}
     </Container>
-  )
+  ) : null
 }
 
 export default Buttons
