@@ -74,23 +74,25 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
   const onClickOperations3D = () => {
     if (!avatars) return
     disableAll()
-    avatars.showGroup(TEAMS.operations3D, () => disableGroup('operations3D'))
+    avatars.showAll(() => avatars.showGroup(TEAMS.operations3D, () => disableGroup('operations3D')))
   }
 
   const onClickTechProduct = () => {
     if (!avatars) return
     disableAll()
-    avatars.showGroup(TEAMS.techProduct, () => disableGroup('techProduct'))
+    avatars.showAll(() => avatars.showGroup(TEAMS.techProduct, () => disableGroup('techProduct')))
   }
   const onClickGeneralAdmin = () => {
     if (!avatars) return
     disableAll()
-    avatars.showGroup(TEAMS.generalAdmin, () => disableGroup('generalAdmin'))
+    avatars.showAll(() => avatars.showGroup(TEAMS.generalAdmin, () => disableGroup('generalAdmin')))
   }
   const onClickSalesMarketing = () => {
     if (!avatars) return
     disableAll()
-    avatars.showGroup(TEAMS.salesMarketing, () => disableGroup('salesMarketing'))
+    avatars.showAll(() =>
+      avatars.showGroup(TEAMS.salesMarketing, () => disableGroup('salesMarketing'))
+    )
   }
 
   return (
