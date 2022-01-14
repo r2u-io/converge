@@ -30,7 +30,7 @@ export default class TeamExperience {
 
     // Setup
     this.debug = new Debug()
-    this.sizes = new Sizes()
+    this.sizes = new Sizes(canvas.parentElement!)
     this.time = new Time(this.debug.active)
 
     // THREE

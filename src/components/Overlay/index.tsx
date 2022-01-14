@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { AvatarsProvider } from '../../contexts/AvatarsContext'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { useUIContext } from '../../contexts/UIContext'
 import About from '../About'
@@ -22,7 +23,9 @@ const Overlay: React.FC = () => {
       {onFreeTour ? <Instructions /> : <Buttons />}
       <Fullscreen />
       <Map />
-      <Team />
+      <AvatarsProvider>
+        <Team />
+      </AvatarsProvider>
       <About />
       <Header />
       {showPortraitPrompt && <PortraitPrompt />}

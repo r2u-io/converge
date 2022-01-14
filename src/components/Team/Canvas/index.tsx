@@ -1,68 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { useAvatarsContext } from '../../../contexts/AvatarsContext'
+import { useUIContext } from '../../../contexts/UIContext'
 import TeamExperience from '../../../three/team-experience'
-import Avatars from '../../../three/team-experience/Avatars'
 import { Container } from './styles'
 
-interface Data {
-  type: 'group' | 'all'
-  group?: 'operations3D' | 'techProduct' | 'generalAdmin' | 'salesMarketing'
-}
-
-interface MessageEventCustom extends MessageEvent {
-  origin: string
-  data: Data
-}
-
-const TEAMS = {
-  operations3D: [0],
-  techProduct: [1],
-  generalAdmin: [2],
-  salesMarketing: [3]
-}
-
 const CanvasTeam: React.FC = () => {
+  const { teamOpened } = useUIContext()
+  const { setAvatars } = useAvatarsContext()
+
   const ref = useRef(null)
 
-  const [avatars, setAvatars] = useState<Avatars>()
+  const [teamExperience, setTeamExperience] = useState<TeamExperience>()
 
   useEffect(() => {
     if (!ref.current) return
-
-    const teamExperience = new TeamExperience(ref.current)
-    setAvatars(teamExperience.avatars)
+    setTeamExperience(new TeamExperience(ref.current))
   }, [ref])
 
   useEffect(() => {
-    if (!avatars) return
+    if (!teamExperience) return
+    setAvatars(teamExperience.avatars)
+  }, [teamExperience])
 
-    window.addEventListener('message', ({ origin, data }: MessageEventCustom) => {
-      if (origin !== window.location.origin) return
-
-      const { type, group } = data
-
-      const { parent } = window
-
-      const onComplete = () => {
-        parent.postMessage(data, origin)
-      }
-
-      switch (type) {
-        case 'all':
-          avatars.showAll(onComplete)
-          break
-        case 'group':
-          if (group) avatars.showGroup(TEAMS[group], onComplete)
-          break
-        default:
-          break
-      }
-    })
-  }, [avatars])
+  useEffect(() => {
+    if (teamOpened && teamExperience) teamExperience.sizes.updateSizes()
+  }, [teamOpened, teamExperience])
 
   return (
     <Container>
-      <canvas ref={ref} width={800} height={600} />
+      <canvas ref={ref} />
     </Container>
   )
 }

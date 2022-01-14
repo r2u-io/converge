@@ -154,6 +154,7 @@ export default class Avatars {
           gl_FragColor = texture2D(uTexture, uv);
           if (gl_FragColor.a < 0.5) discard;
           gl_FragColor.a *= vOpacity;
+          if (gl_FragColor.a == 0.0) discard;
         }
       `
     })
@@ -237,6 +238,8 @@ export default class Avatars {
     const positions = this.geometry!.getAttribute('position')
     const positionsArray = positions.array as Float32Array
 
+    const sector = (2 * Math.PI) / this.shownGroup.length
+
     this.shownGroup.forEach((i, j) => {
       const worldPosition = new THREE.Vector3()
       const localPosition = new THREE.Vector3()
@@ -244,12 +247,14 @@ export default class Avatars {
       worldPosition.fromBufferAttribute(positions, i)
       this.points!.localToWorld(worldPosition)
 
-      const t = j / (this.shownGroup.length - 1)
+      const radius = this.shownGroup.length === 1 ? 0 : 3
+      const x = radius * Math.cos(sector * j)
+      const y = radius * Math.sin(sector * j)
 
       gsap.to(worldPosition, {
-        x: -4,
-        y: 4 * (2 * t - 1),
-        z: 5,
+        x,
+        y,
+        z: 6,
         duration: 1,
         onStart: () => {
           this.rotate = false

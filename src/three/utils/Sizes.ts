@@ -7,7 +7,9 @@ export default class Sizes extends EventEmitter {
 
   pixelRatio: number
 
-  constructor() {
+  container: HTMLElement | null = null
+
+  constructor(container?: HTMLElement) {
     super()
 
     // Setup
@@ -15,13 +17,26 @@ export default class Sizes extends EventEmitter {
     this.height = window.innerHeight
     this.pixelRatio = Math.min(window.devicePixelRatio, 2)
 
-    // Resize event
-    window.addEventListener('resize', () => {
-      // Update sizes
-      this.width = window.innerWidth
-      this.height = window.innerHeight
+    if (container) {
+      this.container = container
 
-      this.emit('resize')
-    })
+      this.width = this.container.clientWidth
+      this.height = this.container.clientHeight
+    }
+
+    // Resize event
+    window.addEventListener('resize', () => this.updateSizes())
+  }
+
+  updateSizes() {
+    this.width = window.innerWidth
+    this.height = window.innerHeight
+
+    if (this.container) {
+      this.width = this.container.clientWidth
+      this.height = this.container.clientHeight
+    }
+
+    this.emit('resize')
   }
 }
