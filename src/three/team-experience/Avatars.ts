@@ -197,17 +197,24 @@ export default class Avatars {
     })
   }
 
-  showAll() {
+  showAll(onComplete?: () => void) {
+    if (this.shownGroup.length > 0) {
+      this.hiddenOpacity = 1
+      this.hideGroup()
+    }
     gsap.to(this, {
       opacity: 1,
       duration: 1.5,
       onComplete: () => {
         this.rotate = true
+        onComplete?.()
       }
     })
   }
 
-  showGroup(group: number[]) {
+  showGroup(group: number[], onComplete?: () => void) {
+    if (this.shownGroup.length === 0) this.hideAll()
+    else if (this.shownGroup.length > 0) this.hideGroup()
     this.shownGroup = group
 
     if (this.opacity === 0) {
@@ -254,14 +261,15 @@ export default class Avatars {
           positionsArray[i * 3 + 1] = localPosition.y
           positionsArray[i * 3 + 2] = localPosition.z
           this.geometry!.getAttribute('position').needsUpdate = true
-        }
+        },
+        onComplete
       })
     })
   }
 
-  hideGroup(group: number[]) {
+  hideGroup() {
+    this.hiddenGroup = this.shownGroup
     this.shownGroup = []
-    this.hiddenGroup = group
 
     const positions = this.geometry!.getAttribute('position')
     const positionsArray = positions.array as Float32Array
@@ -283,6 +291,9 @@ export default class Avatars {
           positionsArray[i * 3 + 1] = position.y
           positionsArray[i * 3 + 2] = position.z
           this.geometry!.getAttribute('position').needsUpdate = true
+        },
+        onComplete: () => {
+          this.hiddenGroup = []
         }
       })
     })

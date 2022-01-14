@@ -19,8 +19,8 @@ const About: React.FC = () => {
     setModel(modelInstance)
   }, [sceneReady, threeExperience, model])
 
-  return aboutOpened ? (
-    <Container onClick={closeAbout}>
+  return (
+    <Container onClick={closeAbout} open={aboutOpened}>
       <Image
         className='background'
         src='/images/about.png'
@@ -50,7 +50,7 @@ const About: React.FC = () => {
         </div>
       </div>
     </Container>
-  ) : null
+  )
 }
 
 export default About

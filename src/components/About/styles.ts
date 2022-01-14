@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  open: boolean
+}
+
+export const Container = styled.div<Props>`
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+
   grid-column: 1 / -1;
   grid-row: 2 / -1;
   z-index: 1;
@@ -9,7 +15,6 @@ export const Container = styled.div`
 
   pointer-events: all;
 
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;

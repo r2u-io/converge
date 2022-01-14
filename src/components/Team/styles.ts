@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  open: boolean
+}
+
+export const Container = styled.div<Props>`
+  display: ${({ open }) => (open ? 'block' : 'none')};
+
   grid-column: 1 / -1;
   grid-row: 2 / -1;
   z-index: 1;
@@ -25,12 +31,19 @@ export const Container = styled.div`
 
     color: white;
 
-    h2 {
-      width: 300px;
-      font-size: 3rem;
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      h2 {
+        width: 300px;
+        height: 50%;
+        font-size: 3rem;
+      }
     }
 
-    iframe {
+    .right {
       width: 100%;
       height: 100%;
       border: none;

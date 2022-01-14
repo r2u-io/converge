@@ -3,8 +3,8 @@ import * as THREE from 'three'
 import Debug from '../utils/Debug'
 import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
+import Avatars from './Avatars'
 import Camera from './Camera'
-import Points from './Points'
 import Renderer from './Renderer'
 
 export default class TeamExperience {
@@ -22,7 +22,7 @@ export default class TeamExperience {
 
   renderer: Renderer
 
-  points: Points
+  avatars: Avatars
 
   constructor(canvas: HTMLCanvasElement) {
     // Options
@@ -39,7 +39,7 @@ export default class TeamExperience {
     this.camera = new Camera(this)
     this.renderer = new Renderer(this)
 
-    this.points = new Points(this)
+    this.avatars = new Avatars(this)
 
     // Event bindings
     this.sizes.on('resize', () => this.resize())
@@ -53,6 +53,6 @@ export default class TeamExperience {
 
   update() {
     this.renderer.update()
-    this.points.update()
+    this.avatars.update()
   }
 }
