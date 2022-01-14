@@ -55,7 +55,7 @@ export default class Points {
     this.debug = team.debug
     this.time = team.time
 
-    this.count = 24
+    this.count = 30
 
     this.texture = new THREE.Texture()
 
