@@ -9,7 +9,7 @@ import { Container } from './styles'
 
 interface Data {
   type: 'all' | 'group'
-  group?: 'operations' | 'tech' | 'admin' | 'sales'
+  group?: 'operations3D' | 'techProduct' | 'generalAdmin' | 'salesMarketing'
 }
 interface MessageEventCustom extends MessageEvent {
   origin: string
@@ -102,35 +102,35 @@ const Team: React.FC = () => {
             onClick={() => sendMessage({ type: 'all' })}
             disabled={disabled.all}
           >
-            BACK
+            Everyone
           </button>
           <button
             type='button'
-            onClick={() => sendMessage({ type: 'group', group: 'operations' })}
+            onClick={() => sendMessage({ type: 'group', group: 'operations3D' })}
             disabled={disabled.operations}
           >
-            OPS
+            Operations & 3D
           </button>
           <button
             type='button'
-            onClick={() => sendMessage({ type: 'group', group: 'tech' })}
+            onClick={() => sendMessage({ type: 'group', group: 'techProduct' })}
             disabled={disabled.tech}
           >
-            TECH
+            Technology & Product
           </button>
           <button
             type='button'
-            onClick={() => sendMessage({ type: 'group', group: 'admin' })}
+            onClick={() => sendMessage({ type: 'group', group: 'generalAdmin' })}
             disabled={disabled.admin}
           >
-            ADM
+            General & Administrative
           </button>
           <button
             type='button'
-            onClick={() => sendMessage({ type: 'group', group: 'sales' })}
+            onClick={() => sendMessage({ type: 'group', group: 'salesMarketing' })}
             disabled={disabled.sales}
           >
-            SLS
+            Sales & Marketing
           </button>
         </div>
         <iframe ref={ref} className='right' src='/team' title='team' />

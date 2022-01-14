@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import TeamExperience from '../../three/team-experience'
-import Avatars from '../../three/team-experience/Avatars'
+import TeamExperience from '../../../three/team-experience'
+import Avatars from '../../../three/team-experience/Avatars'
 import { Container } from './styles'
 
 interface Data {
   type: 'group' | 'all'
-  group?: 'operations' | 'tech' | 'admin' | 'sales'
+  group?: 'operations3D' | 'techProduct' | 'generalAdmin' | 'salesMarketing'
 }
 
 interface MessageEventCustom extends MessageEvent {
@@ -15,10 +15,10 @@ interface MessageEventCustom extends MessageEvent {
 }
 
 const TEAMS = {
-  operations: [0, 1, 2],
-  tech: [3, 4, 5],
-  admin: [6, 7, 8],
-  sales: [9, 10, 11]
+  operations3D: [0],
+  techProduct: [1],
+  generalAdmin: [2],
+  salesMarketing: [3]
 }
 
 const CanvasTeam: React.FC = () => {
