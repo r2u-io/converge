@@ -1,6 +1,5 @@
 import type GUI from 'lil-gui'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import type Team from '.'
 import type Debug from '../utils/Debug'
@@ -19,8 +18,6 @@ export default class Camera {
 
   instance: THREE.PerspectiveCamera | null = null
 
-  controls: OrbitControls | null = null
-
   constructor(team: Team) {
     this.canvas = team.canvas
     this.sizes = team.sizes
@@ -32,7 +29,6 @@ export default class Camera {
     }
 
     this.setInstance()
-    this.setControls()
   }
 
   setInstance() {
@@ -41,28 +37,8 @@ export default class Camera {
     this.instance.position.set(0, 0, 10)
   }
 
-  setControls() {
-    this.controls = new OrbitControls(this.instance!, this.canvas)
-
-    this.controls.enablePan = false
-    this.controls.enableZoom = true
-    this.controls.enableDamping = true
-    this.controls.dampingFactor = 0.1
-
-    if (this.debug.active) {
-      this.debugFolder!.add(this.controls, 'enablePan')
-      this.debugFolder!.add(this.controls, 'enableZoom')
-      this.debugFolder!.add(this.controls, 'enableDamping')
-      this.debugFolder!.add(this.controls, 'dampingFactor').min(0).max(1).step(0.005)
-    }
-  }
-
   resize() {
     this.instance!.aspect = this.sizes.width / this.sizes.height
     this.instance!.updateProjectionMatrix()
-  }
-
-  update() {
-    this.controls!.update()
   }
 }

@@ -52,7 +52,6 @@ export default class Team {
   }
 
   update() {
-    this.camera.update()
     this.renderer.update()
     this.points.update()
   }

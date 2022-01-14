@@ -30,13 +30,21 @@ export default class Points {
 
   material: THREE.ShaderMaterial | null = null
 
+  radius = 6
+
   rotate = true
 
   axisPrimary: THREE.Vector3
 
   axisSecondary: THREE.Vector3
 
-  active: number[] = []
+  shownGroup: number[] = []
+
+  hiddenGroup: number[] = []
+
+  shownOpacity = 1
+
+  hiddenOpacity = 1
 
   opacity = 1
 
@@ -68,8 +76,6 @@ export default class Points {
     ).normalize()
 
     this.generate()
-
-    gsap.delayedCall(4.0, () => this.activateTeam())
   }
 
   generate() {
@@ -86,8 +92,6 @@ export default class Points {
     const offsets = new Float32Array(this.count * 2)
     const opacities = new Float32Array(this.count * 1).fill(this.opacity)
 
-    const radius = 6
-
     const tilesX = 8
     const tilesY = 4
 
@@ -95,9 +99,9 @@ export default class Points {
       const phi = Math.PI * (1 + Math.sqrt(5)) * i
       const theta = Math.acos(1 - (2 * i) / this.count)
 
-      positions[i * 3 + 0] = radius * Math.sin(theta) * Math.cos(phi)
-      positions[i * 3 + 1] = radius * Math.cos(theta)
-      positions[i * 3 + 2] = radius * Math.sin(theta) * Math.sin(phi)
+      positions[i * 3 + 0] = this.radius * Math.sin(theta) * Math.cos(phi)
+      positions[i * 3 + 1] = this.radius * Math.cos(theta)
+      positions[i * 3 + 2] = this.radius * Math.sin(theta) * Math.sin(phi)
 
       offsets[i * 2 + 0] = (i % tilesX) / tilesX
       offsets[i * 2 + 1] = Math.floor(i / tilesX) / tilesY
@@ -111,7 +115,7 @@ export default class Points {
     this.material = new THREE.ShaderMaterial({
       transparent: true,
       uniforms: {
-        uSize: { value: 800.0 * this.renderer.instance!.getPixelRatio() },
+        uSize: { value: 800 * this.renderer.instance!.getPixelRatio() },
         uTexture: { value: this.texture },
         uScale: { value: new THREE.Vector2(1 / tilesX, 1 / tilesY) }
       },
@@ -162,13 +166,6 @@ export default class Points {
 
     this.points = new THREE.Points(this.geometry, this.material)
     this.scene.add(this.points)
-
-    this.canvas.addEventListener('mousedown', () => {
-      this.rotate = false
-    })
-    this.canvas.addEventListener('mouseup', () => {
-      this.rotate = true
-    })
   }
 
   update() {
@@ -179,44 +176,111 @@ export default class Points {
 
     const opacities = this.geometry!.getAttribute('aOpacity').array as Float32Array
     opacities.forEach((_value, i) => {
-      if (!this.active.includes(i)) opacities[i] = this.opacity
+      opacities[i] = this.shownGroup.includes(i)
+        ? this.shownOpacity
+        : this.hiddenGroup.includes(i)
+        ? this.hiddenOpacity
+        : this.opacity
     })
+
     this.geometry!.attributes.aOpacity.needsUpdate = true
   }
 
-  activateTeam() {
-    this.rotate = false
-    this.active = [0, 1, 2]
-
+  hideAll() {
     gsap.to(this, {
       opacity: 0,
-      duration: 1.0
+      duration: 1.5,
+      onStart: () => {
+        this.rotate = false
+      }
     })
+  }
+
+  showAll() {
+    gsap.to(this, {
+      opacity: 1,
+      duration: 1.5,
+      onComplete: () => {
+        this.rotate = true
+      }
+    })
+  }
+
+  showGroup(group: number[]) {
+    this.shownGroup = group
+
+    if (this.opacity === 0) {
+      this.shownOpacity = 0
+      gsap.to(this, {
+        shownOpacity: 1,
+        duration: 0.5
+      })
+
+      if (this.hiddenGroup.length > 0) {
+        this.hiddenOpacity = 1
+        gsap.to(this, {
+          hiddenOpacity: 0,
+          duration: 1,
+          delay: 0.5
+        })
+      }
+    }
 
     const positions = this.geometry!.getAttribute('position')
     const positionsArray = positions.array as Float32Array
 
-    this.active.forEach((i, j) => {
+    this.shownGroup.forEach((i, j) => {
       const worldPosition = new THREE.Vector3()
       const localPosition = new THREE.Vector3()
 
       worldPosition.fromBufferAttribute(positions, i)
       this.points!.localToWorld(worldPosition)
 
-      const t = j / (this.active.length - 1)
+      const t = j / (this.shownGroup.length - 1)
 
       gsap.to(worldPosition, {
         x: -4,
         y: 4 * (2 * t - 1),
         z: 5,
-        duration: 1.0,
-        ease: 'none',
+        duration: 1,
+        onStart: () => {
+          this.rotate = false
+        },
         onUpdate: () => {
           localPosition.copy(worldPosition)
           this.points!.worldToLocal(localPosition)
           positionsArray[i * 3 + 0] = localPosition.x
           positionsArray[i * 3 + 1] = localPosition.y
           positionsArray[i * 3 + 2] = localPosition.z
+          this.geometry!.getAttribute('position').needsUpdate = true
+        }
+      })
+    })
+  }
+
+  hideGroup(group: number[]) {
+    this.shownGroup = []
+    this.hiddenGroup = group
+
+    const positions = this.geometry!.getAttribute('position')
+    const positionsArray = positions.array as Float32Array
+
+    this.hiddenGroup.forEach((i) => {
+      const phi = Math.PI * (1 + Math.sqrt(5)) * i
+      const theta = Math.acos(1 - (2 * i) / this.count)
+
+      const position = new THREE.Vector3().fromBufferAttribute(positions, i)
+
+      gsap.to(position, {
+        x: this.radius * Math.sin(theta) * Math.cos(phi),
+        y: this.radius * Math.cos(theta),
+        z: this.radius * Math.sin(theta) * Math.sin(phi),
+        duration: 1,
+        ease: 'none',
+        onUpdate: () => {
+          positionsArray[i * 3 + 0] = position.x
+          positionsArray[i * 3 + 1] = position.y
+          positionsArray[i * 3 + 2] = position.z
           this.geometry!.getAttribute('position').needsUpdate = true
         }
       })
