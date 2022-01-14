@@ -7,7 +7,7 @@ import type Debug from '../utils/Debug'
 import Time from '../utils/Time'
 import Renderer from './Renderer'
 
-export default class Points {
+export default class Avatars {
   canvas: HTMLCanvasElement
 
   scene: THREE.Scene
@@ -152,6 +152,7 @@ export default class Points {
         void main() {
           vec2 uv = vec2(gl_PointCoord.x * uScale.x + vOffset.x, (1.0 - gl_PointCoord.y) * uScale.y + vOffset.y);
           gl_FragColor = texture2D(uTexture, uv);
+          if (gl_FragColor.a < 0.5) discard;
           gl_FragColor.a *= vOpacity;
         }
       `
