@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-import type Team from '.'
+import type TeamExperience from '.'
 import type Sizes from '../utils/Sizes'
 import type Camera from './Camera'
 
@@ -15,11 +15,11 @@ export default class Renderer {
 
   instance: THREE.WebGLRenderer | null = null
 
-  constructor(team: Team) {
-    this.canvas = team.canvas
-    this.sizes = team.sizes
-    this.scene = team.scene
-    this.camera = team.camera
+  constructor(teamExperience: TeamExperience) {
+    this.canvas = teamExperience.canvas
+    this.sizes = teamExperience.sizes
+    this.scene = teamExperience.scene
+    this.camera = teamExperience.camera
 
     this.setInstance()
   }

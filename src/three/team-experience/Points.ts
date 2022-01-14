@@ -2,7 +2,7 @@ import gsap from 'gsap'
 import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
-import type Team from '.'
+import type TeamExperience from '.'
 import type Debug from '../utils/Debug'
 import Time from '../utils/Time'
 import Renderer from './Renderer'
@@ -48,12 +48,12 @@ export default class Points {
 
   opacity = 1
 
-  constructor(team: Team) {
-    this.canvas = team.canvas
-    this.scene = team.scene
-    this.renderer = team.renderer
-    this.debug = team.debug
-    this.time = team.time
+  constructor(teamExperience: TeamExperience) {
+    this.canvas = teamExperience.canvas
+    this.scene = teamExperience.scene
+    this.renderer = teamExperience.renderer
+    this.debug = teamExperience.debug
+    this.time = teamExperience.time
 
     this.count = 30
 

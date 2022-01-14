@@ -7,7 +7,7 @@ import Camera from './Camera'
 import Points from './Points'
 import Renderer from './Renderer'
 
-export default class Team {
+export default class TeamExperience {
   canvas: HTMLCanvasElement
 
   debug: Debug
