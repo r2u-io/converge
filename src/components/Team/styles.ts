@@ -12,6 +12,7 @@ export const Container = styled.div`
   .content {
     position: absolute;
     z-index: 2;
+
     width: 100%;
     height: 100%;
 
@@ -20,11 +21,19 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
+    padding: 50px;
+
     color: white;
 
     h2 {
       width: 300px;
       font-size: 3rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   }
 

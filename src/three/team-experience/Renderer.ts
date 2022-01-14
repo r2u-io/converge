@@ -31,7 +31,7 @@ export default class Renderer {
       alpha: true
     })
 
-    this.instance.setClearColor('#000000', 1)
+    this.instance.setClearColor('#000000', 0)
     this.instance.setSize(this.sizes.width, this.sizes.height)
     this.instance.setPixelRatio(Math.min(this.sizes.pixelRatio, 2))
   }

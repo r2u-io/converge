@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  z-index: 3;
+
   display: none;
 
   position: absolute;

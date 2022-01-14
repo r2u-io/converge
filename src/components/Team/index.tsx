@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { useUIContext } from '../../contexts/UIContext'
 import Model from '../../three/experience/World/Model'
+import CanvasTeam from '../CanvasTeam'
 import { Container } from './styles'
 
 const Team: React.FC = () => {
@@ -30,7 +31,7 @@ const Team: React.FC = () => {
       />
       <div className='content'>
         <h2>Meet our team</h2>
-        <Image src='/images/placeholder_team.png' alt='team' height={706} width={703} />
+        <iframe src='/team' title='team' />
       </div>
     </Container>
   ) : null
