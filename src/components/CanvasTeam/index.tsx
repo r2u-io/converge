@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import TeamExperience from '../../three/team'
+import TeamExperience from '../../three/team-experience'
 import { Container } from './styles'
 
 const CanvasTeam: React.FC = () => {
