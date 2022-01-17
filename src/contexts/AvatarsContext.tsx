@@ -31,6 +31,7 @@ interface AvatarsContextData {
   onClickTechProduct: () => void
   onClickGeneralAdmin: () => void
   onClickSalesMarketing: () => void
+  onResize: () => void
 }
 
 export const AvatarsContext = createContext<AvatarsContextData>({} as AvatarsContextData)
@@ -95,6 +96,10 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
     )
   }
 
+  const onResize = () => {
+    disableGroup('all')
+  }
+
   return (
     <AvatarsContext.Provider
       value={{
@@ -105,7 +110,8 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
         onClickOperations3D,
         onClickTechProduct,
         onClickGeneralAdmin,
-        onClickSalesMarketing
+        onClickSalesMarketing,
+        onResize
       }}
     >
       {children}

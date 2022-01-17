@@ -27,7 +27,7 @@ export const Container = styled.div<Props>`
     align-items: center;
     justify-content: center;
 
-    padding: 50px;
+    padding: 0 50px;
 
     color: white;
 
@@ -77,6 +77,7 @@ export const Container = styled.div<Props>`
       width: 100%;
       height: 100%;
       border: none;
+      position: relative;
     }
   }
 

@@ -4,7 +4,9 @@ import * as THREE from 'three'
 
 import type TeamExperience from '.'
 import type Debug from '../utils/Debug'
+import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
+import Camera from './Camera'
 import Renderer from './Renderer'
 
 export default class Avatars {
@@ -12,7 +14,11 @@ export default class Avatars {
 
   scene: THREE.Scene
 
+  camera: Camera
+
   renderer: Renderer
+
+  sizes: Sizes
 
   time: Time
 
@@ -22,6 +28,8 @@ export default class Avatars {
 
   count: number
 
+  cards: HTMLDivElement[]
+
   texture: THREE.Texture
 
   points: THREE.Points | null = null
@@ -29,6 +37,8 @@ export default class Avatars {
   geometry: THREE.BufferGeometry | null = null
 
   material: THREE.ShaderMaterial | null = null
+
+  sphereMaterial: THREE.MeshBasicMaterial | null = null
 
   radius = 6
 
@@ -50,12 +60,15 @@ export default class Avatars {
 
   constructor(teamExperience: TeamExperience) {
     this.canvas = teamExperience.canvas
+    this.camera = teamExperience.camera
     this.scene = teamExperience.scene
     this.renderer = teamExperience.renderer
     this.debug = teamExperience.debug
     this.time = teamExperience.time
+    this.sizes = teamExperience.sizes
 
     this.count = 30
+    this.cards = Array(this.count)
 
     this.texture = new THREE.Texture()
 
@@ -76,6 +89,15 @@ export default class Avatars {
     ).normalize()
 
     this.generate()
+
+    this.sphereMaterial = new THREE.MeshBasicMaterial({
+      color: 0xd71488,
+      transparent: true,
+      opacity: 0.2,
+      wireframe: true,
+      wireframeLinewidth: 10
+    })
+    this.points!.add(new THREE.Mesh(new THREE.SphereGeometry(5, 32, 16), this.sphereMaterial))
   }
 
   generate() {
@@ -170,6 +192,15 @@ export default class Avatars {
     this.scene.add(this.points)
   }
 
+  resize() {
+    const scaleY = this.sizes.height / 720
+    const scaleX = this.sizes.width / 1480
+    const scale = Math.min(scaleX, scaleY)
+    this.points!.scale.set(scale, scale, scale)
+
+    if (this.shownGroup.length > 0) this.showAll()
+  }
+
   update() {
     if (this.rotate) {
       this.points!.rotateOnAxis(this.axisPrimary, 0.005)
@@ -183,6 +214,30 @@ export default class Avatars {
         : this.hiddenGroup.includes(i)
         ? this.hiddenOpacity
         : this.opacity
+    })
+
+    this.sphereMaterial!.opacity = 0.2 * this.opacity
+
+    const positions = this.geometry!.getAttribute('position')
+    const positionsArray = positions.array as Float32Array
+
+    this.cards.forEach((card, i) => {
+      if (!card) return
+      const position = new THREE.Vector3(
+        positionsArray[i * 3 + 0],
+        positionsArray[i * 3 + 1],
+        positionsArray[i * 3 + 2]
+      )
+      position.applyQuaternion(this.points!.quaternion)
+      position.multiplyScalar(this.points!.scale.x)
+      position.project(this.camera.instance!)
+
+      const translateX = position.x * this.sizes.width * 0.5
+      const translateY = -position.y * this.sizes.height * 0.5
+
+      card.style.transform = `translateX(${translateX}px) translateY(${translateY}px) scale(${
+        this.points!.scale.x
+      }, ${this.points!.scale.x})`
     })
 
     this.geometry!.attributes.aOpacity.needsUpdate = true
@@ -213,7 +268,7 @@ export default class Avatars {
     })
   }
 
-  showGroup(group: number[], onComplete?: () => void) {
+  showGroup(group: number[], onComplete: () => void) {
     if (this.shownGroup.length === 0) this.hideAll()
     else if (this.shownGroup.length > 0) this.hideGroup()
     this.shownGroup = group
@@ -238,8 +293,6 @@ export default class Avatars {
     const positions = this.geometry!.getAttribute('position')
     const positionsArray = positions.array as Float32Array
 
-    const sector = (2 * Math.PI) / this.shownGroup.length
-
     this.shownGroup.forEach((i, j) => {
       const worldPosition = new THREE.Vector3()
       const localPosition = new THREE.Vector3()
@@ -247,14 +300,14 @@ export default class Avatars {
       worldPosition.fromBufferAttribute(positions, i)
       this.points!.localToWorld(worldPosition)
 
-      const radius = this.shownGroup.length === 1 ? 0 : 3
-      const x = radius * Math.cos(sector * j)
-      const y = radius * Math.sin(sector * j)
+      const scale = this.points!.scale.x
+      const x = (2 * (j % 4) - 3) / scale
+      const y = (2.5 - 2.25 * Math.floor(j / 4)) / scale
 
       gsap.to(worldPosition, {
         x,
         y,
-        z: 6,
+        z: 6 * scale,
         duration: 1,
         onStart: () => {
           this.rotate = false
@@ -267,7 +320,10 @@ export default class Avatars {
           positionsArray[i * 3 + 2] = localPosition.z
           this.geometry!.getAttribute('position').needsUpdate = true
         },
-        onComplete
+        onComplete: () => {
+          if (this.cards[i]) this.cards[i].style.opacity = '1'
+          onComplete()
+        }
       })
     })
   }
@@ -280,6 +336,8 @@ export default class Avatars {
     const positionsArray = positions.array as Float32Array
 
     this.hiddenGroup.forEach((i) => {
+      if (this.cards[i]) this.cards[i].style.opacity = '0'
+
       const phi = Math.PI * (1 + Math.sqrt(5)) * i
       const theta = Math.acos(1 - (2 * i) / this.count)
 

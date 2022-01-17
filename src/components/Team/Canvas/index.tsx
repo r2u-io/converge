@@ -7,7 +7,7 @@ import { Container } from './styles'
 
 const CanvasTeam: React.FC = () => {
   const { teamOpened } = useUIContext()
-  const { setAvatars } = useAvatarsContext()
+  const { setAvatars, onResize } = useAvatarsContext()
 
   const ref = useRef(null)
 
@@ -15,7 +15,7 @@ const CanvasTeam: React.FC = () => {
 
   useEffect(() => {
     if (!ref.current) return
-    setTeamExperience(new TeamExperience(ref.current))
+    setTeamExperience(new TeamExperience(ref.current, onResize))
   }, [ref])
 
   useEffect(() => {

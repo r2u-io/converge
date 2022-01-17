@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
+import TeamData from '../../config/team.json'
 import { useAvatarsContext } from '../../contexts/AvatarsContext'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { useUIContext } from '../../contexts/UIContext'
 import Model from '../../three/experience/World/Model'
 import CanvasTeam from './Canvas'
+import CardTeam from './Card'
 import { Container } from './styles'
 
 const Team: React.FC = () => {
@@ -59,6 +61,9 @@ const Team: React.FC = () => {
           </button>
         </div>
         <div className='right'>
+          {TeamData.map((data, index) => (
+            <CardTeam index={index} {...data} key={String(index)} />
+          ))}
           <CanvasTeam />
         </div>
       </div>

@@ -24,9 +24,12 @@ export default class TeamExperience {
 
   avatars: Avatars
 
-  constructor(canvas: HTMLCanvasElement) {
+  onResize: () => void
+
+  constructor(canvas: HTMLCanvasElement, onResize: () => void) {
     // Options
     this.canvas = canvas
+    this.onResize = onResize
 
     // Setup
     this.debug = new Debug()
@@ -49,6 +52,8 @@ export default class TeamExperience {
   resize() {
     this.camera.resize()
     this.renderer.resize()
+    this.avatars.resize()
+    this.onResize()
   }
 
   update() {

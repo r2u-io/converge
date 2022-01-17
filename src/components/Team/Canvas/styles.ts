@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  position: absolute;
+  z-index: 1;
+
   background: none transparent;
 
   width: 100%;
