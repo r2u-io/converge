@@ -320,10 +320,7 @@ export default class Avatars {
           positionsArray[i * 3 + 2] = localPosition.z
           this.geometry!.getAttribute('position').needsUpdate = true
         },
-        onComplete: () => {
-          if (this.cards[i]) this.cards[i].style.opacity = '1'
-          onComplete()
-        }
+        onComplete
       })
     })
   }
@@ -336,8 +333,6 @@ export default class Avatars {
     const positionsArray = positions.array as Float32Array
 
     this.hiddenGroup.forEach((i) => {
-      if (this.cards[i]) this.cards[i].style.opacity = '0'
-
       const phi = Math.PI * (1 + Math.sqrt(5)) * i
       const theta = Math.acos(1 - (2 * i) / this.count)
 

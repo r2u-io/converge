@@ -15,7 +15,8 @@ const Team: React.FC = () => {
   const { openTeam, closeTeam, teamOpened } = useUIContext()
   const { sceneReady, threeExperience } = useThreeContext()
   const {
-    disabled,
+    moving,
+    activeGroup,
     onClickBack,
     onClickOperations3D,
     onClickTechProduct,
@@ -44,19 +45,35 @@ const Team: React.FC = () => {
       <div className='content'>
         <div className='left'>
           <h2>Meet our team</h2>
-          <button type='button' onClick={onClickBack} disabled={disabled.all}>
+          <button type='button' onClick={onClickBack} disabled={moving || activeGroup === 'all'}>
             Everyone
           </button>
-          <button type='button' onClick={onClickOperations3D} disabled={disabled.operations3D}>
+          <button
+            type='button'
+            onClick={onClickOperations3D}
+            disabled={moving || activeGroup === 'operations3D'}
+          >
             Operations & 3D
           </button>
-          <button type='button' onClick={onClickTechProduct} disabled={disabled.techProduct}>
+          <button
+            type='button'
+            onClick={onClickTechProduct}
+            disabled={moving || activeGroup === 'techProduct'}
+          >
             Technology & Product
           </button>
-          <button type='button' onClick={onClickGeneralAdmin} disabled={disabled.generalAdmin}>
+          <button
+            type='button'
+            onClick={onClickGeneralAdmin}
+            disabled={moving || activeGroup === 'generalAdmin'}
+          >
             General & Administrative
           </button>
-          <button type='button' onClick={onClickSalesMarketing} disabled={disabled.salesMarketing}>
+          <button
+            type='button'
+            onClick={onClickSalesMarketing}
+            disabled={moving || activeGroup === 'salesMarketing'}
+          >
             Sales & Marketing
           </button>
         </div>

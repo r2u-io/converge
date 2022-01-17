@@ -30,6 +30,7 @@ export const Container = styled.div<Props>`
     padding: 0 50px;
 
     color: white;
+    pointer-events: none;
 
     .left {
       display: flex;

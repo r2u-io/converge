@@ -1,30 +1,33 @@
-import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
-import TeamsData from '../config/team.json'
+import TeamData from '../config/team.json'
 import Avatars from '../three/team-experience/Avatars'
 
+type Group = 'all' | 'operations3D' | 'techProduct' | 'generalAdmin' | 'salesMarketing'
+
 const TEAMS = {
-  operations3D: [0, 1, 2, 3, 4, 5],
-  techProduct: [6, 7, 8, 9, 10, 11],
-  generalAdmin: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
-  salesMarketing: [22]
+  operations3D: TeamData.filter((member) => member.group === 'operations3D').map((member) =>
+    TeamData.indexOf(member)
+  ),
+  techProduct: TeamData.filter((member) => member.group === 'techProduct').map((member) =>
+    TeamData.indexOf(member)
+  ),
+  generalAdmin: TeamData.filter((member) => member.group === 'generalAdmin').map((member) =>
+    TeamData.indexOf(member)
+  ),
+  salesMarketing: TeamData.filter((member) => member.group === 'salesMarketing').map((member) =>
+    TeamData.indexOf(member)
+  )
 }
 
 interface Props {
   children: ReactNode
 }
 
-interface Disabled {
-  all: boolean
-  operations3D: boolean
-  techProduct: boolean
-  generalAdmin: boolean
-  salesMarketing: boolean
-}
-
 interface AvatarsContextData {
   avatars?: Avatars
-  disabled: Disabled
+  moving: boolean
+  activeGroup: Group
   setAvatars: (avatars: Avatars) => void
   onClickBack: () => void
   onClickOperations3D: () => void
@@ -39,73 +42,56 @@ export const AvatarsContext = createContext<AvatarsContextData>({} as AvatarsCon
 export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
   const [avatars, setAvatars] = useState<Avatars>()
 
-  const [disabled, setDisabled] = useState<Disabled>({
-    all: true,
-    operations3D: false,
-    techProduct: false,
-    generalAdmin: false,
-    salesMarketing: false
-  })
+  const [moving, setMoving] = useState(false)
+  const [activeGroup, setActiveGroup] = useState<Group>('all')
 
-  const disableAll = () =>
-    setDisabled({
-      all: true,
-      operations3D: true,
-      techProduct: true,
-      generalAdmin: true,
-      salesMarketing: true
-    })
-
-  const disableGroup = (group: string) =>
-    setDisabled({
-      all: false,
-      operations3D: false,
-      techProduct: false,
-      generalAdmin: false,
-      salesMarketing: false,
-      [group]: true
-    })
+  useEffect(() => {
+    setMoving(false)
+  }, [activeGroup])
 
   const onClickBack = () => {
     if (!avatars) return
-    disableAll()
-    avatars.showAll(() => disableGroup('all'))
+    setMoving(true)
+    avatars.showAll(() => setActiveGroup('all'))
   }
 
   const onClickOperations3D = () => {
     if (!avatars) return
-    disableAll()
-    avatars.showAll(() => avatars.showGroup(TEAMS.operations3D, () => disableGroup('operations3D')))
+    setMoving(true)
+    avatars.showAll(() =>
+      avatars.showGroup(TEAMS.operations3D, () => setActiveGroup('operations3D'))
+    )
   }
 
   const onClickTechProduct = () => {
     if (!avatars) return
-    disableAll()
-    avatars.showAll(() => avatars.showGroup(TEAMS.techProduct, () => disableGroup('techProduct')))
+    setMoving(true)
+    avatars.showAll(() => avatars.showGroup(TEAMS.techProduct, () => setActiveGroup('techProduct')))
   }
   const onClickGeneralAdmin = () => {
     if (!avatars) return
-    disableAll()
-    avatars.showAll(() => avatars.showGroup(TEAMS.generalAdmin, () => disableGroup('generalAdmin')))
+    setMoving(true)
+    avatars.showAll(() =>
+      avatars.showGroup(TEAMS.generalAdmin, () => setActiveGroup('generalAdmin'))
+    )
   }
   const onClickSalesMarketing = () => {
     if (!avatars) return
-    disableAll()
+    setMoving(true)
     avatars.showAll(() =>
-      avatars.showGroup(TEAMS.salesMarketing, () => disableGroup('salesMarketing'))
+      avatars.showGroup(TEAMS.salesMarketing, () => setActiveGroup('salesMarketing'))
     )
   }
 
-  const onResize = () => {
-    disableGroup('all')
-  }
+  const onResize = () => setActiveGroup('all')
 
   return (
     <AvatarsContext.Provider
       value={{
         avatars,
         setAvatars,
-        disabled,
+        moving,
+        activeGroup,
         onClickBack,
         onClickOperations3D,
         onClickTechProduct,
