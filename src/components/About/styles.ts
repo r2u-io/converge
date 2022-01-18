@@ -15,6 +15,18 @@ export const Container = styled.div<Props>`
   width: 100%;
   height: calc(100vh - 100px);
 
+  @media (max-width: 1080px) {
+    & {
+      height: calc(100vh - 75px);
+    }
+  }
+
+  @media (max-width: 720px) {
+    & {
+      height: calc(100vh - 50px);
+    }
+  }
+
   pointer-events: all;
 
   flex-direction: column;

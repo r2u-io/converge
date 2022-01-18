@@ -8,7 +8,7 @@ export const Container = styled.div<Props>`
   grid-column: 1 / -1;
   grid-row: 1 / 2;
 
-  padding: 20px;
+  padding: 0 20px;
   height: 100px;
   width: 100%;
 
@@ -47,7 +47,7 @@ export const Container = styled.div<Props>`
   }
 
   .logo {
-    align-self: end;
+    max-width: 50%;
   }
 
   .hamburger {
@@ -69,6 +69,28 @@ export const Container = styled.div<Props>`
 
     .line-3.open {
       transform: translate(0, 100px);
+    }
+  }
+
+  @media (max-width: 1080px) {
+    & {
+      height: 75px;
+    }
+
+    .hamburger {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    & {
+      height: 50px;
+    }
+
+    .hamburger {
+      height: 30px;
+      width: 30px;
     }
   }
 `

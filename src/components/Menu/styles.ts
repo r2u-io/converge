@@ -61,4 +61,16 @@ export const Container = styled.div<Props>`
       transform: scaleY(1);
     }
   }
+
+  @media (max-width: 1080px) {
+    & {
+      top: 75px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    & {
+      top: 50px;
+    }
+  }
 `
