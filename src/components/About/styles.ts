@@ -12,6 +12,8 @@ export const Container = styled.div<Props>`
   z-index: 1;
 
   position: relative;
+  width: 100%;
+  height: calc(100vh - 100px);
 
   pointer-events: all;
 
@@ -31,16 +33,30 @@ export const Container = styled.div<Props>`
 
     height: 100%;
     width: 100%;
+    max-height: 100%;
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 50px;
+    justify-content: space-between;
+    gap: 100px;
+    padding: 50px 10px;
 
-    padding: 50px 10%;
+    @media (max-width: 1080px) {
+      & {
+        padding: 20px 10px;
+        gap: 50px;
+      }
+    }
 
-    .left {
+    @media (max-width: 720px) {
+      & {
+        padding: 10px 10px;
+        gap: 20px;
+      }
+    }
+
+    .title {
       width: 50%;
       height: 100%;
 
@@ -50,12 +66,18 @@ export const Container = styled.div<Props>`
       align-items: end;
 
       span {
-        font-size: 6rem;
+        width: 70%;
+        font-size: 5rem;
         text-align: right;
       }
 
+      @media (max-width: 1080px) {
+        span {
+          font-size: 3rem;
+        }
+      }
+
       button {
-        color: white;
         background: none;
         outline: none;
         border: solid 2px #d71488;
@@ -64,31 +86,98 @@ export const Container = styled.div<Props>`
         height: 50px;
         width: 275px;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        a {
+          width: 100%;
+          height: 100%;
 
-        pointer-events: all;
-        cursor: pointer;
+          color: white;
+          text-decoration: none;
 
-        font-weight: 500;
-        font-size: 1.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          pointer-events: all;
+          cursor: pointer;
+
+          font-weight: 500;
+          font-size: 1.2rem;
+        }
       }
     }
 
-    .right {
+    .text {
+      padding-right: 5%;
+
+      overflow: auto;
+      scrollbar-color: #d71488 transparent;
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d71488;
+        border-radius: 10px;
+
+        margin: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #aa106d;
+      }
+
       width: 50%;
       height: 100%;
-      font-size: 1.5rem;
 
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: left;
 
-      br {
-        margin: 20px;
+      p {
+        height: 100%;
+        margin: 0;
+
+        font-size: 1.5rem;
+        text-align: left;
+
+        br {
+          margin-bottom: 20px;
+          display: block;
+          content: ' ';
+        }
+      }
+    }
+  }
+
+  @media (orientation: portrait) {
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+
+      .title {
+        width: 100%;
+        height: max-content;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        span {
+          width: 100%;
+        }
+      }
+
+      .text {
+        width: 100%;
+        height: 100%;
       }
     }
   }
