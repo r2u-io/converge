@@ -22,7 +22,7 @@ const Map: React.FC = () => {
   return (
     <Container onClick={closeMap} open={mapOpened}>
       <span>Connecting worlds</span>
-      <Image src='/images/map.png' alt='map' height={630} width={1152} />
+      <Image src='/images/map.png' alt='map' height={630} width={1152} objectFit='contain' />
     </Container>
   )
 }
