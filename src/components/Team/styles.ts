@@ -79,6 +79,20 @@ export const Container = styled.div<Props>`
       height: 100%;
       border: none;
       position: relative;
+
+      .wrapper {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        padding: 10px;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 

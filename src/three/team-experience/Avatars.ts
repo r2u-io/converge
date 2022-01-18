@@ -218,28 +218,6 @@ export default class Avatars {
 
     this.sphereMaterial!.opacity = 0.2 * this.opacity
 
-    const positions = this.geometry!.getAttribute('position')
-    const positionsArray = positions.array as Float32Array
-
-    this.cards.forEach((card, i) => {
-      if (!card) return
-      const position = new THREE.Vector3(
-        positionsArray[i * 3 + 0],
-        positionsArray[i * 3 + 1],
-        positionsArray[i * 3 + 2]
-      )
-      position.applyQuaternion(this.points!.quaternion)
-      position.multiplyScalar(this.points!.scale.x)
-      position.project(this.camera.instance!)
-
-      const translateX = position.x * this.sizes.width * 0.5
-      const translateY = -position.y * this.sizes.height * 0.5
-
-      card.style.transform = `translateX(${translateX}px) translateY(${translateY}px) scale(${
-        this.points!.scale.x
-      }, ${this.points!.scale.x})`
-    })
-
     this.geometry!.attributes.aOpacity.needsUpdate = true
   }
 
@@ -293,21 +271,32 @@ export default class Avatars {
     const positions = this.geometry!.getAttribute('position')
     const positionsArray = positions.array as Float32Array
 
-    this.shownGroup.forEach((i, j) => {
+    this.shownGroup.forEach((i) => {
+      const card = this.cards[i]
+
+      const cursor = {
+        x: 2 * ((card.offsetLeft + 95) / this.sizes.width) - 1,
+        y: 1 - ((card.offsetTop + 95) / this.sizes.height) * 2
+      }
+
+      const vector = new THREE.Vector3(cursor.x, cursor.y, 0.5)
+      const target = new THREE.Vector3()
+
       const worldPosition = new THREE.Vector3()
       const localPosition = new THREE.Vector3()
+
+      vector.unproject(this.camera.instance!)
+      vector.sub(this.camera.instance!.position).normalize()
+      const distance = (4.85 - this.camera.instance!.position.z) / vector.z
+      target.copy(this.camera.instance!.position).add(vector.multiplyScalar(distance))
 
       worldPosition.fromBufferAttribute(positions, i)
       this.points!.localToWorld(worldPosition)
 
-      const scale = this.points!.scale.x
-      const x = (2 * (j % 4) - 3) / scale
-      const y = (2.5 - 2.25 * Math.floor(j / 4)) / scale
-
       gsap.to(worldPosition, {
-        x,
-        y,
-        z: 6 * scale,
+        x: target.x,
+        y: target.y,
+        z: target.z,
         duration: 1,
         onStart: () => {
           this.rotate = false

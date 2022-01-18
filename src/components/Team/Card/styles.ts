@@ -5,26 +5,16 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  position: absolute;
-  z-index: 0;
-
-  position: absolute;
-  top: calc(50% - 140px);
-  left: calc(50% - 125px);
-
-  transform-origin: center;
-
-  display: ${({ active }) => (active ? 'block' : 'none')};
   opacity: ${({ active }) => (active ? 1 : 0)};
   transition: opacity 0.5s;
 
   .background {
-    width: 250px;
-    height: 350px;
+    width: 190px;
+    height: 265px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
 
-    padding: 25px;
+    padding: 15px;
 
     color: black;
 
@@ -36,18 +26,30 @@ export const Container = styled.div<Props>`
     text-decoration: none;
     text-transform: capitalize;
 
-    .name {
-      font-size: 1.8rem;
-      font-weight: bold;
+    .text {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .job {
+        font-size: 1rem;
+      }
     }
 
-    .job {
-      font-size: 1.2rem;
+    &:hover {
+      .text {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     .frame {
-      width: 200px;
-      height: 200px;
+      width: 160px;
+      height: 160px;
 
       border: solid 4px #54439b;
       background: radial-gradient(

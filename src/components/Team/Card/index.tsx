@@ -25,8 +25,10 @@ const CardTeam: React.FC<Props> = ({ name, job, link, group, index }: Props) => 
     <Container ref={ref} active={!moving && activeGroup === group}>
       <a className='background' href={link} target='_blank' rel='noopener noreferrer'>
         <div className='frame' />
-        <span className='name'>{name.replace('_', ' ')}</span>
-        <span className='job'>{job}</span>
+        <div className='text'>
+          <span className='name'>{name.replace('_', ' ')}</span>
+          <span className='job'>{job}</span>
+        </div>
       </a>
     </Container>
   )

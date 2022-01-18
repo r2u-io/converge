@@ -32,6 +32,33 @@ const Team: React.FC = () => {
     setModel(modelInstance)
   }, [sceneReady, threeExperience, model])
 
+  const teams = [
+    {
+      group: 'operations3D',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'operations3D'
+      )
+    },
+    {
+      group: 'techProduct',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'techProduct'
+      )
+    },
+    {
+      group: 'generalAdmin',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'generalAdmin'
+      )
+    },
+    {
+      group: 'salesMarketing',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'salesMarketing'
+      )
+    }
+  ]
+
   return (
     <Container open={teamOpened}>
       <Image
@@ -78,8 +105,12 @@ const Team: React.FC = () => {
           </button>
         </div>
         <div className='right'>
-          {TeamData.map((data, index) => (
-            <CardTeam index={index} {...data} key={String(index)} />
+          {teams.map(({ members, group }) => (
+            <div key={group} className='wrapper'>
+              {members.map((data) => (
+                <CardTeam {...data} key={data.name} />
+              ))}
+            </div>
           ))}
           <CanvasTeam />
         </div>
