@@ -18,7 +18,7 @@ export const Container = styled.div<Props>`
 
     color: black;
 
-    pointer-events: all;
+    pointer-events: ${({ active }) => (active ? 'all' : 'none')};
 
     display: flex;
     flex-direction: column;

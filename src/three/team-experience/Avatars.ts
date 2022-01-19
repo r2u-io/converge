@@ -193,10 +193,13 @@ export default class Avatars {
   }
 
   resize() {
-    const scaleY = this.sizes.height / 720
     const scaleX = this.sizes.width / 1480
-    const scale = Math.min(scaleX, scaleY)
-    this.points!.scale.set(scale, scale, scale)
+    const scaleY = this.sizes.height / 720
+    const scale = Math.min(scaleX, scaleY, 1.0)
+
+    const size = 800 * this.renderer.instance!.getPixelRatio() * scale
+
+    this.material!.uniforms.uSize.value = size
 
     if (this.shownGroup.length > 0) this.showAll()
   }

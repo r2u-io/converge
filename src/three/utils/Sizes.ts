@@ -24,6 +24,8 @@ export default class Sizes extends EventEmitter {
       this.height = this.container.clientHeight
     }
 
+    this.emit('resize')
+
     // Resize event
     window.addEventListener('resize', () => this.updateSizes())
   }
