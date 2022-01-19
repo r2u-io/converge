@@ -218,6 +218,18 @@ export const Container = styled.div<Props>`
           font-size: 1rem;
         }
       }
+
+      .canvas {
+        .wrapper {
+          gap: 5px;
+          &.column-3 {
+            grid-template-columns: repeat(3, 80px);
+          }
+          &.column-5 {
+            grid-template-columns: repeat(5, 80px);
+          }
+        }
+      }
     }
   }
 
@@ -259,10 +271,10 @@ export const Container = styled.div<Props>`
         .wrapper {
           gap: 5px;
           &.column-3 {
-            grid-template-columns: repeat(3, 70px);
+            grid-template-columns: repeat(3, 90px);
           }
           &.column-5 {
-            grid-template-columns: repeat(5, 70px);
+            grid-template-columns: repeat(4, 90px);
           }
         }
       }

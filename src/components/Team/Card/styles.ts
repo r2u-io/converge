@@ -107,13 +107,13 @@ export const Container = styled.div<Props>`
 
   @media (max-width: 720px) {
     .background {
-      width: 70px;
-      height: 160px;
+      width: 80px;
+      height: 140px;
       padding: 5px;
 
       .frame {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
       }
 
       .text {
@@ -123,6 +123,29 @@ export const Container = styled.div<Props>`
 
         .job {
           font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  @media (orientation: portrait) {
+    .background {
+      width: 90px;
+      height: 160px;
+      padding: 5px;
+
+      .frame {
+        width: 80px;
+        height: 80px;
+      }
+
+      .text {
+        .name {
+          font-size: 1rem;
+        }
+
+        .job {
+          font-size: 0.8rem;
         }
       }
     }

@@ -193,14 +193,15 @@ export default class Avatars {
   }
 
   resize() {
-    const scale =
-      window.innerWidth > 1440
-        ? 800
-        : window.innerWidth > 1080
-        ? 600
-        : window.innerWidth > 720
-        ? 400
-        : 300
+    const scale = window.screen.orientation.type.startsWith('portrait')
+      ? 400
+      : window.innerWidth > 1440
+      ? 800
+      : window.innerWidth > 1080
+      ? 600
+      : window.innerWidth > 720
+      ? 400
+      : 350
 
     const size = scale * this.renderer.instance!.getPixelRatio()
 
