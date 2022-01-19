@@ -53,7 +53,7 @@ export default class TeamExperience {
     this.camera.resize()
     this.renderer.resize()
     this.avatars.resize()
-    // this.onResize()
+    this.onResize()
   }
 
   update() {
