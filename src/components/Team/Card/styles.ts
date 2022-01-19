@@ -9,12 +9,12 @@ export const Container = styled.div<Props>`
   transition: opacity 0.5s;
 
   .background {
-    width: 190px;
-    height: 265px;
+    width: 180px;
+    height: 255px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
 
-    padding: 15px;
+    padding: 10px;
 
     color: black;
 
@@ -25,6 +25,18 @@ export const Container = styled.div<Props>`
 
     text-decoration: none;
     text-transform: capitalize;
+
+    .frame {
+      width: 160px;
+      height: 160px;
+
+      border: solid 4px #54439b;
+      background: radial-gradient(
+        50.25% 50.25% at 50.02% 49.98%,
+        rgba(91, 82, 163, 0) 42.91%,
+        rgba(91, 82, 163, 0.6) 100%
+      );
+    }
 
     .text {
       display: flex;
@@ -46,17 +58,73 @@ export const Container = styled.div<Props>`
         flex-direction: column;
       }
     }
+  }
 
-    .frame {
-      width: 160px;
+  @media (max-width: 1440px) {
+    .background {
+      width: 140px;
+      height: 220px;
+
+      .frame {
+        width: 120px;
+        height: 120px;
+      }
+
+      .text {
+        .name {
+          font-size: 1.1rem;
+        }
+
+        .job {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .background {
+      width: 90px;
       height: 160px;
+      padding: 5px;
 
-      border: solid 4px #54439b;
-      background: radial-gradient(
-        50.25% 50.25% at 50.02% 49.98%,
-        rgba(91, 82, 163, 0) 42.91%,
-        rgba(91, 82, 163, 0.6) 100%
-      );
+      .frame {
+        width: 80px;
+        height: 80px;
+      }
+
+      .text {
+        .name {
+          font-size: 1rem;
+        }
+
+        .job {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .background {
+      width: 70px;
+      height: 160px;
+      padding: 5px;
+
+      .frame {
+        width: 60px;
+        height: 60px;
+      }
+
+      .text {
+        .name {
+          font-size: 0.9rem;
+        }
+
+        .job {
+          font-size: 0.7rem;
+        }
+      }
     }
   }
 `

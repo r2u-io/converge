@@ -101,7 +101,6 @@ export const Container = styled.div<Props>`
         height: 100%;
 
         position: absolute;
-        padding: 10px;
 
         display: grid;
 
@@ -110,11 +109,11 @@ export const Container = styled.div<Props>`
         justify-content: center;
 
         &.column-3 {
-          grid-template-columns: repeat(3, 190px);
+          grid-template-columns: repeat(3, 180px);
         }
 
         &.column-5 {
-          grid-template-columns: repeat(5, 190px);
+          grid-template-columns: repeat(5, 180px);
         }
       }
     }
@@ -143,6 +142,18 @@ export const Container = styled.div<Props>`
           font-size: 1.4rem;
         }
       }
+
+      .canvas {
+        .wrapper {
+          gap: 15px;
+          &.column-3 {
+            grid-template-columns: repeat(3, 140px);
+          }
+          &.column-5 {
+            grid-template-columns: repeat(5, 140px);
+          }
+        }
+      }
     }
   }
 
@@ -167,6 +178,18 @@ export const Container = styled.div<Props>`
 
         button {
           font-size: 1.1rem;
+        }
+      }
+
+      .canvas {
+        .wrapper {
+          gap: 10px;
+          &.column-3 {
+            grid-template-columns: repeat(3, 90px);
+          }
+          &.column-5 {
+            grid-template-columns: repeat(5, 90px);
+          }
         }
       }
     }
@@ -228,6 +251,18 @@ export const Container = styled.div<Props>`
 
           span {
             font-size: 2rem;
+          }
+        }
+      }
+
+      .canvas {
+        .wrapper {
+          gap: 5px;
+          &.column-3 {
+            grid-template-columns: repeat(3, 70px);
+          }
+          &.column-5 {
+            grid-template-columns: repeat(5, 70px);
           }
         }
       }

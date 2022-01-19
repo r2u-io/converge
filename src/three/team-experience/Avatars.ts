@@ -193,11 +193,16 @@ export default class Avatars {
   }
 
   resize() {
-    const scaleX = this.sizes.width / 1480
-    const scaleY = this.sizes.height / 720
-    const scale = Math.min(scaleX, scaleY, 1.0)
+    const scale =
+      window.innerWidth > 1440
+        ? 800
+        : window.innerWidth > 1080
+        ? 600
+        : window.innerWidth > 720
+        ? 400
+        : 300
 
-    const size = 800 * this.renderer.instance!.getPixelRatio() * scale
+    const size = scale * this.renderer.instance!.getPixelRatio()
 
     this.material!.uniforms.uSize.value = size
 
@@ -278,8 +283,8 @@ export default class Avatars {
       const card = this.cards[i]
 
       const cursor = {
-        x: 2 * ((card.offsetLeft + 95) / this.sizes.width) - 1,
-        y: 1 - ((card.offsetTop + 95) / this.sizes.height) * 2
+        x: 2 * ((card.offsetLeft + card.offsetWidth / 2) / this.sizes.width) - 1,
+        y: 1 - ((card.offsetTop + card.offsetWidth / 2) / this.sizes.height) * 2
       }
 
       const vector = new THREE.Vector3(cursor.x, cursor.y, 0.5)
