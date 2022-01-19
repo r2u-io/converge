@@ -15,6 +15,20 @@ export const Container = styled.div<Props>`
 
   pointer-events: all;
 
+  height: calc(100vh - 100px);
+
+  @media (max-width: 1080px) {
+    & {
+      height: calc(100vh - 75px);
+    }
+  }
+
+  @media (max-width: 720px) {
+    & {
+      height: calc(100vh - 50px);
+    }
+  }
+
   .content {
     position: absolute;
     z-index: 2;
@@ -87,11 +101,19 @@ export const Container = styled.div<Props>`
         position: absolute;
         padding: 10px;
 
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+
         gap: 20px;
         align-items: center;
         justify-content: center;
+
+        &.column-3 {
+          grid-template-columns: repeat(3, 190px);
+        }
+
+        &.column-5 {
+          grid-template-columns: repeat(5, 190px);
+        }
       }
     }
   }

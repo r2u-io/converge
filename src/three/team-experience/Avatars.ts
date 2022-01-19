@@ -224,7 +224,7 @@ export default class Avatars {
   hideAll() {
     gsap.to(this, {
       opacity: 0,
-      duration: 1.5,
+      duration: 0.5,
       onStart: () => {
         this.rotate = false
       }
@@ -238,7 +238,7 @@ export default class Avatars {
     }
     gsap.to(this, {
       opacity: 1,
-      duration: 1.5,
+      duration: 0.5,
       onComplete: () => {
         this.rotate = true
         onComplete?.()
@@ -297,7 +297,7 @@ export default class Avatars {
         x: target.x,
         y: target.y,
         z: target.z,
-        duration: 1,
+        duration: 0.5,
         onStart: () => {
           this.rotate = false
         },
@@ -331,7 +331,7 @@ export default class Avatars {
         x: this.radius * Math.sin(theta) * Math.cos(phi),
         y: this.radius * Math.cos(theta),
         z: this.radius * Math.sin(theta) * Math.sin(phi),
-        duration: 1,
+        duration: 0.5,
         ease: 'none',
         onUpdate: () => {
           positionsArray[i * 3 + 0] = position.x

@@ -37,25 +37,29 @@ const Team: React.FC = () => {
       group: 'operations3D',
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
         (member) => member.group === 'operations3D'
-      )
+      ),
+      className: 'column-3'
     },
     {
       group: 'techProduct',
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
         (member) => member.group === 'techProduct'
-      )
+      ),
+      className: 'column-5'
     },
     {
       group: 'generalAdmin',
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
         (member) => member.group === 'generalAdmin'
-      )
+      ),
+      className: 'column-3'
     },
     {
       group: 'salesMarketing',
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
         (member) => member.group === 'salesMarketing'
-      )
+      ),
+      className: 'column-5'
     }
   ]
 
@@ -105,8 +109,8 @@ const Team: React.FC = () => {
           </button>
         </div>
         <div className='right'>
-          {teams.map(({ members, group }) => (
-            <div key={group} className='wrapper'>
+          {teams.map(({ members, group, className }) => (
+            <div key={group} className={`wrapper ${className}`}>
               {members.map((data) => (
                 <CardTeam {...data} key={data.name} />
               ))}
