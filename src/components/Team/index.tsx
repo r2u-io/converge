@@ -18,9 +18,9 @@ const Team: React.FC = () => {
     moving,
     activeGroup,
     onClickBack,
-    onClickOperations3D,
+    onClickOperations,
     onClickTechProduct,
-    onClickGeneralAdmin,
+    onClickLeadership,
     onClickSalesMarketing
   } = useAvatarsContext()
 
@@ -34,9 +34,16 @@ const Team: React.FC = () => {
 
   const teams = [
     {
-      group: 'operations3D',
+      group: 'leadership',
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
-        (member) => member.group === 'operations3D'
+        (member) => member.group === 'leadership'
+      ),
+      className: 'column-3'
+    },
+    {
+      group: 'operations',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'operations'
       ),
       className: 'column-3'
     },
@@ -46,13 +53,6 @@ const Team: React.FC = () => {
         (member) => member.group === 'techProduct'
       ),
       className: 'column-5'
-    },
-    {
-      group: 'generalAdmin',
-      members: TeamData.map((member, index) => ({ ...member, index })).filter(
-        (member) => member.group === 'generalAdmin'
-      ),
-      className: 'column-3'
     },
     {
       group: 'salesMarketing',
@@ -93,10 +93,10 @@ const Team: React.FC = () => {
           </div>
           <button
             type='button'
-            onClick={onClickOperations3D}
-            disabled={moving || activeGroup === 'operations3D'}
+            onClick={onClickLeadership}
+            disabled={moving || activeGroup === 'leadership'}
           >
-            Operations & 3D
+            Leadership
           </button>
           <button
             type='button'
@@ -107,10 +107,10 @@ const Team: React.FC = () => {
           </button>
           <button
             type='button'
-            onClick={onClickGeneralAdmin}
-            disabled={moving || activeGroup === 'generalAdmin'}
+            onClick={onClickOperations}
+            disabled={moving || activeGroup === 'operations'}
           >
-            General & Administrative
+            Operations
           </button>
           <button
             type='button'
