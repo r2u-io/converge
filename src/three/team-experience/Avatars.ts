@@ -94,8 +94,7 @@ export default class Avatars {
       color: 0xd71488,
       transparent: true,
       opacity: 0.2,
-      wireframe: true,
-      wireframeLinewidth: 10
+      wireframe: true
     })
     this.points!.add(new THREE.Mesh(new THREE.SphereGeometry(5, 32, 16), this.sphereMaterial))
   }
