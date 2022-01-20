@@ -43,6 +43,7 @@ export default class Experience {
 
     // Setup
     this.debug = new Debug()
+    this.debug.active = false
     this.sizes = new Sizes()
     this.time = new Time(this.debug.active)
 
