@@ -45,7 +45,7 @@ const Team: React.FC = () => {
       members: TeamData.map((member, index) => ({ ...member, index })).filter(
         (member) => member.group === 'operations'
       ),
-      className: 'column-5'
+      className: 'column-3'
     },
     {
       group: 'techProduct',
