@@ -63,7 +63,7 @@ export const Container = styled.div<Props>`
   @media (max-width: 1440px) {
     .background {
       width: 140px;
-      height: 220px;
+      height: 250px;
 
       .frame {
         width: 120px;
@@ -85,7 +85,7 @@ export const Container = styled.div<Props>`
   @media (max-width: 1080px) {
     .background {
       width: 90px;
-      height: 160px;
+      height: 180px;
       padding: 5px;
 
       .frame {
@@ -108,7 +108,7 @@ export const Container = styled.div<Props>`
   @media (max-width: 720px) {
     .background {
       width: 80px;
-      height: 140px;
+      height: 150px;
       padding: 5px;
 
       .frame {

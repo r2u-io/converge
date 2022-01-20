@@ -82,6 +82,11 @@ export default class MyDocument extends Document {
           <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
           <meta name='language' content='English' />
           <link rel='icon' href='/favicon.ico' />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
+            rel='stylesheet'
+          />
           {process.env.NODE_ENV === 'production' && <TagManagerHead />}
         </Head>
         <body>
