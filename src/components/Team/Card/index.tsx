@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
+import Image from 'next/image'
+
 import { useAvatarsContext } from '../../../contexts/AvatarsContext'
 import { Container } from './styles'
 
@@ -28,6 +30,9 @@ const CardTeam: React.FC<Props> = ({ name, job, link, group, index }: Props) => 
         <div className='text'>
           <span className='name'>{name}</span>
           <span className='job'>{job}</span>
+        </div>
+        <div className='in'>
+          <Image src='/images/in.png' alt='in' width={25} height={25} objectFit='contain' />
         </div>
       </a>
     </Container>

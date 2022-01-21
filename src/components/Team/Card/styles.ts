@@ -9,6 +9,8 @@ export const Container = styled.div<Props>`
   transition: opacity 0.5s;
 
   .background {
+    position: relative;
+
     width: 180px;
     height: 260px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -36,6 +38,14 @@ export const Container = styled.div<Props>`
         rgba(91, 82, 163, 0) 42.91%,
         rgba(91, 82, 163, 0.6) 100%
       );
+    }
+
+    .in {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      bottom: 5px;
+      right: 5px;
     }
 
     .text {
@@ -91,6 +101,11 @@ export const Container = styled.div<Props>`
       .frame {
         width: 80px;
         height: 80px;
+      }
+
+      .in {
+        width: 15px;
+        height: 15px;
       }
 
       .text {
