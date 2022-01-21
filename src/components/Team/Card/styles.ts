@@ -10,7 +10,7 @@ export const Container = styled.div<Props>`
 
   .background {
     width: 180px;
-    height: 255px;
+    height: 260px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
 
@@ -43,7 +43,7 @@ export const Container = styled.div<Props>`
       flex-direction: column;
 
       .name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
       }
 
@@ -131,7 +131,7 @@ export const Container = styled.div<Props>`
   @media (orientation: portrait) {
     .background {
       width: 90px;
-      height: 160px;
+      height: 175px;
       padding: 5px;
 
       .frame {

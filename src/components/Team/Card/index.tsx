@@ -26,7 +26,7 @@ const CardTeam: React.FC<Props> = ({ name, job, link, group, index }: Props) => 
       <a className='background' href={link} target='_blank' rel='noopener noreferrer'>
         <div className='frame' />
         <div className='text'>
-          <span className='name'>{name.replace('_', ' ')}</span>
+          <span className='name'>{name}</span>
           <span className='job'>{job}</span>
         </div>
       </a>
