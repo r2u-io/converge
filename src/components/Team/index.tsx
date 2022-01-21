@@ -28,7 +28,7 @@ const Team: React.FC = () => {
 
   useEffect(() => {
     if (!sceneReady || !threeExperience || model) return
-    const modelInstance = new Model(threeExperience, 'meet_team', 5, null, null, openTeam)
+    const modelInstance = new Model(threeExperience, 'cta_5', 5, null, null, openTeam)
     setModel(modelInstance)
   }, [sceneReady, threeExperience, model])
 

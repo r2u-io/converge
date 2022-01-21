@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 
-import Debug from '../utils/Debug'
 import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
 import Avatars from './Avatars'
@@ -9,8 +8,6 @@ import Renderer from './Renderer'
 
 export default class TeamExperience {
   canvas: HTMLCanvasElement
-
-  debug: Debug
 
   sizes: Sizes
 
@@ -32,9 +29,9 @@ export default class TeamExperience {
     this.onResize = onResize
 
     // Setup
-    this.debug = new Debug()
+
     this.sizes = new Sizes(canvas.parentElement!)
-    this.time = new Time(this.debug.active)
+    this.time = new Time(false)
 
     // THREE
     this.scene = new THREE.Scene()

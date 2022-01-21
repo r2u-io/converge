@@ -21,17 +21,5 @@
     "name": "cta_4",
     "floor": 4,
     "text": "Creators, Converge is for you! Our doors are open to any content creators from the world, whether you are a concept artist, an architect, a builder, a composer, or any creative mind of the outer space!"
-  },
-  {
-    "name": "cta_5",
-    "floor": 5,
-    "text": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "button": "lorem ipsum"
-  },
-  {
-    "name": "cta_6",
-    "floor": 5,
-    "text": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "button": "lorem ipsum"
   }
 ]
