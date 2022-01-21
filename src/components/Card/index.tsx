@@ -10,7 +10,7 @@ interface Props {
   name: string
   floor: number
   price: number
-  marketplace: 'opensea' | 'axie'
+  marketplace: string
 }
 
 const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: Props) => {
