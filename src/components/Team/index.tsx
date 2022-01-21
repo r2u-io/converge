@@ -21,7 +21,8 @@ const Team: React.FC = () => {
     onClickOperations,
     onClickTechProduct,
     onClickLeadership,
-    onClickSalesMarketing
+    onClickSalesMarketing,
+    onClickAdvisors
   } = useAvatarsContext()
 
   const [model, setModel] = useState<Model>()
@@ -60,6 +61,13 @@ const Team: React.FC = () => {
         (member) => member.group === 'salesMarketing'
       ),
       className: 'column-5'
+    },
+    {
+      group: 'advisors',
+      members: TeamData.map((member, index) => ({ ...member, index })).filter(
+        (member) => member.group === 'advisors'
+      ),
+      className: 'column-1'
     }
   ]
 
@@ -118,6 +126,13 @@ const Team: React.FC = () => {
             disabled={moving || activeGroup === 'salesMarketing'}
           >
             Sales & Marketing
+          </button>
+          <button
+            type='button'
+            onClick={onClickAdvisors}
+            disabled={moving || activeGroup === 'advisors'}
+          >
+            Advisors
           </button>
         </div>
         <div className='canvas'>

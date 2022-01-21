@@ -3,7 +3,7 @@ import React, { createContext, ReactNode, useContext, useEffect, useState } from
 import TeamData from '../config/team.json'
 import Avatars from '../three/team-experience/Avatars'
 
-type Group = 'all' | 'operations' | 'techProduct' | 'leadership' | 'salesMarketing'
+type Group = 'all' | 'operations' | 'techProduct' | 'leadership' | 'salesMarketing' | 'advisors'
 
 const TEAMS = {
   leadership: TeamData.filter((member) => member.group === 'leadership').map((member) =>
@@ -16,6 +16,9 @@ const TEAMS = {
     TeamData.indexOf(member)
   ),
   salesMarketing: TeamData.filter((member) => member.group === 'salesMarketing').map((member) =>
+    TeamData.indexOf(member)
+  ),
+  advisors: TeamData.filter((member) => member.group === 'advisors').map((member) =>
     TeamData.indexOf(member)
   )
 }
@@ -34,6 +37,7 @@ interface AvatarsContextData {
   onClickOperations: () => void
   onClickTechProduct: () => void
   onClickSalesMarketing: () => void
+  onClickAdvisors: () => void
   onResize: () => void
 }
 
@@ -58,17 +62,13 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
   const onClickLeadership = () => {
     if (!avatars) return
     setMoving(true)
-    avatars.showAll(() =>
-      avatars.showGroup(TEAMS.leadership, () => setActiveGroup('leadership'))
-    )
+    avatars.showAll(() => avatars.showGroup(TEAMS.leadership, () => setActiveGroup('leadership')))
   }
 
   const onClickOperations = () => {
     if (!avatars) return
     setMoving(true)
-    avatars.showAll(() =>
-      avatars.showGroup(TEAMS.operations, () => setActiveGroup('operations'))
-    )
+    avatars.showAll(() => avatars.showGroup(TEAMS.operations, () => setActiveGroup('operations')))
   }
 
   const onClickTechProduct = () => {
@@ -85,6 +85,12 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
     )
   }
 
+  const onClickAdvisors = () => {
+    if (!avatars) return
+    setMoving(true)
+    avatars.showAll(() => avatars.showGroup(TEAMS.advisors, () => setActiveGroup('advisors')))
+  }
+
   const onResize = () => setActiveGroup('all')
 
   return (
@@ -99,6 +105,7 @@ export const AvatarsProvider: React.FC<Props> = ({ children }: Props) => {
         onClickOperations,
         onClickTechProduct,
         onClickSalesMarketing,
+        onClickAdvisors,
         onResize
       }}
     >
