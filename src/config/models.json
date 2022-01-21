@@ -3,48 +3,56 @@
     "name": "fish_1",
     "floor": 0,
     "title": "Fish 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "fish_2",
     "floor": 0,
     "title": "Fish 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "fish_3",
     "floor": 0,
     "title": "Fish 3",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "fish_4",
     "floor": 0,
     "title": "Fish 4",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "roof_astro",
     "floor": 0,
     "title": "Roof Astro",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ship",
     "floor": 0,
     "title": "Ship",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ship_base",
     "floor": 0,
     "title": "Ship Base",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "yacht",
     "floor": 0,
     "title": "Yacht",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
 
@@ -52,30 +60,35 @@
     "name": "cta_r2u",
     "floor": 0,
     "title": "Cta R2U",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "map_tubes",
     "floor": 1,
     "title": "Map Tubes",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "mini_house",
     "floor": 1,
     "title": "Mini House",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "player_1",
     "floor": 1,
     "title": "Player 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "player_2",
     "floor": 1,
     "title": "Player 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
 
@@ -83,174 +96,203 @@
     "name": "bar_stool_1",
     "floor": 2,
     "title": "Bar Stool 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "bar_stool_2",
     "floor": 2,
     "title": "Bar Stool 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "bar_stool_3",
     "floor": 2,
     "title": "Bar Stool 3",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "carpet",
     "floor": 2,
     "title": "Carpet",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "chandelier",
     "floor": 2,
     "title": "Chandelier",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "fridge",
     "floor": 2,
     "title": "Fridge",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "gabinet",
     "floor": 2,
     "title": "Gabinet",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_chair_1",
     "floor": 2,
     "title": "Home Chair 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_chair_2",
     "floor": 2,
     "title": "Home Chair 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_chair_3",
     "floor": 2,
     "title": "Home Chair 3",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_chair_4",
     "floor": 2,
     "title": "Home Chair 4",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_dish",
     "floor": 2,
     "title": "Home Dish",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_sofa",
     "floor": 2,
     "title": "Home Sofa",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_table_1",
     "floor": 2,
     "title": "Home Table 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "home_table_2",
     "floor": 2,
     "title": "Home Table 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "lamp",
     "floor": 2,
     "title": "Lamp",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ornament_balls",
     "floor": 2,
     "title": "Ornament Balls",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ornament_birds_1",
     "floor": 2,
     "title": "Ornament Birds 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ornament_birds_2",
     "floor": 2,
     "title": "Ornament Birds 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ornament_giraffe",
     "floor": 2,
     "title": "Ornament Giraffe",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "plant",
     "floor": 2,
     "title": "Plant",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "sink",
     "floor": 2,
     "title": "Sink",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "stovetop",
     "floor": 2,
     "title": "Stovetop",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "tv",
     "floor": 2,
     "title": "Tv",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vase_1",
     "floor": 2,
     "title": "Vase 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vase_2",
     "floor": 2,
     "title": "Vase 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vase_3",
     "floor": 2,
     "title": "Vase 3",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vase_4",
     "floor": 2,
     "title": "Vase 4",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "washer",
     "floor": 2,
     "title": "Washer",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
 
@@ -258,18 +300,21 @@
     "name": "lab_astro",
     "floor": 3,
     "title": "Lab Astro",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "lab_chair",
     "floor": 3,
     "title": "Lab Chair",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "ladder",
     "floor": 3,
     "title": "Ladder",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
 
@@ -277,174 +322,203 @@
     "name": "golden_sculpt",
     "floor": 4,
     "title": "Golden Sculpt",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "monkey",
     "floor": 4,
     "title": "Monkey",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "bench_1",
     "floor": 4,
     "title": "Bench 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "bench_2",
     "floor": 4,
     "title": "Bench 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "bench_3",
     "floor": 4,
     "title": "Bench 3",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_01",
     "floor": 4,
     "title": "Nft 01",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_02",
     "floor": 4,
     "title": "Nft 02",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_03",
     "floor": 4,
     "title": "Nft 03",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_04",
     "floor": 4,
     "title": "Nft 04",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_05",
     "floor": 4,
     "title": "Nft 05",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_06",
     "floor": 4,
     "title": "Nft 06",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_07",
     "floor": 4,
     "title": "Nft 07",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_08",
     "floor": 4,
     "title": "Nft 08",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_09",
     "floor": 4,
     "title": "Nft 09",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_10",
     "floor": 4,
     "title": "Nft 10",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_11",
     "floor": 4,
     "title": "Nft 11",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_12",
     "floor": 4,
     "title": "Nft 12",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_13",
     "floor": 4,
     "title": "Nft 13",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_14",
     "floor": 4,
     "title": "Nft 14",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_15",
     "floor": 4,
     "title": "Nft 15",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_16",
     "floor": 4,
     "title": "Nft 16",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_17",
     "floor": 4,
     "title": "Nft 17",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_18",
     "floor": 4,
     "title": "Nft 18",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_19",
     "floor": 4,
     "title": "Nft 19",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_20",
     "floor": 4,
     "title": "Nft 20",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_21",
     "floor": 4,
     "title": "Nft 21",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_22",
     "floor": 4,
     "title": "Nft 22",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_23",
     "floor": 4,
     "title": "Nft 23",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_24",
     "floor": 4,
     "title": "Nft 24",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
 
@@ -452,120 +526,140 @@
     "name": "bin",
     "floor": 5,
     "title": "Bin",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "binder",
     "floor": 5,
     "title": "Binder",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "controller_1",
     "floor": 5,
     "title": "Controller 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "controller_2",
     "floor": 5,
     "title": "Controller 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "drink_1",
     "floor": 5,
     "title": "Drink 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "drink_2",
     "floor": 5,
     "title": "Drink 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "headset_1",
     "floor": 5,
     "title": "Headset 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "headset_2",
     "floor": 5,
     "title": "Headset 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "office_chair_1",
     "floor": 5,
     "title": "Office Chair 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "office_chair_2",
     "floor": 5,
     "title": "Office Chair 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "office_desk",
     "floor": 5,
     "title": "Office Desk",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "office_sofa",
     "floor": 5,
     "title": "Office Sofa",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "phone",
     "floor": 5,
     "title": "Phone",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "puff_1",
     "floor": 5,
     "title": "Puff 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "puff_2",
     "floor": 5,
     "title": "Puff 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "stool_1",
     "floor": 5,
     "title": "Stool 1",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "stool_2",
     "floor": 5,
     "title": "Stool 2",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vertical_sofa",
     "floor": 5,
     "title": "Vertical Sofa",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "vr_headset",
     "floor": 5,
     "title": "Vr Headset",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "wire_chair",
     "floor": 5,
     "title": "Wire Chair",
+    "price": 0.2252,
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   }
 ]

@@ -6,6 +6,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   * {
     font-family: Inter, sans-serif;
+    box-sizing: border-box;
   }
 
   @media (max-width: 1080px) {
