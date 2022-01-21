@@ -42,7 +42,6 @@ export const Container = styled.div`
   }
 
   button {
-    color: white;
     background: none;
     outline: none;
     border: solid 2px #d71488;
@@ -51,15 +50,23 @@ export const Container = styled.div`
     height: 50px;
     width: 275px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    a {
+      width: 100%;
+      height: 100%;
 
-    pointer-events: all;
-    cursor: pointer;
+      color: white;
+      text-decoration: none;
 
-    font-weight: 500;
-    font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      pointer-events: all;
+      cursor: pointer;
+
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
   }
 `

@@ -31,9 +31,13 @@ const About: React.FC = () => {
       <div className='content'>
         <div className='title'>
           <span>Connecting worlds</span>
-          <button type='button' onClick={(e) => e.stopPropagation()}>
-            <a href='.' target='_blank' rel='noopener noreferrer'>
-              Contact Us
+          <button type='button'>
+            <a
+              href='https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Learn More
             </a>
           </button>
         </div>

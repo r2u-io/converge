@@ -3,23 +3,24 @@
     "name": "cta_1",
     "floor": 1,
     "text": "Use NFTs from all universes on your $LAND. At Converge, you connect with any network you like and import your favorite items with a single click.",
-    "button": "Click and live this experience."
+    "link": "https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit#heading=h.e1gaqtl3xbwo"
   },
   {
     "name": "cta_2",
     "floor": 2,
     "text": "Use $LAND to build up the store of your dreams! Here you can either be a real-world brand or an independent artist.",
-    "button": "Click here."
+    "link": "https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit#heading=h.v3d95l811bcj"
   },
   {
     "name": "cta_3",
     "floor": 3,
     "text": "At Converge we do heavy lifting of cross-chain intermediation for you. Mint your NFT in any network.",
-    "button": "Click here and start earning."
+    "link": "https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit#heading=h.ok9ou0vum38s"
   },
   {
     "name": "cta_4",
     "floor": 4,
-    "text": "Creators, Converge is for you! Our doors are open to any content creators from the world, whether you are a concept artist, an architect, a builder, a composer, or any creative mind of the outer space!"
+    "text": "Creators, Converge is for you! Our doors are open to any content creators from the world, whether you are a concept artist, an architect, a builder, a composer, or any creative mind of the outer space!",
+    "link": "https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit#heading=h.t1fiqo4mj5pj"
   }
 ]

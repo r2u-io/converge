@@ -7,6 +7,7 @@ interface Props {
 export const Container = styled.div<Props>`
   grid-column: 1 / -1;
   grid-row: 1 / 2;
+  z-index: 1;
 
   padding: 0 20px;
   height: 100px;

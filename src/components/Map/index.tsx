@@ -23,6 +23,15 @@ const Map: React.FC = () => {
     <Container onClick={closeMap} open={mapOpened}>
       <span>Connecting worlds</span>
       <Image src='/images/map.png' alt='map' height={630} width={1152} objectFit='contain' />
+      <button type='button'>
+        <a
+          href='https://docs.google.com/document/d/1YwQnOfU9-nMqlPnVDRdPxhk2zVlq8vvwceEpNaLZoZE/edit#heading=h.6ic8eud5mwf6'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Learn More
+        </a>
+      </button>
     </Container>
   )
 }
