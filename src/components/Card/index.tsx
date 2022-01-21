@@ -10,9 +10,10 @@ interface Props {
   name: string
   floor: number
   price: number
+  marketplace: 'opensea' | 'axie'
 }
 
-const Card: React.FC<Props> = ({ title, url, name, floor, price }: Props) => {
+const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: Props) => {
   const [model, setModel] = useState<Model>()
 
   const { threeExperience, sceneReady } = useThreeContext()
@@ -56,12 +57,13 @@ const Card: React.FC<Props> = ({ title, url, name, floor, price }: Props) => {
             />
           </svg>
           <span>
-            <b>Price:</b> {price} WETH
+            <b>Price:</b> ~{price} Ξ
           </span>
         </div>
         <button className='item' type='button'>
           <a href={url} target='_blank' rel='noopener noreferrer'>
-            View NFT on OpenSea
+            View NFT on{' '}
+            {marketplace === 'opensea' ? 'OpenSea' : marketplace === 'axie' ? 'Axie Infinity' : ''}
           </a>
         </button>
       </div>

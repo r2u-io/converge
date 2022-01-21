@@ -25,7 +25,7 @@ export const Container = styled.div`
       transform: scale(1, 1);
     }
 
-    pointer-events: none;
+    pointer-events: all;
 
     background-color: rgba(255, 255, 255, 0.65);
     border-radius: 30px;
