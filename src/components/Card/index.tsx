@@ -37,6 +37,21 @@ const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: 
     setModel(modelInstance)
   }, [sceneReady, threeExperience, cardRef, cardWrapperRef, model, name, floor])
 
+  const getMarketPlace = () => {
+    switch (marketplace) {
+      case 'opensea':
+        return 'OpenSea'
+      case 'axie':
+        return 'Axie Infinity'
+      case 'mythical':
+        return 'Mythical'
+      case 'foundation':
+        return 'Foundation'
+      default:
+        return marketplace
+    }
+  }
+
   return (
     <Container ref={cardWrapperRef}>
       <div className='product-card' ref={cardRef}>
@@ -68,14 +83,7 @@ const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: 
         </div>
         <button className='item' type='button'>
           <a href={url} target='_blank' rel='noopener noreferrer'>
-            View {tbd && 'similar'} NFT on{' '}
-            {marketplace === 'opensea'
-              ? 'OpenSea'
-              : marketplace === 'axie'
-              ? 'Axie Infinity'
-              : marketplace === 'mythical'
-              ? 'Mythical'
-              : ''}
+            View {tbd && 'similar'} NFT on {getMarketPlace()}
           </a>
         </button>
       </div>

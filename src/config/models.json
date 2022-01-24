@@ -75,17 +75,17 @@
     "name": "nft_02",
     "floor": 4,
     "title": "Nft 02",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "price": 0.4,
+    "marketplace": "foundation",
+    "url": "https://foundation.app/@Rosewarne/foundation/6989"
   },
   {
     "name": "nft_03",
     "floor": 4,
     "title": "Nft 03",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "price": 3.5,
+    "marketplace": "makersplace",
+    "url": "https://makersplace.com/benkatz/hidden-path-1-of-1-64005"
   },
   {
     "name": "nft_04",
