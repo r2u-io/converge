@@ -12,7 +12,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: 250px;
+    width: 200px;
     padding: 20px;
 
     will-change: transform;
@@ -36,7 +36,7 @@ export const Container = styled.div`
 
     .title {
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin: 0;
       margin-bottom: auto;
       font-weight: 700;
@@ -56,8 +56,9 @@ export const Container = styled.div`
     }
 
     button {
+      padding: 5px;
       width: 100%;
-      height: 40px;
+      max-height: 80px;
       border: none;
       border-radius: 20px;
       background-color: #e53b9a;

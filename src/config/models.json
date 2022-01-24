@@ -34,10 +34,10 @@
   {
     "name": "roof_astro",
     "floor": 0,
-    "title": "Roof Astro",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Astronaut",
+    "price": 0,
+    "marketplace": "mythical",
+    "url": "https://mythical.market/browse?item_class%5B0%5D=blanko&sortBy=ALPHABETICAL&sortOrder=ASC"
   },
   {
     "name": "ship",
@@ -58,10 +58,10 @@
   {
     "name": "lab_astro",
     "floor": 3,
-    "title": "Lab Astro",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Braincase",
+    "price": 0.067,
+    "marketplace": "mythical",
+    "url": "https://mythical.market/browse/itemtype/35049f8d-e00d-4de3-9fb5-0322e28d94a9?sortBy=ISSUE_NUMBER&sortOrder=ASC"
   },
   {
     "name": "nft_01",

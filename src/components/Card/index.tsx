@@ -21,6 +21,8 @@ const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: 
   const cardRef = useRef<HTMLDivElement>(null)
   const cardWrapperRef = useRef<HTMLDivElement>(null)
 
+  const tbd = price === 0
+
   useEffect(() => {
     if (!sceneReady || !threeExperience || !cardRef.current || !cardWrapperRef.current || model)
       return
@@ -56,14 +58,24 @@ const Card: React.FC<Props> = ({ title, url, name, floor, price, marketplace }: 
               fill='#542E89'
             />
           </svg>
-          <span>
-            <b>Price:</b> ~{price} Ξ
-          </span>
+          {tbd ? (
+            <span>TBD</span>
+          ) : (
+            <span>
+              <b>Price:</b> ~{price} Ξ
+            </span>
+          )}
         </div>
         <button className='item' type='button'>
           <a href={url} target='_blank' rel='noopener noreferrer'>
-            View NFT on{' '}
-            {marketplace === 'opensea' ? 'OpenSea' : marketplace === 'axie' ? 'Axie Infinity' : ''}
+            View {tbd && 'similar'} NFT on{' '}
+            {marketplace === 'opensea'
+              ? 'OpenSea'
+              : marketplace === 'axie'
+              ? 'Axie Infinity'
+              : marketplace === 'mythical'
+              ? 'Mythical'
+              : ''}
           </a>
         </button>
       </div>
