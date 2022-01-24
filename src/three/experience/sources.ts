@@ -30,37 +30,37 @@ const Sources = [
   {
     name: 'nft_01',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/01.png'
   },
   {
     name: 'nft_02',
     type: 'texture',
-    path: 'https://f8n-ipfs-production.imgix.net/QmeJwKevYMdAAquUMLZJgGy8sS37nPtf5kAvWD3diN3xJM/nft.jpg?q=80&auto=format%2Ccompress&cs=srgb&max-w=1680&max-h=1680'
+    path: '/textures/nft/02.jpg'
   },
   {
     name: 'nft_03',
     type: 'texture',
-    path: 'https://mkpcdn.com/1000x/eb5a4303f1fa34f8bffbadcc36ffa3b8_132651.jpg'
+    path: '/textures/nft/03.jpg'
   },
   {
     name: 'nft_04',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/04.png'
   },
   {
     name: 'nft_05',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/05.jpg'
   },
   {
     name: 'nft_06',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/06.jpg'
   },
   {
     name: 'nft_07',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/07.png'
   },
   {
     name: 'nft_08',
@@ -70,47 +70,47 @@ const Sources = [
   {
     name: 'nft_09',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/09.png'
   },
   {
     name: 'nft_10',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/10.png'
   },
   {
     name: 'nft_11',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/11.jpg'
   },
   {
     name: 'nft_12',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/12.jpg'
   },
   {
     name: 'nft_13',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/13.png'
   },
   {
     name: 'nft_14',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/14.png'
   },
   {
     name: 'nft_15',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/15.jpg'
   },
   {
     name: 'nft_16',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/16.png'
   },
   {
     name: 'nft_17',
     type: 'texture',
-    path: 'https://lh3.googleusercontent.com/j3M5WTERnDIWvNOOkOiu5_kZy-E1a1fyDDhgVWxRCC6SvNycSTyII11_lYi-oYLvSNSW9AwcnRSO5uJ_aupWVZjZHGMw8fuZ1EFT=w366'
+    path: '/textures/nft/17.jpg'
   },
   {
     name: 'nft_18',

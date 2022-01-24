@@ -181,7 +181,9 @@ export default class Avatars {
   }
 
   resize() {
-    const scale = window.screen.orientation.type.startsWith('portrait')
+    const portrait = window.matchMedia('(orientation: portrait)').matches
+
+    const scale = portrait
       ? 400
       : window.innerWidth > 1440
       ? 800

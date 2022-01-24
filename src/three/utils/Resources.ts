@@ -17,7 +17,7 @@ interface Loaders {
   cubeTexture: THREE.CubeTextureLoader
 }
 
-type LoadedFile = GLTF | THREE.Texture | THREE.CubeTexture
+type LoadedFile = GLTF | THREE.Texture | THREE.CubeTexture | THREE.VideoTexture
 
 export default class Resources extends EventEmitter {
   sources: Source[]

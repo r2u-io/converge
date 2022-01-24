@@ -40,6 +40,8 @@ export const Container = styled.div`
       margin: 0;
       margin-bottom: auto;
       font-weight: 700;
+
+      width: 100%;
     }
 
     .price {

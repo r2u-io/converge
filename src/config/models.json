@@ -4,7 +4,7 @@
     "floor": 0,
     "title": "Axie #8494239",
     "price": 0.061,
-    "marketplace": "axie",
+    "marketplace": "Axie Infinity",
     "url": "https://marketplace.axieinfinity.com/axie/8494239/"
   },
   {
@@ -12,7 +12,7 @@
     "floor": 0,
     "title": "Please Stand up",
     "price": 1e59,
-    "marketplace": "axie",
+    "marketplace": "Axie Infinity",
     "url": "https://marketplace.axieinfinity.com/axie/8603821/"
   },
   {
@@ -20,7 +20,7 @@
     "floor": 0,
     "title": "sexy shouke",
     "price": 0.022,
-    "marketplace": "axie",
+    "marketplace": "Axie Infinity",
     "url": "https://marketplace.axieinfinity.com/axie/1839017/"
   },
   {
@@ -28,7 +28,7 @@
     "floor": 0,
     "title": "Please Stand up",
     "price": 1e59,
-    "marketplace": "axie",
+    "marketplace": "Axie Infinity",
     "url": "https://marketplace.axieinfinity.com/axie/8603821/"
   },
   {
@@ -36,7 +36,7 @@
     "floor": 0,
     "title": "Astronaut",
     "price": 0,
-    "marketplace": "mythical",
+    "marketplace": "Mythical",
     "url": "https://mythical.market/browse?item_class%5B0%5D=blanko&sortBy=ALPHABETICAL&sortOrder=ASC"
   },
   {
@@ -44,7 +44,7 @@
     "floor": 0,
     "title": "Ship",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -52,7 +52,7 @@
     "floor": 0,
     "title": "Yacht",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -60,151 +60,151 @@
     "floor": 3,
     "title": "Braincase",
     "price": 0.067,
-    "marketplace": "mythical",
+    "marketplace": "Mythical",
     "url": "https://mythical.market/browse/itemtype/35049f8d-e00d-4de3-9fb5-0322e28d94a9?sortBy=ISSUE_NUMBER&sortOrder=ASC"
   },
   {
     "name": "nft_01",
     "floor": 4,
-    "title": "Nft 01",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "ILLUMINATED PATH",
+    "price": 0,
+    "marketplace": "MakersPlace",
+    "url": "https://makersplace.com/drf/illuminated-path-2-of-7-57105"
   },
   {
     "name": "nft_02",
     "floor": 4,
-    "title": "Nft 02",
+    "title": "Eye Candy",
     "price": 0.4,
-    "marketplace": "foundation",
+    "marketplace": "Foundation",
     "url": "https://foundation.app/@Rosewarne/foundation/6989"
   },
   {
     "name": "nft_03",
     "floor": 4,
-    "title": "Nft 03",
+    "title": "Hidden Path",
     "price": 3.5,
-    "marketplace": "makersplace",
+    "marketplace": "MakersPlace",
     "url": "https://makersplace.com/benkatz/hidden-path-1-of-1-64005"
   },
   {
     "name": "nft_04",
     "floor": 4,
-    "title": "Nft 04",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Void",
+    "price": 0.666,
+    "marketplace": "SuperRare",
+    "url": "https://superrare.com/artwork-v2/void-25861"
   },
   {
     "name": "nft_05",
     "floor": 4,
-    "title": "Nft 05",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Fyat Lux #7643",
+    "price": 0.1685,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0x14c4471a7f6dcac4f03a81ded6253eaceff15b3d/7643"
   },
   {
     "name": "nft_06",
     "floor": 4,
-    "title": "Nft 06",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Noise #44",
+    "price": 0.4,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0xf55dd62034b534e71cb17ef6e2bb112e93d6131a/43"
   },
   {
     "name": "nft_07",
     "floor": 4,
-    "title": "Nft 07",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "#15290",
+    "price": 22.88,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0x60e4d786628fea6478f785a6d7e704777c86a7c6/15290"
   },
   {
     "name": "nft_08",
     "floor": 4,
     "title": "Nft 08",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
     "name": "nft_09",
     "floor": 4,
-    "title": "Nft 09",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "#316",
+    "price": 3.56,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0xccc441ac31f02cd96c153db6fd5fe0a2f4e6a68d/316"
   },
   {
     "name": "nft_10",
     "floor": 4,
-    "title": "Nft 10",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Selfless",
+    "price": 0,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/77009"
   },
   {
     "name": "nft_11",
     "floor": 4,
-    "title": "Nft 11",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "CryptoHistory 02 ToTheMoon",
+    "price": 25,
+    "marketplace": "Foundation",
+    "url": "https://foundation.app/@grassetti/foundation/2911"
   },
   {
     "name": "nft_12",
     "floor": 4,
-    "title": "Nft 12",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "CryptoHistory 03 Ethereum",
+    "price": 15,
+    "marketplace": "Foundation",
+    "url": "https://foundation.app/@grassetti/foundation/3460"
   },
   {
     "name": "nft_13",
     "floor": 4,
-    "title": "Nft 13",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "Woman #701",
+    "price": 5.624,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0xe785e82358879f061bc3dcac6f0444462d4b5330/701"
   },
   {
     "name": "nft_14",
     "floor": 4,
-    "title": "Nft 14",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "CryptoPunk #2437",
+    "price": 0,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/2437"
   },
   {
     "name": "nft_15",
     "floor": 4,
-    "title": "Nft 15",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "EVERYDAYS: THE FIRST 5000 DAYS",
+    "price": 0,
+    "marketplace": "MakersPlace",
+    "url": "https://makersplace.com/0x8bB37fb0F0462bB3FC8995cf17721f8e4a399629/everydays-the-first-5000-days-1-of-1-45997/"
   },
   {
     "name": "nft_16",
     "floor": 4,
-    "title": "Nft 16",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "#9996",
+    "price": 94.21,
+    "marketplace": "OpenSea",
+    "url": "https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9996"
   },
   {
     "name": "nft_17",
     "floor": 4,
-    "title": "Nft 17",
-    "price": 0.2252,
-    "marketplace": "opensea",
-    "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
+    "title": "CHAOS #52 Style",
+    "price": 0,
+    "marketplace": "MakersPlace",
+    "url": "https://makersplace.com/ursfischer/chaos-52-style-1-of-1-78468"
   },
   {
     "name": "nft_18",
     "floor": 4,
     "title": "Nft 18",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -212,7 +212,7 @@
     "floor": 4,
     "title": "Nft 19",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -220,7 +220,7 @@
     "floor": 4,
     "title": "Nft 20",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -228,7 +228,7 @@
     "floor": 4,
     "title": "Nft 21",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -236,7 +236,7 @@
     "floor": 4,
     "title": "Nft 22",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -244,7 +244,7 @@
     "floor": 4,
     "title": "Nft 23",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   },
   {
@@ -252,7 +252,7 @@
     "floor": 4,
     "title": "Nft 24",
     "price": 0.2252,
-    "marketplace": "opensea",
+    "marketplace": "OpenSea",
     "url": "https://viewer.r2u.io/?customerId=5e8e7580404328000882f4ae&sku=test"
   }
 ]
