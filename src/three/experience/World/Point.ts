@@ -14,7 +14,7 @@ export default class Point {
 
   geometry: THREE.SphereGeometry | null = null
 
-  material: THREE.MeshBasicMaterial | null = null
+  material: THREE.MeshStandardMaterial | null = null
 
   mesh: THREE.Mesh | null = null
 
@@ -33,11 +33,11 @@ export default class Point {
   }
 
   setGeometry() {
-    this.geometry = new THREE.SphereGeometry(0.5, 32, 32)
+    this.geometry = new THREE.SphereGeometry(0.1, 32, 32)
   }
 
   setMaterial() {
-    this.material = new THREE.MeshBasicMaterial({
+    this.material = new THREE.MeshStandardMaterial({
       color: 0xff0000
     })
   }

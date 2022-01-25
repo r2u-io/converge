@@ -75,29 +75,4 @@ export default class Experience {
     this.world.update()
     this.postProcessing.update()
   }
-
-  destroy() {
-    this.sizes.off('resize', () => this.resize())
-    this.time.off('tick', () => this.update())
-
-    this.scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.geometry.dispose()
-
-        Object.keys(child.material).forEach((key) => {
-          const value = child.material[key]
-          if (value && value.dispose instanceof Function) value.dispose()
-        })
-
-        child.material.dispose()
-      }
-    })
-
-    this.camera.orbitControls!.dispose()
-    this.renderer.instance!.dispose()
-
-    if (this.debug.active) {
-      this.debug.ui!.destroy()
-    }
-  }
 }
