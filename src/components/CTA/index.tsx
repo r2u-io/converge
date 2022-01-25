@@ -8,10 +8,10 @@ interface Props {
   name: string
   text: string
   floor: number
-  button?: string
+  link: string
 }
 
-const CTA: React.FC<Props> = ({ name, text, floor, button: buttonText }: Props) => {
+const CTA: React.FC<Props> = ({ name, text, floor, link }: Props) => {
   const [model, setModel] = useState<Model>()
 
   const { threeExperience, sceneReady } = useThreeContext()
@@ -30,7 +30,11 @@ const CTA: React.FC<Props> = ({ name, text, floor, button: buttonText }: Props) 
       <div className='text'>
         <span>{text}</span>
       </div>
-      {buttonText && <button type='button'>{buttonText}</button>}
+      <button type='button'>
+        <a href={link} target='_blank' rel='noopener noreferrer'>
+          Learn More
+        </a>
+      </button>
     </Container>
   )
 }

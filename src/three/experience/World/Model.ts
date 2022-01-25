@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 
 import type Experience from '..'
+import type Resources from '../../utils/Resources'
 import type Sizes from '../../utils/Sizes'
 import type Camera from '../Camera'
 import type PostProcessing from '../PostProcessing'
@@ -15,6 +16,8 @@ export default class Model {
   scene: THREE.Scene
 
   raycaster: Raycaster
+
+  resources: Resources
 
   camera: Camera
 
@@ -57,6 +60,7 @@ export default class Model {
     this.scene = experience.scene
     this.camera = experience.camera
     this.raycaster = experience.raycaster
+    this.resources = experience.resources
     this.postProcessing = experience.postProcessing
     this.outline = experience.world.outline!
 
@@ -67,6 +71,7 @@ export default class Model {
     this.onClick = onClick
 
     this.setModel()
+    this.setNFT()
     this.setListeners()
 
     experience.world.models.push(this)
@@ -89,6 +94,39 @@ export default class Model {
     this.box = new THREE.Mesh(boxGeo, this.outline.material)
 
     this.scene.add(this.box)
+  }
+
+  setNFT() {
+    const map = this.resources.items[this.name] as THREE.Texture | undefined
+    if (!map) return
+
+    const nftIndex = Number(this.name.split('_')[1])
+
+    const box = new THREE.Box3().setFromObject(this.model!)
+    const size = new THREE.Vector3()
+    box.getSize(size)
+    if (size.z > size.x) size.setX(size.z)
+    const { x, y } = size.addScalar(-0.1)
+
+    const material = new THREE.MeshStandardMaterial({ map })
+    const geometry = new THREE.PlaneGeometry(x, y)
+    const plane = new THREE.Mesh(geometry, material)
+    plane.position.copy(this.model!.position)
+
+    map.matrixAutoUpdate = false
+    const aspect = x / y
+    const imageAspect = map.image.width / map.image.height
+    if (aspect < imageAspect) {
+      map.matrix.setUvTransform(0, 0, aspect / imageAspect, 1, 0, 0.5, 0.5)
+    } else {
+      map.matrix.setUvTransform(0, 0, 1, imageAspect / aspect, 0, 0.5, 0.5)
+    }
+
+    if (nftIndex < 15) plane.rotateY((3 * Math.PI) / 2)
+    else if (nftIndex > 15 && nftIndex < 22) plane.rotateY(Math.PI / 2)
+    else plane.rotateY(Math.PI)
+
+    this.scene.add(plane)
   }
 
   setListeners() {

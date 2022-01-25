@@ -9,8 +9,10 @@ export const Container = styled.div<Props>`
   transition: opacity 0.5s;
 
   .background {
+    position: relative;
+
     width: 180px;
-    height: 255px;
+    height: 260px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
 
@@ -38,12 +40,20 @@ export const Container = styled.div<Props>`
       );
     }
 
+    .in {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      bottom: 5px;
+      right: 5px;
+    }
+
     .text {
       display: flex;
       flex-direction: column;
 
       .name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
       }
 
@@ -63,7 +73,7 @@ export const Container = styled.div<Props>`
   @media (max-width: 1440px) {
     .background {
       width: 140px;
-      height: 220px;
+      height: 250px;
 
       .frame {
         width: 120px;
@@ -85,12 +95,17 @@ export const Container = styled.div<Props>`
   @media (max-width: 1080px) {
     .background {
       width: 90px;
-      height: 160px;
+      height: 180px;
       padding: 5px;
 
       .frame {
         width: 80px;
         height: 80px;
+      }
+
+      .in {
+        width: 15px;
+        height: 15px;
       }
 
       .text {
@@ -108,7 +123,7 @@ export const Container = styled.div<Props>`
   @media (max-width: 720px) {
     .background {
       width: 80px;
-      height: 140px;
+      height: 150px;
       padding: 5px;
 
       .frame {
@@ -131,7 +146,7 @@ export const Container = styled.div<Props>`
   @media (orientation: portrait) {
     .background {
       width: 90px;
-      height: 160px;
+      height: 175px;
       padding: 5px;
 
       .frame {

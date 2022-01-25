@@ -39,7 +39,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
   const [sceneReady, setSceneReady] = useState(false)
 
-  const [activePoint, setActivePoint] = useState(0)
+  const [activePoint, setActivePoint] = useState(4)
 
   const isFirstPoint = activePoint === 0
   const isLastPoint = activePoint === PointsData.length - 1
@@ -56,8 +56,8 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
 
   useEffect(() => {
     if (!threeExperience || !sceneReady) return
-    threeExperience.camera.toPoint(PointsData[0])
-    threeExperience.raycaster.floor = 0
+    threeExperience.camera.toPoint(PointsData[4])
+    threeExperience.raycaster.floor = 4
   }, [threeExperience, sceneReady])
 
   useEffect(() => {

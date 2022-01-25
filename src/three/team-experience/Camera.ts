@@ -1,8 +1,6 @@
-import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
 import type TeamExperience from '.'
-import type Debug from '../utils/Debug'
 import type Sizes from '../utils/Sizes'
 
 export default class Camera {
@@ -12,21 +10,12 @@ export default class Camera {
 
   scene: THREE.Scene
 
-  debug: Debug
-
-  debugFolder: GUI | null = null
-
   instance: THREE.PerspectiveCamera | null = null
 
   constructor(teamExperience: TeamExperience) {
     this.canvas = teamExperience.canvas
     this.sizes = teamExperience.sizes
     this.scene = teamExperience.scene
-    this.debug = teamExperience.debug
-
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui!.addFolder('Camera')
-    }
 
     this.setInstance()
   }

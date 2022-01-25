@@ -177,6 +177,7 @@ export const Container = styled.div<Props>`
         }
 
         button {
+          margin: 5px;
           font-size: 1.1rem;
         }
       }
@@ -244,7 +245,7 @@ export const Container = styled.div<Props>`
         padding: 0;
 
         width: 100%;
-        height: 30%;
+        height: 35%;
 
         button {
           font-size: 1.1rem;

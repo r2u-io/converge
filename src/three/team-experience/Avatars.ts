@@ -1,9 +1,7 @@
 import gsap from 'gsap'
-import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
 import type TeamExperience from '.'
-import type Debug from '../utils/Debug'
 import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
 import Camera from './Camera'
@@ -21,10 +19,6 @@ export default class Avatars {
   sizes: Sizes
 
   time: Time
-
-  debug: Debug
-
-  debugFolder: GUI | null = null
 
   count: number
 
@@ -63,7 +57,6 @@ export default class Avatars {
     this.camera = teamExperience.camera
     this.scene = teamExperience.scene
     this.renderer = teamExperience.renderer
-    this.debug = teamExperience.debug
     this.time = teamExperience.time
     this.sizes = teamExperience.sizes
 
@@ -71,10 +64,6 @@ export default class Avatars {
     this.cards = Array(this.count)
 
     this.texture = new THREE.Texture()
-
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui!.addFolder('Points')
-    }
 
     this.axisPrimary = new THREE.Vector3(
       Math.random() - 0.5,
@@ -192,7 +181,9 @@ export default class Avatars {
   }
 
   resize() {
-    const scale = window.screen.orientation.type.startsWith('portrait')
+    const portrait = window.matchMedia('(orientation: portrait)').matches
+
+    const scale = portrait
       ? 400
       : window.innerWidth > 1440
       ? 800

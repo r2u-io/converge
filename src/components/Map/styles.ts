@@ -40,4 +40,33 @@ export const Container = styled.div<Props>`
     font-size: 3rem;
     font-weight: 600;
   }
+
+  button {
+    background: none;
+    outline: none;
+    border: solid 2px #d71488;
+    border-radius: 20px;
+
+    height: 50px;
+    width: 275px;
+
+    a {
+      width: 100%;
+      height: 100%;
+
+      color: white;
+      text-decoration: none;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      pointer-events: all;
+      cursor: pointer;
+
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+  }
 `
