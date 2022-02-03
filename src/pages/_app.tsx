@@ -30,9 +30,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0px;
-
-    overflow: hidden;
-
     color: white;
   }
 `

@@ -14,9 +14,9 @@ const Home: React.FC = () => (
     </Head>
     <ThreeProvider>
       <Canvas />
-      <UIProvider>
+      {/* <UIProvider>
         <Overlay />
-      </UIProvider>
+      </UIProvider> */}
     </ThreeProvider>
   </>
 )

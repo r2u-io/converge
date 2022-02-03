@@ -3,9 +3,11 @@ import type GUI from 'lil-gui'
 import * as THREE from 'three'
 
 import type Experience from '.'
+import CurvesData from '../../config/curves.json'
 import type Debug from '../utils/Debug'
 import { PointerLockControls } from '../utils/PointerLockControls'
 import type Sizes from '../utils/Sizes'
+import Time from '../utils/Time'
 
 export default class Camera {
   canvas: HTMLCanvasElement
@@ -16,23 +18,23 @@ export default class Camera {
 
   debug: Debug
 
+  time: Time
+
   debugFolder: GUI | null = null
 
   instance: THREE.PerspectiveCamera | null = null
 
+  progress = 0
+
+  activeCurve = 0
+
+  curves: THREE.CatmullRomCurve3[]
+
+  targets: THREE.CatmullRomCurve3[]
+
   flyControls: PointerLockControls | null = null
 
   isMobile: boolean
-
-  moving = false
-
-  vertical = false
-
-  maxVertical = 0.0
-
-  verticalAngle = 0.0
-
-  distanceAngle = 0.0
 
   flyForward = false
 
@@ -47,17 +49,26 @@ export default class Camera {
     this.sizes = experience.sizes
     this.scene = experience.scene
     this.debug = experience.debug
+    this.time = experience.time
     this.isMobile = experience.isMobile
 
-    if (this.debug.active) {
-      this.debugFolder = this.debug.ui!.addFolder('Camera')
-    }
-
     this.setInstance()
+
+    this.curves = CurvesData.map(
+      ({ camera }) =>
+        new THREE.CatmullRomCurve3(camera.map((point) => new THREE.Vector3().fromArray(point)))
+    )
+    this.targets = CurvesData.map(
+      ({ target }) =>
+        new THREE.CatmullRomCurve3(target.map((point) => new THREE.Vector3().fromArray(point)))
+    )
+
+    this.moveCamera()
+    document.addEventListener('wheel', () => this.moveCamera())
   }
 
   setInstance() {
-    const fov = 15
+    const fov = 45
 
     this.instance = new THREE.PerspectiveCamera(
       fov,
@@ -87,7 +98,7 @@ export default class Camera {
     else instructions.addEventListener('click', () => instructions.classList.add('hidden'))
   }
 
-  setFlyControls(instructions: HTMLDivElement) {
+  setFlyControls(instructions: HTMLElement) {
     this.flyControls = new PointerLockControls(this.instance!, this.canvas)
     this.flyControls.sensitivity = 0.5
 
@@ -154,5 +165,24 @@ export default class Camera {
       if (this.flyRight) this.flyControls.moveRight(speed)
       if (this.flyLeft) this.flyControls.moveRight(-speed)
     }
+
+    if (this.time.elapsed > 5000) this.moveCamera()
+  }
+
+  moveCamera() {
+    this.progress += 0.002
+    // (document.documentElement.scrollTop || document.body.scrollTop) /
+    // ((document.documentElement.scrollHeight || document.body.scrollHeight) -
+    //   document.documentElement.clientHeight)
+
+    if (this.progress > 1) {
+      this.progress = 0
+      this.activeCurve += 1
+    }
+
+    if (this.activeCurve > 9) return
+
+    this.instance!.position.copy(this.curves[this.activeCurve].getPointAt(this.progress))
+    this.instance!.lookAt(this.targets[this.activeCurve].getPointAt(this.progress))
   }
 }
