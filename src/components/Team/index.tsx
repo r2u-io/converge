@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react'
-
-import Image from 'next/image'
+import React from 'react'
 
 import TeamData from '../../config/team.json'
 import { useAvatarsContext } from '../../contexts/AvatarsContext'
-import { useThreeContext } from '../../contexts/ThreeJSContext'
-import { useUIContext } from '../../contexts/UIContext'
-import Model from '../../three/experience/World/Model'
 import CanvasTeam from './Canvas'
 import CardTeam from './Card'
 import { Container } from './styles'
 
 const Team: React.FC = () => {
-  const { openTeam, closeTeam, teamOpened } = useUIContext()
-  const { sceneReady, threeExperience } = useThreeContext()
   const {
     moving,
     activeGroup,
@@ -24,14 +17,6 @@ const Team: React.FC = () => {
     onClickSalesMarketing,
     onClickAdvisors
   } = useAvatarsContext()
-
-  const [model, setModel] = useState<Model>()
-
-  useEffect(() => {
-    if (!sceneReady || !threeExperience || model) return
-    const modelInstance = new Model(threeExperience, 'cta_5', 5, null, null, openTeam)
-    setModel(modelInstance)
-  }, [sceneReady, threeExperience, model])
 
   const teams = [
     {
@@ -72,16 +57,7 @@ const Team: React.FC = () => {
   ]
 
   return (
-    <Container open={teamOpened}>
-      <Image
-        onClick={closeTeam}
-        className='background'
-        src='/images/team.png'
-        alt='about'
-        layout='fill'
-        quality={100}
-        objectFit='cover'
-      />
+    <Container>
       <div className='content'>
         <div className='ui'>
           <div className='header'>

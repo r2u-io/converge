@@ -63,8 +63,8 @@ export default class Camera {
         new THREE.CatmullRomCurve3(target.map((point) => new THREE.Vector3().fromArray(point)))
     )
 
-    this.moveCamera()
-    document.addEventListener('wheel', () => this.moveCamera())
+    // this.moveCamera()
+    // document.addEventListener('wheel', () => this.moveCamera())
   }
 
   setInstance() {
@@ -166,7 +166,7 @@ export default class Camera {
       if (this.flyLeft) this.flyControls.moveRight(-speed)
     }
 
-    if (this.time.elapsed > 5000) this.moveCamera()
+    // if (this.time.elapsed > 5000) this.moveCamera()
   }
 
   moveCamera() {
