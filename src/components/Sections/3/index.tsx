@@ -5,16 +5,17 @@ import { Container } from './styles'
 const SectionThree: React.FC = () => (
   <Container>
     <div className='content'>
-      <span className='title'>Connecting Worlds</span>
+      <span className='title'>Estratégia no Metaverso</span>
       <br />
       <span className='text'>
-        O Converge é a sua solução “one-stop-shopping” para que todas as suas perguntas sejam
-        rapidamente respondidas e as ações facilmente implementadas. Da elaboração da estratégia,
-        planejamento a implementação e controle, nosso time cuida de todos os detalhes.
+        Analisar qual estratégia é a mais adequada frente ao posicionamento e a proposta de valor da
+        marca é fundamental para o sucesso. Nosso time trabalha juntamente com o time de nossos
+        clientes para definir se a melhor opção é uma ação perene, múltiplas ações de curta duração
+        ou qual proposta é a que entregará o resultado desejado.
       </span>
       <br />
-      <button type='button' className='more'>
-        Saiba mais
+      <button type='button' className='more white'>
+        Viva essa experiência
       </button>
     </div>
   </Container>

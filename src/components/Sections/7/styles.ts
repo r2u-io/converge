@@ -2,13 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.section`
   background: url('/images/section_3.png');
-  background-size: contain;
-  background-repeat: round;
 
   .content {
-    color: white;
-
     margin: 100px;
+
+    color: white;
 
     width: 30%;
     display: flex;

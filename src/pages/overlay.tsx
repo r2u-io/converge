@@ -9,6 +9,7 @@ import SectionThree from '../components/Sections/3'
 import SectionFour from '../components/Sections/4'
 import SectionFive from '../components/Sections/5'
 import SectionSix from '../components/Sections/6'
+import SectionSeven from '../components/Sections/7'
 import Team from '../components/Team'
 import { AvatarsProvider } from '../contexts/AvatarsContext'
 
@@ -25,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     color: #642c8e;
 
     .title {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
 
     br {
@@ -42,13 +43,18 @@ const GlobalStyle = createGlobalStyle`
 
       color: #642c8e;
       border: solid 1px #642c8e;
-      border-radius: 20px;
+      border-radius: 30px;
 
       height: 50px;
-      width: 240px;
+      padding: 10px 25px;
 
       font-size: 1rem;
       font-weight: 900;
+
+      &.white {
+        color: white;
+        border: solid 1px white;
+      }
     }
   }
 `
@@ -66,6 +72,7 @@ const Home: React.FC = () => (
       <SectionFour />
       <SectionFive />
       <SectionSix />
+      <SectionSeven />
       <AvatarsProvider>
         <Team />
       </AvatarsProvider>

@@ -5,16 +5,17 @@ import { Container } from './styles'
 const SectionFour: React.FC = () => (
   <Container>
     <div className='content'>
-      <span className='title'>Connecting Worlds</span>
+      <span className='title'>Experiência de Marca</span>
       <br />
       <span className='text'>
-        O Converge é a sua solução “one-stop-shopping” para que todas as suas perguntas sejam
-        rapidamente respondidas e as ações facilmente implementadas. Da elaboração da estratégia,
-        planejamento a implementação e controle, nosso time cuida de todos os detalhes.
+        Uma loja perene? Uma pop-up store? Ou um espaço de experiências que transmitam o valor da
+        marca e que seja temporário? Cada detalhe será discutido e analisado frente a estratégia da
+        empresa para que a melhor opção seja implementada, desde a viabilização da terra / land até
+        a construção do espaço em 3D.
       </span>
       <br />
       <button type='button' className='more'>
-        Saiba mais
+        Comece a vender no Metaverse
       </button>
     </div>
   </Container>

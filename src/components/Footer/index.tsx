@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Container } from './styles'
 
-const Header: React.FC = () => (
+const Footer: React.FC = () => (
   <Container>
     <button type='button' className='logo'>
       <Image src='/images/logo.svg' alt='logo' width={90} height={90} objectFit='contain' />
@@ -34,4 +34,4 @@ const Header: React.FC = () => (
   </Container>
 )
 
-export default Header
+export default Footer

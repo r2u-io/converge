@@ -4,10 +4,12 @@ export const Container = styled.section`
   .content {
     margin: 100px;
 
-    width: 20%;
+    margin-left: auto;
+
+    width: 25%;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: end;
     justify-content: center;
     text-align: left;
 
