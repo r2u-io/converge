@@ -23,10 +23,23 @@ const GlobalStyle = createGlobalStyle`
 
     .content {
       z-index: 2;
+
+      margin: 200px 50px;
+
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      text-align: left;
+
+      span {
+        width: 100%;
+      }
     }
 
     .title {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
     }
 
     br {
@@ -34,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .text {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     .more {

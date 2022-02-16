@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 const SectionThree: React.FC = () => (
   <Container>
-    <div className='content'>
+    <div className='content white'>
       <span className='title'>Estratégia no Metaverso</span>
       <br />
       <span className='text'>

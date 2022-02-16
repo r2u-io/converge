@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "three/utils/EventEmitter.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "three/utils/UnrealBloomPass.js"],
   "exclude": ["node_modules"]
 }
