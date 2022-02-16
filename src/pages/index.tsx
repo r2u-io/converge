@@ -19,6 +19,12 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     color: #642c8e;
 
+    z-index: 0;
+
+    .content {
+      z-index: 2;
+    }
+
     .title {
       font-size: 3.5rem;
     }

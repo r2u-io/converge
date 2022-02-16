@@ -10,6 +10,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  position: relative;
+  z-index: 2;
+
   button {
     cursor: pointer;
     pointer-events: all;

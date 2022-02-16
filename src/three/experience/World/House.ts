@@ -35,6 +35,14 @@ export default class House {
 
   setModel() {
     this.model = this.resource.scene
+
     this.scene.add(this.model)
+
+    const dome = this.scene.getObjectByName('Plane017')
+
+    if (dome) {
+      this.scene.remove(dome)
+      dome.removeFromParent()
+    }
   }
 }

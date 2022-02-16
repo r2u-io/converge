@@ -4,6 +4,9 @@ export const Container = styled.div`
   height: 100vh;
   background-color: #18131b;
 
+  position: relative;
+  z-index: 2;
+
   .content {
     position: absolute;
     z-index: 2;

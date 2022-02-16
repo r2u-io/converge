@@ -9,9 +9,15 @@ export const Container = styled.section`
     gap: 50px;
     align-items: center;
     justify-content: center;
+
+    position: relative;
+    z-index: 2;
   }
 
   .subtitle {
     font-size: 3rem;
+
+    position: relative;
+    z-index: 2;
   }
 `
