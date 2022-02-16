@@ -1,32 +1,30 @@
 import React from 'react'
 
 import { AvatarsProvider } from '../../contexts/AvatarsContext'
-import { useUIContext } from '../../contexts/UIContext'
-import About from '../About'
-import Fullscreen from '../Fullscreen'
-import Header from '../Header'
-import LoadingScreen from '../LoadingScreen'
-import Map from '../Map'
-import PortraitPrompt from '../PortraitPrompt'
+import Footer from '../Footer'
+import SectionOne from '../Sections/1'
+import SectionTwo from '../Sections/2'
+import SectionThree from '../Sections/3'
+import SectionFour from '../Sections/4'
+import SectionFive from '../Sections/5'
+import SectionSix from '../Sections/6'
+import SectionSeven from '../Sections/7'
 import Team from '../Team'
-import { Container } from './styles'
 
-const Overlay: React.FC = () => {
-  const { loading, showPortraitPrompt } = useUIContext()
-
-  return (
-    <Container>
-      <Fullscreen />
-      <Map />
-      <AvatarsProvider>
-        <Team />
-      </AvatarsProvider>
-      <About />
-      <Header />
-      {showPortraitPrompt && <PortraitPrompt />}
-      {loading && <LoadingScreen />}
-    </Container>
-  )
-}
+const Overlay: React.FC = () => (
+  <>
+    <SectionOne />
+    <SectionTwo />
+    <SectionThree />
+    <SectionFour />
+    <SectionFive />
+    <SectionSix />
+    <SectionSeven />
+    <AvatarsProvider>
+      <Team />
+    </AvatarsProvider>
+    <Footer />
+  </>
+)
 
 export default Overlay

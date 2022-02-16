@@ -63,8 +63,8 @@ export default class Camera {
         new THREE.CatmullRomCurve3(target.map((point) => new THREE.Vector3().fromArray(point)))
     )
 
-    // this.moveCamera()
-    // document.addEventListener('wheel', () => this.moveCamera())
+    this.moveCamera()
+    document.addEventListener('scroll', () => this.moveCamera())
   }
 
   setInstance() {
@@ -170,17 +170,17 @@ export default class Camera {
   }
 
   moveCamera() {
-    this.progress += 0.002
-    // (document.documentElement.scrollTop || document.body.scrollTop) /
-    // ((document.documentElement.scrollHeight || document.body.scrollHeight) -
-    //   document.documentElement.clientHeight)
+    const scrollY = window.scrollY / this.sizes.height
 
-    if (this.progress > 1) {
-      this.progress = 0
-      this.activeCurve += 1
+    const section = Math.floor(scrollY)
+
+    this.progress = scrollY - section
+
+    if (this.activeCurve !== section) {
+      this.activeCurve = section
     }
 
-    if (this.activeCurve > 9) return
+    if (this.activeCurve > 5) return
 
     this.instance!.position.copy(this.curves[this.activeCurve].getPointAt(this.progress))
     this.instance!.lookAt(this.targets[this.activeCurve].getPointAt(this.progress))

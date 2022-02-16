@@ -1,19 +1,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  section {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    font-family: 'Cabin', sans-serif;
-    color: #ffeded;
-    text-transform: uppercase;
-    font-size: 7vmin;
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-
   canvas {
     position: fixed;
     top: 0;
