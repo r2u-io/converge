@@ -1,21 +1,14 @@
 import React from 'react'
 
-import Image from 'next/image'
-
 import { Container } from './styles'
 
 const Footer: React.FC = () => (
   <Container>
-    <button type='button' className='logo'>
-      <Image src='/images/logo.svg' alt='logo' width={90} height={90} objectFit='contain' />
-    </button>
+    <span>@converge 2022</span>
     <div className='menu'>
-      <button type='button'>Home</button>
-      <button type='button'>Token</button>
-      <button type='button'>Marketplace</button>
-      <button type='button'>Experience</button>
-      <button type='button'>NFT</button>
-      <button type='button'>Team</button>
+      <button type='button' className='top'>
+        Back to top
+      </button>
       <button type='button'>
         <svg
           width='23'

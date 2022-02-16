@@ -1,48 +1,52 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin-top: 20px;
-
-  padding: 0 50px;
+  padding: 40px 50px 50px 50px;
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  button {
-    cursor: pointer;
-    pointer-events: all;
-
-    outline: none;
-    border: none;
-
-    background: none;
-
-    padding: 0;
-
-    color: #642c8e;
-
-    font-size: 1.2rem;
-
-    text-align: center;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  background-color: #18131b;
+  border-top: solid 1px #642c8e;
 
   .menu {
     display: flex;
     align-items: center;
     justify-content: center;
 
+    color: white;
+
     button {
-      margin-right: 25px;
+      cursor: pointer;
+      pointer-events: all;
+      outline: none;
+      border: none;
+      background: none;
+
+      color: white;
+
+      font-size: 1.2rem;
+
+      text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    button:last-child {
-      margin-right: 0;
+    .top {
+      border-radius: 30px;
+      color: white;
+      border: solid 1px white;
+
+      padding: 5px 10px;
+
+      margin-right: 20px;
+
+      font-size: 1rem;
+      font-weight: 900;
     }
   }
 `

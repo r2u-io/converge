@@ -3,6 +3,7 @@ import React from 'react'
 import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 
+import Footer from '../components/Footer'
 import SectionOne from '../components/Sections/1'
 import SectionTwo from '../components/Sections/2'
 import SectionThree from '../components/Sections/3'
@@ -76,6 +77,7 @@ const Home: React.FC = () => (
       <AvatarsProvider>
         <Team />
       </AvatarsProvider>
+      <Footer />
     </>
   </>
 )
