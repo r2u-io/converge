@@ -36,7 +36,7 @@ export default class Experience {
 
   isMobile: boolean
 
-  constructor(canvas: HTMLCanvasElement, onLoad: () => void, isMobile: boolean) {
+  constructor(canvas: HTMLCanvasElement, isMobile: boolean) {
     // Options
     this.canvas = canvas
     this.isMobile = isMobile
@@ -61,12 +61,10 @@ export default class Experience {
     // Event bindings
     this.sizes.on('resize', () => this.resize())
     this.time.on('tick', () => this.update())
-    // this.resources.on('load', () => onLoad())
     this.resources.on('ready', () => {
       this.scene.traverse((child) => {
         child.frustumCulled = false
       })
-      onLoad()
     })
   }
 

@@ -26,27 +26,31 @@ export const Container = styled.div`
 `
 
 export const GlobalStyle = createGlobalStyle<GlobalProps>`
-  body {
-    background-color: #D8D6D2;
-    overflow: ${(props) => (props.ready ? 'auto' : 'hidden')};
+  html {
+    overflow-x: hidden;
+    overflow-y: ${(props) => (props.ready ? 'auto' : 'hidden')};
     
-    scrollbar-color: #d71488 transparent;
+    scrollbar-color: #d71488 #18131b;
 
     ::-webkit-scrollbar {
       width: 8px;
+      margin: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: transparent;
+      background: #18131b;  
     }
     ::-webkit-scrollbar-thumb {
       background: #d71488;
       border-radius: 10px;
-
       margin: 5px;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: #aa106d;
     }
+  }
+  
+  body {
+    background-color: #D8D6D2;
   }
 
   section {
