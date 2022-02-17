@@ -61,12 +61,13 @@ export default class Experience {
     // Event bindings
     this.sizes.on('resize', () => this.resize())
     this.time.on('tick', () => this.update())
-    this.resources.on('load', () => onLoad())
-    this.resources.on('ready', () =>
+    // this.resources.on('load', () => onLoad())
+    this.resources.on('ready', () => {
       this.scene.traverse((child) => {
         child.frustumCulled = false
       })
-    )
+      onLoad()
+    })
   }
 
   resize() {

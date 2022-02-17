@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 
 import ThreeExperience from '../three/experience'
 
@@ -19,10 +19,10 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
   const [sceneReady, setSceneReady] = useState(false)
 
-  useEffect(() => {
-    if (!threeExperience || !sceneReady) return
-    threeExperience.raycaster.floor = 0
-  }, [threeExperience, sceneReady])
+  // useEffect(() => {
+  //   if (!threeExperience || !sceneReady) return
+  //   threeExperience.raycaster.floor = 0
+  // }, [threeExperience, sceneReady])
 
   return (
     <ThreeContext.Provider
