@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 
+import gsap from 'gsap'
 import Image from 'next/image'
 
 import { useThreeContext } from '../../../contexts/ThreeJSContext'
-import Loader from '../../../three/experience/Loader'
 import Header from '../../Header'
 import { Container } from './styles'
 
 const SectionOne: React.FC = () => {
   const { threeExperience, setSceneReady, sceneReady } = useThreeContext()
-  const [loader, setLoader] = useState<Loader>()
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    if (!threeExperience || loader) return
-    const loaderInstance = new Loader(threeExperience, setProgress, () => setSceneReady(true))
-    setLoader(loaderInstance)
-  }, [threeExperience, loader])
+    if (!threeExperience) return
+
+    threeExperience.resources.on('progress', setProgress)
+    threeExperience.resources.on('ready', () => gsap.delayedCall(1.0, () => setSceneReady(true)))
+  }, [threeExperience])
 
   return (
     <Container progress={progress} id='home'>

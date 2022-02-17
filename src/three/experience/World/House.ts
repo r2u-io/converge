@@ -38,7 +38,7 @@ export default class House {
 
     this.scene.add(this.model)
 
-    const dome = this.scene.getObjectByName('Plane017')
+    const dome = this.scene.getObjectByName('Plane017') || this.scene.getObjectByName('Plane.017')
 
     if (dome) {
       this.scene.remove(dome)

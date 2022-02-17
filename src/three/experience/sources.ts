@@ -23,11 +23,6 @@ const Sources = [
     path: '/models/house_draco_ktx2_etc1s_mipmap/House.gltf'
   },
   {
-    name: 'outlineModel',
-    type: 'gltf',
-    path: '/models/outline/Outline.gltf'
-  },
-  {
     name: 'nft_01',
     type: 'texture',
     path: '/textures/nft/01.png'

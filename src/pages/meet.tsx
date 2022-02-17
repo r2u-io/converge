@@ -1,8 +1,18 @@
 import React from 'react'
 
 import Head from 'next/head'
+import styled from 'styled-components'
 
-import { IFrame } from '../styles/Meet'
+export const IFrame = styled.iframe`
+  overflow: hidden;
+  border: 0;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`
 
 const Meet: React.FC = () => (
   <>

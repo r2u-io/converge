@@ -1,7 +1,6 @@
 import type GUI from 'lil-gui'
 import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
@@ -12,7 +11,6 @@ import type Debug from '../utils/Debug'
 import type Sizes from '../utils/Sizes'
 import { UnrealBloomPass } from '../utils/UnrealBloomPass.js'
 import type Camera from './Camera'
-import type Raycaster from './Raycaster'
 import type Renderer from './Renderer'
 
 interface PassUniform {
@@ -35,19 +33,11 @@ export default class PostProcessing {
 
   sizes: Sizes
 
-  raycaster: Raycaster
-
-  isMobile: boolean
-
   debug: Debug
 
   debugFolder: GUI | null = null
 
   instance: EffectComposer | null = null
-
-  selectedObjects: THREE.Object3D[] = []
-
-  outlinePass: OutlinePass | null = null
 
   passUniforms: PassUniform | null = null
 
@@ -56,8 +46,6 @@ export default class PostProcessing {
     this.canvas = experience.canvas
     this.camera = experience.camera
     this.renderer = experience.renderer
-    this.raycaster = experience.raycaster
-    this.isMobile = experience.isMobile
     this.sizes = experience.sizes
     this.debug = experience.debug
 
@@ -68,7 +56,6 @@ export default class PostProcessing {
     this.setInstance()
     this.addRenderPass()
     this.addBloomPass()
-    this.addOutlinePass()
     this.addShaderPass()
     this.addAntiAliasPass()
   }
@@ -104,20 +91,6 @@ export default class PostProcessing {
     this.instance!.addPass(unrealBloomPass)
   }
 
-  addOutlinePass() {
-    this.outlinePass = new OutlinePass(
-      new THREE.Vector2(this.sizes.width, this.sizes.height),
-      this.scene,
-      this.camera.instance!
-    )
-    this.outlinePass.visibleEdgeColor.set('#d71488')
-    this.outlinePass.hiddenEdgeColor.set('#d71488')
-    this.outlinePass.edgeThickness = 0.1
-    this.outlinePass.overlayMaterial.blending = THREE.CustomBlending
-
-    this.instance!.addPass(this.outlinePass)
-  }
-
   addShaderPass() {
     const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
     this.instance!.addPass(gammaCorrectionPass)
@@ -147,10 +120,6 @@ export default class PostProcessing {
   }
 
   update() {
-    if (this.selectedObjects.length) this.canvas.style.cursor = 'pointer'
-    else this.canvas.style.cursor = 'default'
-    if (this.isMobile) this.selectedObjects = this.raycaster.models.map((model) => model.model!)
-    if (this.outlinePass) this.outlinePass.selectedObjects = this.selectedObjects
     this.instance!.render()
   }
 }
