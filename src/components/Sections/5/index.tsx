@@ -3,7 +3,7 @@ import React from 'react'
 import { Container } from './styles'
 
 const SectionFive: React.FC = () => (
-  <Container>
+  <Container id='nft'>
     <div className='content'>
       <span className='title'>Mint sua coleção de NFT&apos;s</span>
       <br />

@@ -3,7 +3,7 @@ import React from 'react'
 import { Container } from './styles'
 
 const SectionTwo: React.FC = () => (
-  <Container>
+  <Container id='about'>
     <div className='content'>
       <span className='title'>Connecting Worlds</span>
       <br />

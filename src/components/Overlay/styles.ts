@@ -27,6 +27,8 @@ export const Container = styled.div`
 
 export const GlobalStyle = createGlobalStyle<GlobalProps>`
   html {
+    scroll-behavior: smooth;
+
     overflow-x: hidden;
     overflow-y: ${(props) => (props.ready ? 'auto' : 'hidden')};
     

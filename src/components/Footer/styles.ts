@@ -21,6 +21,10 @@ export const Container = styled.div`
 
     color: white;
 
+    a {
+      text-decoration: none;
+    }
+
     button {
       cursor: pointer;
       pointer-events: all;

@@ -57,7 +57,7 @@ const Team: React.FC = () => {
   ]
 
   return (
-    <Container>
+    <Container id='meet-the-team'>
       <div className='content'>
         <div className='ui'>
           <div className='header'>

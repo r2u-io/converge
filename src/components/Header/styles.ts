@@ -13,6 +13,10 @@ export const Container = styled.div`
   position: relative;
   z-index: 2;
 
+  a {
+    text-decoration: none;
+  }
+
   button {
     cursor: pointer;
     pointer-events: all;
@@ -40,11 +44,11 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    button {
+    a {
       margin-right: 25px;
     }
 
-    button:last-child {
+    a:last-child {
       margin-right: 0;
     }
   }

@@ -6,9 +6,11 @@ const Footer: React.FC = () => (
   <Container>
     <span>@converge 2022</span>
     <div className='menu'>
-      <button type='button' className='top'>
-        Back to top
-      </button>
+      <a href='#home'>
+        <button type='button' className='top'>
+          Back to top
+        </button>
+      </a>
       <button type='button'>
         <svg
           width='23'

@@ -10,12 +10,24 @@ const Header: React.FC = () => (
       <Image src='/images/logo.svg' alt='logo' width={90} height={90} objectFit='contain' />
     </button>
     <div className='menu'>
-      <button type='button'>Home</button>
-      <button type='button'>Token</button>
-      <button type='button'>Marketplace</button>
-      <button type='button'>Experience</button>
-      <button type='button'>NFT</button>
-      <button type='button'>Team</button>
+      <a href='#about'>
+        <button type='button'>Sobre</button>
+      </a>
+      <a href='#strategy'>
+        <button type='button'>Estratégia</button>
+      </a>
+      <a href='#experience'>
+        <button type='button'>Experiência</button>
+      </a>
+      <a href='#nft'>
+        <button type='button'>NFT</button>
+      </a>
+      <a href='#collection'>
+        <button type='button'>Coleção</button>
+      </a>
+      <a href='#team'>
+        <button type='button'>Time</button>
+      </a>
       <button type='button'>
         <svg
           width='23'
