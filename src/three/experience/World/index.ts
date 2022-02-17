@@ -2,9 +2,6 @@ import type Experience from '..'
 import type Resources from '../../utils/Resources'
 import Environment from './Environment'
 import House from './House'
-import type Model from './Model'
-import Outline from './Outline'
-import Point from './Point'
 
 export default class World {
   scene: THREE.Scene
@@ -13,13 +10,7 @@ export default class World {
 
   house: House | null = null
 
-  outline: Outline | null = null
-
   environment: Environment | null = null
-
-  point: Point | null = null
-
-  models: Model[] = []
 
   constructor(experience: Experience) {
     this.scene = experience.scene
@@ -28,17 +19,10 @@ export default class World {
     this.resources.on('load', () => {
       this.house = new House(experience)
       this.environment = new Environment(experience)
-      this.outline = new Outline(experience)
-
-      if (experience.debug.active) this.point = new Point(experience)
 
       this.environment.updateMaterials()
 
       this.resources.emit('ready')
     })
-  }
-
-  update() {
-    this.models.forEach((model) => model.update())
   }
 }

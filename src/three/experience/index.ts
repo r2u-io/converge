@@ -6,7 +6,6 @@ import Sizes from '../utils/Sizes'
 import Time from '../utils/Time'
 import Camera from './Camera'
 import PostProcessing from './PostProcessing'
-import Raycaster from './Raycaster'
 import Renderer from './Renderer'
 import sources from './sources'
 import World from './World'
@@ -32,14 +31,9 @@ export default class Experience {
 
   world: World
 
-  raycaster: Raycaster
-
-  isMobile: boolean
-
-  constructor(canvas: HTMLCanvasElement, isMobile: boolean) {
+  constructor(canvas: HTMLCanvasElement) {
     // Options
     this.canvas = canvas
-    this.isMobile = isMobile
 
     // Setup
     this.debug = new Debug()
@@ -55,7 +49,6 @@ export default class Experience {
     this.resources = new Resources(sources, this.renderer.instance!)
 
     this.world = new World(this)
-    this.raycaster = new Raycaster(this)
     this.postProcessing = new PostProcessing(this)
 
     // Event bindings
@@ -75,8 +68,6 @@ export default class Experience {
   }
 
   update() {
-    this.camera.update()
-    this.world.update()
     this.postProcessing.update()
   }
 }
