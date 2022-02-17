@@ -5,24 +5,98 @@ interface GlobalProps {
 }
 
 export const Container = styled.div`
-  * {
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #642c8e;
+
+    z-index: 0;
+
+    .content {
+      z-index: 2;
+
+      margin: 200px 50px;
+
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      text-align: left;
+
+      span {
+        width: 100%;
+      }
+    }
+
+    .title {
+      font-size: 2.5rem;
+      width: 100%;
+    }
+
+    br {
+      margin: 25px;
+    }
+
+    .text {
+      font-size: 1.2rem;
+      width: 100%;
+    }
+
+    .more {
+      background: none;
+      outline: none;
+
+      color: #642c8e;
+      border: solid 1px #642c8e;
+      border-radius: 30px;
+
+      height: 50px;
+      padding: 10px 25px;
+
+      font-size: 1rem;
+      font-weight: 900;
+
+      &.white {
+        color: white;
+        border: solid 1px white;
+      }
+    }
   }
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  @media (orientation: portrait) {
+    & {
+      flex-direction: row;
 
-  pointer-events: none;
+      section {
+        width: 100vw;
 
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content auto max-content;
+        .content {
+          padding: 50px 25px;
+          margin: 0;
+          height: 30%;
+          width: 100vw;
+
+          .title {
+            font-size: 2rem;
+          }
+
+          br {
+            margin: 10px;
+          }
+
+          .text {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
 `
 
 export const GlobalStyle = createGlobalStyle<GlobalProps>`
@@ -55,62 +129,23 @@ export const GlobalStyle = createGlobalStyle<GlobalProps>`
     background-color: #D8D6D2;
   }
 
-  section {
-    height: 100vh;
-    width: 100%;
+  #__next {
     display: flex;
     flex-direction: column;
-    color: #642c8e;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
 
-    z-index: 0;
-
-    .content {
-      z-index: 2;
-
-      margin: 200px 50px;
-
-      width: 25%;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: center;
-      text-align: left;
-
-      span {
-        width: 100%;
-      }
+  @media (orientation: portrait) {
+    html {
+      overflow-y: hidden;
+      overflow-x: ${(props) => (props.ready ? 'auto' : 'hidden')};
+      height: 100vh;
     }
 
-    .title {
-      font-size: 2.5rem;
-    }
-
-    br {
-      margin: 25px;
-    }
-
-    .text {
-      font-size: 1.2rem;
-    }
-
-    .more {
-      background: none;
-      outline: none;
-
-      color: #642c8e;
-      border: solid 1px #642c8e;
-      border-radius: 30px;
-
-      height: 50px;
-      padding: 10px 25px;
-
-      font-size: 1rem;
-      font-weight: 900;
-
-      &.white {
-        color: white;
-        border: solid 1px white;
-      }
+    body {
+      overflow-y: hidden;
+      scroll-behavior: smooth;
     }
   }
 `

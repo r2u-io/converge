@@ -2,6 +2,7 @@ import React from 'react'
 
 import TeamData from '../../config/team.json'
 import { useAvatarsContext } from '../../contexts/AvatarsContext'
+import Footer from '../Footer'
 import CanvasTeam from './Canvas'
 import CardTeam from './Card'
 import { Container } from './styles'
@@ -122,6 +123,7 @@ const Team: React.FC = () => {
           <CanvasTeam />
         </div>
       </div>
+      <Footer />
     </Container>
   )
 }

@@ -22,7 +22,7 @@ const SectionOne: React.FC = () => {
     <Container progress={progress} id='home'>
       <Header />
       <div className='converge'>
-        <Image src='/images/converge.svg' alt='Converge' width={1920} height={100} />
+        <Image src='/images/converge.svg' alt='Converge' width={1920} height={300} />
         <span className='subtitle'>Connecting Worlds</span>
         {!sceneReady && (
           <div className='loading'>

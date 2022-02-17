@@ -6,8 +6,8 @@ interface Props {
 
 export const Container = styled.section<Props>`
   .converge {
-    margin: 200px 0;
-    width: 100%;
+    margin: 200px auto;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -44,6 +44,19 @@ export const Container = styled.section<Props>`
       background: #642c8e;
 
       transition: transform 0.3s;
+    }
+  }
+
+  @media (orientation: portrait) {
+    .converge {
+      margin: 200px 0;
+      width: 100vw;
+
+      padding: 50px;
+    }
+
+    .subtitle {
+      font-size: 2rem;
     }
   }
 `
