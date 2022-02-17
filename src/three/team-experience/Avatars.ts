@@ -60,7 +60,7 @@ export default class Avatars {
     this.time = teamExperience.time
     this.sizes = teamExperience.sizes
 
-    this.count = 30
+    this.count = 27
     this.cards = Array(this.count)
 
     this.texture = new THREE.Texture()

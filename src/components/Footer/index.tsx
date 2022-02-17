@@ -1,32 +1,15 @@
 import React from 'react'
 
-import Image from 'next/image'
-
 import { Container } from './styles'
 
-const Header: React.FC = () => (
+const Footer: React.FC = () => (
   <Container>
-    <button type='button' className='logo'>
-      <Image src='/images/logo.svg' alt='logo' width={90} height={90} objectFit='contain' />
-    </button>
+    <span>@converge 2022</span>
     <div className='menu'>
-      <a href='#about'>
-        <button type='button'>Sobre</button>
-      </a>
-      <a href='#strategy'>
-        <button type='button'>Estratégia</button>
-      </a>
-      <a href='#experience'>
-        <button type='button'>Experiência</button>
-      </a>
-      <a href='#nft'>
-        <button type='button'>NFT</button>
-      </a>
-      <a href='#collection'>
-        <button type='button'>Coleção</button>
-      </a>
-      <a href='#team'>
-        <button type='button'>Time</button>
+      <a href='#home'>
+        <button type='button' className='top'>
+          Back to top
+        </button>
       </a>
       <button type='button'>
         <svg
@@ -46,4 +29,4 @@ const Header: React.FC = () => (
   </Container>
 )
 
-export default Header
+export default Footer

@@ -12,40 +12,39 @@ export const Container = styled.div<Props>`
     position: relative;
 
     width: 180px;
-    height: 260px;
-    background-color: rgba(255, 255, 255, 0.7);
+    height: 285px;
+    background-color: #2e2a26;
     border-radius: 10px;
 
     padding: 10px;
 
-    color: black;
+    color: white;
 
     pointer-events: ${({ active }) => (active ? 'all' : 'none')};
 
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: center;
 
     text-decoration: none;
     text-transform: capitalize;
+    text-align: center;
 
     .frame {
       width: 160px;
       height: 160px;
 
-      border: solid 4px #54439b;
-      background: radial-gradient(
-        50.25% 50.25% at 50.02% 49.98%,
-        rgba(91, 82, 163, 0) 42.91%,
-        rgba(91, 82, 163, 0.6) 100%
-      );
+      border: solid 2px white;
+      border-radius: 15px;
+      background-color: #211e30;
     }
 
     .in {
-      position: absolute;
       width: 25px;
       height: 25px;
-      bottom: 5px;
-      right: 5px;
+      margin-top: auto;
+      align-self: end;
     }
 
     .text {

@@ -36,7 +36,7 @@ export default class Experience {
 
   isMobile: boolean
 
-  constructor(canvas: HTMLCanvasElement, onLoad: () => void, isMobile: boolean) {
+  constructor(canvas: HTMLCanvasElement, isMobile: boolean) {
     // Options
     this.canvas = canvas
     this.isMobile = isMobile
@@ -61,7 +61,11 @@ export default class Experience {
     // Event bindings
     this.sizes.on('resize', () => this.resize())
     this.time.on('tick', () => this.update())
-    this.resources.on('load', () => onLoad())
+    this.resources.on('ready', () => {
+      this.scene.traverse((child) => {
+        child.frustumCulled = false
+      })
+    })
   }
 
   resize() {
@@ -74,30 +78,5 @@ export default class Experience {
     this.camera.update()
     this.world.update()
     this.postProcessing.update()
-  }
-
-  destroy() {
-    this.sizes.off('resize', () => this.resize())
-    this.time.off('tick', () => this.update())
-
-    this.scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.geometry.dispose()
-
-        Object.keys(child.material).forEach((key) => {
-          const value = child.material[key]
-          if (value && value.dispose instanceof Function) value.dispose()
-        })
-
-        child.material.dispose()
-      }
-    })
-
-    this.camera.orbitControls!.dispose()
-    this.renderer.instance!.dispose()
-
-    if (this.debug.active) {
-      this.debug.ui!.destroy()
-    }
   }
 }

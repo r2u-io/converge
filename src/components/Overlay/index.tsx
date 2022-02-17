@@ -2,35 +2,35 @@ import React from 'react'
 
 import { AvatarsProvider } from '../../contexts/AvatarsContext'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
-import { useUIContext } from '../../contexts/UIContext'
-import About from '../About'
-import Buttons from '../Buttons'
-import Fullscreen from '../Fullscreen'
-import Header from '../Header'
-import Instructions from '../Instructions'
-import LoadingScreen from '../LoadingScreen'
-import Map from '../Map'
-import PortraitPrompt from '../PortraitPrompt'
+import Footer from '../Footer'
+import SectionOne from '../Sections/1'
+import SectionTwo from '../Sections/2'
+import SectionThree from '../Sections/3'
+import SectionFour from '../Sections/4'
+import SectionFive from '../Sections/5'
+import SectionSix from '../Sections/6'
+import SectionSeven from '../Sections/7'
 import Team from '../Team'
-import { Container } from './styles'
+import { GlobalStyle } from './styles'
 
 const Overlay: React.FC = () => {
-  const { onFreeTour } = useThreeContext()
-  const { loading, showPortraitPrompt } = useUIContext()
+  const { sceneReady } = useThreeContext()
 
   return (
-    <Container>
-      {onFreeTour ? <Instructions /> : <Buttons />}
-      <Fullscreen />
-      <Map />
+    <>
+      <GlobalStyle ready={sceneReady} />
+      <SectionOne />
+      <SectionTwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
+      <SectionSix />
+      <SectionSeven />
       <AvatarsProvider>
         <Team />
       </AvatarsProvider>
-      <About />
-      <Header />
-      {showPortraitPrompt && <PortraitPrompt />}
-      {loading && <LoadingScreen />}
-    </Container>
+      <Footer />
+    </>
   )
 }
 

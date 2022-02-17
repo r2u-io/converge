@@ -4,10 +4,10 @@ import { useThreeContext } from '../../contexts/ThreeJSContext'
 import { Container } from './styles'
 
 const Instructions: React.FC = () => {
-  const { threeExperience, flyInstructionsRef } = useThreeContext()
+  const { threeExperience } = useThreeContext()
 
   return (
-    <Container ref={flyInstructionsRef} className='blocker'>
+    <Container className='blocker'>
       <div className='instructions '>
         <h2>Click to play</h2>
         {threeExperience?.isMobile ? (

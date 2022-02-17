@@ -1,16 +1,6 @@
-import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 
-import * as THREE from 'three'
-
-import CurvesData from '../config/curves.json'
-import PointsData from '../config/points.json'
 import ThreeExperience from '../three/experience'
-import Curve from '../three/experience/Curve'
-
-interface CurveParams {
-  curve: Curve
-  duration: number
-}
 
 interface Props {
   children: ReactNode
@@ -19,18 +9,8 @@ interface Props {
 interface ThreeContextData {
   threeExperience?: ThreeExperience
   sceneReady: boolean
-  activePoint: number
-  isFirstPoint: boolean
-  isLastPoint: boolean
-  moving: boolean
-  onFreeTour: boolean
-  flyInstructionsRef: React.RefObject<HTMLDivElement>
   setThreeExperience: (threeExperience: ThreeExperience) => void
   setSceneReady: (state: boolean) => void
-  nextPoint: () => void
-  prevPoint: () => void
-  toPoint: (point: number) => void
-  activateFreeTour: () => void
 }
 
 export const ThreeContext = createContext<ThreeContextData>({} as ThreeContextData)
@@ -39,150 +19,18 @@ export const ThreeProvider: React.FC<Props> = ({ children }: Props) => {
   const [threeExperience, setThreeExperience] = useState<ThreeExperience>()
   const [sceneReady, setSceneReady] = useState(false)
 
-  const [activePoint, setActivePoint] = useState(0)
-
-  const isFirstPoint = activePoint === 0
-  const isLastPoint = activePoint === PointsData.length - 1
-
-  const [curves, setCurves] = useState<CurveParams[]>()
-  const [lastCurve, setLastCurve] = useState<CurveParams>()
-  const [forward, setForward] = useState(true)
-  const [moving, setMoving] = useState(false)
-  const [onFreeTour, setOnFreeTour] = useState(false)
-
-  const house = threeExperience?.world.house
-
-  const flyInstructionsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!threeExperience || !sceneReady) return
-    threeExperience.camera.toPoint(PointsData[0])
-    threeExperience.raycaster.floor = 0
-  }, [threeExperience, sceneReady])
-
-  useEffect(() => {
-    if (!threeExperience || !sceneReady || curves) return
-
-    const curvesInstances = CurvesData.map(({ points, duration }) => {
-      const vectorPoints = points.map((point) => new THREE.Vector3().fromArray(point))
-      const curve = new Curve(vectorPoints)
-      return { curve, duration }
-    })
-
-    setLastCurve(curvesInstances.pop())
-    setCurves(curvesInstances)
-  }, [threeExperience, sceneReady, curves])
-
-  useEffect(() => {
-    if (!threeExperience || !curves || !moving || onFreeTour) return
-    const { curve, duration } = curves[activePoint - 1 * Number(forward)]
-
-    threeExperience.camera
-      .followCurve(
-        curve,
-        forward,
-        duration,
-        new THREE.Vector3().fromArray(PointsData[activePoint].targetPosition)
-      )
-      .then(() => {
-        threeExperience.camera.toPoint(PointsData[activePoint])
-        threeExperience!.raycaster.floor = activePoint
-        setMoving(false)
-      })
-  }, [threeExperience, curves, moving, activePoint, forward, onFreeTour])
-
-  useEffect(() => {
-    if (!threeExperience || !house || !house.debug.active) return
-
-    const teleportToPoint = (point: number) => {
-      setActivePoint(point)
-      threeExperience.camera.toPoint(PointsData[point])
-    }
-
-    const changeScene = {
-      '0': () => teleportToPoint(0),
-      '1': () => teleportToPoint(1),
-      '2': () => teleportToPoint(2),
-      '3': () => teleportToPoint(3),
-      '4': () => teleportToPoint(4),
-      '5': () => teleportToPoint(5)
-    }
-
-    house.debugFolder!.add(changeScene, '0')
-    house.debugFolder!.add(changeScene, '1')
-    house.debugFolder!.add(changeScene, '2')
-    house.debugFolder!.add(changeScene, '3')
-    house.debugFolder!.add(changeScene, '4')
-    house.debugFolder!.add(changeScene, '5')
-  }, [threeExperience, house])
-
-  const prevPoint = () => {
-    if (isFirstPoint) return
-    setActivePoint(activePoint - 1)
-    setMoving(true)
-    setForward(false)
-    threeExperience!.raycaster.floor = -1
-  }
-
-  const nextPoint = () => {
-    if (isLastPoint) return
-    setActivePoint(activePoint + 1)
-    setMoving(true)
-    setForward(true)
-    threeExperience!.raycaster.floor = -1
-  }
-
-  const toPoint = (point: number) => {
-    if (point < 0 || point > PointsData.length - 1) return
-    setActivePoint(point)
-    setMoving(true)
-    setForward(point > activePoint)
-    threeExperience!.raycaster.floor = -1
-  }
-
-  const activateFreeTour = () => {
-    if (!lastCurve) return
-    if (!threeExperience) return
-
-    const { curve, duration } = lastCurve
-
-    setActivePoint(0)
-    setMoving(true)
-    setOnFreeTour(true)
-    threeExperience!.raycaster.floor = 6
-
-    threeExperience.camera.openFOV(duration)
-    threeExperience.camera
-      .followCurve(
-        curve,
-        true,
-        duration,
-        new THREE.Vector3().fromArray(PointsData[0].targetPosition)
-      )
-      .then(() => {
-        threeExperience.camera.toPoint(PointsData[0])
-        setMoving(false)
-        threeExperience!.camera.setFreeTour(flyInstructionsRef.current!)
-      })
-  }
+  // useEffect(() => {
+  //   if (!threeExperience || !sceneReady) return
+  //   threeExperience.raycaster.floor = 0
+  // }, [threeExperience, sceneReady])
 
   return (
     <ThreeContext.Provider
       value={{
         threeExperience,
         sceneReady,
-        activePoint,
-        isFirstPoint,
-        isLastPoint,
-        moving,
-        onFreeTour,
-        flyInstructionsRef,
         setThreeExperience,
-        setSceneReady,
-        nextPoint,
-        prevPoint,
-        toPoint,
-        activateFreeTour
+        setSceneReady
       }}
     >
       {children}
