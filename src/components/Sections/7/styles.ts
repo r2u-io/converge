@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  background: url('/images/section_3.png');
+  background: linear-gradient(180deg, rgba(216, 214, 210, 1) 0%, rgba(100, 44, 142, 1) 10%);
 
   .content {
     margin: 100px;

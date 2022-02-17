@@ -94,7 +94,7 @@ export default class MyDocument extends Document {
           <meta name='robots' content='index, follow' />
           <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
           <meta name='language' content='English' />
-          <link rel='icon' href='/favicon.ico' />
+          <link rel='icon' href='/images/logo.svg' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
