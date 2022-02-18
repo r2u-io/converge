@@ -128,6 +128,7 @@ export const GlobalStyle = createGlobalStyle<GlobalProps>`
 
   @media (orientation: portrait) {
     html, body {
+      scroll-behavior: smooth;
       overflow-y: hidden;
       overflow-x: ${(props) => (props.ready ? 'auto' : 'hidden')};
     }

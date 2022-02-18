@@ -48,7 +48,7 @@ export default class Camera {
   }
 
   setInstance() {
-    const fov = 60
+    const fov = window.matchMedia('(orientation: portrait)').matches ? 75 : 45
 
     this.instance = new THREE.PerspectiveCamera(
       fov,
