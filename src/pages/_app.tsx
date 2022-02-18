@@ -26,11 +26,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     width: 100%;
     height: 100%;
+
+    max-width: 100vw;
+    max-height: 100vh;
   }
 
   body {
-    margin: 0px;
-    color: white;
+    background-color: #D8D6D2;
   }
 `
 

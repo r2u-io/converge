@@ -56,6 +56,8 @@ export const Container = styled.div`
   @media (orientation: portrait) {
     & {
       width: 100vw;
+      margin: 0;
+      padding: 10px;
     }
 
     .menu {

@@ -4,7 +4,7 @@ interface Props {
   progress: number
 }
 
-export const Container = styled.section<Props>`
+export const Container = styled.div<Props>`
   .converge {
     margin: 200px auto;
     width: 70%;

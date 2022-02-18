@@ -19,7 +19,7 @@ const SectionOne: React.FC = () => {
   }, [threeExperience])
 
   return (
-    <Container progress={progress} id='home'>
+    <Container progress={progress} id='home' className='section'>
       <Header />
       <div className='converge'>
         <Image src='/images/converge.svg' alt='Converge' width={1920} height={300} />

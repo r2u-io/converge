@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 75vw;
+  width: 70%;
   height: 100vh;
 
   pointer-events: none;
@@ -19,7 +19,7 @@ export const Container = styled.div`
   @media (orientation: portrait) {
     & {
       width: 100vw;
-      height: 70vh;
+      height: 50vh;
 
       top: unset;
       bottom: 0;

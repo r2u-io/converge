@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+export const Container = styled.div`
   background: linear-gradient(
     0deg,
     rgba(216, 214, 210, 1) 0%,

@@ -20,8 +20,8 @@ export default class Sizes extends EventEmitter {
     if (container) {
       this.container = container
 
-      this.width = this.container.clientWidth
-      this.height = this.container.clientHeight
+      this.width = this.container.offsetWidth
+      this.height = this.container.offsetHeight
     }
 
     this.emit('resize')
@@ -35,8 +35,8 @@ export default class Sizes extends EventEmitter {
     this.height = window.innerHeight
 
     if (this.container) {
-      this.width = this.container.clientWidth
-      this.height = this.container.clientHeight
+      this.width = this.container.offsetWidth
+      this.height = this.container.offsetHeight
     }
 
     this.emit('resize')

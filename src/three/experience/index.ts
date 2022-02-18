@@ -37,7 +37,7 @@ export default class Experience {
 
     // Setup
     this.debug = new Debug()
-    this.sizes = new Sizes()
+    this.sizes = new Sizes(canvas)
     this.time = new Time(this.debug.active)
 
     // THREE

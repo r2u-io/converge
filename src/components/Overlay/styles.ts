@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  section {
+  .section {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -73,13 +73,13 @@ export const Container = styled.div`
     & {
       flex-direction: row;
 
-      section {
+      .section {
         width: 100vw;
 
         .content {
           padding: 50px 25px;
           margin: 0;
-          height: 30%;
+          height: 50%;
           width: 100vw;
 
           .title {
@@ -124,28 +124,12 @@ export const GlobalStyle = createGlobalStyle<GlobalProps>`
       background: #aa106d;
     }
   }
-  
-  body {
-    background-color: #D8D6D2;
-  }
 
-  #__next {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
-  }
 
   @media (orientation: portrait) {
-    html {
+    html, body {
       overflow-y: hidden;
       overflow-x: ${(props) => (props.ready ? 'auto' : 'hidden')};
-      height: 100vh;
-    }
-
-    body {
-      overflow-y: hidden;
-      scroll-behavior: smooth;
     }
   }
 `
