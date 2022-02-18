@@ -13,6 +13,8 @@ export const Container = styled.div`
   background-color: #18131b;
   border-top: solid 1px #642c8e;
 
+  color: white;
+
   .menu {
     display: flex;
     align-items: center;
