@@ -96,7 +96,6 @@ export default class MyDocument extends Document {
           <meta name='language' content='English' />
           <link rel='icon' href='/images/logo.svg' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
-          <meta name='viewport' content='width=device-width, minimum-scale=1.0' />
           <link
             href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
             rel='stylesheet'
