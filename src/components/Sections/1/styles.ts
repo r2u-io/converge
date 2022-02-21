@@ -47,6 +47,40 @@ export const Container = styled.div<Props>`
     }
   }
 
+  .swipe {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .scroll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
   @media (orientation: portrait) {
     .converge {
       margin: 200px 0;
@@ -57,6 +91,14 @@ export const Container = styled.div<Props>`
 
     .subtitle {
       font-size: 2rem;
+    }
+
+    .swipe {
+      display: flex;
+    }
+
+    .scroll {
+      display: none;
     }
   }
 `

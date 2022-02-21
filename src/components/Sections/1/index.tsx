@@ -24,7 +24,38 @@ const SectionOne: React.FC = () => {
       <div className='converge'>
         <Image src='/images/converge.svg' alt='Converge' width={1920} height={300} />
         <span className='subtitle'>Connecting Worlds</span>
-        {!sceneReady && (
+        {sceneReady ? (
+          <>
+            <div className='swipe'>
+              <span>Swipe to start</span>
+              <svg
+                version='1.1'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 100 100'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='10'
+                strokeLinecap='round'
+              >
+                <path d='M5,50 h90 M95,50 l-30,-30 M95,50 l-30,30' />
+              </svg>
+            </div>
+            <div className='scroll'>
+              <span>Scroll to start</span>
+              <svg
+                version='1.1'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 100 100'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='10'
+                strokeLinecap='round'
+              >
+                <path d='M50,5 v90 M50,95 l-30,-30 M50,95 l30,-30' />
+              </svg>
+            </div>
+          </>
+        ) : (
           <div className='loading'>
             <div className='bar' />
           </div>
