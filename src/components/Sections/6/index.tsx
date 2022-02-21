@@ -3,7 +3,7 @@ import React from 'react'
 import { Container } from './styles'
 
 const SectionSix: React.FC = () => (
-  <Container id='collection'>
+  <Container id='collection' className='section'>
     <div className='content'>
       <span className='title'>Exhibit your art to the World</span>
       <br />

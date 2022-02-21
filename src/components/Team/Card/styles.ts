@@ -43,8 +43,10 @@ export const Container = styled.div<Props>`
     .in {
       width: 25px;
       height: 25px;
-      margin-top: auto;
-      align-self: end;
+
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
     }
 
     .text {

@@ -44,10 +44,11 @@ export default class Camera {
 
     this.move()
     document.addEventListener('scroll', () => this.move())
+    document.body.addEventListener('scroll', () => this.move())
   }
 
   setInstance() {
-    const fov = 45
+    const fov = window.matchMedia('(orientation: portrait)').matches ? 75 : 50
 
     this.instance = new THREE.PerspectiveCamera(
       fov,
@@ -66,10 +67,13 @@ export default class Camera {
 
   move() {
     const scrollY = window.scrollY / this.sizes.height
+    const scrollX = document.body.scrollLeft / this.sizes.width
 
-    const section = Math.floor(scrollY)
+    const scroll = Math.max(scrollY, scrollX)
 
-    const progress = scrollY - section
+    const section = Math.floor(scroll)
+
+    const progress = scroll - section
 
     if (this.activeCurve !== section) {
       this.activeCurve = section

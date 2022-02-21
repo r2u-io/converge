@@ -7,8 +7,10 @@ export const Container = styled.div`
   position: relative;
   z-index: 2;
 
+  display: flex;
+  flex-direction: column;
+
   .content {
-    position: absolute;
     z-index: 2;
 
     width: 100%;
@@ -217,8 +219,11 @@ export const Container = styled.div`
   }
 
   @media (orientation: portrait) {
+    width: 100vw;
+
     .content {
       flex-direction: column;
+      width: 100vw;
 
       .ui {
         align-items: center;
@@ -237,6 +242,7 @@ export const Container = styled.div`
         }
 
         .header {
+          margin-top: 20px;
           width: 80%;
 
           .back {
@@ -245,7 +251,7 @@ export const Container = styled.div`
           }
 
           span {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
         }
       }

@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 40px 50px 50px 50px;
+  padding: 40px 50px;
   width: 100%;
 
-  position: relative;
   z-index: 2;
 
   display: flex;
@@ -13,6 +12,8 @@ export const Container = styled.div`
 
   background-color: #18131b;
   border-top: solid 1px #642c8e;
+
+  color: white;
 
   .menu {
     display: flex;

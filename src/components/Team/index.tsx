@@ -2,6 +2,7 @@ import React from 'react'
 
 import TeamData from '../../config/team.json'
 import { useAvatarsContext } from '../../contexts/AvatarsContext'
+import Footer from '../Footer'
 import CanvasTeam from './Canvas'
 import CardTeam from './Card'
 import { Container } from './styles'
@@ -66,10 +67,13 @@ const Team: React.FC = () => {
                 <svg
                   version='1.1'
                   xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 1000 1000'
-                  fill='currentColor'
+                  viewBox='0 0 100 100'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='10'
+                  strokeLinecap='round'
                 >
-                  <path d='M943.1,451.9H176.5l254.4-254.4c18.3-18.3,18.3-48.1,0-66.4l-2.9-2.9c-18.3-18.3-48.1-18.3-66.4,0L27.7,462.2C16.9,470.8,10,484,10,498.8v4.6c0,17.8,9.9,33.2,24.4,41.2l327.2,327.2c18.3,18.3,48.1,18.3,66.4,0l2.9-2.9c18.3-18.3,18.3-48.1,0-66.4L178.7,550.3h764.3c25.9,0,46.9-21,46.9-46.9v-4.6C990,472.9,969,451.9,943.1,451.9z' />
+                  <path d='M95,50 h-90 M5,50 l30,-30 M5,50 l30,30' />
                 </svg>
               </button>
             )}
@@ -122,6 +126,7 @@ const Team: React.FC = () => {
           <CanvasTeam />
         </div>
       </div>
+      <Footer />
     </Container>
   )
 }

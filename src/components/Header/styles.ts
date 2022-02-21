@@ -52,4 +52,16 @@ export const Container = styled.div`
       margin-right: 0;
     }
   }
+
+  @media (orientation: portrait) {
+    & {
+      width: 100vw;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .menu {
+      display: none;
+    }
+  }
 `

@@ -4,10 +4,10 @@ interface Props {
   progress: number
 }
 
-export const Container = styled.section<Props>`
+export const Container = styled.div<Props>`
   .converge {
-    margin: 200px 0;
-    width: 100%;
+    margin: 200px auto;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -44,6 +44,61 @@ export const Container = styled.section<Props>`
       background: #642c8e;
 
       transition: transform 0.3s;
+    }
+  }
+
+  .swipe {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .scroll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  @media (orientation: portrait) {
+    .converge {
+      margin: 200px 0;
+      width: 100vw;
+
+      padding: 50px;
+    }
+
+    .subtitle {
+      font-size: 2rem;
+    }
+
+    .swipe {
+      display: flex;
+    }
+
+    .scroll {
+      display: none;
     }
   }
 `
