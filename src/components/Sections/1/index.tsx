@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 import gsap from 'gsap'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 import { useThreeContext } from '../../../contexts/ThreeJSContext'
 import Header from '../../Header'
 import { Container } from './styles'
 
 const SectionOne: React.FC = () => {
+  const { t } = useTranslation()
+
   const { threeExperience, setSceneReady, sceneReady } = useThreeContext()
   const [progress, setProgress] = useState(0)
 
@@ -23,11 +26,11 @@ const SectionOne: React.FC = () => {
       <Header />
       <div className='converge'>
         <Image src='/images/converge.svg' alt='Converge' width={1920} height={300} />
-        <span className='subtitle'>Connecting Worlds</span>
+        <span className='subtitle'>{t('sections.one.subtitle')}</span>
         {sceneReady ? (
           <>
             <div className='swipe'>
-              <span>Swipe to start</span>
+              <span>{t('sections.one.swipe')}</span>
               <svg
                 version='1.1'
                 xmlns='http://www.w3.org/2000/svg'
@@ -41,7 +44,7 @@ const SectionOne: React.FC = () => {
               </svg>
             </div>
             <div className='scroll'>
-              <span>Scroll to start</span>
+              <span>{t('sections.one.scroll')}</span>
               <svg
                 version='1.1'
                 xmlns='http://www.w3.org/2000/svg'
