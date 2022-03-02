@@ -2,6 +2,7 @@ import React from 'react'
 
 import { AvatarsProvider } from '../../contexts/AvatarsContext'
 import { useThreeContext } from '../../contexts/ThreeJSContext'
+import Form from '../Form'
 import SectionOne from '../Sections/1'
 import SectionTwo from '../Sections/2'
 import SectionThree from '../Sections/3'
@@ -17,6 +18,7 @@ const Overlay: React.FC = () => {
 
   return (
     <Container>
+      <Form />
       <GlobalStyle ready={sceneReady} />
       <SectionOne />
       <SectionTwo />

@@ -1,0 +1,76 @@
+{
+  "pages": {
+    "title": {
+      "index": "Converge",
+      "meet": "Converge | Meet"
+    }
+  },
+  "sections": {
+    "one": {
+      "subtitle": "Connecting Worlds",
+      "swipe": "Swipe to start",
+      "scroll": "Scroll to start"
+    },
+    "two": {
+      "title": "Connecting Worlds",
+      "text": "Converge is your \"one-stop-shopping\" to quickly answer all your questions and easily implement your actions. From strategy elaboration, planning to implementation and control, our team handles all the details.",
+      "button": "Learn More"
+    },
+    "three": {
+      "title": "Metaverse Strategy",
+      "text": "Analyse which strategy is more adequate to the positioning and offered value of the brand is essencial to success. Our team works with our clients' team to define if the best option is a perpetual action, multiple short duration actions, or which proposal will deliver the desired result.",
+      "button": "Live this experience"
+    },
+    "four": {
+      "title": "Brand experience",
+      "text": "A perpetual store? A pop-up store? Or a temporary space of experiences that transmits the brand value? Each detail will be discussed and analysed beyond the company strategy to ensure the best option is implemented, from land providence, to the construction of the 3D space",
+      "button": "Sell in the Metaverse"
+    },
+    "five": {
+      "title": "Mint your NFT's collection",
+      "text": "Your brand can come even closer to your clients through high aggregated value strategies such as NFT's collections. The non-fungible tokens can be used from validation of assets to be sold in the metaverse, to possession certificates to reclaim exclusive benefits - both in the metaverse as in the real world. Converge plans the action, creates the concept and the art to mint the blockchain collection. All to make sure you have the tranquility of a quick and easy implementation.",
+      "button": "Start earning"
+    },
+    "six": {
+      "title": "Exhibit your art to the World",
+      "text": "Have you ever pictured an integrated wallet in your app or website in which your clients can keep their NFT's? A space to centralize the actives and help your consumer's life, bringing the brand even closer and generating loyalty and preference. This is the future...",
+      "button": "Connect to art lovers"
+    },
+    "seven": {
+      "title": "Meet our team",
+      "text": "Our metaverse specialist team: from technicians to strategists, you will have the best professionals of the market available to you.",
+      "button": "Click to meet"
+    }
+  },
+  "team": {
+    "title": "Meet our team",
+    "leadership": "Leadership",
+    "techProduct": "Technology & Product",
+    "operations": "Operations",
+    "salesMarketing": "Sales & Marketing",
+    "advisors": "Advisors"
+  },
+  "header": {
+    "about": "About",
+    "strategy": "Strategy",
+    "experience": "Experience",
+    "nft": "NFT",
+    "collection": "Collection",
+    "team": "Team"
+  },
+  "footer": {
+    "title": "@converge 2022",
+    "back": "Back to top"
+  },
+  "form": {
+    "title": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sent": "Sent successfully"
+  }
+}

@@ -55,9 +55,16 @@ module.exports = {
     ],
     'react/jsx-props-no-spreading': ['off'],
     'react/jsx-curly-newline': 'off',
+    'react/jsx-no-bind': 'off',
+    'react/jsx-no-literals': [
+      'error',
+      {
+        noStrings: true,
+        ignoreProps: true
+      }
+    ],
     'react/prefer-stateless-function': ['off', { ignorePureComponents: true }],
     'react/require-default-props': 'off',
-    'react/jsx-no-bind': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-nested-ternary': 'off',

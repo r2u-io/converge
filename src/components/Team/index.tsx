@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useTranslation } from 'react-i18next'
+
 import TeamData from '../../config/team.json'
 import { useAvatarsContext } from '../../contexts/AvatarsContext'
 import Footer from '../Footer'
@@ -8,6 +10,8 @@ import CardTeam from './Card'
 import { Container } from './styles'
 
 const Team: React.FC = () => {
+  const { t } = useTranslation()
+
   const {
     moving,
     activeGroup,
@@ -77,42 +81,42 @@ const Team: React.FC = () => {
                 </svg>
               </button>
             )}
-            <span>Meet our team</span>
+            <span>{t('team.title')}</span>
           </div>
           <button
             type='button'
             onClick={onClickLeadership}
             disabled={moving || activeGroup === 'leadership'}
           >
-            Leadership
+            {t('team.leadership')}
           </button>
           <button
             type='button'
             onClick={onClickTechProduct}
             disabled={moving || activeGroup === 'techProduct'}
           >
-            Technology & Product
+            {t('team.techProduct')}
           </button>
           <button
             type='button'
             onClick={onClickOperations}
             disabled={moving || activeGroup === 'operations'}
           >
-            Operations
+            {t('team.operations')}
           </button>
           <button
             type='button'
             onClick={onClickSalesMarketing}
             disabled={moving || activeGroup === 'salesMarketing'}
           >
-            Sales & Marketing
+            {t('team.salesMarketing')}
           </button>
           <button
             type='button'
             onClick={onClickAdvisors}
             disabled={moving || activeGroup === 'advisors'}
           >
-            Advisors
+            {t('team.advisors')}
           </button>
         </div>
         <div className='canvas'>

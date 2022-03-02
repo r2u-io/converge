@@ -1,24 +1,28 @@
 import React from 'react'
 
+import { useTranslation } from 'react-i18next'
+
+import { useOverlayContext } from '../../../contexts/OverlayContext'
 import { Container } from './styles'
 
-const SectionFour: React.FC = () => (
-  <Container id='experience' className='section'>
-    <div className='content'>
-      <span className='title'>Experiência de Marca</span>
-      <br />
-      <span className='text'>
-        Uma loja perene? Uma pop-up store? Ou um espaço de experiências que transmitam o valor da
-        marca e que seja temporário? Cada detalhe será discutido e analisado frente a estratégia da
-        empresa para que a melhor opção seja implementada, desde a viabilização da terra / land até
-        a construção do espaço em 3D.
-      </span>
-      <br />
-      <button type='button' className='more'>
-        Comece a vender no Metaverse
-      </button>
-    </div>
-  </Container>
-)
+const SectionFour: React.FC = () => {
+  const { t } = useTranslation()
+
+  const { openForms } = useOverlayContext()
+
+  return (
+    <Container id='experience' className='section'>
+      <div className='content'>
+        <span className='title'>{t('sections.four.title')}</span>
+        <br />
+        <span className='text'>{t('sections.four.text')}</span>
+        <br />
+        <button type='button' className='more' onClick={openForms}>
+          {t('sections.four.button')}
+        </button>
+      </div>
+    </Container>
+  )
+}
 
 export default SectionFour

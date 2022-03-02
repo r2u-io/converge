@@ -27,8 +27,6 @@ export const Container = styled.div`
     }
 
     button {
-      cursor: pointer;
-      pointer-events: all;
       outline: none;
       border: none;
       background: none;

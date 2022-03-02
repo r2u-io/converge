@@ -1,0 +1,76 @@
+{
+  "pages": {
+    "title": {
+      "index": "Converge",
+      "meet": "Converge | Reunião"
+    }
+  },
+  "sections": {
+    "one": {
+      "subtitle": "Conectando Mundos",
+      "swipe": "Arraste para começar",
+      "scroll": "Desça para começar"
+    },
+    "two": {
+      "title": "Conectando Mundos",
+      "text": "Converge é a sua solução \"one-stop-shopping\" para que todas as suas perguntas sejam rapidamente respondidas e as ações facilmente implementadas. Da elaboração da estratégia, planejamento a implementação e controle, nosso time cuida de todos os detalhes.",
+      "button": "Saiba mais"
+    },
+    "three": {
+      "title": "Estratégia no Metaverso",
+      "text": "Analisar qual estratégia é a mais adequada frente ao posicionamento e a proposta de valor da marca é fundamental para o sucesso. Nosso time trabalha juntamente com o time de nossos clientes para definir se a melhor opção é uma ação perene, múltiplas ações de curta duração ou qual proposta é a que entregará o resultado desejado.",
+      "button": "Viva essa experiência"
+    },
+    "four": {
+      "title": "Experiência de Marca",
+      "text": "Uma loja perene? Uma pop-up store? Ou um espaço de experiências que transmitam o valor da marca e que seja temporário? Cada detalhe será discutido e analisado frente a estratégia da empresa para que a melhor opção seja implementada, desde a viabilização da terra / land até a construção do espaço em 3D.",
+      "button": "Venda no Metaverso"
+    },
+    "five": {
+      "title": "Mint sua coleção de NFT's",
+      "text": "Sua marca pode se aproximar ainda mais de seus clientes através de estratégias de alto valor agregado como as coleções de NFT's. Os non-fungible tokens podem ser usados desde a validação de bens a serem vendidos no metaverso, até como certificados de “posse” para redenção de benefícios exclusivos - tanto no metaverso quanto no mundo real. Converge planeja a ação, cria o conceito e a arte e minta a coleção na blockchain. Tudo para você ter a tranquilidade de uma implementação fácil e rápida.",
+      "button": "Comece a ganhar"
+    },
+    "six": {
+      "title": "Exiba sua arte ao mundo",
+      "text": "Já imaginou uma wallet integrada em seu site ou app para que seus clientes possam guardar os seus NFT's? Um espaço para centralizar os ativos e facilitar a vida de seus consumidores, aproximando ainda mais a marca gerando lealdade e preferência. Esse é o futuro...",
+      "button": "Conecte-se com os amantes das artes"
+    },
+    "seven": {
+      "title": "Conheça nosso time",
+      "text": "Nosso time de especialistas no metaverso: de técnicos a estrategistas, você terá à sua disposição os melhores profissionais do mercado.",
+      "button": "Clique para conhecer"
+    }
+  },
+  "team": {
+    "title": "Conheça nosso time",
+    "leadership": "Liderança",
+    "techProduct": "Tecnologia e Produto",
+    "operations": "Operações",
+    "salesMarketing": "Vendas e Marketing",
+    "advisors": "Assessoria"
+  },
+  "header": {
+    "about": "Sobre",
+    "strategy": "Estratégia",
+    "experience": "Experiência",
+    "nft": "NFT",
+    "collection": "Coleção",
+    "team": "Time"
+  },
+  "footer": {
+    "title": "@converge 2022",
+    "back": "Voltar para o início"
+  },
+  "form": {
+    "title": "Contato",
+    "name": "Nome",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "website": "Website",
+    "message": "Mensagem",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "sent": "Enviado com sucesso!"
+  }
+}
