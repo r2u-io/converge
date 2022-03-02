@@ -19,4 +19,9 @@ export const Container = styled.div`
       width: 100%;
     }
   }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 `

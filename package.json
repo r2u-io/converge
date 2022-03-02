@@ -9,6 +9,7 @@
     "prettier": "prettier --write ./"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "gsap": "^3.8.0",
     "i18next": "^21.6.11",
     "i18next-browser-languagedetector": "^6.1.3",

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import Canvas from '../components/Canvas'
 import Overlay from '../components/Overlay'
+import { OverlayProvider } from '../contexts/OverlayContext'
 import { ThreeProvider } from '../contexts/ThreeJSContext'
 
 const Home: React.FC = () => {
@@ -16,7 +17,9 @@ const Home: React.FC = () => {
       </Head>
       <ThreeProvider>
         <Canvas />
-        <Overlay />
+        <OverlayProvider>
+          <Overlay />
+        </OverlayProvider>
       </ThreeProvider>
     </>
   )

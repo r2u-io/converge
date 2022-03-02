@@ -2,10 +2,13 @@ import React from 'react'
 
 import { useTranslation } from 'react-i18next'
 
+import { useOverlayContext } from '../../../contexts/OverlayContext'
 import { Container } from './styles'
 
 const SectionSix: React.FC = () => {
   const { t } = useTranslation()
+
+  const { openForms } = useOverlayContext()
 
   return (
     <Container id='collection' className='section'>
@@ -14,7 +17,7 @@ const SectionSix: React.FC = () => {
         <br />
         <span className='text'>{t('sections.six.text')}</span>
         <br />
-        <button type='button' className='more'>
+        <button type='button' className='more' onClick={openForms}>
           {t('sections.six.button')}
         </button>
       </div>

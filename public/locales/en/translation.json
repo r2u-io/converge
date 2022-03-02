@@ -61,5 +61,16 @@
   "footer": {
     "title": "@converge 2022",
     "back": "Back to top"
+  },
+  "form": {
+    "title": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sent": "Sent successfully"
   }
 }

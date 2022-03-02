@@ -14,8 +14,8 @@ const SectionSeven: React.FC = () => {
         <br />
         <span className='text'>{t('sections.seven.text')}</span>
         <br />
-        <button type='button' className='more'>
-          {t('sections.seven.button')}
+        <button type='button' className='more white'>
+          <a href='#meet-the-team'>{t('sections.seven.button')}</a>
         </button>
       </div>
     </Container>

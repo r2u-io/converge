@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: #D8D6D2;
   }
+
+  button {
+    cursor: pointer;
+  }
 `
 
 function MyApp({ Component, pageProps }: AppProps) {

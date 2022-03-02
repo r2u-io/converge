@@ -22,7 +22,6 @@ export const Container = styled.div`
     justify-content: center;
 
     color: white;
-    pointer-events: none;
 
     .ui {
       padding-left: 20px;
@@ -68,9 +67,6 @@ export const Container = styled.div`
         justify-content: center;
         align-items: center;
         text-align: center;
-
-        pointer-events: all;
-        cursor: pointer;
 
         font-size: 1.5rem;
 
