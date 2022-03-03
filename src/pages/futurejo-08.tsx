@@ -24,7 +24,7 @@ const Meet: React.FC = () => {
         <title>{t('pages.title.futurejo')}</title>
       </Head>
       <IFrame
-        src='https://hubs.mozilla.com/gUPQxpL?embed_token=0a81fe7a6953ddd78de78f5f48c0ce81'
+        src='https://hubs.mozilla.com/NBTZNmF?embed_token=d796f27b973cf3089d7b271d48aa8293'
         title='futurejo'
         width='300'
         height='150'
