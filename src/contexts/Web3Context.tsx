@@ -1,34 +1,73 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
+import type { MetaMaskInpageProvider } from '@metamask/providers'
+
 interface Props {
   children: ReactNode
 }
 
 interface Web3ContextData {
   hasMetamask: boolean
+  connect: () => void
 }
 
 declare global {
   interface Window {
-    ethereum: unknown
+    ethereum: MetaMaskInpageProvider
   }
 }
 
 export const Web3Context = createContext<Web3ContextData>({} as Web3ContextData)
 
 export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
-  const [address, setAddress] = useState(false)
-
   const [hasMetamask, setHasMetamask] = useState(false)
+  const [provider, setProvider] = useState<MetaMaskInpageProvider>()
+  const [address, setAddress] = useState<string>('')
+  const [networkId, setNetworkId] = useState<number>(0)
 
   useEffect(() => {
-    setHasMetamask((window as any).ethereum)
+    setHasMetamask(!!window.ethereum)
+    setProvider(window.ethereum)
   }, [])
+
+  const changeAddress = (accounts: unknown) => {
+    const addresses = accounts as string[]
+    if (!addresses || !addresses[0]) return
+    setAddress(addresses[0] as string)
+  }
+
+  const changeNetwork = (chainId: unknown) => {
+    const id = chainId as number
+    if (!id) return
+    setNetworkId(Number(id))
+  }
+
+  useEffect(() => {
+    if (!provider) return
+
+    provider.on('accountsChanged', changeAddress)
+    provider.on('chainChanged', changeNetwork)
+
+    provider.request({ method: 'eth_chainId' }).then(changeNetwork)
+  }, [provider])
+
+  const connect = () =>
+    provider
+      ?.request<string[]>({ method: 'eth_requestAccounts' })
+      .then(changeAddress)
+      .catch((err) => {
+        if (err.code === 4001) {
+          console.warn('Please connect to MetaMask.')
+        } else {
+          console.error(err)
+        }
+      })
 
   return (
     <Web3Context.Provider
       value={{
-        hasMetamask
+        hasMetamask,
+        connect
       }}
     >
       {children}

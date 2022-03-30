@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import Image from 'next/image'
-import { useSSR, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 import { useWeb3Context } from '../../contexts/Web3Context'
 import { Container } from './styles'
@@ -9,13 +9,13 @@ import { Container } from './styles'
 const Login: React.FC = () => {
   const { t } = useTranslation()
 
-  const { hasMetamask } = useWeb3Context()
+  const { hasMetamask, connect } = useWeb3Context()
 
   return (
     <Container>
       <div className='options'>
         {hasMetamask ? (
-          <button type='button' className='option'>
+          <button type='button' className='option' onClick={connect}>
             <Image
               src='/images/metamask.svg'
               alt='metamask'
@@ -55,7 +55,14 @@ const Login: React.FC = () => {
           <span className='name'>{t('login.fortmatic')}</span>
         </button>
         <button type='button' className='option'>
-          {t('login.button')}
+          <Image
+            src='/images/sequence.svg'
+            alt='sequence'
+            width={30}
+            height={30}
+            objectFit='contain'
+          />
+          <span className='name'>{t('login.sequence')}</span>
         </button>
         <button type='button' className='option'>
           {t('login.button')}
