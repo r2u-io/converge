@@ -73,5 +73,11 @@
     "send": "Send",
     "sending": "Sending...",
     "sent": "Sent successfully"
+  },
+  "login": {
+    "metamask": "Metamask",
+    "fortmatic": "Fortmatic",
+    "button": "Placeholder",
+    "popular": "Recommended"
   }
 }
