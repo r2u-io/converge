@@ -3,21 +3,14 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useWeb3Context } from '../../contexts/Web3Context'
+import Login from './Login'
 import { Container } from './styles'
 
 const POAP: React.FC = () => {
   const { t } = useTranslation()
 
-  const { hasMetamask, connect } = useWeb3Context()
+  const { address } = useWeb3Context()
 
-  return (
-    <Container>
-      <div className='options'>
-        <button type='button' className='option'>
-          {t('login.button')}
-        </button>
-      </div>
-    </Container>
-  )
+  return <Container>{address ? <></> : <Login />}</Container>
 }
 export default POAP

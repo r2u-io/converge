@@ -9,6 +9,7 @@ interface Props {
 interface Web3ContextData {
   hasMetamask: boolean
   connect: () => void
+  address: string
 }
 
 declare global {
@@ -67,6 +68,7 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
     <Web3Context.Provider
       value={{
         hasMetamask,
+        address,
         connect
       }}
     >
