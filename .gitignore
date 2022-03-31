@@ -9,7 +9,7 @@
 
 # testing
 /coverage
-/scripts
+/scripts/avatars
 
 # next.js
 /.next/
