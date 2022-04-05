@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useWeb3Context } from '../../../contexts/Web3Context'
 import { Container } from './styles'
 
-const Login: React.FC = () => {
+const Wallet: React.FC = () => {
   const { t } = useTranslation()
 
   const { hasMetamask, connect } = useWeb3Context()
@@ -23,8 +23,8 @@ const Login: React.FC = () => {
               height={30}
               objectFit='contain'
             />
-            <span className='name'>{t('login.metamask')}</span>
-            <span className='popular'>{t('login.popular')}</span>
+            <span className='name'>{t('wallet.metamask')}</span>
+            <span className='popular'>{t('wallet.popular')}</span>
           </button>
         ) : (
           <a
@@ -40,8 +40,8 @@ const Login: React.FC = () => {
               height={30}
               objectFit='contain'
             />
-            <span className='name'>{t('login.metamask')}</span>
-            <span className='popular'>{t('login.popular')}</span>
+            <span className='name'>{t('wallet.metamask')}</span>
+            <span className='popular'>{t('wallet.popular')}</span>
           </a>
         )}
         <button type='button' className='option'>
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
             height={30}
             objectFit='contain'
           />
-          <span className='name'>{t('login.fortmatic')}</span>
+          <span className='name'>{t('wallet.fortmatic')}</span>
         </button>
         <button type='button' className='option'>
           <Image
@@ -62,13 +62,13 @@ const Login: React.FC = () => {
             height={30}
             objectFit='contain'
           />
-          <span className='name'>{t('login.sequence')}</span>
+          <span className='name'>{t('wallet.sequence')}</span>
         </button>
         <button type='button' className='option'>
-          {t('login.button')}
+          {t('wallet.button')}
         </button>
       </div>
     </Container>
   )
 }
-export default Login
+export default Wallet

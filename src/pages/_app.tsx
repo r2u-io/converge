@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { UserProvider } from '@auth0/nextjs-auth0'
 import type { AppProps } from 'next/app'
 import { I18nextProvider } from 'react-i18next'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
@@ -45,12 +46,14 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <I18nextProvider i18n={i18nInstance}>
-      <ThemeProvider theme={{}}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </I18nextProvider>
+    <UserProvider>
+      <I18nextProvider i18n={i18nInstance}>
+        <ThemeProvider theme={{}}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </I18nextProvider>
+    </UserProvider>
   )
 }
 export default MyApp
