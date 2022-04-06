@@ -8,6 +8,7 @@ import { Web3Provider } from '../contexts/Web3Context'
 
 const POAPPage: React.FC = () => {
   const { t } = useTranslation()
+
   return (
     <>
       <Head>

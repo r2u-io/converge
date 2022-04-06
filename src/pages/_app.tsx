@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { UserProvider } from '@auth0/nextjs-auth0'
+import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import { I18nextProvider } from 'react-i18next'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
@@ -44,16 +45,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <UserProvider>
+    <SessionProvider session={session}>
       <I18nextProvider i18n={i18nInstance}>
         <ThemeProvider theme={{}}>
           <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
       </I18nextProvider>
-    </UserProvider>
+    </SessionProvider>
   )
 }
 export default MyApp

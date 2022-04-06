@@ -74,10 +74,16 @@
     "sending": "Sending...",
     "sent": "Sent successfully"
   },
-  "wallet": {
-    "metamask": "Metamask",
-    "fortmatic": "Fortmatic",
-    "sequence": "Sequence",
-    "popular": "Recommended"
+  "poap": {
+    "header": {
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "wallet": {
+      "metamask": "Metamask",
+      "fortmatic": "Fortmatic",
+      "sequence": "Sequence",
+      "popular": "Recommended"
+    }
   }
 }
