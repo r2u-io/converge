@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import { useUser } from '@auth0/nextjs-auth0'
 import { useTranslation } from 'react-i18next'
 
 import { Container } from './styles'
@@ -10,6 +11,8 @@ const User: React.FC = () => {
   const [reserved, setReserved] = useState(false)
   const [code, setCode] = useState('')
 
+  const { user } = useUser()
+
   useEffect(() => {
     const secretCode = sessionStorage.getItem('secret_code')
     sessionStorage.removeItem('secret_code')
@@ -19,13 +22,16 @@ const User: React.FC = () => {
   }, [])
 
   const handleReserve = () => {
+    if (!user) return
+
     fetch('/api/poap', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        code
+        code,
+        email: user.email
       })
     }).then((res) => {
       setReserved(true)
@@ -35,7 +41,7 @@ const User: React.FC = () => {
 
   return (
     <Container>
-      {!reserved && code && (
+      {!reserved && code && user && (
         <button type='button' onClick={handleReserve}>
           <span>{t('poap.user.reserve')}</span>
         </button>

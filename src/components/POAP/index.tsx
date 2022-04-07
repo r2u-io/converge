@@ -18,13 +18,11 @@ const POAP: React.FC = () => {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    console.log(router.query.secret_code)
     if (!router.query.secret_code || typeof router.query.secret_code !== 'string') return
     setQuery(router.query.secret_code)
   }, [router.query])
 
   useEffect(() => {
-    console.log(query)
     if (!query) return
     sessionStorage.setItem('secret_code', query)
   }, [query])
