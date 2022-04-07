@@ -16,8 +16,6 @@ interface ExtendedNextApiRequest extends NextApiRequest {
 }
 
 export default withApiAuthRequired(async (req: ExtendedNextApiRequest, res) => {
-  // If your Access Token is expired and you have a Refresh Token
-  // `getAccessToken` will fetch you a new one using the `refresh_token` grant
   const { accessToken } = await getAccessToken(req, res)
 
   api.defaults.headers.common.Authorization = `Bearer ${accessToken}`
