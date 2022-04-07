@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useUser } from '@auth0/nextjs-auth0'
+import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import { Container } from './styles'
@@ -8,22 +9,30 @@ import { Container } from './styles'
 const Header: React.FC = () => {
   const { t } = useTranslation()
 
-  const { data: session } = useSession()
+  const { user, isLoading, error } = useUser()
 
-  useEffect(() => {
-    console.log(session)
-  }, [session])
+  if (isLoading) {
+    return <div>{t('loading')}</div>
+  }
+
+  if (error) {
+    return <div>{t('error')}</div>
+  }
 
   return (
     <Container>
-      {session ? (
-        <button type='button' className='logout' onClick={() => signOut()}>
-          <span>{t('poap.header.logout')}</span>
-        </button>
+      {user ? (
+        <Link href='/api/auth/logout' passHref>
+          <button type='button' className='logout'>
+            <span>{t('poap.header.logout')}</span>
+          </button>
+        </Link>
       ) : (
-        <button type='button' className='login' onClick={() => signIn()}>
-          <span>{t('poap.header.login')}</span>
-        </button>
+        <Link href='/api/auth/login' passHref>
+          <button type='button' className='login'>
+            <span>{t('poap.header.login')}</span>
+          </button>
+        </Link>
       )}
     </Container>
   )
