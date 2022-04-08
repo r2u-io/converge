@@ -84,6 +84,21 @@
       "fortmatic": "Fortmatic",
       "sequence": "Sequence",
       "popular": "Recommended"
+    },
+    "landing": {
+      "welcome": "Bem vindo ao Caça NFTs do VTEX Day",
+      "invite": "Entre para ver sua coleção",
+      "login": "Entrar",
+      "instructions": "Como funciona?"
+    },
+    "scanned": {
+      "title": "Falta pouco pra revelar esse NFT",
+      "subtitle": "Entre para adiciona-lo a sua coleção",
+      "login": "Entrar"
+    },
+    "footer": {
+      "contact": "Contato",
+      "support": "Suporte"
     }
   }
 }

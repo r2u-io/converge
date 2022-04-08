@@ -1,40 +1,36 @@
 import React from 'react'
 
-import { useUser } from '@auth0/nextjs-auth0'
-import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import Image from 'next/image'
 
 import { Container } from './styles'
 
-const Header: React.FC = () => {
-  const { t } = useTranslation()
-
-  const { user, isLoading, error } = useUser()
-
-  if (isLoading) {
-    return <div>{t('loading')}</div>
-  }
-
-  if (error) {
-    return <div>{t('error')}</div>
-  }
-
-  return (
-    <Container>
-      {user ? (
-        <Link href='/api/auth/logout' passHref>
-          <button type='button' className='logout'>
-            <span>{t('poap.header.logout')}</span>
-          </button>
-        </Link>
-      ) : (
-        <Link href='/api/auth/login' passHref>
-          <button type='button' className='login'>
-            <span>{t('poap.header.login')}</span>
-          </button>
-        </Link>
-      )}
-    </Container>
-  )
-}
+const Header: React.FC = () => (
+  <Container>
+    <div className='vtex'>
+      <Image
+        src='/images/poap/vtex.png'
+        alt='vtex-logo'
+        width={140}
+        height={100}
+        objectFit='contain'
+      />
+    </div>
+    <div className='converge'>
+      <Image
+        src='/images/logo-white.svg'
+        alt='converge-logo'
+        width={60}
+        height={60}
+        objectFit='contain'
+      />
+      <Image
+        src='/images/converge-white.svg'
+        alt='converge'
+        width={130}
+        height={30}
+        objectFit='contain'
+      />
+    </div>
+  </Container>
+)
 export default Header

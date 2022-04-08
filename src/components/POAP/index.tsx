@@ -4,14 +4,15 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 
-import Header from './Header'
+import Landing from './Landing'
+import Scanned from './Scanned'
 import { Container } from './styles'
 import User from './User'
 
 const POAP: React.FC = () => {
   const { t } = useTranslation()
 
-  const { user } = useUser()
+  const { user, isLoading, error } = useUser()
 
   const router = useRouter()
 
@@ -29,8 +30,8 @@ const POAP: React.FC = () => {
 
   return (
     <Container>
-      <Header />
-      {user ? <User /> : <></>}
+      {/* <Landing /> */}
+      <Scanned />
     </Container>
   )
 }
