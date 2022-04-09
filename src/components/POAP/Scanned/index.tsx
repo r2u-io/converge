@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,11 +12,19 @@ import { Container } from './styles'
 const Scanned: React.FC = () => {
   const { t } = useTranslation()
 
+  const [clicked, setClicked] = useState(false)
+
   return (
-    <Container>
+    <Container clicked={clicked}>
       <Header />
-      <span className='title'>{t('poap.scanned.title')}</span>
-      <span className='subtitle'>{t('poap.scanned.subtitle')}</span>
+      <div className='nft'>
+        <div className='cover' onClick={() => setClicked(true)}></div>
+        <video autoPlay muted>
+          <source src='/videos/vtex-0.mp4' />
+        </video>
+      </div>
+      <span classNameName='title'>{t('poap.scanned.title')}</span>
+      <span classNameName='subtitle'>{t('poap.scanned.subtitle')}</span>
       <Login />
       <Footer />
     </Container>
