@@ -14,8 +14,8 @@ const Sticker: React.FC<Props> = ({ onClick = () => undefined, opacity = 1 }) =>
       viewBox='0 0 106.4 138.7'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
-      width={250}
-      height={250}
+      width={200}
+      height={200}
     >
       <path
         fill='#ffffff'

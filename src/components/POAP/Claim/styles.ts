@@ -35,8 +35,9 @@ export const Container = styled.div<Props>`
   }
 
   .nft {
-    width: 400px;
-    height: 400px;
+    width: 60%;
+    padding-bottom: 60%;
+    position: relative;
   }
 
   .cover {

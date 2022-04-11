@@ -31,7 +31,7 @@ export const Container = styled.div`
   }
 
   .nft {
-    width: 400px;
-    height: 400px;
+    width: 60%;
+    padding-bottom: 60%;
   }
 `

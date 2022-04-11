@@ -8,8 +8,10 @@ export const Button = styled.button<Props>`
   margin: 0;
   padding: 0;
 
-  width: 400px;
-  height: 400px;
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
 
   border-radius: 20px 0 20px 20px;
 
