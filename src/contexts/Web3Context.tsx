@@ -64,13 +64,13 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
         }
       })
 
-  // useEffect(() => {
-  //   console.log(address)
-  // }, [address])
+  useEffect(() => {
+    console.warn(address)
+  }, [address])
 
-  // useEffect(() => {
-  //   console.log(networkId)
-  // }, [networkId])
+  useEffect(() => {
+    console.warn(networkId)
+  }, [networkId])
 
   return (
     <Web3Context.Provider

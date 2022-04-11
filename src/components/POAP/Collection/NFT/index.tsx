@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import { useUser } from '@auth0/nextjs-auth0'
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import { Container } from './styles'
@@ -14,8 +12,6 @@ interface Props {
 
 const NFT: React.FC<Props> = ({ id, claimed, rare = false }: Props) => {
   const { t } = useTranslation()
-
-  const [loading, setLoading] = useState(true)
 
   return (
     <Container rare={rare} claimed={claimed}>

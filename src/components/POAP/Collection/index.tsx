@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import { useUser } from '@auth0/nextjs-auth0'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-import Header from '../Header'
 import NFT from './NFT'
 import { Container } from './styles'
 
