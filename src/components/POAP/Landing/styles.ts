@@ -15,23 +15,9 @@ export const Container = styled.div`
   padding: 0;
 
   .container {
-    position: absolute;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.char {
-      top: -50px;
-    }
-
-    &.hunt {
-      top: 200px;
-    }
-  }
-
-  .spacer {
-    margin: 200px;
   }
 
   span {
