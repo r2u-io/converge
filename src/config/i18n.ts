@@ -26,7 +26,7 @@ i18nInstance
       backendOptions: [
         {
           prefix: 'i18next_converge_',
-          enabled: process.env.NODE_ENV !== 'development',
+          enabled: false,
           expirationTime: 7 * 24 * 60 * 60 * 1000
         },
         {
