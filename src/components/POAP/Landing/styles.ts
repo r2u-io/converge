@@ -16,17 +16,23 @@ export const Container = styled.div`
   padding: 0;
 
   .container {
-    &.char {
-      margin-top: -20%;
-    }
-    &.hunt {
-      margin-top: -20%;
-    }
+    position: absolute;
 
-    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.char {
+      top: -50px;
+    }
+
+    &.hunt {
+      top: 200px;
+    }
+  }
+
+  br {
+    margin: 200px;
   }
 
   span {
