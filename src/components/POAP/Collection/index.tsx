@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '../Footer'
 import Header from '../Header'
+import InstructionsButton from '../Instructions/Button'
 import NFT from './NFT'
 import { Container, GlobalStyleLight } from './styles'
 
@@ -53,6 +53,7 @@ const Collection: React.FC = () => {
       <div className='collection'>
         <span className='title'>{t('poap.collection.title')}</span>
         <span className='subtitle'>{t('poap.collection.subtitle')}</span>
+        <InstructionsButton />
         <div className='cards'>
           {nfts.map((claimed, index) => (
             <NFT key={String(index)} id={index} claimed={claimed} />

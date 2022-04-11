@@ -32,10 +32,10 @@ export const Container = styled.div`
     background-color: #dddddd;
     border-radius: 30px;
 
-    padding: 50px;
+    padding: 20px 50px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
 
@@ -49,13 +49,21 @@ export const Container = styled.div`
       background: none;
     }
 
-    .title {
-      font-size: 1.5rem;
-    }
+    .titles {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
 
-    .subtitle {
-      font-size: 1.2rem;
-      margin-bottom: auto;
+      .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
     }
 
     ol {
@@ -63,6 +71,12 @@ export const Container = styled.div`
       text-align: left;
       li {
         font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      li::marker {
+        font-size: 1.2rem;
+        font-weight: bold;
       }
     }
 

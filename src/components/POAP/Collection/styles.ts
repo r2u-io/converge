@@ -14,6 +14,10 @@ export const Container = styled.div`
 
   overflow-x: hidden;
 
+  .instructions {
+    color: #2f1346;
+  }
+
   .rare {
     display: flex;
     flex-direction: column;
