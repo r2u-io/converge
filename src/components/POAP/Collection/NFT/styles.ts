@@ -7,6 +7,9 @@ interface Props {
 
 export const Container = styled.div<Props>`
   width: ${({ rare }) => (rare ? '100%' : '45%')};
+  padding-bottom: ${({ rare }) => (rare ? '100%' : '45%')};
+  height: 0;
+  position: relative;
 
   color: #fff;
 
@@ -42,6 +45,7 @@ export const Container = styled.div<Props>`
   align-items: center;
 
   .sticker {
+    position: absolute
     width: 100%;
     padding-bottom: 100%;
 
@@ -49,7 +53,6 @@ export const Container = styled.div<Props>`
     align-items: center;
     justify-content: center;
 
-    position: relative;
 
     .logo {
       position: absolute;
@@ -73,6 +76,7 @@ export const Container = styled.div<Props>`
   }
 
   video {
+    position: absolute;
     width: 100%;
   }
 `

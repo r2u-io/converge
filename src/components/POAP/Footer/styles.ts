@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  light: boolean
+}
+
+export const Container = styled.div<Props>`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -30,12 +34,15 @@ export const Container = styled.div`
     padding: 10px;
 
     gap: 10px;
+    color: ${({ light }) => (light ? '#2f1346' : '#ffffff')};
+
+    width: 50%;
 
     .contact {
       padding: 0;
 
       align-self: flex-start;
-      color: #fff;
+      color: ${({ light }) => (light ? '#2f1346' : '#ffffff')};
 
       border: none;
 

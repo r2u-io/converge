@@ -14,16 +14,6 @@ export const Container = styled.div`
 
   overflow-x: hidden;
 
-  .logout {
-    margin: 20px;
-
-    border: none;
-    outline: none;
-    background: none;
-
-    align-self: start;
-  }
-
   .rare {
     display: flex;
     flex-direction: column;

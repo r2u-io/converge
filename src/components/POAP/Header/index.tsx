@@ -6,7 +6,11 @@ import Link from 'next/link'
 
 import { Container } from './styles'
 
-const Header: React.FC = () => {
+interface Props {
+  light?: boolean
+}
+
+const Header: React.FC<Props> = ({ light = false }: Props) => {
   const { user } = useUser()
 
   return (
@@ -20,7 +24,7 @@ const Header: React.FC = () => {
               viewBox='0 0 1000 1000'
               width={30}
               height={30}
-              fill='#ffffff'
+              fill={light ? '#2f1346' : '#ffffff'}
             >
               <g transform='translate(0,511) scale(0.1,-0.1)'>
                 <path d='M295.2,4895.9c-65.1-32.5-114.9-80.2-145.3-136.6l-49.9-86.7V942.6c0-3608.5,2.2-3732.1,41.2-3821c28.2-60.7,69.4-106.2,136.6-143.1c2459.1-1390,2990.4-1687.1,3049-1698c101.9-21.7,251.6,43.4,325.3,138.8l58.6,75.9l6.5,711.3l6.5,711.3l1446.4,6.5c1413.9,6.5,1448.6,6.5,1522.3,52c41.2,23.9,97.6,75.9,123.6,117.1l49.9,71.6v1177.5v1179.7h-336.1h-336.1v-954.2v-954.2H4957.6H3721.5l-4.3,2728l-6.5,2730.2l-54.2,69.4c-39,49.9-314.4,219-932.5,568.2c-483.6,275.4-893.4,507.4-910.8,518.3c-19.5,13,837.1,21.7,2175.1,21.7h2205.4V3024.5V1799.2h336.1h336.1V3250v1448.6l-47.7,71.6c-28.2,39-78,93.2-110.6,117.1l-60.7,45.5l-3127.1,6.5l-3127.1,4.3L295.2,4895.9z' />
@@ -32,7 +36,7 @@ const Header: React.FC = () => {
       )}
       <div className='logo'>
         <Image
-          src='/images/poap/vtex.png'
+          src={light ? '/images/poap/vtex.png' : '/images/poap/vtex-white.png'}
           alt='vtex-logo'
           width={140}
           height={100}
