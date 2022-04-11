@@ -111,9 +111,6 @@
     "collection": {
       "title": "Meus NFTs",
       "subtitle": "Veja aqui os NFTs que você já resgatou",
-      "empty": "Você ainda não tem nenhum NFT resgatado",
-      "missing": "Ainda faltam {{count}} NFTs",
-      "explain": "Continue procurando os QRCodes pelo evento",
       "locked": "{{id}}/12",
       "rare": {
         "title": "NFT Especial",

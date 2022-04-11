@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface Props {
   rare: boolean
@@ -6,10 +6,33 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  width: 45%;
+  width: ${({ rare }) => (rare ? '100%' : '45%')};
 
-  background-color: #6e6e6e;
   color: #fff;
+
+  ${({ rare }) =>
+    rare
+      ? css`
+          background: radial-gradient(
+              ellipse farthest-corner at right bottom,
+              #fedb37 0%,
+              #fdb931 8%,
+              #9f7928 30%,
+              #8a6e2f 40%,
+              transparent 80%
+            ),
+            radial-gradient(
+              ellipse farthest-corner at left top,
+              #ffffff 0%,
+              #ffffac 8%,
+              #d1b464 25%,
+              #5d4a1f 62.5%,
+              #5d4a1f 100%
+            );
+        `
+      : css`
+          background: #cccccc;
+        `}
 
   box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 6px;
   border-radius: 10px;
@@ -26,12 +49,11 @@ export const Container = styled.div<Props>`
     align-items: center;
     justify-content: center;
 
-    background-color: #e6e2e2;
     position: relative;
 
     .logo {
       position: absolute;
-      top: 25%;
+      top: ${({ rare }) => (rare ? '35%' : '25%')};
     }
 
     .lock {
@@ -42,8 +64,8 @@ export const Container = styled.div<Props>`
 
     span {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 5%;
+      right: 5%;
       font-size: 1rem;
       font-weight: bold;
       color: black;

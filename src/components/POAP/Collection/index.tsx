@@ -67,7 +67,6 @@ const Collection: React.FC = () => {
       <div className='collection'>
         <span className='title'>{t('poap.collection.title')}</span>
         <span className='subtitle'>{t('poap.collection.subtitle')}</span>
-        <span className='subtitle'>{t('poap.collection.subtitle')}</span>
         <div className='cards'>
           {nfts.map((claimed, index) => (
             <NFT key={String(index)} id={index} claimed={claimed} />

@@ -23,19 +23,19 @@ export const Container = styled.div`
     flex-direction: column;
   }
 
+  .title,
+  .subtitle {
+    margin: 0 20px 20px 20px;
+  }
+
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
   .collection {
     display: flex;
     flex-direction: column;
-
-    .title,
-    .subtitle {
-      margin: 0 20px 20px 20px;
-    }
-
-    .title {
-      font-size: 3rem;
-      font-weight: bold;
-    }
 
     .cards {
       display: flex;
@@ -45,6 +45,10 @@ export const Container = styled.div`
       flex-wrap: wrap;
       gap: 10px;
     }
+  }
+
+  .rare {
+    padding: 20px;
   }
 
   @keyframes svg-animation {
