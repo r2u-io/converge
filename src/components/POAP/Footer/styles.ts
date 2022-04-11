@@ -34,7 +34,7 @@ export const Container = styled.div<Props>`
     padding: 10px;
 
     gap: 10px;
-    color: ${({ light }) => (light ? '#2f1346' : '#ffffff')};
+    color: ${({ light }) => (light ? '#000000' : '#ffffff')};
 
     width: 50%;
 
@@ -42,7 +42,7 @@ export const Container = styled.div<Props>`
       padding: 0;
 
       align-self: flex-start;
-      color: ${({ light }) => (light ? '#2f1346' : '#ffffff')};
+      color: ${({ light }) => (light ? '#000000' : '#ffffff')};
 
       border: none;
 

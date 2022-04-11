@@ -15,7 +15,9 @@ export const Container = styled.div`
   overflow-x: hidden;
 
   .instructions {
-    color: #2f1346;
+    color: black;
+    align-self: start;
+    margin-top: 0;
   }
 
   .rare {
