@@ -16,7 +16,7 @@ const NFT: React.FC<Props> = ({ id, claimed, rare = false }: Props) => {
   return (
     <Container rare={rare} claimed={claimed}>
       {claimed ? (
-        <video muted autoPlay loop>
+        <video muted autoPlay loop playsInline poster={`/videos/thumbs/vtex-${id}.jpg`}>
           <source src={`/videos/vtex-${id}.mp4`} type='video/mp4' />
         </video>
       ) : (

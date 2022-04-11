@@ -60,7 +60,7 @@ const Claim: React.FC<Props> = ({ code, goToCollection }: Props) => {
       <Header />
       <div className='nft'>
         <Sticker onClick={handleClaim} opacity={reserved ? 0 : 1} />
-        <video autoPlay muted loop ref={videoRef}>
+        <video autoPlay muted loop ref={videoRef} poster={`/videos/thumbs/vtex-${videoId}.jpg`}>
           <source src={`/videos/vtex-${videoId}.mp4`} />
         </video>
       </div>

@@ -32,7 +32,9 @@ const Footer: React.FC<Props> = ({ light = false }: Props) => {
       </div>
       <div className='buttons'>
         <span>{t('poap.footer.support')}</span>
-        <span>{t('poap.footer.email')}</span>
+        <a href='mailto:tech@r2u.io'>
+          <span>{t('poap.footer.email')}</span>
+        </a>
       </div>
     </Container>
   )
