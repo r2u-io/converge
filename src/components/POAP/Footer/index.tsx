@@ -32,7 +32,7 @@ const Footer: React.FC<Props> = ({ light = false }: Props) => {
       </div>
       <div className='buttons'>
         <span>{t('poap.footer.support')}</span>
-        <a href='mailto:tech@r2u.io'>
+        <a href='mailto: support@converge.land'>
           <span>{t('poap.footer.email')}</span>
         </a>
       </div>
