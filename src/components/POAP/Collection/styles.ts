@@ -8,6 +8,8 @@ export const Container = styled.div`
 
   background-color: #eeeeee;
 
+  overflow-x: hidden;
+
   .logout {
     margin: 20px;
 
