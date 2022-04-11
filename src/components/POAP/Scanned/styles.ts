@@ -44,12 +44,17 @@ export const Container = styled.div<Props>`
 
     border-radius: 50px;
 
-    background-color: gray;
+    background-color: #e6e2e2;
 
     position: absolute;
     z-index: 2;
 
     opacity: ${({ clicked }) => (clicked ? 0 : 1)};
+    transition: opacity 1s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   video {
