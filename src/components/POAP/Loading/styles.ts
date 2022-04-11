@@ -43,8 +43,8 @@ export const Container = styled.div`
 
   .spinner {
     animation: 2s linear infinite svg-animation;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 
     margin: auto;
 

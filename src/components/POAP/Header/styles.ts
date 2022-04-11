@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
 
   width: 100%;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,8 +19,6 @@ export const Container = styled.div`
   }
 
   .logout {
-    margin: 20px;
-
     border: none;
     outline: none;
     background: none;

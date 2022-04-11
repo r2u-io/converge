@@ -18,8 +18,8 @@ const Header: React.FC = () => {
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 1000 1000'
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               fill='#ffffff'
             >
               <g transform='translate(0,511) scale(0.1,-0.1)'>

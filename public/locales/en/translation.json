@@ -108,6 +108,19 @@
         "reserved": "Minha Coleção"
       }
     },
+    "collection": {
+      "title": "Meus NFTs",
+      "subtitle": "Veja aqui os NFTs que você já resgatou",
+      "empty": "Você ainda não tem nenhum NFT resgatado",
+      "missing": "Ainda faltam {{count}} NFTs",
+      "explain": "Continue procurando os QRCodes pelo evento",
+      "locked": "{{id}}/12",
+      "rare": {
+        "title": "NFT Especial",
+        "locked": "Desbloqueie o resto da coleção para receber este NFT especial que te dará benefícios exclusivos",
+        "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023!"
+      }
+    },
     "footer": {
       "contact": "Contato",
       "support": "Suporte"

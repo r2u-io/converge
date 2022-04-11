@@ -4,11 +4,11 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 
 import Claim from './Claim'
+import Collection from './Collection'
 import Landing from './Landing'
 import Loading from './Loading'
 import Scanned from './Scanned'
 import { Container } from './styles'
-import User from './User'
 
 const POAP: React.FC = () => {
   const { user, isLoading } = useUser()
@@ -42,6 +42,6 @@ const POAP: React.FC = () => {
     )
   }
 
-  return <Container>{user ? <User /> : <Landing />}</Container>
+  return <Container>{user ? <Collection /> : <Landing />}</Container>
 }
 export default POAP
