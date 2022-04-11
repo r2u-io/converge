@@ -20,9 +20,6 @@ export const Button = styled.button<Props>`
   border: none;
   outline: none;
 
-  position: absolute;
-  z-index: 2;
-
   opacity: ${({ opacity }) => opacity};
   transition: opacity 500ms;
 
