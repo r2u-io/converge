@@ -60,7 +60,7 @@ export const Container = styled.div<Props>`
     height: 300px;
   }
 
-  .buttons {
+  .bottom {
     margin-top: auto;
     display: flex;
     flex-direction: column;

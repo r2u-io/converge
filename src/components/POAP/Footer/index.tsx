@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 
 import { Container } from './styles'
@@ -9,7 +10,22 @@ const Footer: React.FC = () => {
 
   return (
     <Container>
-      <span>{t('footer.title')}</span>
+      <div className='logo'>
+        <Image
+          src='/images/logo-white.svg'
+          alt='converge-logo'
+          width={50}
+          height={50}
+          objectFit='contain'
+        />
+        <Image
+          src='/images/converge-white.svg'
+          alt='converge'
+          width={100}
+          height={30}
+          objectFit='contain'
+        />
+      </div>
       <div className='buttons'>
         <button type='button' className='contact'>
           <svg

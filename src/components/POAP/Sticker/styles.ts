@@ -5,6 +5,9 @@ interface Props {
 }
 
 export const Button = styled.button<Props>`
+  margin: 0;
+  padding: 0;
+
   width: 400px;
   height: 400px;
 

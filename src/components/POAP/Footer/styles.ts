@@ -14,11 +14,20 @@ export const Container = styled.div`
     padding: 0;
   }
 
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+
+    padding: 10px;
 
     gap: 10px;
 

@@ -71,7 +71,7 @@ const Claim: React.FC<Props> = ({ code, goToCollection }: Props) => {
           ? t('poap.claim.title.clicked')
           : t('poap.claim.title.start')}
       </span>
-      <div className='buttons'>
+      <div className='bottom'>
         <button
           type='button'
           className='claim'
