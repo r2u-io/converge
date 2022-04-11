@@ -2,37 +2,37 @@ import React, { useEffect, useState } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
 
+import Claim from './Claim'
 import Landing from './Landing'
+import Loading from './Loading'
 import Scanned from './Scanned'
 import { Container } from './styles'
 import User from './User'
 
 const POAP: React.FC = () => {
-  const { t } = useTranslation()
-
-  const { user, isLoading, error } = useUser()
+  const { user, isLoading } = useUser()
 
   const router = useRouter()
 
-  const [query, setQuery] = useState('')
+  const [code, setCode] = useState('')
 
   useEffect(() => {
     if (!router.query.secret_code || typeof router.query.secret_code !== 'string') return
-    setQuery(router.query.secret_code)
+    setCode(router.query.secret_code)
   }, [router.query])
 
-  useEffect(() => {
-    if (!query) return
-    sessionStorage.setItem('secret_code', query)
-  }, [query])
+  if (isLoading)
+    return (
+      <Container>
+        <Loading />
+      </Container>
+    )
 
-  return (
-    <Container>
-      {/* <Landing /> */}
-      <Scanned />
-    </Container>
-  )
+  if (code) {
+    return <Container>{user ? <Claim code={code} /> : <Scanned />}</Container>
+  }
+
+  return <Container>{user ? <User /> : <Landing />}</Container>
 }
 export default POAP

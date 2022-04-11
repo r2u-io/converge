@@ -7,22 +7,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  .instructions {
-    margin: 20px;
-
-    border: none;
-    outline: none;
-    background: none;
-    color: #fff;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    font-size: 1.2rem;
-  }
-
   .login {
     margin: 0;
 
@@ -33,7 +17,7 @@ export const Container = styled.div`
 
     width: 300px;
     height: 50px;
-    border-radius: 35px;
+    border-radius: 5px;
 
     font-size: 1.5rem;
   }

@@ -9,7 +9,7 @@ export default handleAuth({
           audience: 'https://converge.land/poap',
           scope: 'openid email'
         },
-        returnTo: '/poap'
+        returnTo: req.headers.referer
       })
     } catch (err) {
       const error = err as HandlerError

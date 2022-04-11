@@ -1,27 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '../Footer'
 import Header from '../Header'
 import Login from '../Login'
 import { Container } from './styles'
-import { useUser } from '@auth0/nextjs-auth0'
 
 const Scanned: React.FC = () => {
   const { t } = useTranslation()
 
-  const [clicked, setClicked] = useState(false)
-
-  const { user } = useUser()
-
   return (
-    <Container clicked={clicked}>
+    <Container>
       <Header />
       <div className='nft'>
-        <div className='cover' onClick={() => setClicked(true)}>
+        <button type='button' className='cover' disabled>
+          <div className='corner' />
           <svg
             viewBox='0 0 106.4 138.7'
             version='1.1'
@@ -40,20 +34,14 @@ const Scanned: React.FC = () => {
               id='path4'
             />
           </svg>
-        </div>
+        </button>
         <video autoPlay muted loop>
           <source src='/videos/vtex-0.mp4' />
         </video>
       </div>
-      {user ? (
-        <div></div>
-      ) : (
-        <>
-          <span className='title'>{t('poap.scanned.title')}</span>
-          <span className='subtitle'>{t('poap.scanned.subtitle')}</span>
-          <Login />
-        </>
-      )}
+      <span className='title'>{t('poap.scanned.title')}</span>
+      <span className='subtitle'>{t('poap.scanned.subtitle')}</span>
+      <Login />
       <Footer />
     </Container>
   )
