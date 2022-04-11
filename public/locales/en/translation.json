@@ -96,6 +96,18 @@
       "subtitle": "Entre para adiciona-lo a sua coleção",
       "login": "Entrar"
     },
+    "claim": {
+      "title": {
+        "start": "Clique no botão abaixo para reservar sua NFT",
+        "clicked": "Por favor aguarde, estamos reservando sua NFT...",
+        "reserved": "NFT Reservada! Clique no botão abaixo para ver sua coleção"
+      },
+      "button": {
+        "start": "Reservar NFT",
+        "clicked": "Carregando ...",
+        "reserved": "Minha Coleção"
+      }
+    },
     "footer": {
       "contact": "Contato",
       "support": "Suporte"

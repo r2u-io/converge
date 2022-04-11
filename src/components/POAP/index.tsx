@@ -22,6 +22,11 @@ const POAP: React.FC = () => {
     setCode(router.query.secret_code)
   }, [router.query])
 
+  const goToCollection = () => {
+    router.push('/poap')
+    setCode('')
+  }
+
   if (isLoading)
     return (
       <Container>
@@ -30,7 +35,11 @@ const POAP: React.FC = () => {
     )
 
   if (code) {
-    return <Container>{user ? <Claim code={code} /> : <Scanned />}</Container>
+    return (
+      <Container>
+        {user ? <Claim code={code} goToCollection={goToCollection} /> : <Scanned />}
+      </Container>
+    )
   }
 
   return <Container>{user ? <User /> : <Landing />}</Container>

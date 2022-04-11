@@ -12,7 +12,7 @@ const Admin: React.FC = () => {
 
   return (
     <Container>
-      <div />
+      <div>{t('poap.admin')}</div>
     </Container>
   )
 }

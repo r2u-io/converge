@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 interface Props {
   clicked: boolean
-  reserved: boolean
 }
 
 export const Container = styled.div<Props>`
@@ -41,26 +40,6 @@ export const Container = styled.div<Props>`
   }
 
   .cover {
-    width: 400px;
-    height: 400px;
-
-    border-radius: 20px 0 20px 20px;
-
-    background-color: #e6e2e2;
-
-    border: none;
-    outline: none;
-
-    position: absolute;
-    z-index: 2;
-
-    opacity: ${({ reserved }) => (reserved ? 0 : 1)};
-    transition: opacity 500ms;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     svg {
       animation: ${({ clicked }) => (clicked ? 'pulse' : '')} 1s ease-in-out infinite;
 
@@ -72,18 +51,6 @@ export const Container = styled.div<Props>`
           transform: scale(1.05);
         }
       }
-    }
-
-    .corner {
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-width: 0 100px 100px 0;
-      border-style: solid;
-      border-color: #2f1346 #2f1346 #888888 #888888;
-      border-radius: 0 0 0 20px;
-      background: #888888;
-      width: 0;
     }
   }
 
@@ -113,6 +80,12 @@ export const Container = styled.div<Props>`
       border-radius: 5px;
 
       font-size: 1.5rem;
+
+      &:disabled {
+        background-color: #e6e2e2;
+        color: #888888;
+        cursor: not-allowed;
+      }
     }
   }
 `
