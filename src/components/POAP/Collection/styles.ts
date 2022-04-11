@@ -1,12 +1,16 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyleLight = createGlobalStyle`
+  body, html { 
+    background-color: #eeeeee;
+  }
+`
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
   width: 100%;
-
-  background-color: #eeeeee;
 
   overflow-x: hidden;
 

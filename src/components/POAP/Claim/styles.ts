@@ -13,7 +13,6 @@ export const Container = styled.div<Props>`
 
   align-items: center;
 
-  background-color: #2f1346;
   color: #fff;
 
   margin: 0;
@@ -21,7 +20,7 @@ export const Container = styled.div<Props>`
 
   .title,
   .subtitle {
-    margin: 10px;
+    margin: 20px 10px;
 
     text-align: center;
 
@@ -38,6 +37,7 @@ export const Container = styled.div<Props>`
     width: 60%;
     padding-bottom: 60%;
     position: relative;
+    height: 0;
   }
 
   .cover {
@@ -56,9 +56,7 @@ export const Container = styled.div<Props>`
   }
 
   video {
-    margin: 50px;
-    width: 300px;
-    height: 300px;
+    width: 100%;
   }
 
   .bottom {

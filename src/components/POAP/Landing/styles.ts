@@ -9,7 +9,6 @@ export const Container = styled.div`
 
   align-items: center;
 
-  background-color: #2f1346;
   color: #fff;
 
   margin: 0;
@@ -31,7 +30,7 @@ export const Container = styled.div`
     }
   }
 
-  br {
+  .spacer {
     margin: 200px;
   }
 

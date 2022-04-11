@@ -8,8 +8,6 @@ export const Container = styled.div`
   border-top: solid 1px #ec248f;
   padding: 15px;
 
-  background-color: #2f1346;
-
   span {
     text-align: left;
     margin: 0;

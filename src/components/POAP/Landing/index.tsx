@@ -32,7 +32,7 @@ const Landing: React.FC = () => {
           objectFit='contain'
         />
       </div>
-      <br />
+      <div className='spacer' />
       <span className='title'>{t('poap.landing.welcome')}</span>
       <span className='subtitle'>{t('poap.landing.invite')}</span>
       <Login />

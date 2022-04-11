@@ -8,7 +8,7 @@ import Collection from './Collection'
 import Landing from './Landing'
 import Loading from './Loading'
 import Scanned from './Scanned'
-import { Container } from './styles'
+import { Container, GlobalStyleDark } from './styles'
 
 const POAP: React.FC = () => {
   const { user, isLoading } = useUser()
@@ -30,6 +30,7 @@ const POAP: React.FC = () => {
   if (isLoading)
     return (
       <Container>
+        <GlobalStyleDark />
         <Loading />
       </Container>
     )
@@ -37,11 +38,17 @@ const POAP: React.FC = () => {
   if (code) {
     return (
       <Container>
+        <GlobalStyleDark />
         {user ? <Claim code={code} goToCollection={goToCollection} /> : <Scanned />}
       </Container>
     )
   }
 
-  return <Container>{user ? <Collection /> : <Landing />}</Container>
+  return (
+    <Container>
+      <GlobalStyleDark />
+      {user ? <Collection /> : <Landing />}
+    </Container>
+  )
 }
 export default POAP

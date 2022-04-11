@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 import NFT from './NFT'
-import { Container } from './styles'
+import { Container, GlobalStyleLight } from './styles'
 
 const Collection: React.FC = () => {
   const { t } = useTranslation()
@@ -33,6 +33,7 @@ const Collection: React.FC = () => {
   if (loading)
     return (
       <Container>
+        <GlobalStyleLight />
         {loading && (
           <div className='spinner'>
             <svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
@@ -45,6 +46,8 @@ const Collection: React.FC = () => {
 
   return (
     <Container>
+      <GlobalStyleLight />
+
       <Link href='/api/auth/logout' passHref>
         <button type='button' className='logout'>
           <svg

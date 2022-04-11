@@ -31,7 +31,7 @@ export const Button = styled.button<Props>`
     position: absolute;
     top: 0;
     right: 0;
-    border-width: 0 100px 100px 0;
+    border-width: 0 50px 50px 0;
     border-style: solid;
     border-color: #2f1346 #2f1346 #888888 #888888;
     border-radius: 0 0 0 20px;
