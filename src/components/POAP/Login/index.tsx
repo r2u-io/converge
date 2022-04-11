@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-import Instructions from '../Instructions'
+import InstructionsButton from '../Instructions/Button'
 import { Container } from './styles'
 
 const Login: React.FC = () => {
@@ -16,7 +16,7 @@ const Login: React.FC = () => {
           <span>{t('poap.landing.login')}</span>
         </button>
       </Link>
-      <Instructions />
+      <InstructionsButton />
     </Container>
   )
 }

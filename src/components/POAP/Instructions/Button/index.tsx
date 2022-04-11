@@ -2,10 +2,10 @@ import React from 'react'
 
 import { useTranslation } from 'react-i18next'
 
-import { usePOAPContext } from '../../../contexts/POAPContext'
+import { usePOAPContext } from '../../../../contexts/POAPContext'
 import { Button } from './styles'
 
-const Instructions: React.FC = () => {
+const InstructionsButton: React.FC = () => {
   const { t } = useTranslation()
 
   const { openInstructions } = usePOAPContext()
@@ -31,4 +31,4 @@ const Instructions: React.FC = () => {
     </Button>
   )
 }
-export default Instructions
+export default InstructionsButton

@@ -122,6 +122,17 @@
       "contact": "Contato",
       "support": "Em caso de dúvidas, envie um email para: ",
       "email": "support@converge.land"
+    },
+    "instructions": {
+      "title": "Instruções",
+      "subtitle": "Caça NFTs VTEX Day",
+      "one": "Procure por totens espalhados pelo evento e escaneie os QR Codes",
+      "two": "Crie sua conta para poder atrelar as NFTs ao seu email",
+      "three": "A cada QR Code escaneado, clique em \"RESERVAR NFT\" para poder aumentar sua coleção",
+      "four": "São 11 totens com QR Codes ao todo no evento",
+      "five": "Ao final do evento, aguarde um email com as instruções para receber sua coleção em sua carteira",
+      "six": "Colete todos os 11 NFTs para desbloquear o último NFT Especial que dará 20% de desconto no VTEX Day 2023",
+      "cta": "Vamos começar!"
     }
   }
 }

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import Footer from '../Footer'
 import Header from '../Header'
-import Instructions from '../Instructions'
+import InstructionsButton from '../Instructions/Button'
 import Sticker from '../Sticker'
 import { Container } from './styles'
 
@@ -86,7 +86,7 @@ const Claim: React.FC<Props> = ({ code, goToCollection }: Props) => {
               : t('poap.claim.button.start')}
           </span>
         </button>
-        <Instructions />
+        <InstructionsButton />
       </div>
       <Footer />
     </Container>
