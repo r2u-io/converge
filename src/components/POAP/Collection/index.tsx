@@ -53,6 +53,7 @@ const Collection: React.FC = () => {
       <div className='collection'>
         <span className='title'>{t('poap.collection.title')}</span>
         <span className='subtitle'>{t('poap.collection.subtitle')}</span>
+        <span className='subtitle'>{t('poap.collection.explain')}</span>
         <InstructionsButton />
         <div className='cards'>
           {nfts.map((claimed, index) => (

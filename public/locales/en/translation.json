@@ -111,11 +111,12 @@
     "collection": {
       "title": "My NFTs",
       "subtitle": "Here you can see the NFTs you claimed",
+      "explain": "Wait for our email to receive them all in your digital wallet",
       "locked": "{{id}}/12",
       "rare": {
         "title": "Special NFT",
         "locked": "Unlock the rest of the collection to receive this special NFT with exclusive perks",
-        "unlocked": "Congratulations, you  claimed all the NFTs from the collection! This Special NFT will give you a 20% discount on VTEX Day 2023"
+        "unlocked": "Congratulations, you  claimed all the NFTs from the collection! This Special NFT will give you a 20% discount on VTEX Day 2023! Wait for our email to receive it in your digital wallet"
       }
     },
     "footer": {

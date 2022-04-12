@@ -111,11 +111,12 @@
     "collection": {
       "title": "Meus NFTs",
       "subtitle": "Veja aqui os NFTs que você já resgatou",
+      "explain": "Aguarde nosso contato para recebe-los em sua carteira digital",
       "locked": "{{id}}/12",
       "rare": {
         "title": "NFT Especial",
         "locked": "Desbloqueie o resto da coleção para receber este NFT especial que te dará benefícios exclusivos",
-        "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023!"
+        "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023! Aguarde nosso contato para recebe-lo em sua carteira digital"
       }
     },
     "footer": {

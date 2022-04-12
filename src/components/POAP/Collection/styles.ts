@@ -20,11 +20,6 @@ export const Container = styled.div`
     margin-top: 0;
   }
 
-  .rare {
-    display: flex;
-    flex-direction: column;
-  }
-
   .title,
   .subtitle {
     margin: 0 20px 20px 20px;
@@ -50,7 +45,14 @@ export const Container = styled.div`
   }
 
   .rare {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
+
+    .title,
+    .subtitle {
+      margin: 0 0 20px 0;
+    }
   }
 
   @keyframes svg-animation {
