@@ -73,5 +73,66 @@
     "send": "Enviar",
     "sending": "Enviando...",
     "sent": "Enviado com sucesso!"
+  },
+  "poap": {
+    "header": {
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "wallet": {
+      "metamask": "Metamask",
+      "fortmatic": "Fortmatic",
+      "sequence": "Sequence",
+      "popular": "Recommended"
+    },
+    "landing": {
+      "welcome": "Bem vindo ao Caça NFTs do VTEX Day",
+      "invite": "Entre para ver sua coleção",
+      "login": "Entrar",
+      "instructions": "Como funciona?"
+    },
+    "scanned": {
+      "title": "Falta pouco pra revelar esse NFT",
+      "subtitle": "Entre para adiciona-lo a sua coleção",
+      "login": "Entrar"
+    },
+    "claim": {
+      "title": {
+        "start": "Clique no botão abaixo para reservar sua NFT",
+        "clicked": "Por favor aguarde, estamos reservando sua NFT...",
+        "reserved": "NFT reservada! Clique no botão abaixo para ver sua coleção"
+      },
+      "button": {
+        "start": "Reservar NFT",
+        "clicked": "Carregando ...",
+        "reserved": "Minha Coleção"
+      }
+    },
+    "collection": {
+      "title": "Meus NFTs",
+      "subtitle": "Veja aqui os NFTs que você já resgatou",
+      "locked": "{{id}}/12",
+      "rare": {
+        "title": "NFT Especial",
+        "locked": "Desbloqueie o resto da coleção para receber este NFT especial que te dará benefícios exclusivos",
+        "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023!"
+      }
+    },
+    "footer": {
+      "contact": "Contato",
+      "support": "Em caso de dúvidas, envie um email para: ",
+      "email": "suporte@converge.land"
+    },
+    "instructions": {
+      "title": "Instruções",
+      "subtitle": "Caça NFTs VTEX Day",
+      "one": "Procure por totens espalhados pelo evento e escaneie os QR Codes",
+      "two": "Crie sua conta para poder atrelar as NFTs ao seu email",
+      "three": "A cada QR Code escaneado, clique em \"RESERVAR NFT\" para poder aumentar sua coleção",
+      "four": "São 11 totens com QR Codes ao todo no evento",
+      "five": "Ao final do evento, aguarde um email com as instruções para receber sua coleção em sua carteira digital",
+      "six": "Colete todos os 11 NFTs para desbloquear o último NFT Especial que dará 20% de desconto no VTEX Day 2023",
+      "cta": "Vamos começar!"
+    }
   }
 }

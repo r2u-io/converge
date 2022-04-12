@@ -86,53 +86,53 @@
       "popular": "Recommended"
     },
     "landing": {
-      "welcome": "Bem vindo ao Caça NFTs do VTEX Day",
-      "invite": "Entre para ver sua coleção",
-      "login": "Entrar",
-      "instructions": "Como funciona?"
+      "welcome": "Welcome to the VTEX Day NFT Hunt",
+      "invite": "Login to see your collection",
+      "login": "Login",
+      "instructions": "How does it work?"
     },
     "scanned": {
-      "title": "Falta pouco pra revelar esse NFT",
-      "subtitle": "Entre para adiciona-lo a sua coleção",
-      "login": "Entrar"
+      "title": "You're very close to revealing this NFT",
+      "subtitle": "Login to add it to your collection",
+      "login": "Login"
     },
     "claim": {
       "title": {
-        "start": "Clique no botão abaixo para reservar sua NFT",
-        "clicked": "Por favor aguarde, estamos reservando sua NFT...",
-        "reserved": "NFT Reservada! Clique no botão abaixo para ver sua coleção"
+        "start": "Click the button bellow to claim your NFT",
+        "clicked": "Please wait, we are making your reservation...",
+        "reserved": "NFT reserved! Click the button bellow to view your collection"
       },
       "button": {
-        "start": "Reservar NFT",
-        "clicked": "Carregando ...",
-        "reserved": "Minha Coleção"
+        "start": "Claim NFT",
+        "clicked": "Loading ...",
+        "reserved": "My Collection"
       }
     },
     "collection": {
-      "title": "Meus NFTs",
-      "subtitle": "Veja aqui os NFTs que você já resgatou",
+      "title": "My NFTs",
+      "subtitle": "Here you can see the NFTs you claimed",
       "locked": "{{id}}/12",
       "rare": {
-        "title": "NFT Especial",
-        "locked": "Desbloqueie o resto da coleção para receber este NFT especial que te dará benefícios exclusivos",
-        "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023!"
+        "title": "Special NFT",
+        "locked": "Unlock the rest of the collection to receive this special NFT with exclusive perks",
+        "unlocked": "Congratulations, you  claimed all the NFTs from the collection! This Special NFT will give you a 20% discount on VTEX Day 2023"
       }
     },
     "footer": {
-      "contact": "Contato",
-      "support": "Em caso de dúvidas, envie um email para: ",
+      "contact": "Contact us",
+      "support": "If you need any help, send us an E-Mail to: ",
       "email": "support@converge.land"
     },
     "instructions": {
-      "title": "Instruções",
-      "subtitle": "Caça NFTs VTEX Day",
-      "one": "Procure por totens espalhados pelo evento e escaneie os QR Codes",
-      "two": "Crie sua conta para poder atrelar as NFTs ao seu email",
-      "three": "A cada QR Code escaneado, clique em \"RESERVAR NFT\" para poder aumentar sua coleção",
-      "four": "São 11 totens com QR Codes ao todo no evento",
-      "five": "Ao final do evento, aguarde um email com as instruções para receber sua coleção em sua carteira",
-      "six": "Colete todos os 11 NFTs para desbloquear o último NFT Especial que dará 20% de desconto no VTEX Day 2023",
-      "cta": "Vamos começar!"
+      "title": "Instructions",
+      "subtitle": "VTEX Day NFT Hunt",
+      "one": "Look for totems spread out through the event and scan the QR Codes",
+      "two": "Sign up to link the NFTs to your email",
+      "three": "For every QR Code scanned, click \"CLAIM NFT\" to increase your collection",
+      "four": "There are 11 totems with QR Codes in the event",
+      "five": "In the end of the event, wait for an email with instructions to receive your collection in your digital wallet",
+      "six": "Claim all 11 NFTs to unlock the last Special NFT witch will give you a 20% discount on VTEX Day 2023",
+      "cta": "Let's begin!"
     }
   }
 }
