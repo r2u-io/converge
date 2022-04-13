@@ -19,7 +19,7 @@ export default handleAuth({
   async logout(req, res) {
     try {
       await handleLogout(req, res, {
-        returnTo: '/poap'
+        returnTo: req.headers.referer
       })
     } catch (err) {
       const error = err as HandlerError

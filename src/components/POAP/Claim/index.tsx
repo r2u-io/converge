@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 
 import { useUser } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 
 import Footer from '../Footer'
@@ -16,6 +17,8 @@ interface Props {
 
 const Claim: React.FC<Props> = ({ code, goToCollection }: Props) => {
   const { t } = useTranslation()
+
+  const router = useRouter()
 
   const [clicked, setClicked] = useState(false)
   const [reserved, setReserved] = useState(false)
@@ -51,6 +54,8 @@ const Claim: React.FC<Props> = ({ code, goToCollection }: Props) => {
           videoRef.current?.load()
           setReserved(true)
         })
+      } else if (res.status === 401) {
+        router.push('/api/auth/logout')
       }
     })
   }
