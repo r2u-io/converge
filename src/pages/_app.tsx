@@ -35,10 +35,6 @@ const GlobalStyle = createGlobalStyle`
     max-height: 100vh;
   }
 
-  body {
-    background-color: #D8D6D2;
-  }
-
   button {
     cursor: pointer;
   }
