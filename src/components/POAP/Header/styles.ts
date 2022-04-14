@@ -22,5 +22,18 @@ export const Container = styled.div`
     border: none;
     outline: none;
     background: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 0;
+    margin: 0;
+
+    span {
+      font-size: 1.2rem;
+      color: #2f1346;
+    }
   }
 `

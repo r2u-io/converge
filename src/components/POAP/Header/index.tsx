@@ -3,6 +3,7 @@ import React from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 import { Container } from './styles'
 
@@ -12,6 +13,8 @@ interface Props {
 
 const Header: React.FC<Props> = ({ light = false }: Props) => {
   const { user } = useUser()
+
+  const { t } = useTranslation()
 
   return (
     <Container>
@@ -31,6 +34,7 @@ const Header: React.FC<Props> = ({ light = false }: Props) => {
                 <path d='M7653.1,2180.9l-60.7-52l-6.5-490.1l-6.5-490.1h-915.1c-544.3,0-954.2-10.8-1012.7-23.9c-229.9-52-379.5-236.4-379.5-464.1c2.2-195.2,88.9-338.3,260.2-429.4c84.6-45.5,110.6-47.7,1066.9-54.2l980.2-6.5l6.5-487.9l6.5-490.1l73.7-65c60.7-54.2,86.7-62.9,145.3-54.2c88.9,15.2,2021.1,1409.6,2068.8,1494.1c21.7,43.4,26,75.9,10.8,138.8c-19.5,75.9-82.4,125.8-1017.1,804.5c-889.1,644.1-1006.2,722.1-1077.8,722.1C7739.8,2232.9,7694.3,2215.6,7653.1,2180.9z' />
               </g>
             </svg>
+            <span>{t('poap.header.logout')}</span>
           </button>
         </Link>
       )}

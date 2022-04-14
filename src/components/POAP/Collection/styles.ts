@@ -9,6 +9,8 @@ export const GlobalStyleLight = createGlobalStyle`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   width: 100%;
 
@@ -49,6 +51,30 @@ export const Container = styled.div`
 
       flex-wrap: wrap;
       gap: 10px;
+    }
+  }
+
+  .empty {
+    width: 100%;
+
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      margin: 30px;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
     }
   }
 

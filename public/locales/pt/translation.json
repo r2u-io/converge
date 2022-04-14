@@ -75,6 +75,9 @@
     "sent": "Enviado com sucesso!"
   },
   "poap": {
+    "header": {
+      "logout": "Logout"
+    },
     "wallet": {
       "button": "Conectar Carteira",
       "modal": {
@@ -123,6 +126,10 @@
         "title": "NFT Especial",
         "locked": "Desbloqueie o resto da coleção para receber este NFT especial que te dará benefícios exclusivos",
         "unlocked": "Parabéns, você já resgatou todos os NFTs da coleção! Este NFT especial te dará direito a 20% de desconto no VTEX Day 2023! Aguarde nosso contato para recebe-lo em sua carteira digital"
+      },
+      "empty": {
+        "title": "Ooops, parece que esta coleção está vazia",
+        "subtitle": "Verifique se você fez login da mesma forma que durante o evento!"
       }
     },
     "footer": {

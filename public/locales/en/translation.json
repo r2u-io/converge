@@ -75,6 +75,9 @@
     "sent": "Sent successfully"
   },
   "poap": {
+    "header": {
+      "logout": "Logout"
+    },
     "wallet": {
       "button": "Connect Wallet",
       "modal": {
@@ -123,6 +126,10 @@
         "title": "Special NFT",
         "locked": "Unlock the rest of the collection to receive this special NFT with exclusive perks",
         "unlocked": "Congratulations, you  claimed all the NFTs from the collection! This Special NFT will give you a 20% discount on VTEX Day 2023! Wait for our email to receive it in your digital wallet"
+      },
+      "empty": {
+        "title": "Ooops, this collection is empty",
+        "subtitle": "Make sure you logged in the same way you did in the event!"
       }
     },
     "footer": {
