@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { useTranslation } from 'react-i18next'
 
 import POAP from '../components/POAP'
+import WalletComplete from '../components/POAP/Collection/Wallet/Complete'
 import WalletModal from '../components/POAP/Collection/Wallet/Modal'
 import InstructionsModal from '../components/POAP/Instructions/Modal'
 import { POAPProvider } from '../contexts/POAPContext'
@@ -22,6 +23,7 @@ const POAPPage: React.FC = () => {
           <POAP />
           <InstructionsModal />
           <WalletModal />
+          <WalletComplete />
         </Web3Provider>
       </POAPProvider>
     </>

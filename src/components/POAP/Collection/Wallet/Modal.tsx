@@ -15,11 +15,17 @@ const WalletModal: React.FC = () => {
 
   const [formAddress, setFormAddress] = useState('')
 
-  const { address, setAddress, hasMetamask, connect, userAddressAcquired } = useWeb3Context()
-  const { walletOpened, closeWallet } = usePOAPContext()
+  const {
+    address,
+    hasMetamask,
+    userAddressAcquired,
+    connectMetamask,
+    connectSequence,
+    setAddress
+  } = useWeb3Context()
+  const { walletOpened, closeWallet, openWalletComplete } = usePOAPContext()
 
   const [loading, setLoading] = useState(false)
-  const [complete, setComplete] = useState(false)
 
   useEffect(() => {
     if (!address) return
@@ -35,18 +41,14 @@ const WalletModal: React.FC = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          setComplete(true)
+          openWalletComplete()
+          closeWallet()
         } else if (res.status === 401) {
           router.push('/api/auth/logout')
         }
       })
       .catch((err) => console.error(err))
   }, [address])
-
-  useEffect(() => {
-    if (!complete) return
-    setTimeout(() => router.reload(), 5000)
-  }, [complete])
 
   return walletOpened ? (
     <Container>
@@ -64,7 +66,7 @@ const WalletModal: React.FC = () => {
       {userAddressAcquired && <span className='warning'>{t('poap.wallet.modal.warning')}</span>}
       <div className='options'>
         {hasMetamask ? (
-          <button type='button' className='option' onClick={connect}>
+          <button type='button' className='option' onClick={connectMetamask}>
             <Image
               src='/images/metamask.svg'
               alt='metamask'
@@ -93,7 +95,7 @@ const WalletModal: React.FC = () => {
             <span className='popular'>{t('poap.wallet.modal.popular')}</span>
           </a>
         )}
-        <button type='button' className='option'>
+        <button type='button' className='option' onClick={connectSequence}>
           <Image
             src='/images/sequence.svg'
             alt='sequence'
@@ -121,22 +123,18 @@ const WalletModal: React.FC = () => {
             onChange={(e) => setFormAddress(e.target.value)}
           />
         </label>
-        {complete ? (
-          <span className='success'>{t('poap.wallet.modal.success')}</span>
-        ) : (
-          <button
-            type='submit'
-            className='submit'
-            onClick={(e) => {
-              e.preventDefault()
-              setLoading(true)
-              setAddress(formAddress)
-            }}
-            disabled={!formAddress || loading}
-          >
-            {loading ? t('poap.wallet.modal.sending') : t('poap.wallet.modal.send')}
-          </button>
-        )}
+        <button
+          type='submit'
+          className='submit'
+          onClick={(e) => {
+            e.preventDefault()
+            setLoading(true)
+            setAddress(formAddress)
+          }}
+          disabled={!formAddress || loading}
+        >
+          {loading ? t('poap.wallet.modal.sending') : t('poap.wallet.modal.send')}
+        </button>
       </form>
     </Container>
   ) : null

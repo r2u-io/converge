@@ -71,6 +71,7 @@ export const Container = styled.div`
     align-items: center;
 
     width: 100%;
+    max-width: 600px;
 
     .option {
       padding: 16px;
@@ -150,6 +151,7 @@ export const Container = styled.div`
     gap: 20px;
 
     width: 100%;
+    max-width: 600px;
 
     label {
       display: flex;
@@ -198,5 +200,32 @@ export const Container = styled.div`
     text-align: center;
     color: #335;
     font-size: 1.4rem;
+
+    max-width: 650px;
+
+    margin: 40px;
+  }
+
+  .continue {
+    width: 200px;
+
+    margin: 20px;
+    margin-top: 0;
+
+    color: white;
+    background: #2f1346;
+    border: none;
+
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 1.2rem;
   }
 `

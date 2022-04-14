@@ -3,12 +3,15 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { usePOAPContext } from '../../../../contexts/POAPContext'
+import { useWeb3Context } from '../../../../contexts/Web3Context'
 import { Button } from './styles'
 
 const WalletButton: React.FC = () => {
   const { t } = useTranslation()
 
   const { openWallet } = usePOAPContext()
+
+  const { userAddressAcquired } = useWeb3Context()
 
   return (
     <Button type='button' className='wallet' onClick={openWallet}>
@@ -26,7 +29,7 @@ const WalletButton: React.FC = () => {
         <polygon fill='#878787' points='392.07,882.29 784.13,650.54 392.07,472.33 ' />
         <polygon fill='#acacac' points='0,650.54 392.07,882.29 392.07,472.33 ' />
       </svg>
-      <span>{t('poap.wallet.button')}</span>
+      <span>{userAddressAcquired ? t('poap.wallet.change') : t('poap.wallet.button')}</span>
     </Button>
   )
 }

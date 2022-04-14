@@ -50,7 +50,6 @@ export const Container = styled.div`
       justify-content: center;
 
       flex-wrap: wrap;
-      gap: 10px;
     }
   }
 
