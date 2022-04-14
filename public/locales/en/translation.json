@@ -75,15 +75,21 @@
     "sent": "Sent successfully"
   },
   "poap": {
-    "header": {
-      "login": "Login",
-      "logout": "Logout"
-    },
     "wallet": {
-      "metamask": "Metamask",
-      "fortmatic": "Fortmatic",
-      "sequence": "Sequence",
-      "popular": "Recommended"
+      "button": "Connect Wallet",
+      "modal": {
+        "metamask": "Metamask",
+        "fortmatic": "Fortmatic",
+        "sequence": "Sequence",
+        "popular": "Recommended",
+        "or": "Or",
+        "paste": "Paste your wallet address below",
+        "address": "Wallet address",
+        "send": "Send",
+        "sending": "Sending...",
+        "success": "Successfully connected to your wallet",
+        "warning": "We already have your wallet address, but if you want to change it please send another bellow"
+      }
     },
     "landing": {
       "welcome": "Welcome to the VTEX Day NFT Hunt",
@@ -111,7 +117,7 @@
     "collection": {
       "title": "My NFTs",
       "subtitle": "Here you can see the NFTs you claimed",
-      "explain": "Wait for our email to receive them all in your digital wallet",
+      "explain": "Now that we have your wallet address, we will email you when we send you the NFTs",
       "locked": "{{id}}/12",
       "rare": {
         "title": "Special NFT",

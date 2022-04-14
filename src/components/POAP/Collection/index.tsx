@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import { useTranslation } from 'react-i18next'
 
+import { useWeb3Context } from '../../../contexts/Web3Context'
 import Footer from '../Footer'
 import Header from '../Header'
 import InstructionsButton from '../Instructions/Button'
 import NFT from './NFT'
 import { Container, GlobalStyleLight } from './styles'
+import WalletButton from './Wallet/Button'
 
 const Collection: React.FC = () => {
   const { t } = useTranslation()
@@ -15,6 +17,8 @@ const Collection: React.FC = () => {
   const [rareNFT, setRareNFT] = useState(false)
 
   const [loading, setLoading] = useState(true)
+
+  const { userAddressAcquired, setUserAddressAcquired } = useWeb3Context()
 
   useEffect(() => {
     fetch('/api/poap-user', {
@@ -28,6 +32,8 @@ const Collection: React.FC = () => {
           setRareNFT(data.vtex.pop())
           setNFTs(data.vtex)
           setLoading(false)
+
+          if (data.address) setUserAddressAcquired(true)
         })
     })
   }, [])
@@ -53,7 +59,8 @@ const Collection: React.FC = () => {
       <div className='collection'>
         <span className='title'>{t('poap.collection.title')}</span>
         <span className='subtitle'>{t('poap.collection.subtitle')}</span>
-        <span className='subtitle'>{t('poap.collection.explain')}</span>
+        {userAddressAcquired && <span className='explain'>{t('poap.collection.explain')}</span>}
+        <WalletButton />
         <InstructionsButton />
         <div className='cards'>
           {nfts.map((claimed, index) => (

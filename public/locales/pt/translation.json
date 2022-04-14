@@ -75,15 +75,21 @@
     "sent": "Enviado com sucesso!"
   },
   "poap": {
-    "header": {
-      "login": "Login",
-      "logout": "Logout"
-    },
     "wallet": {
-      "metamask": "Metamask",
-      "fortmatic": "Fortmatic",
-      "sequence": "Sequence",
-      "popular": "Recommended"
+      "button": "Conectar Carteira",
+      "modal": {
+        "metamask": "Metamask",
+        "fortmatic": "Fortmatic",
+        "sequence": "Sequence",
+        "popular": "Recomendado",
+        "or": "Ou",
+        "paste": "Cole o endereço de sua carteira abaixo",
+        "address": "Endereço da Carteira",
+        "send": "Enviar",
+        "sending": "Enviando...",
+        "success": "Carteira conectada com sucesso",
+        "warning": "Já temos o endereço da sua carteira, mas se quiser trocar envie outro abaixo"
+      }
     },
     "landing": {
       "welcome": "Bem vindo ao Caça NFTs do VTEX Day",
@@ -111,7 +117,7 @@
     "collection": {
       "title": "Meus NFTs",
       "subtitle": "Veja aqui os NFTs que você já resgatou",
-      "explain": "Aguarde nosso contato para recebe-los em sua carteira digital",
+      "explain": "Agora que temos o endereço de sua carteira, te enviaremos um email quando enviarmos os NFTs",
       "locked": "{{id}}/12",
       "rare": {
         "title": "NFT Especial",

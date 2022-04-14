@@ -10,6 +10,9 @@ interface Web3ContextData {
   hasMetamask: boolean
   connect: () => void
   address: string
+  setAddress: (address: string) => void
+  userAddressAcquired: boolean
+  setUserAddressAcquired: (acquired: boolean) => void
 }
 
 declare global {
@@ -25,6 +28,8 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
   const [provider, setProvider] = useState<MetaMaskInpageProvider>()
   const [address, setAddress] = useState<string>('')
   const [networkId, setNetworkId] = useState<number>(0)
+
+  const [userAddressAcquired, setUserAddressAcquired] = useState(false)
 
   useEffect(() => {
     setHasMetamask(!!window.ethereum)
@@ -77,7 +82,10 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
       value={{
         hasMetamask,
         address,
-        connect
+        userAddressAcquired,
+        connect,
+        setAddress,
+        setUserAddressAcquired
       }}
     >
       {children}
