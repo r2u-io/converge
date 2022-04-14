@@ -71,6 +71,7 @@ export const Container = styled.div`
     align-items: center;
 
     width: 100%;
+    max-width: 600px;
 
     .option {
       padding: 16px;
@@ -150,6 +151,7 @@ export const Container = styled.div`
     gap: 20px;
 
     width: 100%;
+    max-width: 600px;
 
     label {
       display: flex;

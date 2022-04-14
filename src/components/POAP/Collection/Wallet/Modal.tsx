@@ -15,7 +15,14 @@ const WalletModal: React.FC = () => {
 
   const [formAddress, setFormAddress] = useState('')
 
-  const { address, setAddress, hasMetamask, connect, userAddressAcquired } = useWeb3Context()
+  const {
+    address,
+    hasMetamask,
+    userAddressAcquired,
+    connectMetamask,
+    connectSequence,
+    setAddress
+  } = useWeb3Context()
   const { walletOpened, closeWallet } = usePOAPContext()
 
   const [loading, setLoading] = useState(false)
@@ -64,7 +71,7 @@ const WalletModal: React.FC = () => {
       {userAddressAcquired && <span className='warning'>{t('poap.wallet.modal.warning')}</span>}
       <div className='options'>
         {hasMetamask ? (
-          <button type='button' className='option' onClick={connect}>
+          <button type='button' className='option' onClick={connectMetamask}>
             <Image
               src='/images/metamask.svg'
               alt='metamask'
@@ -93,7 +100,7 @@ const WalletModal: React.FC = () => {
             <span className='popular'>{t('poap.wallet.modal.popular')}</span>
           </a>
         )}
-        <button type='button' className='option'>
+        <button type='button' className='option' onClick={connectSequence}>
           <Image
             src='/images/sequence.svg'
             alt='sequence'
