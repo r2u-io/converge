@@ -77,6 +77,7 @@
   "poap": {
     "wallet": {
       "button": "Connect Wallet",
+      "change": "Change Wallet",
       "modal": {
         "metamask": "Metamask",
         "fortmatic": "Fortmatic",
@@ -87,8 +88,11 @@
         "address": "Wallet address",
         "send": "Send",
         "sending": "Sending...",
-        "success": "Successfully connected to your wallet",
         "warning": "We already have your wallet address, but if you want to change it please send another bellow"
+      },
+      "complete": {
+        "success": "Successfully connected to your wallet address, wait for our confirmation email when we send you the NFTs",
+        "button": "Continue"
       }
     },
     "landing": {

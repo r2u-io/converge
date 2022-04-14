@@ -11,6 +11,9 @@ interface POAPContextData {
   walletOpened: boolean
   openWallet: () => void
   closeWallet: () => void
+  walletOpenedComplete: boolean
+  openWalletComplete: () => void
+  closeWalletComplete: () => void
 }
 
 export const POAPContext = createContext<POAPContextData>({} as POAPContextData)
@@ -26,6 +29,11 @@ export const POAPProvider: React.FC<Props> = ({ children }: Props) => {
   const openWallet = () => setWalletOpened(true)
   const closeWallet = () => setWalletOpened(false)
 
+  const [walletOpenedComplete, setWalletCompleteOpened] = useState(false)
+
+  const openWalletComplete = () => setWalletCompleteOpened(true)
+  const closeWalletComplete = () => setWalletCompleteOpened(false)
+
   return (
     <POAPContext.Provider
       value={{
@@ -34,7 +42,10 @@ export const POAPProvider: React.FC<Props> = ({ children }: Props) => {
         closeInstructions,
         walletOpened,
         openWallet,
-        closeWallet
+        closeWallet,
+        walletOpenedComplete,
+        openWalletComplete,
+        closeWalletComplete
       }}
     >
       {children}

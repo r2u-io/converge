@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
+import { sequence } from '0xsequence'
 import type { MetaMaskInpageProvider } from '@metamask/providers'
 
 interface Props {
@@ -8,7 +9,8 @@ interface Props {
 
 interface Web3ContextData {
   hasMetamask: boolean
-  connect: () => void
+  connectMetamask: () => void
+  connectSequence: () => void
   address: string
   setAddress: (address: string) => void
   userAddressAcquired: boolean
@@ -31,9 +33,14 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
 
   const [userAddressAcquired, setUserAddressAcquired] = useState(false)
 
+  const [sequenceWallet, setSequenceWallet] = useState<sequence.Wallet>()
+
   useEffect(() => {
     setHasMetamask(!!window.ethereum)
     setProvider(window.ethereum)
+
+    sequenceWallet?.closeWallet()
+    setSequenceWallet(new sequence.Wallet('polygon'))
   }, [])
 
   const changeAddress = (accounts: unknown) => {
@@ -57,16 +64,18 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
     provider.request({ method: 'eth_chainId' }).then(changeNetwork)
   }, [provider])
 
-  const connect = () =>
-    provider
-      ?.request<string[]>({ method: 'eth_requestAccounts' })
-      .then(changeAddress)
-      .catch((err) => {
-        if (err.code === 4001) {
-          console.warn('Please connect to MetaMask.')
-        } else {
-          console.error(err)
-        }
+  const connectMetamask = () =>
+    provider?.request<string[]>({ method: 'eth_requestAccounts' }).then(changeAddress)
+
+  const connectSequence = () =>
+    sequenceWallet
+      ?.connect({
+        app: 'Converge POAP',
+        authorize: true
+      })
+      .then((account) => {
+        if (!account.session || !account.session.accountAddress) return
+        setAddress(account.session.accountAddress)
       })
 
   useEffect(() => {
@@ -83,7 +92,8 @@ export const Web3Provider: React.FC<Props> = ({ children }: Props) => {
         hasMetamask,
         address,
         userAddressAcquired,
-        connect,
+        connectMetamask,
+        connectSequence,
         setAddress,
         setUserAddressAcquired
       }}
