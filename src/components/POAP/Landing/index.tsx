@@ -14,23 +14,48 @@ const Landing: React.FC = () => {
   return (
     <Container>
       <Header />
-      <div className='container char'>
-        <Image
-          src='/images/poap/char_2.png'
-          alt='character-hunting'
-          width={380}
-          height={380}
-          objectFit='contain'
-        />
-      </div>
-      <div className='container hunt'>
-        <Image
-          src='/images/poap/hunt.png'
-          alt='nft-hunt-logo'
-          width={270}
-          height={270}
-          objectFit='contain'
-        />
+      <div className='images'>
+        <div className='container char-3'>
+          <Image
+            src='/images/poap/char_3.png'
+            alt='character-hunting'
+            width={380}
+            height={380}
+            objectFit='contain'
+            quality={100}
+          />
+        </div>
+        <div className='container char-2'>
+          <Image
+            src='/images/poap/char_2.png'
+            alt='character-hunting'
+            width={380}
+            height={380}
+            objectFit='contain'
+            quality={100}
+          />
+        </div>
+        <div className='container hunt'>
+          <Image
+            src='/images/poap/hunt.png'
+            alt='nft-hunt-logo'
+            layout='fill'
+            width={270}
+            height={270}
+            objectFit='contain'
+            quality={100}
+          />
+        </div>
+        <div className='container char-1'>
+          <Image
+            src='/images/poap/char_1.png'
+            alt='character-hunting'
+            width={380}
+            height={380}
+            objectFit='contain'
+            quality={100}
+          />
+        </div>
       </div>
       <span className='title'>{t('poap.landing.welcome')}</span>
       <span className='subtitle'>{t('poap.landing.invite')}</span>
