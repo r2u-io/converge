@@ -8,6 +8,8 @@ interface Props {
 export const Container = styled.div<Props>`
   width: ${({ rare }) => (rare ? '100%' : '45%')};
   padding-bottom: ${({ rare }) => (rare ? '100%' : '45%')};
+  margin: 5px;
+
   height: 0;
   position: relative;
 
@@ -78,5 +80,17 @@ export const Container = styled.div<Props>`
   video {
     position: absolute;
     width: 100%;
+  }
+
+  @media (min-width: 720px) {
+    width: ${({ rare }) => (rare ? '50%' : '30%')};
+    padding-bottom: ${({ rare }) => (rare ? '50%' : '30%')};
+    margin: 10px;
+  }
+
+  @media (min-width: 1080px) {    
+    width: ${({ rare }) => (rare ? '30%' : '20%')};
+    padding-bottom: ${({ rare }) => (rare ? '30%' : '20%')};
+    margin: 20px;
   }
 `
