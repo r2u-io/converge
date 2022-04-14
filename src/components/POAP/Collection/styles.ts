@@ -21,8 +21,16 @@ export const Container = styled.div`
   }
 
   .title,
-  .subtitle {
-    margin: 0 20px 20px 20px;
+  .subtitle,
+  .explain {
+    margin: 20px;
+    margin-top: 0;
+  }
+
+  .explain {
+    font-size: 1.3rem;
+    color: #a00;
+    opacity: 0.8;
   }
 
   .title {
