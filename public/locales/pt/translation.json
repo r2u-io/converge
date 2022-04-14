@@ -90,6 +90,10 @@
         "sending": "Enviando...",
         "success": "Carteira conectada com sucesso",
         "warning": "Já temos o endereço da sua carteira, mas se quiser trocar envie outro abaixo"
+      },
+      "complete": {
+        "success": "Endereço da carteira conectado com sucesso, aguarde nosso email de confirmação quando te enviarmos suas NFTs",
+        "button": "Continuar"
       }
     },
     "landing": {
