@@ -126,7 +126,7 @@ const ECBR2022: React.FC = () => {
           </video>
           <button id='ar-button' type='button'>
             <img src='/ecbr2022/ar-icon.png'/>
-            <label>{t('general.openAr')}</label>
+            <span>{t('general.openAr')}</span>
           </button>
         </div>
         <IFrame
@@ -137,7 +137,7 @@ const ECBR2022: React.FC = () => {
         />
         <div className='container' id='hidder'>
           <i>{t('general.poweredBy')}</i>
-          <a href='https://converge.land' target='_blank'>
+          <a href='https://converge.land' target='_blank' rel='noreferrer'>
             <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
           </a>
         </div>
