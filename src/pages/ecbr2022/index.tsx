@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Head from 'next/head'
 import { useTranslation } from 'react-i18next'
 import styled, { createGlobalStyle } from 'styled-components'
+import Script from 'next/script'
+// import '@r2u/javascript-ar-sdk'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -65,7 +67,32 @@ const GlobalStyle = createGlobalStyle`
       left: 0;
       bottom: 0;
       background-color: #ffffff;
+  }
 
+  #hidder i {
+    color: #bebebe;
+    display: block;
+    width: 100%;
+    padding: 5px;
+    clear: both;
+  }
+
+  #ar-button {
+    background-color: transparent;
+    color: #675fed;
+    padding: 2px 10px;
+    border: 1px solid #675fed;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+  }
+
+  #ar-button img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
   }
 `
 
@@ -80,7 +107,6 @@ export const IFrame = styled.iframe`
   z-index: 2;
   border: none;
 `
-
 const ECBR2022: React.FC = () => {
   const { t } = useTranslation()
 
@@ -88,16 +114,21 @@ const ECBR2022: React.FC = () => {
     <>
       <Head>
         <title>{t('pages.title.ecbr2022')}</title>
+        <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
       </Head>
       <GlobalStyle />
       <div className='wrapper'>
         <div className='container'>
-          <img id='social-logo' src='/erc2022/social-digital-commerce-logo.svg'/>
+          <img id='social-logo' src='/ecbr2022/social-digital-commerce-logo.svg'/>
         </div>
         <div className='container'>
           <video width='250' height='250' controls autoPlay muted loop>
-              <source src='/erc2022/nft-art.mp4' type='video/mp4'/>
+              <source src='/ecbr2022/nft-art.mp4' type='video/mp4'/>
           </video>
+          <button id='ar-button'>
+            <img src='/ecbr2022/ar-icon.png'/>
+            <label>Ver em Realidade Aumentada</label>
+          </button>
         </div>
         <IFrame
             src='https://eovvoavx7w2.typeform.com/to/CSX5sXwK'
@@ -106,9 +137,11 @@ const ECBR2022: React.FC = () => {
             allow='xr-spatial-tracking; display-capture; magnetometer; picture-in-picture; wake-lock; screen-wake-lock; vr; geolocation; microphone; camera; midi; encrypted-media; autoplay; fullscreen; gyroscope; accelerometer;'
         />
         <div className='container' id='hidder'>
-            <img id='converge-logo' src='/erc2022/converge-logo.svg'/>
+          <i>powered by</i>
+          <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
         </div>
       </div>
+      <Script src='/ecbr2022/ar-script.js'/>
     </>
   )
 }
