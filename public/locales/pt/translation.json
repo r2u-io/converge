@@ -154,5 +154,9 @@
       "six": "Colete todos os 11 NFTs para desbloquear o último NFT Especial que dará 20% de desconto no VTEX Day 2023",
       "cta": "Vamos começar!"
     }
+  },
+  "general": {
+    "openAr": "Ver em Realidade Aumentada",
+    "poweredBy": "powered by"
   }
 }

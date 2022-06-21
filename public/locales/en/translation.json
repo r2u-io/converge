@@ -153,5 +153,9 @@
       "six": "Claim all 11 NFTs to unlock the last Special NFT witch will give you a 20% discount on VTEX Day 2023",
       "cta": "Let's begin!"
     }
+  },
+  "general": {
+    "openAr": "See in Augmented Reality",
+    "poweredBy": "powered by"
   }
 }

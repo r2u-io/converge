@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Head from 'next/head'
+import Script from 'next/script'
 import { useTranslation } from 'react-i18next'
 import styled, { createGlobalStyle } from 'styled-components'
-import Script from 'next/script'
-// import '@r2u/javascript-ar-sdk'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -114,7 +113,7 @@ const ECBR2022: React.FC = () => {
     <>
       <Head>
         <title>{t('pages.title.ecbr2022')}</title>
-        <script src="https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js"></script>
+        <script src='https://unpkg.com/@r2u/javascript-ar-sdk/dist/index.js' async/>
       </Head>
       <GlobalStyle />
       <div className='wrapper'>
@@ -125,9 +124,9 @@ const ECBR2022: React.FC = () => {
           <video width='250' height='250' controls autoPlay muted loop>
               <source src='/ecbr2022/nft-art.mp4' type='video/mp4'/>
           </video>
-          <button id='ar-button'>
+          <button id='ar-button' type='button'>
             <img src='/ecbr2022/ar-icon.png'/>
-            <label>Ver em Realidade Aumentada</label>
+            <label>{t('general.openAr')}</label>
           </button>
         </div>
         <IFrame
@@ -137,11 +136,13 @@ const ECBR2022: React.FC = () => {
             allow='xr-spatial-tracking; display-capture; magnetometer; picture-in-picture; wake-lock; screen-wake-lock; vr; geolocation; microphone; camera; midi; encrypted-media; autoplay; fullscreen; gyroscope; accelerometer;'
         />
         <div className='container' id='hidder'>
-          <i>powered by</i>
-          <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
+          <i>{t('general.poweredBy')}</i>
+          <a href='https://converge.land' target='_blank'>
+            <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
+          </a>
         </div>
       </div>
-      <Script src='/ecbr2022/ar-script.js'/>
+      <Script src='/ecbr2022/ar-script.js' strategy='afterInteractive'/>
     </>
   )
 }
