@@ -95,7 +95,7 @@ const ECBR2022: React.FC = () => {
           <img id='social-logo' src='/erc2022/social-digital-commerce-logo.svg'/>
         </div>
         <div className='container'>
-          <video width='250' height='250' controls autoPlay={true} muted loop>
+          <video width='250' height='250' controls autoPlay muted loop>
               <source src='/erc2022/nft-art.mp4' type='video/mp4'/>
           </video>
         </div>
