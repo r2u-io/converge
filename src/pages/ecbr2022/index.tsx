@@ -70,14 +70,15 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const IFrame = styled.iframe`
-  overflow: hidden;
-  border: 0;
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  border-radius: 0 !important;
+  margin: 0 auto 0;
+  width: 98%;
+  min-height: 500px;
+  position: relative;
+  top: -45px;
+  left: -3px;
+  z-index: 2;
+  border: none;
 `
 
 const ECBR2022: React.FC = () => {
@@ -98,10 +99,12 @@ const ECBR2022: React.FC = () => {
               <source src='/erc2022/nft-art.mp4' type='video/mp4'/>
           </video>
         </div>
-        <iframe
+        <IFrame
             src='https://eovvoavx7w2.typeform.com/to/CSX5sXwK'
-            allowFullScreen={true}
-        ></iframe>
+            title='form'
+            frameBorder='0'
+            allow='xr-spatial-tracking; display-capture; magnetometer; picture-in-picture; wake-lock; screen-wake-lock; vr; geolocation; microphone; camera; midi; encrypted-media; autoplay; fullscreen; gyroscope; accelerometer;'
+        />
         <div className='container' id='hidder'>
             <img id='converge-logo' src='/erc2022/converge-logo.svg'/>
         </div>
