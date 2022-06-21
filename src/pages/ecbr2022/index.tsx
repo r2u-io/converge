@@ -21,7 +21,7 @@ const ECBR2022: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Social Digital Commerce - NFT POAP</title>
+        <title>{t('pages.title.ecbr2022')}</title>
       </Head>
       <IFrame
         src='https://storage.googleapis.com/r2u-demos-bucket/social-commerce-nft/index.html'
