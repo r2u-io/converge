@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import { Timestamp, setDoc, doc} from 'firebase/firestore'
 
 import Head from 'next/head'
 import Script from 'next/script'
 import { useTranslation } from 'react-i18next'
 import styled, { createGlobalStyle } from 'styled-components'
+
+import { db } from '../../firebase'
+
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,12 +20,13 @@ const GlobalStyle = createGlobalStyle`
       overflow-x: hidden;
       max-width: 100%;
       max-width: 600px;
+      min-height: 700px;
       margin: 0 auto 0;
       position: relative;
       z-index: 0;
   }
 
-  .wrapper .container {
+  .container {
       text-align: center;
       padding: 15px 0;
       box-sizing: border-box;
@@ -29,25 +35,26 @@ const GlobalStyle = createGlobalStyle`
       z-index: 3;
   }
 
-  .wrapper .container img{
+ .container img{
       width: 100px;
       height: auto;
   }
 
-  .wrapper #converge-logo {
-      width: 100px;
-      height: auto;
-      margin-top: 10px;
-  }
-
-  .wrapper .container video {
-      width: 300px;
-      height: 300px;
-      max-width: 90%;
+  .container.header img {
+      height: 40px;
+      width: 150px;
+      margin: 0 5px;
       object-fit: contain;
   }
 
-  .wrapper iframe {
+  .container video {
+      width: 280px;
+      height: 280px;
+      max-width: 80%;
+      object-fit: contain;
+  }
+
+  iframe {
       border-radius: 0 !important;
       margin: 0 auto 0;
       width: 98%;
@@ -59,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
       border: none;
   }
 
-  .wrapper #hidder {
+  #hidder {
       width: 100%;
       height: 105px;
       position: absolute;
@@ -93,6 +100,51 @@ const GlobalStyle = createGlobalStyle`
     height: 35px;
     margin-right: 10px;
   }
+
+  form.container {
+    padding: 0 20px;
+  }
+
+  form.container h1 {
+    text-align: left;
+    color: #291d56;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  form.container p {
+    font-size: 14px;
+    line-height: 19px;
+    color: #291d56b3;
+    text-align: left;
+    margin: 5px 0 12px;
+  }
+
+  form.container input[type='email'] {
+    color: #b264ac;
+    padding: 4px 7px 8px;
+    font-size: 24px;
+    border: none;
+    border-bottom: 1px solid;
+    font-weight: initial;
+    width: 100%;
+    background: rgb(234 199 240 / 20%);
+  }
+
+  form.container input[type='submit'] {
+    outline: none;
+    border: 1px solid transparent;
+    margin: 18px 0 0;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 12px 0px;
+    padding: 6px 14px;
+    min-height: 40px;
+    background-color: rgb(255, 91, 107);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 18px;
+  }
 `
 
 export const IFrame = styled.iframe`
@@ -108,6 +160,29 @@ export const IFrame = styled.iframe`
 `
 const ECBR2022: React.FC = () => {
   const { t } = useTranslation()
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      await setDoc(doc(db, 'ecbr2022-users', email), {
+        email,
+        walletAddress: null,
+        tranferedAt: null,
+        createdAt: Timestamp.now()
+      }).then(() => {
+        setLoading(false)
+        setSent(true)
+      })
+    } catch (err) {
+      setLoading(false)
+      alert('Erro')
+      console.error(err)
+    }
+  }
 
   return (
     <>
@@ -117,8 +192,9 @@ const ECBR2022: React.FC = () => {
       </Head>
       <GlobalStyle />
       <div className='wrapper'>
-        <div className='container'>
+        <div className='container header'>
           <img id='social-logo' src='/ecbr2022/social-digital-commerce-logo.svg'/>
+          <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
         </div>
         <div className='container'>
           <video width='250' height='250' controls autoPlay muted loop>
@@ -129,18 +205,29 @@ const ECBR2022: React.FC = () => {
             <span>{t('general.openAr')}</span>
           </button>
         </div>
-        <IFrame
-            src='https://eovvoavx7w2.typeform.com/to/CSX5sXwK'
-            title='form'
-            frameBorder='0'
-            allow='xr-spatial-tracking; display-capture; magnetometer; picture-in-picture; wake-lock; screen-wake-lock; vr; geolocation; microphone; camera; midi; encrypted-media; autoplay; fullscreen; gyroscope; accelerometer;'
-        />
-        <div className='container' id='hidder'>
-          <i>{t('general.poweredBy')}</i>
-          <a href='https://converge.land' target='_blank' rel='noreferrer'>
-            <img id='converge-logo' src='/ecbr2022/converge-logo.svg'/>
-          </a>
-        </div>
+
+        { sent ? (
+          <form className='container'>
+            <h1>{t('poap.ecbr2022.formSuccess')}</h1>
+            <h1 style={{
+              color: "#FF5B6B",
+              textAlign: "center"
+            }}>{email}</h1>
+          </form>
+        ) : (
+          <form className='container' onSubmit={handleSubmit}>
+              <h1>{t('poap.ecbr2022.emailLabel')}</h1>
+              <p>{t('poap.ecbr2022.emailDescription')}</p>
+              <input 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
+                placeholder="nome@exemplo.com" />
+
+              <input type="submit" value={t(loading ? 'general.loading' : 'general.send') as string} disabled={loading} />
+          </form>
+        )}
       </div>
       <Script src='/ecbr2022/ar-script.js' strategy='afterInteractive'/>
     </>

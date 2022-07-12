@@ -153,10 +153,17 @@
       "five": "Ao final do evento, aguarde um email com as instruções para receber sua coleção em sua carteira digital",
       "six": "Colete todos os 11 NFTs para desbloquear o último NFT Especial que dará 20% de desconto no VTEX Day 2023",
       "cta": "Vamos começar!"
+    },
+    "ecbr2022": {
+      "emailLabel": "Preencha seu e-mail para coletar este NFT!",
+      "emailDescription": "Após o evento você receberá instruções de como criar uma Wallet e receber seu NFT.",
+      "formSuccess": "Obrigado! Enviaremos as instruções após o término do evento para o e-mail"
     }
   },
   "general": {
     "openAr": "Ver em Realidade Aumentada",
-    "poweredBy": "powered by"
+    "poweredBy": "powered by",
+    "send": "Enviar",
+    "loading": "Carregando..."
   }
 }
