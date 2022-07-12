@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import { Timestamp, setDoc, doc} from 'firebase/firestore'
-
 import Head from 'next/head'
 import Script from 'next/script'
 import { useTranslation } from 'react-i18next'
